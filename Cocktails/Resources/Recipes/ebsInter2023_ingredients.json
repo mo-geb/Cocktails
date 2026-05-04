@@ -1,0 +1,432 @@
+[
+  {
+    "id": "ingredient_vermouth",
+    "name": "Vermouth",
+    "type": "fortifiedWine"
+  },
+  {
+    "id": "ingredient_campari",
+    "name": "Campari",
+    "type": "liqueur"
+  },
+  {
+    "id": "ingredient_soda_water",
+    "name": "Soda Water",
+    "type": "mixer"
+  },
+  {
+    "id": "ingredient_vodka",
+    "name": "Vodka",
+    "type": "spirit"
+  },
+  {
+    "id": "ingredient_triple_sec",
+    "name": "Triple Sec",
+    "type": "liqueur"
+  },
+  {
+    "id": "ingredient_lime_juice",
+    "name": "Lime Juice",
+    "type": "juice"
+  },
+  {
+    "id": "ingredient_orange_bitters",
+    "name": "Orange Bitters",
+    "type": "bitters"
+  },
+  {
+    "id": "ingredient_maraschino",
+    "name": "Maraschino",
+    "type": "liqueur"
+  },
+  {
+    "id": "ingredient_gin",
+    "name": "Gin",
+    "type": "spirit"
+  },
+  {
+    "id": "ingredient_angostura_soaked_sugar_cube",
+    "name": "Angostura Soaked Sugar Cube",
+    "type": "syrup"
+  },
+  {
+    "id": "ingredient_mint_leaves",
+    "name": "Mint Leaves",
+    "type": "other"
+  },
+  {
+    "id": "ingredient_bourbon",
+    "name": "Bourbon",
+    "type": "spirit"
+  },
+  {
+    "id": "ingredient_fresh_lemon_jucie",
+    "name": "Fresh Lemon Jucie",
+    "type": "other"
+  },
+  {
+    "id": "ingredient_sugar_syrup",
+    "name": "Sugar Syrup",
+    "type": "syrup"
+  },
+  {
+    "id": "ingredient_rum",
+    "name": "Rum",
+    "type": "spirit"
+  },
+  {
+    "id": "ingredient_chartreuse",
+    "name": "Chartreuse",
+    "type": "liqueur"
+  },
+  {
+    "id": "ingredient_grapefruit_juice",
+    "name": "Grapefruit Juice",
+    "type": "juice"
+  },
+  {
+    "id": "ingredient_jack_daniels",
+    "name": "Jack Daniel's",
+    "type": "other"
+  },
+  {
+    "id": "ingredient_lemon_juice",
+    "name": "Lemon Juice",
+    "type": "juice"
+  },
+  {
+    "id": "ingredient_sprite",
+    "name": "Sprite",
+    "type": "mixer"
+  },
+  {
+    "id": "ingredient_coffee_liqueur",
+    "name": "Coffee Liqueur",
+    "type": "liqueur"
+  },
+  {
+    "id": "ingredient_amaretto",
+    "name": "Amaretto",
+    "type": "liqueur"
+  },
+  {
+    "id": "ingredient_baileys",
+    "name": "Baileys",
+    "type": "liqueur"
+  },
+  {
+    "id": "ingredient_milk",
+    "name": "Milk",
+    "type": "mixer"
+  },
+  {
+    "id": "ingredient_angostura_bitters",
+    "name": "Angostura Bitters",
+    "type": "bitters"
+  },
+  {
+    "id": "ingredient_absinthe",
+    "name": "Absinthe",
+    "type": "liqueur"
+  },
+  {
+    "id": "ingredient_grenadine",
+    "name": "Grenadine",
+    "type": "syrup"
+  },
+  {
+    "id": "ingredient_cinnamon_syrup",
+    "name": "Cinnamon Syrup",
+    "type": "syrup"
+  },
+  {
+    "id": "ingredient_champagne",
+    "name": "Champagne",
+    "type": "other"
+  },
+  {
+    "id": "ingredient_chambord",
+    "name": "Chambord",
+    "type": "liqueur"
+  },
+  {
+    "id": "ingredient_pineapple_juice",
+    "name": "Pineapple Juice",
+    "type": "juice"
+  },
+  {
+    "id": "ingredient_egg_white",
+    "name": "Egg White",
+    "type": "mixer"
+  },
+  {
+    "id": "ingredient_raspberry_puree",
+    "name": "Raspberry Puree",
+    "type": "juice"
+  },
+  {
+    "id": "ingredient_whisky",
+    "name": "Whisky",
+    "type": "spirit"
+  },
+  {
+    "id": "ingredient_drambui",
+    "name": "Drambui",
+    "type": "liqueur"
+  },
+  {
+    "id": "ingredient_tequila",
+    "name": "Tequila",
+    "type": "spirit"
+  },
+  {
+    "id": "ingredient_crme_de_cassis",
+    "name": "Crme De Cassis",
+    "type": "liqueur"
+  },
+  {
+    "id": "ingredient_basil_leaves",
+    "name": "Basil Leaves",
+    "type": "other"
+  },
+  {
+    "id": "ingredient_brandy",
+    "name": "Brandy",
+    "type": "spirit"
+  },
+  {
+    "id": "ingredient_orange_juice",
+    "name": "Orange Juice",
+    "type": "juice"
+  },
+  {
+    "id": "ingredient_peach_puree",
+    "name": "Peach Puree",
+    "type": "juice"
+  },
+  {
+    "id": "ingredient_peach_liqueur",
+    "name": "Peach Liqueur",
+    "type": "liqueur"
+  },
+  {
+    "id": "ingredient_prosecco",
+    "name": "Prosecco",
+    "type": "liqueur"
+  },
+  {
+    "id": "ingredient_cranberry_juice",
+    "name": "Cranberry Juice",
+    "type": "juice"
+  },
+  {
+    "id": "ingredient_sugar",
+    "name": "Sugar",
+    "type": "syrup"
+  },
+  {
+    "id": "ingredient_cola",
+    "name": "Cola",
+    "type": "mixer"
+  },
+  {
+    "id": "ingredient_benectine_dom",
+    "name": "Benectine Dom",
+    "type": "liqueur"
+  },
+  {
+    "id": "ingredient_spirit",
+    "name": "Spirit",
+    "type": "spirit"
+  },
+  {
+    "id": "ingredient_mixer",
+    "name": "Mixer",
+    "type": "mixer"
+  },
+  {
+    "id": "ingredient_dark_cacao_liqueur",
+    "name": "Dark Cacao Liqueur",
+    "type": "liqueur"
+  },
+  {
+    "id": "ingredient_crme_de_menthe",
+    "name": "Crme De Menthe",
+    "type": "other"
+  },
+  {
+    "id": "ingredient_white_cacao_liqueur",
+    "name": "White Cacao Liqueur",
+    "type": "liqueur"
+  },
+  {
+    "id": "ingredient_cognac",
+    "name": "Cognac",
+    "type": "spirit"
+  },
+  {
+    "id": "ingredient_coconut_liqueur",
+    "name": "Coconut Liqueur",
+    "type": "liqueur"
+  },
+  {
+    "id": "ingredient_cream",
+    "name": "Cream",
+    "type": "mixer"
+  },
+  {
+    "id": "ingredient_crushed_ice",
+    "name": "Crushed Ice",
+    "type": "other"
+  },
+  {
+    "id": "ingredient_batida_de_coco",
+    "name": "Batida De Coco",
+    "type": "other"
+  },
+  {
+    "id": "ingredient_coco_syrup",
+    "name": "Coco Syrup",
+    "type": "syrup"
+  },
+  {
+    "id": "ingredient_lime_cordial",
+    "name": "Lime Cordial",
+    "type": "other"
+  },
+  {
+    "id": "ingredient_espresso",
+    "name": "Espresso",
+    "type": "other"
+  },
+  {
+    "id": "ingredient_crme_de_mure_float",
+    "name": "Crme De Mure Float",
+    "type": "other"
+  },
+  {
+    "id": "ingredient_apple_liqueur",
+    "name": "Apple Liqueur",
+    "type": "liqueur"
+  },
+  {
+    "id": "ingredient_peychauds_bitters",
+    "name": "Peychauds Bitters",
+    "type": "bitters"
+  },
+  {
+    "id": "ingredient_rye",
+    "name": "Rye",
+    "type": "spirit"
+  },
+  {
+    "id": "ingredient_aperol",
+    "name": "Aperol",
+    "type": "liqueur"
+  },
+  {
+    "id": "ingredient_lime_wedges",
+    "name": "Lime Wedges",
+    "type": "other"
+  },
+  {
+    "id": "ingredient_cachaca",
+    "name": "Cachaca",
+    "type": "other"
+  },
+  {
+    "id": "ingredient_bloody_mary_pre_batch",
+    "name": "Bloody Mary Pre Batch",
+    "type": "other"
+  },
+  {
+    "id": "ingredient_worcestershire_sauce",
+    "name": "Worcestershire Sauce",
+    "type": "other"
+  },
+  {
+    "id": "ingredient_tabasco",
+    "name": "Tabasco",
+    "type": "other"
+  },
+  {
+    "id": "ingredient_black_pepper",
+    "name": "Black Pepper",
+    "type": "other"
+  },
+  {
+    "id": "ingredient_celery_salt",
+    "name": "Celery Salt",
+    "type": "other"
+  },
+  {
+    "id": "ingredient_tomato_juice",
+    "name": "Tomato Juice",
+    "type": "juice"
+  },
+  {
+    "id": "ingredient_passionfruit_liqueur",
+    "name": "Passionfruit Liqueur",
+    "type": "liqueur"
+  },
+  {
+    "id": "ingredient_passionfruit_puree",
+    "name": "Passionfruit Puree",
+    "type": "juice"
+  },
+  {
+    "id": "ingredient_vanilla_syrup",
+    "name": "Vanilla Syrup",
+    "type": "syrup"
+  },
+  {
+    "id": "ingredient_vanilla_sugar",
+    "name": "Vanilla Sugar",
+    "type": "syrup"
+  },
+  {
+    "id": "ingredient_passion_fruit",
+    "name": "Passion Fruit",
+    "type": "other"
+  },
+  {
+    "id": "ingredient_cointreau",
+    "name": "Cointreau",
+    "type": "liqueur"
+  },
+  {
+    "id": "ingredient_simple_syrup",
+    "name": "Simple Syrup",
+    "type": "syrup"
+  },
+  {
+    "id": "ingredient_monin_vanilla_suagr",
+    "name": "Monin Vanilla Suagr",
+    "type": "other"
+  },
+  {
+    "id": "ingredient_passion_fruit_puree",
+    "name": "Passion Fruit Puree",
+    "type": "juice"
+  },
+  {
+    "id": "ingredient_passion_fruit_juice",
+    "name": "Passion Fruit Juice",
+    "type": "juice"
+  },
+  {
+    "id": "ingredient_tonic",
+    "name": "Tonic",
+    "type": "mixer"
+  },
+  {
+    "id": "ingredient_soda",
+    "name": "Soda",
+    "type": "mixer"
+  },
+  {
+    "id": "ingredient_orgeat_syrup",
+    "name": "Orgeat Syrup",
+    "type": "syrup"
+  }
+]

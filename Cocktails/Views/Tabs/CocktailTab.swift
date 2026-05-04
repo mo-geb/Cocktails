@@ -101,21 +101,9 @@ struct CocktailTab: View {
     @ViewBuilder
     private func gridCell(for cocktail: Cocktail) -> some View {
         VStack(spacing: 12) {
-            Group {
-                if let data = cocktail.imageData, let uiImage = UIImage(data: data) {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 80, height: 80)
-                        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-                } else {
-                    Image(cocktail.glass.imageNameFilled)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 64, height: 64)
-                }
-            }
-            .padding(.top, 20)
+            CocktailImageView(cocktail: cocktail)
+                .frame(width: 75, height: 75)
+                .padding(.top, 20)
             
             VStack(spacing: 6) {
                 Text(cocktail.name.isEmpty ? "Unnamed Cocktail" : cocktail.name)

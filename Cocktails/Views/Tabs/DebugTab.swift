@@ -5,6 +5,10 @@ struct DebugTab: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Ingredient.name) private var ingredients: [Ingredient]
     @Query private var cocktails: [Cocktail]
+    
+    // State to track import errors for the UI
+    @State private var errorMessage: String?
+    @State private var showError = false
 
     var body: some View {
         NavigationStack {
@@ -30,7 +34,10 @@ struct DebugTab: View {
                                 icon: "leaf.fill",
                                 color: .green
                             ) {
-                                //CocktailImporter.importIngredients(from: .ebs, into: modelContext)
+                                performImport {
+                                    try CocktailImporter(context: modelContext)
+                                        .importIngredients(from: .ebsInter2023)
+                                }
                             }
 
                             debugButton(
@@ -39,7 +46,10 @@ struct DebugTab: View {
                                 icon: "square.and.arrow.down.fill",
                                 color: .blue
                             ) {
-                                //CocktailImporter.importCocktails(from: .ebs, into: modelContext)
+                                performImport {
+                                    try CocktailImporter(context: modelContext)
+                                        .importAll(from: .ebsInter2023)
+                                }
                             }
                             
                             debugButton(
@@ -48,13 +58,7 @@ struct DebugTab: View {
                                 icon: "trash.fill",
                                 color: .red
                             ) {
-                                for cocktail in cocktails {
-                                    modelContext.delete(cocktail)
-                                }
-                                
-                                for ingredient in ingredients {
-                                    modelContext.delete(ingredient)
-                                }
+                                wipeData()
                             }
                         }
                     }
@@ -65,6 +69,11 @@ struct DebugTab: View {
             }
             .navigationTitle("Developer")
             .background(Color(.systemGroupedBackground))
+            .alert("Import Failed", isPresented: $showError, actions: {
+                    Button("OK", role: .cancel) { }
+                }, message: {
+                    Text(errorMessage ?? "Unknown error occurred")
+                })
         }
     }
 
@@ -122,6 +131,30 @@ struct DebugTab: View {
         .buttonStyle(.plain) // Removes the default gray flash
         .glassEffect()
     }
+    
+    // MARK: - Logic Helpers
+    
+    private func performImport(_ action: () throws -> Void) {
+            do {
+                try action()
+            } catch {
+                errorMessage = error.localizedDescription
+                showError = true
+            }
+        }
+
+        private func wipeData() {
+            // SwiftData handles cascading deletes if your relationships are set up with .cascade
+            // Otherwise, deleting the parent (Cocktail) is usually enough
+            for cocktail in cocktails {
+                modelContext.delete(cocktail)
+            }
+            for ingredient in ingredients {
+                modelContext.delete(ingredient)
+            }
+            
+            try? modelContext.save()
+        }
 }
 
 #Preview {

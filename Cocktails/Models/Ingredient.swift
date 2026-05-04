@@ -3,36 +3,34 @@ import SwiftData
 
 @Model
 final class Ingredient {
-    var id: UUID = UUID()
+    var id: String = UUID().uuidString
     var name: String = ""
     var type: IngredientType = IngredientType.other
     
-    var imageName: String?
-    
     @Relationship(inverse: \RecipeIngredient.ingredient) var usages: [RecipeIngredient]?
     
-    init(name: String, type: IngredientType = .other) {
-        self.id = UUID()
+    init(id: String = UUID().uuidString, name: String = "", type: IngredientType = .other) {
+        self.id = id
         self.name = name
         self.type = type
     }
 }
 
 struct IngredientDraft: Hashable {
+    var id: String
     var name: String = ""
     var type: IngredientType = .other
     
-    var imageName: String?
-    
-    init(name: String = "", type: IngredientType = .other) {
+    init(id: String = UUID().uuidString, name: String = "", type: IngredientType = .other) {
+        self.id = id
         self.name = name
         self.type = type
     }
     
     init(from ingredient: Ingredient) {
+        self.id = ingredient.id
         self.name = ingredient.name
         self.type = ingredient.type
-        self.imageName = ingredient.imageName
     }
 }
 
@@ -43,7 +41,7 @@ import UIKit
 extension Ingredient {
     var displayImage: DisplayImageSource {
         // 1. Highest priority: System asset (with a manual check for existence)
-        if let name = imageName, UIImage(named: name) != nil {
+        if UIImage(named: id) != nil {
             return .system(name)
         }
         
@@ -55,7 +53,7 @@ extension Ingredient {
 extension IngredientDraft {
     var displayImage: DisplayImageSource {
         // 1. Highest priority: System asset (with a manual check for existence)
-        if let name = imageName, UIImage(named: name) != nil {
+        if UIImage(named: id) != nil {
             return .system(name)
         }
         

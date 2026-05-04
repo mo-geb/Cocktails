@@ -1,28 +1,25 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%lf" : {
+    "%lld bsp" : {
 
     },
-    "%lf bsp" : {
+    "%lld dash" : {
 
     },
-    "%lf dash" : {
+    "%lld leaf" : {
 
     },
-    "%lf leaf" : {
+    "%lld ml" : {
 
     },
-    "%lf ml" : {
+    "%lld oz" : {
 
     },
-    "%lf oz" : {
+    "%lld part" : {
 
     },
-    "%lf part" : {
-
-    },
-    "%lf piece" : {
+    "%lld piece" : {
 
     },
     "Add Cocktail" : {
@@ -52,6 +49,9 @@
     "Group By" : {
 
     },
+    "Import Failed" : {
+
+    },
     "Ingredients" : {
 
     },
@@ -65,6 +65,9 @@
 
     },
     "Notes" : {
+
+    },
+    "OK" : {
 
     },
     "Settings" : {
