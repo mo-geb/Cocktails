@@ -1,0 +1,75 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%lf" : {
+
+    },
+    "%lf bsp" : {
+
+    },
+    "%lf dash" : {
+
+    },
+    "%lf leaf" : {
+
+    },
+    "%lf ml" : {
+
+    },
+    "%lf oz" : {
+
+    },
+    "%lf part" : {
+
+    },
+    "%lf piece" : {
+
+    },
+    "Add Cocktail" : {
+
+    },
+    "Close" : {
+
+    },
+    "Cocktails" : {
+
+    },
+    "Database Controls" : {
+
+    },
+    "Dev" : {
+
+    },
+    "Developer" : {
+
+    },
+    "fill" : {
+
+    },
+    "Garnish" : {
+
+    },
+    "Group By" : {
+
+    },
+    "Ingredients" : {
+
+    },
+    "Inventory" : {
+
+    },
+    "No ingredients provided." : {
+
+    },
+    "No instructions provided." : {
+
+    },
+    "Notes" : {
+
+    },
+    "Settings" : {
+
+    }
+  },
+  "version" : "1.1"
+}

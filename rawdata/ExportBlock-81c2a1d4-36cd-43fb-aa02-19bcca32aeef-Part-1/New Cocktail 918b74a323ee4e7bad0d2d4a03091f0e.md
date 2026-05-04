@@ -1,0 +1,7 @@
+# New Cocktail
+
+# Ingredients
+
+|  | MLS |
+| --- | --- |
+|  |  |

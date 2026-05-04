@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "a_stack_of_ice_cubes_crossed_out_(so_to_emphasize_no_ice)_general.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
