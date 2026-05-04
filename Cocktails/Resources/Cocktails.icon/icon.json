@@ -6,17 +6,27 @@
         {
           "fill" : {
             "linear-gradient" : [
-              "display-p3:1.00000,0.40522,0.92380,1.00000",
-              "display-p3:0.96611,0.51274,0.24688,1.00000"
-            ]
+              "srgb:1.00000,0.25279,1.00000,1.00000",
+              "srgb:1.00000,0.57637,0.00000,1.00000"
+            ],
+            "orientation" : {
+              "start" : {
+                "x" : 0.5,
+                "y" : 0
+              },
+              "stop" : {
+                "x" : 0.5,
+                "y" : 0.7984563599732907
+              }
+            }
           },
           "hidden" : false,
-          "image-name" : "Triangle.svg",
+          "image-name" : "Triangle.png",
           "name" : "Triangle",
           "position" : {
-            "scale" : 0.91,
+            "scale" : 0.9,
             "translation-in-points" : [
-              -0.3230884000000174,
+              0,
               0
             ]
           }

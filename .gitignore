@@ -1,0 +1,22 @@
+# Xcode user-specific settings
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.moved-aside
+DerivedData/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# SwiftPM
+.build/
+.swiftpm/
+
+# Obj-C / Swift build artifacts
+*.o
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
