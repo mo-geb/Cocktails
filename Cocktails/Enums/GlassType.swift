@@ -9,6 +9,7 @@ enum GlassType: String, Codable, CaseIterable, Identifiable {
     case hurricane
     case tiki
     case wine
+    case shot
     case other
     
     var id: String { rawValue }
@@ -23,6 +24,7 @@ enum GlassType: String, Codable, CaseIterable, Identifiable {
         case .hurricane: return String(localized: "Hurricane",  comment: "Glass type")
         case .tiki:      return String(localized: "Tiki",       comment: "Glass type")
         case .wine:      return String(localized: "Wine",       comment: "Glass type")
+        case .shot:      return String(localized: "Shot",       comment: "Glass type")
         case .other:     return String(localized: "Other",      comment: "Glass type")
         }
     }

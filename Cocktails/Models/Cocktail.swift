@@ -5,7 +5,7 @@ import SwiftData
 final class Cocktail {
     var id: UUID = UUID()
     var name: String = ""
-    
+
     var glass: GlassType = GlassType.rocks
     var method: PreparationMethod = PreparationMethod.build
     var ice: IceType = IceType.cubed
@@ -16,9 +16,9 @@ final class Cocktail {
 
     @Attribute(.externalStorage) var imageData: Data?
     var imageName: String?
-    
+
     @Relationship(deleteRule: .cascade, inverse: \RecipeIngredient.cocktail) var ingredients: [RecipeIngredient]?
-    
+
     init(name: String = "",
          notes: String = "",
          glass: GlassType = .rocks,
@@ -29,7 +29,6 @@ final class Cocktail {
          imageName: String? = nil,
          ingredients: [RecipeIngredient] = []) {
         self.name = name
-
         self.notes = notes
         self.glass = glass
         self.method = method
@@ -43,11 +42,11 @@ final class Cocktail {
 
 struct CocktailDraft: Hashable {
     var name: String = ""
-    
+
     var glass: GlassType = .highball
     var method: PreparationMethod = .build
     var ice: IceType = .cubed
-    var source: RecipeSource = RecipeSource.custom
+    var source: RecipeSource = .custom
     var isFavourite: Bool = false
 
     var notes: String = ""
@@ -56,57 +55,40 @@ struct CocktailDraft: Hashable {
     var imageName: String? = nil
 
     var ingredients: [RecipeIngredientDraft] = []
-    
+
     init(from cocktail: Cocktail? = nil) {
-        guard let cocktail = cocktail else { return }
-        self.name = cocktail.name
-        self.notes = cocktail.notes
-        self.glass = cocktail.glass
-        self.method = cocktail.method
-        self.ice = cocktail.ice
-        self.source = cocktail.source
-        self.isFavourite = cocktail.isFavourite
-        self.imageData = cocktail.imageData
-        self.imageName = cocktail.imageName
-        
-        if let existing = cocktail.ingredients {
-            self.ingredients = existing.map { RecipeIngredientDraft(from: $0) }
-        }
+        guard let cocktail else { return }
+        name = cocktail.name
+        notes = cocktail.notes
+        glass = cocktail.glass
+        method = cocktail.method
+        ice = cocktail.ice
+        source = cocktail.source
+        isFavourite = cocktail.isFavourite
+        imageData = cocktail.imageData
+        imageName = cocktail.imageName
+        ingredients = cocktail.ingredients?.map { RecipeIngredientDraft(from: $0) } ?? []
     }
 }
 
 import UIKit
 
-extension Cocktail {
+protocol CocktailImageProviding {
+    var imageData: Data? { get }
+    var imageName: String? { get }
+}
+
+extension CocktailImageProviding {
     var displayImage: DisplayImageSource {
-        // 1. Highest priority: User's custom uploaded photo
         if let data = imageData, let uiImage = UIImage(data: data) {
             return .custom(uiImage)
         }
-        
-        // 2. Secondary: System asset (with a manual check for existence)
         if let name = imageName, UIImage(named: "Cocktail/" + name) != nil {
             return .system("Cocktail/" + name)
         }
-        
-        // 3. Fallback: Asset name was missing or not found in xcassets
         return .placeholder
     }
 }
 
-extension CocktailDraft {
-    var displayImage: DisplayImageSource {
-        // 1. Highest priority: User's custom uploaded photo
-        if let data = imageData, let uiImage = UIImage(data: data) {
-            return .custom(uiImage)
-        }
-        
-        // 2. Secondary: System asset (with a manual check for existence)
-        if let name = imageName, UIImage(named: "Cocktail/" + name) != nil {
-            return .system("Cocktail/" + name)
-        }
-        
-        // 3. Fallback: Asset name was missing or not found in xcassets
-        return .placeholder
-    }
-}
+extension Cocktail: CocktailImageProviding {}
+extension CocktailDraft: CocktailImageProviding {}

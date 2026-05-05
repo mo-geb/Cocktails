@@ -60,8 +60,8 @@
     "type": "spirit"
   },
   {
-    "id": "fresh_lemon_jucie",
-    "name": "Fresh Lemon Jucie",
+    "id": "lemon_jucie",
+    "name": "Lemon Jucie",
     "type": "other"
   },
   {
@@ -180,9 +180,14 @@
     "type": "spirit"
   },
   {
-    "id": "crme_de_cassis",
-    "name": "Crme De Cassis",
+    "id": "creme_de_cassis",
+    "name": "Crème De Cassis",
     "type": "liqueur"
+  },
+  {
+    "id": "ginger_beer",
+    "name": "Ginger Beer",
+    "type": "mixer"
   },
   {
     "id": "basil_leaves",
@@ -250,8 +255,8 @@
     "type": "liqueur"
   },
   {
-    "id": "crme_de_menthe",
-    "name": "Crme De Menthe",
+    "id": "creme_de_menthe",
+    "name": "Cèrme De Menthe",
     "type": "other"
   },
   {
@@ -300,8 +305,8 @@
     "type": "other"
   },
   {
-    "id": "crme_de_mure_float",
-    "name": "Crme De Mure Float",
+    "id": "creme_de_mure",
+    "name": "Crème De Mure",
     "type": "other"
   },
   {
@@ -325,8 +330,8 @@
     "type": "liqueur"
   },
   {
-    "id": "lime_wedges",
-    "name": "Lime Wedges",
+    "id": "lime_wedge",
+    "name": "Lime Wedge",
     "type": "other"
   },
   {
@@ -432,6 +437,121 @@
   {
     "id": "lime_wheel",
     "name": "Lime Wheel",
+    "type": "garnish"
+  },
+  {
+    "id": "basil_leaf",
+    "name": "Basil Leaf",
+    "type": "garnish"
+  },
+  {
+    "id": "blackberry",
+    "name": "Blackberries",
+    "type": "garnish"
+  },
+  {
+    "id": "celery_stick",
+    "name": "Celery Stick",
+    "type": "garnish"
+  },
+  {
+    "id": "cherry",
+    "name": "Cherry",
+    "type": "garnish"
+  },
+  {
+    "id": "coffee_beans",
+    "name": "Coffee Beans",
+    "type": "garnish"
+  },
+  {
+    "id": "grapefruit_slice",
+    "name": "Grapefruit Slice",
+    "type": "garnish"
+  },
+  {
+    "id": "grated_nutmeg",
+    "name": "Grated Nutmeg",
+    "type": "garnish"
+  },
+  {
+    "id": "lemon_spiral",
+    "name": "Lemon Spiral",
+    "type": "garnish"
+  },
+  {
+    "id": "lemon_wedge",
+    "name": "Lemon Wedge",
+    "type": "garnish"
+  },
+  {
+    "id": "lemon_zest",
+    "name": "Lemon Zest",
+    "type": "garnish"
+  },
+  {
+    "id": "lime_wedge",
+    "name": "Lime Wedge",
+    "type": "garnish"
+  },
+  {
+    "id": "lime_zest",
+    "name": "Lime Zest",
+    "type": "garnish"
+  },
+  {
+    "id": "mint_leaf",
+    "name": "Mint Leaf",
+    "type": "garnish"
+  },
+  {
+    "id": "mint_spring",
+    "name": "Mint Spring",
+    "type": "garnish"
+  },
+  {
+    "id": "olive",
+    "name": "Olives",
+    "type": "garnish"
+  },
+  {
+    "id": "orange_slice",
+    "name": "Orange Slice",
+    "type": "garnish"
+  },
+  {
+    "id": "orange_zest",
+    "name": "Orange Zest",
+    "type": "garnish"
+  },
+  {
+    "id": "passionfruit_garnish",
+    "name": "Passionfruit",
+    "type": "garnish"
+  },
+  {
+    "id": "pineapple_wedge",
+    "name": "Pineapple Wedge",
+    "type": "garnish"
+  },
+  {
+    "id": "raspberry",
+    "name": "Raspberry",
+    "type": "garnish"
+  },
+  {
+    "id": "salt_rim",
+    "name": "Salt Rim",
+    "type": "garnish"
+  },
+  {
+    "id": "sugar_coated_lemon_wedge",
+    "name": "Sugar coated lemon wedge",
+    "type": "garnish"
+  },
+  {
+    "id": "sugar_rim",
+    "name": "Sugar Rim",
     "type": "garnish"
   }
 ]

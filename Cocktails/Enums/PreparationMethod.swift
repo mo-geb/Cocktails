@@ -6,7 +6,7 @@ enum PreparationMethod: String, Codable, CaseIterable, Identifiable {
     case build
     case blend
     case roll
-    
+
     var id: String { rawValue }
 
     var localizedName: String {
@@ -19,10 +19,5 @@ enum PreparationMethod: String, Codable, CaseIterable, Identifiable {
         }
     }
 
-    var customImageName: String {
-        switch self {
-        case .shake: return "Method/shake"
-        default: return "Method/shake"
-        }
-    }
+    var customImageName: String { "Method/shake" }
 }

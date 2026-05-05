@@ -3,34 +3,27 @@ import SwiftData
 import PhotosUI
 
 struct CocktailDetailView: View {
-    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
-    
-    // MARK: - Properties
-    
-    // State
-    @State private var cocktail: Cocktail?
+    @Environment(\.colorScheme) private var colorScheme
+
     @State private var draft: CocktailDraft
     @State private var backgroundColor: Color?
-    
-    @Environment(\.colorScheme) private var colorScheme
-    
-    // Construct
+
     init(cocktail: Cocktail) {
-        self.cocktail = cocktail
         self.draft = CocktailDraft(from: cocktail)
     }
-    
-    // MARK: - Body
-    
+
     var body: some View {
+        let regularIngredients = draft.ingredients.filter { $0.ingredient.type != .garnish }
+        let garnishIngredients = draft.ingredients.filter { $0.ingredient.type == .garnish }
+
         ScrollView {
             VStack(spacing: 18) {
                 pictureSectionShowing
                 titleSectionShowing
                 propertiesPillShowing
-                ingredientsSectionShowing
-                garnishSectionShowing
+                ingredientsSectionShowing(regularIngredients)
+                garnishSectionShowing(garnishIngredients)
                 instructionsSectionShowing
             }
             .padding(.horizontal)
@@ -46,10 +39,7 @@ struct CocktailDetailView: View {
                     .ignoresSafeArea()
                 if let backgroundColor {
                     LinearGradient(
-                        colors: [
-                            backgroundColor,
-                            backgroundColor.opacity(0.3)
-                        ],
+                        colors: [backgroundColor, backgroundColor.opacity(0.3)],
                         startPoint: .top,
                         endPoint: .bottom
                     )
@@ -61,17 +51,17 @@ struct CocktailDetailView: View {
         }
         .toolbar { toolbarContent }
     }
-    
-    // MARK: - View Components (Showing)
-    
+
+    // MARK: - View Components
+
     @ViewBuilder
     private var pictureSectionShowing: some View {
-        CocktailDraftImageView(cocktail: draft)
+        draft.displayImage.view(placeholder: draft.glass.imageNameFilled)
             .scaledToFit()
             .frame(width: 110, height: 110)
             .padding(12)
     }
-    
+
     @ViewBuilder
     private var titleSectionShowing: some View {
         VStack(spacing: 8) {
@@ -97,7 +87,7 @@ struct CocktailDetailView: View {
             .glassEffect()
         }
     }
-    
+
     @ViewBuilder
     private var propertiesPillShowing: some View {
         HStack(spacing: 0) {
@@ -109,9 +99,9 @@ struct CocktailDetailView: View {
                 Text(draft.glass.localizedName)
             }
             .frame(maxWidth: .infinity)
-            
+
             Divider().frame(height: 16)
-            
+
             HStack(spacing: 6) {
                 Image(draft.ice.imageName)
                     .resizable()
@@ -120,9 +110,9 @@ struct CocktailDetailView: View {
                 Text(draft.ice.localizedName)
             }
             .frame(maxWidth: .infinity)
-            
+
             Divider().frame(height: 16)
-            
+
             HStack(spacing: 6) {
                 Image(draft.method.customImageName)
                     .resizable()
@@ -131,30 +121,25 @@ struct CocktailDetailView: View {
                 Text(draft.method.localizedName)
             }
             .frame(maxWidth: .infinity)
-
         }
         .font(.subheadline)
         .foregroundColor(.primary)
         .padding(.vertical, 16)
         .glassEffect()
     }
-    
+
     @ViewBuilder
-    private var ingredientsSectionShowing: some View {
-        let regularIngredients = draft.ingredients.filter { $0.ingredient.type != .garnish }
-        
+    private func ingredientsSectionShowing(_ ingredients: [RecipeIngredientDraft]) -> some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Ingredients")
                 .font(.title3.bold())
                 .fontDesign(.rounded)
-            
+
             Divider()
-            
-            if !regularIngredients.isEmpty {
+
+            if !ingredients.isEmpty {
                 VStack(spacing: 16) {
-                    ForEach(regularIngredients) { ingredient in
-                        ingredientRow(for: ingredient)
-                    }
+                    ForEach(ingredients) { ingredientRow(for: $0) }
                 }
             } else {
                 Text("No ingredients provided.")
@@ -164,39 +149,35 @@ struct CocktailDetailView: View {
         .padding(20)
         .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
-    
+
     @ViewBuilder
-    private var garnishSectionShowing: some View {
-        let garnishIngredients = draft.ingredients.filter { $0.ingredient.type == .garnish }
-        
-        if !garnishIngredients.isEmpty {
+    private func garnishSectionShowing(_ garnishes: [RecipeIngredientDraft]) -> some View {
+        if !garnishes.isEmpty {
             VStack(alignment: .leading, spacing: 16) {
                 Text("Garnish")
                     .font(.title3.bold())
                     .fontDesign(.rounded)
-                
+
                 Divider()
-                
+
                 VStack(spacing: 16) {
-                    ForEach(garnishIngredients) { ingredient in
-                        ingredientRow(for: ingredient)
-                    }
+                    ForEach(garnishes) { ingredientRow(for: $0) }
                 }
             }
             .padding(20)
             .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
         }
     }
-    
+
     @ViewBuilder
     private var instructionsSectionShowing: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Notes")
                 .font(.title3.bold())
                 .fontDesign(.rounded)
-            
+
             Divider()
-            
+
             if !draft.notes.isEmpty {
                 Text(draft.notes)
                     .lineSpacing(6)
@@ -206,24 +187,24 @@ struct CocktailDetailView: View {
             }
         }
         .padding(20)
-        .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))    }
-    
+        .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+    }
 
-    
     // MARK: - Toolbar
-    
+
     @ToolbarContentBuilder
     private var toolbarContent: some ToolbarContent {
         ToolbarItem(placement: .cancellationAction) {
             Button("Close") { dismiss() }
         }
     }
-    
+
     private func ingredientRow(for ingredient: RecipeIngredientDraft) -> some View {
         HStack(spacing: 12) {
-            IngredientDraftImageView(ingredient: ingredient.ingredient)
+            ingredient.ingredient.displayImage.view(placeholder: ingredient.ingredient.type.imageName)
+                .scaledToFit()
                 .frame(width: 30, height: 30)
-            
+
             VStack(alignment: .leading, spacing: 4) {
                 HStack {
                     if let amount = ingredient.amount, amount > 0 {

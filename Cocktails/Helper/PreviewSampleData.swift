@@ -9,7 +9,7 @@ struct PreviewSampleData {
         let container = try! ModelContainer(for: schema, configurations: [configuration])
 
         let importer = CocktailImporter(context: container.mainContext)
-        try! importer.importSelectedCocktails(names: ["Espresso Martini", "B52", "Mojito"], from: .ebsInter2023)
+        try! importer.importSelectedCocktails(names: ["Espresso Martini", "B52", "Piña Colada"], from: .ebsInter2023)
 
         return container
     }()

@@ -1,28 +1,10 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%lld bsp" : {
-
-    },
-    "%lld dash" : {
-
-    },
-    "%lld leaf" : {
-
-    },
-    "%lld ml" : {
-
-    },
-    "%lld oz" : {
-
-    },
-    "%lld part" : {
-
-    },
-    "%lld piece" : {
-
-    },
     "Add Cocktail" : {
+
+    },
+    "Add to Favourites" : {
 
     },
     "Blend" : {
@@ -61,7 +43,7 @@
     "Developer" : {
 
     },
-    "EBS International 2023" : {
+    "EBS" : {
       "comment" : "Recipe source — book title"
     },
     "fill" : {
@@ -87,6 +69,9 @@
     },
     "Ice" : {
       "comment" : "Grouping by ice type"
+    },
+    "Import Complete" : {
+
     },
     "Import Failed" : {
 
@@ -114,6 +99,9 @@
     "Method" : {
       "comment" : "Grouping by preparation method"
     },
+    "No Ice" : {
+      "comment" : "Ice type — no ice"
+    },
     "No ingredients provided." : {
 
     },
@@ -121,7 +109,7 @@
 
     },
     "None" : {
-      "comment" : "Grouping — no grouping applied\nIce type — no ice"
+      "comment" : "Grouping — no grouping applied"
     },
     "Notes" : {
 
@@ -131,6 +119,9 @@
     },
     "Other" : {
       "comment" : "Glass type"
+    },
+    "Remove from Favourites" : {
+
     },
     "Rocks" : {
       "comment" : "Glass type"
@@ -146,6 +137,9 @@
     },
     "Shared" : {
       "comment" : "Recipe source — shared recipe"
+    },
+    "Shot" : {
+      "comment" : "Glass type"
     },
     "Stir" : {
       "comment" : "Preparation method"

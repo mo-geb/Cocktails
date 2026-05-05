@@ -16,4 +16,13 @@ extension DisplayImageSource {
         }
         return uiImage?.dominantColor().map { Color($0) }
     }
+
+    @ViewBuilder
+    func view(placeholder: String) -> some View {
+        switch self {
+        case .custom(let uiImage): Image(uiImage: uiImage).resizable()
+        case .system(let name):    Image(name).resizable()
+        case .placeholder:         Image(placeholder).resizable()
+        }
+    }
 }

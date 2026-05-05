@@ -21,6 +21,16 @@
         "ingredientName": "soda_water",
         "amount": 30.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "orange_slice",
+        "amount": 1.0,
+        "unit": "piece"
+      },
+      {
+        "ingredientName": "orange_zest",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Build & Stir\nGlass: Rocks"
@@ -28,7 +38,7 @@
   {
     "name": "Kamikaze",
     "imageName": "kamikaze",
-    "glass": "other",
+    "glass": "shot",
     "method": "shake",
     "ice": "none",
     "ingredients": [
@@ -46,7 +56,7 @@
         "ingredientName": "lime_juice",
         "amount": 10.0,
         "unit": "ml",
-        "note": "Fresh Lime Juice"
+        "note": "Fresh"
       }
     ],
     "notes": "Method: Shake & Fine Strain\nGlass: Shooter"
@@ -66,8 +76,7 @@
       {
         "ingredientName": "maraschino",
         "amount": 1.0,
-        "unit": "bsp",
-        "note": "Maraschino"
+        "unit": "bsp"
       },
       {
         "ingredientName": "vermouth",
@@ -79,6 +88,11 @@
         "ingredientName": "gin",
         "amount": 60.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "lemon_zest",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Stir & Julep Strain\nGlass: Chilled Martini / Coupe"
@@ -93,8 +107,7 @@
       {
         "ingredientName": "angostura_soaked_sugar_cube",
         "amount": 1.0,
-        "unit": "piece",
-        "note": "Angostura soaked sugar cube"
+        "unit": "piece"
       },
       {
         "ingredientName": "soda_water",
@@ -104,16 +117,20 @@
       {
         "ingredientName": "mint_leaves",
         "amount": 8.0,
-        "unit": "leaf",
-        "note": "Mint Leaves"
+        "unit": "leaf"
       },
       {
         "ingredientName": "bourbon",
         "amount": 60.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "mint_spring",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
-    "notes": "Method: Soak Muddle Bash Build & Churn\nGlass: Julep Tin, Rocks"
+    "notes": "Method: Soak, Muddle, Bash, Build & Churn\nGlass: Julep Tin, Rocks"
   },
   {
     "name": "White Lady",
@@ -133,15 +150,20 @@
         "unit": "ml"
       },
       {
-        "ingredientName": "fresh_lemon_jucie",
+        "ingredientName": "lemon_juice",
         "amount": 30.0,
         "unit": "ml",
-        "note": "Fresh Lemon Jucie"
+        "note": "Fresh"
       },
       {
         "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "lemon_zest",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe"
@@ -157,7 +179,7 @@
         "ingredientName": "lime_juice",
         "amount": 20.0,
         "unit": "ml",
-        "note": "Fresh Lime Juice"
+        "note": "Fresh"
       },
       {
         "ingredientName": "gin",
@@ -170,6 +192,11 @@
         "amount": 40.0,
         "unit": "ml",
         "note": "Dark Rum (Float)"
+      },
+      {
+        "ingredientName": "lime_wedge",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Build & Float\nGlass: Highball"
@@ -196,13 +223,18 @@
         "ingredientName": "lime_juice",
         "amount": 20.0,
         "unit": "ml",
-        "note": "Fresh Lime Juice"
+        "note": "Fresh"
       },
       {
         "ingredientName": "chartreuse",
         "amount": 20.0,
         "unit": "ml",
         "note": "Green Chartreuse"
+      },
+      {
+        "ingredientName": "cherry",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe"
@@ -230,12 +262,17 @@
         "ingredientName": "lime_juice",
         "amount": 20.0,
         "unit": "ml",
-        "note": "Fresh Lime Juice"
+        "note": "Fresh"
       },
       {
         "ingredientName": "grapefruit_juice",
         "amount": 20.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "cherry",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe"
@@ -274,6 +311,11 @@
         "amount": 0.0,
         "unit": "fill",
         "note": "Sprite / Lemonade"
+      },
+      {
+        "ingredientName": "lemon_wedge",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Shake & Strain\nGlass: Highball"
@@ -358,6 +400,16 @@
         "amount": 20.0,
         "unit": "ml",
         "note": "Bourbon or Rye"
+      },
+      {
+        "ingredientName": "orange_slice",
+        "amount": 1.0,
+        "unit": "piece"
+      },
+      {
+        "ingredientName": "orange_zest",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Stir & Julep Strain\nGlass: Rocks"
@@ -365,7 +417,7 @@
   {
     "name": "Zombie",
     "imageName": "zombie",
-    "glass": "highball",
+    "glass": "tiki",
     "method": "shake",
     "ice": "crushed",
     "ingredients": [
@@ -406,7 +458,7 @@
         "ingredientName": "lime_juice",
         "amount": 20.0,
         "unit": "ml",
-        "note": "Fresh Lime Juice"
+        "note": "Fresh"
       },
       {
         "ingredientName": "cinnamon_syrup",
@@ -417,6 +469,11 @@
         "ingredientName": "grapefruit_juice",
         "amount": 20.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "mint_spring",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Shake & Strain\nGlass: Highball, Tiki Mug"
@@ -448,6 +505,11 @@
         "ingredientName": "champagne",
         "amount": 0.0,
         "unit": "fill"
+      },
+      {
+        "ingredientName": "lemon_zest",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Shake & Fine Strain\nGlass: Champagne Flute"
@@ -500,6 +562,11 @@
         "ingredientName": "pineapple_juice",
         "amount": 40.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "raspberry",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe"
@@ -531,6 +598,11 @@
         "amount": 30.0,
         "unit": "ml",
         "note": "Fresh"
+      },
+      {
+        "ingredientName": "raspberry",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Dry Shake, Shake & Fine Strain\nGlass: Chilled Martini / Coupe"
@@ -553,6 +625,11 @@
         "amount": 30.0,
         "unit": "ml",
         "note": "Drambui"
+      },
+      {
+        "ingredientName": "lemon_zest",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Build\nGlass: Rocks"
@@ -570,22 +647,26 @@
         "unit": "ml"
       },
       {
-        "ingredientName": "crme_de_cassis",
+        "ingredientName": "creme_de_cassis",
         "amount": 10.0,
-        "unit": "ml",
-        "note": "Crème de Cassis"
+        "unit": "ml"
       },
       {
         "ingredientName": "lime_juice",
         "amount": 10.0,
         "unit": "ml",
-        "note": "Fresh Lime Juice"
+        "note": "Fresh"
       },
       {
         "ingredientName": "gin",
         "amount": 0.0,
         "unit": "fill",
         "note": "Ginger Ale"
+      },
+      {
+        "ingredientName": "lime_wedge",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Build\nGlass: Highball"
@@ -618,6 +699,11 @@
         "ingredientName": "sugar_syrup",
         "amount": 15.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "basil_leaf",
+        "amount": 1.0,
+        "unit": "leaf"
       }
     ],
     "notes": "Method: Shake & Fine Strain\nGlass: Rocks"
@@ -651,6 +737,11 @@
         "ingredientName": "orange_juice",
         "amount": 20.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "orange_zest",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe"
@@ -703,61 +794,7 @@
         "ingredientName": "lime_juice",
         "amount": 10.0,
         "unit": "ml",
-        "note": "Fresh Lime Juice"
-      },
-      {
-        "ingredientName": "cranberry_juice",
-        "amount": 30.0,
-        "unit": "ml"
-      },
-      {
-        "ingredientName": "vodka",
-        "amount": 40.0,
-        "unit": "ml",
-        "note": "Citron Vodka"
-      },
-      {
-        "ingredientName": "triple_sec",
-        "amount": 20.0,
-        "unit": "ml"
-      },
-      {
-        "ingredientName": "lime_juice",
-        "amount": 10.0,
-        "unit": "ml",
-        "note": "Fresh Lime Juice"
-      },
-      {
-        "ingredientName": "cranberry_juice",
-        "amount": 30.0,
-        "unit": "ml"
-      },
-      {
-        "ingredientName": "vodka",
-        "amount": 40.0,
-        "unit": "ml"
-      },
-      {
-        "ingredientName": "triple_sec",
-        "amount": 20.0,
-        "unit": "ml"
-      },
-      {
-        "ingredientName": "lime_juice",
-        "amount": 15.0,
-        "unit": "ml",
-        "note": "Fresh Lime Juice"
-      },
-      {
-        "ingredientName": "cranberry_juice",
-        "amount": 15.0,
-        "unit": "ml"
-      },
-      {
-        "ingredientName": "sugar",
-        "amount": 10.0,
-        "unit": "ml",
-        "note": "Sugar"
+        "note": "Fresh"
       }
     ],
     "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe"
@@ -811,6 +848,11 @@
         "amount": 0.0,
         "unit": "fill",
         "note": "Coca Cola"
+      },
+      {
+        "ingredientName": "lemon_wedge",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Shake & Strain\nGlass: Highball"
@@ -853,7 +895,7 @@
         "ingredientName": "lime_juice",
         "amount": 10.0,
         "unit": "ml",
-        "note": "Fresh Lime Juice"
+        "note": "Fresh"
       },
       {
         "ingredientName": "gin",
@@ -864,6 +906,16 @@
         "ingredientName": "pineapple_juice",
         "amount": 80.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "pineapple_wedge",
+        "amount": 1.0,
+        "unit": "piece"
+      },
+      {
+        "ingredientName": "cherry",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Shake & Strain\nGlass: Highball, Sling"
@@ -886,6 +938,16 @@
         "amount": 60.0,
         "unit": "ml",
         "note": "Gin or Vodka"
+      },
+      {
+        "ingredientName": "lemon_zest",
+        "amount": 1.0,
+        "unit": "piece"
+      },
+      {
+        "ingredientName": "olive",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Stir & Julep Strain\nGlass: Chilled Martini / Coupe"
@@ -908,6 +970,16 @@
         "amount": 0.0,
         "unit": "fill",
         "note": "Mixer"
+      },
+      {
+        "ingredientName": "lemon_wedge",
+        "amount": 1.0,
+        "unit": "piece"
+      },
+      {
+        "ingredientName": "lime_wedge",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Build\nGlass: Highball"
@@ -920,10 +992,9 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "crme_de_cassis",
+        "ingredientName": "creme_de_cassis",
         "amount": 20.0,
-        "unit": "ml",
-        "note": "Crème de Cassis"
+        "unit": "ml"
       },
       {
         "ingredientName": "champagne",
@@ -948,13 +1019,17 @@
       {
         "ingredientName": "dark_cacao_liqueur",
         "amount": 20.0,
-        "unit": "ml",
-        "note": "Dark Cacao Liqueur"
+        "unit": "ml"
       },
       {
         "ingredientName": "milk",
         "amount": 40.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "grated_nutmeg",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe"
@@ -986,6 +1061,11 @@
         "ingredientName": "soda_water",
         "amount": 0.0,
         "unit": "fill"
+      },
+      {
+        "ingredientName": "lemon_wedge",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Shake & Strain\nGlass: Highball"
@@ -1012,7 +1092,7 @@
         "ingredientName": "lime_juice",
         "amount": 10.0,
         "unit": "ml",
-        "note": "Fresh Lime Juice"
+        "note": "Fresh"
       },
       {
         "ingredientName": "sugar_syrup",
@@ -1023,6 +1103,16 @@
         "ingredientName": "soda_water",
         "amount": 0.0,
         "unit": "fill"
+      },
+      {
+        "ingredientName": "salt_rim",
+        "amount": 1.0,
+        "unit": "piece"
+      },
+      {
+        "ingredientName": "grapefruit_slice",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Shake & Strain\nGlass: Highball"
@@ -1079,9 +1169,19 @@
         "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "lemon_wedge",
+        "amount": 1.0,
+        "unit": "piece"
+      },
+      {
+        "ingredientName": "cherry",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
-    "notes": "Method: Dry Shake Shake & Strain\nGlass: Rocks"
+    "notes": "Method: Dry Shake, Shake & Strain\nGlass: Rocks"
   },
   {
     "name": "Grasshopper",
@@ -1091,16 +1191,14 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "crme_de_menthe",
+        "ingredientName": "creme_de_menthe",
         "amount": 30.0,
-        "unit": "ml",
-        "note": "Crème de Menthe"
+        "unit": "ml"
       },
       {
         "ingredientName": "white_cacao_liqueur",
         "amount": 30.0,
-        "unit": "ml",
-        "note": "White Cacao Liqueur"
+        "unit": "ml"
       },
       {
         "ingredientName": "milk",
@@ -1142,6 +1240,16 @@
         "ingredientName": "sugar_syrup",
         "amount": 15.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "orange_zest",
+        "amount": 1.0,
+        "unit": "piece"
+      },
+      {
+        "ingredientName": "cherry",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Dry Shake, Shake & Fine Strain / Strain\nGlass: Sour Glass / Rocks"
@@ -1173,6 +1281,11 @@
         "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "sugar_rim",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe"
@@ -1194,13 +1307,18 @@
         "ingredientName": "lime_juice",
         "amount": 10.0,
         "unit": "ml",
-        "note": "Fresh Lime Juice"
+        "note": "Fresh"
       },
       {
         "ingredientName": "cola",
         "amount": 0.0,
         "unit": "fill",
         "note": "Coca Cola"
+      },
+      {
+        "ingredientName": "lime_wedge",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Build\nGlass: Highball"
@@ -1220,8 +1338,7 @@
       {
         "ingredientName": "peach_liqueur",
         "amount": 20.0,
-        "unit": "ml",
-        "note": "Peach Liqueur"
+        "unit": "ml"
       },
       {
         "ingredientName": "cranberry_juice",
@@ -1253,7 +1370,7 @@
         "ingredientName": "lime_juice",
         "amount": 30.0,
         "unit": "ml",
-        "note": "Fresh Lime Juice"
+        "note": "Fresh"
       },
       {
         "ingredientName": "sugar_syrup",
@@ -1266,7 +1383,7 @@
   {
     "name": "Moscow Mule",
     "imageName": "moscow_mule",
-    "glass": "highball",
+    "glass": "copperMug",
     "method": "build",
     "ice": "cubed",
     "ingredients": [
@@ -1279,13 +1396,18 @@
         "ingredientName": "lime_juice",
         "amount": 20.0,
         "unit": "ml",
-        "note": "Fresh Lime Juice"
+        "note": "Fresh"
       },
       {
         "ingredientName": "gin",
         "amount": 0.0,
         "unit": "fill",
         "note": "Ginger Beer"
+      },
+      {
+        "ingredientName": "lime_wedge",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Build\nGlass: Cooper Mug, Highball"
@@ -1293,7 +1415,7 @@
   {
     "name": "Piña Colada",
     "imageName": "pina_colada",
-    "glass": "highball",
+    "glass": "hurricane",
     "method": "shake",
     "ice": "cubed",
     "ingredients": [
@@ -1306,14 +1428,13 @@
       {
         "ingredientName": "coconut_liqueur",
         "amount": 20.0,
-        "unit": "ml",
-        "note": "Coconut Liqueur"
+        "unit": "ml"
       },
       {
         "ingredientName": "lime_juice",
         "amount": 10.0,
         "unit": "ml",
-        "note": "Fresh Lime Juice"
+        "note": "Fresh"
       },
       {
         "ingredientName": "pineapple_juice",
@@ -1327,89 +1448,14 @@
         "note": "Coconut Cream"
       },
       {
-        "ingredientName": "rum",
-        "amount": 60.0,
-        "unit": "ml",
-        "note": "Light Rum"
+        "ingredientName": "pineapple_wedge",
+        "amount": 1.0,
+        "unit": "piece"
       },
       {
-        "ingredientName": "cream",
-        "amount": 30.0,
-        "unit": "ml",
-        "note": "Coconut Cream"
-      },
-      {
-        "ingredientName": "milk",
-        "amount": 30.0,
-        "unit": "ml",
-        "note": "Coconut Milk"
-      },
-      {
-        "ingredientName": "pineapple_juice",
-        "amount": 180.0,
-        "unit": "ml"
-      },
-      {
-        "ingredientName": "crushed_ice",
-        "amount": 240.0,
-        "unit": "ml",
-        "note": "Crushed Ice"
-      },
-      {
-        "ingredientName": "rum",
-        "amount": 30.0,
-        "unit": "ml",
-        "note": "Light Rum"
-      },
-      {
-        "ingredientName": "rum",
-        "amount": 30.0,
-        "unit": "ml",
-        "note": "Dark Rum"
-      },
-      {
-        "ingredientName": "batida_de_coco",
-        "amount": 20.0,
-        "unit": "ml",
-        "note": "Batida De Coco"
-      },
-      {
-        "ingredientName": "cream",
-        "amount": 20.0,
-        "unit": "ml"
-      },
-      {
-        "ingredientName": "pineapple_juice",
-        "amount": 0.0,
-        "unit": "fill"
-      },
-      {
-        "ingredientName": "rum",
-        "amount": 20.0,
-        "unit": "ml",
-        "note": "Light Rum"
-      },
-      {
-        "ingredientName": "batida_de_coco",
-        "amount": 40.0,
-        "unit": "ml",
-        "note": "Batida De Coco"
-      },
-      {
-        "ingredientName": "cream",
-        "amount": 20.0,
-        "unit": "ml"
-      },
-      {
-        "ingredientName": "coco_syrup",
-        "amount": 20.0,
-        "unit": "ml",
-        "note": "Coco Syrup"
-      },
-      {
-        "ingredientName": "pineapple_juice",
-        "amount": 0.0,
-        "unit": "fill"
+        "ingredientName": "cherry",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Shake & Strain\nGlass: Highball, Hurricane"
@@ -1429,8 +1475,12 @@
       {
         "ingredientName": "lime_cordial",
         "amount": 10.0,
-        "unit": "ml",
-        "note": "Lime Cordial"
+        "unit": "ml"
+      },
+      {
+        "ingredientName": "lime_zest",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Stir & Julep Strain\nGlass: Chilled Martini / Coupe"
@@ -1450,19 +1500,22 @@
       {
         "ingredientName": "coffee_liqueur",
         "amount": 20.0,
-        "unit": "ml",
-        "note": "Coffee Liqueur"
+        "unit": "ml"
       },
       {
         "ingredientName": "espresso",
         "amount": 30.0,
-        "unit": "ml",
-        "note": "Espresso"
+        "unit": "ml"
       },
       {
         "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "coffee_beans",
+        "amount": 3.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe"
@@ -1489,6 +1542,11 @@
         "ingredientName": "bourbon",
         "amount": 60.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "cherry",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Stir & Julep Strain\nGlass: Chilled Martini / Coupe"
@@ -1517,13 +1575,23 @@
         "unit": "ml"
       },
       {
-        "ingredientName": "crme_de_mure_float",
+        "ingredientName": "creme_de_mure",
         "amount": 20.0,
         "unit": "ml",
-        "note": "Crème de Mure (Float)"
+        "note": "Float"
+      },
+      {
+        "ingredientName": "lemon_wedge",
+        "amount": 1.0,
+        "unit": "piece"
+      },
+      {
+        "ingredientName": "blackberry",
+        "amount": 2.0,
+        "unit": "piece"
       }
     ],
-    "notes": "Method: Shake Strain & Float\nGlass: Rocks"
+    "notes": "Method: Shake, Strain & Float\nGlass: Rocks"
   },
   {
     "name": "Old Fashioned",
@@ -1546,6 +1614,11 @@
         "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "orange_zest",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Stir & Julep Strain\nGlass: Rocks"
@@ -1565,8 +1638,7 @@
       {
         "ingredientName": "apple_liqueur",
         "amount": 20.0,
-        "unit": "ml",
-        "note": "Apple Liqueur"
+        "unit": "ml"
       },
       {
         "ingredientName": "lemon_juice",
@@ -1578,6 +1650,11 @@
         "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "lemon_zest",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe"
@@ -1597,13 +1674,17 @@
       {
         "ingredientName": "peach_liqueur",
         "amount": 20.0,
-        "unit": "ml",
-        "note": "Peach Liqueur"
+        "unit": "ml"
       },
       {
         "ingredientName": "cranberry_juice",
         "amount": 0.0,
         "unit": "fill"
+      },
+      {
+        "ingredientName": "lime_wedge",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Build\nGlass: Highball"
@@ -1623,19 +1704,23 @@
       {
         "ingredientName": "peychauds_bitters",
         "amount": 3.0,
-        "unit": "dash",
-        "note": "Peychaud’s Bitters"
+        "unit": "dash"
       },
       {
-        "ingredientName": "rye",
+        "ingredientName": "cognac",
         "amount": 60.0,
         "unit": "ml",
-        "note": "Cognac or Rye"
+        "note": "or Rye"
       },
       {
         "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "lemon_zest",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Rinse Stir & Julep Strain\nGlass: Old Fashioned, Rocks"
@@ -1661,6 +1746,11 @@
         "ingredientName": "soda_water",
         "amount": 20.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "orange_slice",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Build In Order\nGlass: Rocks, Wine"
@@ -1668,15 +1758,14 @@
   {
     "name": "B52",
     "imageName": "b52",
-    "glass": "other",
+    "glass": "shot",
     "method": "build",
     "ice": "none",
     "ingredients": [
       {
         "ingredientName": "coffee_liqueur",
         "amount": 20.0,
-        "unit": "ml",
-        "note": "Coffee Liqueur"
+        "unit": "ml"
       },
       {
         "ingredientName": "baileys",
@@ -1713,6 +1802,16 @@
         "ingredientName": "gin",
         "amount": 20.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "orange_slice",
+        "amount": 1.0,
+        "unit": "piece"
+      },
+      {
+        "ingredientName": "orange_zest",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Stir & Julep Strain\nGlass: Rocks"
@@ -1725,10 +1824,9 @@
     "ice": "crushed",
     "ingredients": [
       {
-        "ingredientName": "lime_wedges",
+        "ingredientName": "lime_wedge",
         "amount": 6.0,
-        "unit": "ml",
-        "note": "Lime Wedges"
+        "unit": "piece"
       },
       {
         "ingredientName": "sugar_syrup",
@@ -1738,8 +1836,12 @@
       {
         "ingredientName": "cachaca",
         "amount": 60.0,
-        "unit": "ml",
-        "note": "Cachaca"
+        "unit": "ml"
+      },
+      {
+        "ingredientName": "lime_wedge",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Muddle Build & Churn\nGlass: Rocks"
@@ -1777,8 +1879,7 @@
       {
         "ingredientName": "tabasco",
         "amount": 10.0,
-        "unit": "ml",
-        "note": "Tabasco"
+        "unit": "ml"
       },
       {
         "ingredientName": "black_pepper",
@@ -1797,6 +1898,11 @@
         "amount": 0.0,
         "unit": "fill",
         "note": "Tomato juice"
+      },
+      {
+        "ingredientName": "celery_stick",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Roll\nGlass: Highball"
@@ -1843,12 +1949,17 @@
         "ingredientName": "lime_juice",
         "amount": 30.0,
         "unit": "ml",
-        "note": "Fresh Lime Juice"
+        "note": "Fresh"
       },
       {
         "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "salt_rim",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe"
@@ -1906,7 +2017,7 @@
         "ingredientName": "lime_juice",
         "amount": 20.0,
         "unit": "ml",
-        "note": "Fresh Lime Juice"
+        "note": "Fresh"
       },
       {
         "ingredientName": "vanilla_syrup",
@@ -1918,94 +2029,6 @@
         "amount": 0.0,
         "unit": "ml",
         "note": "Brut Champagne"
-      },
-      {
-        "ingredientName": "vodka",
-        "amount": 45.0,
-        "unit": "ml"
-      },
-      {
-        "ingredientName": "passionfruit_liqueur",
-        "amount": 15.0,
-        "unit": "ml",
-        "note": "Passionfruit Liqueur"
-      },
-      {
-        "ingredientName": "passionfruit_puree",
-        "amount": 60.0,
-        "unit": "ml"
-      },
-      {
-        "ingredientName": "vanilla_sugar",
-        "amount": 2.0,
-        "unit": "bsp",
-        "note": "Vanilla Sugar"
-      },
-      {
-        "ingredientName": "passion_fruit",
-        "amount": 1.0,
-        "unit": "ml",
-        "note": "Passion Fruit"
-      },
-      {
-        "ingredientName": "vodka",
-        "amount": 50.0,
-        "unit": "ml"
-      },
-      {
-        "ingredientName": "cointreau",
-        "amount": 15.0,
-        "unit": "ml"
-      },
-      {
-        "ingredientName": "lime_juice",
-        "amount": 20.0,
-        "unit": "ml"
-      },
-      {
-        "ingredientName": "passionfruit_puree",
-        "amount": 15.0,
-        "unit": "ml"
-      },
-      {
-        "ingredientName": "simple_syrup",
-        "amount": 15.0,
-        "unit": "ml",
-        "note": "Vanilla bean simple syrup"
-      },
-      {
-        "ingredientName": "vodka",
-        "amount": 50.0,
-        "unit": "ml"
-      },
-      {
-        "ingredientName": "passionfruit_liqueur",
-        "amount": 25.0,
-        "unit": "ml",
-        "note": "Passionfruit Liqueur"
-      },
-      {
-        "ingredientName": "lime_juice",
-        "amount": 10.0,
-        "unit": "ml"
-      },
-      {
-        "ingredientName": "monin_vanilla_suagr",
-        "amount": 15.0,
-        "unit": "ml",
-        "note": "Monin Vanilla Suagr"
-      },
-      {
-        "ingredientName": "passion_fruit_puree",
-        "amount": 25.0,
-        "unit": "ml",
-        "note": "Passion Fruit puree"
-      },
-      {
-        "ingredientName": "passion_fruit_juice",
-        "amount": 50.0,
-        "unit": "ml",
-        "note": "Passion Fruit Juice"
       }
     ],
     "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe"
@@ -2025,8 +2048,12 @@
       {
         "ingredientName": "tonic",
         "amount": 0.0,
-        "unit": "fill",
-        "note": "Tonic"
+        "unit": "fill"
+      },
+      {
+        "ingredientName": "lime_wedge",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Build\nGlass: Highball"
@@ -2054,6 +2081,11 @@
         "amount": 60.0,
         "unit": "ml",
         "note": "Grant’s Scotch Whisky"
+      },
+      {
+        "ingredientName": "cherry",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Stir & Julep Strain\nGlass: Chilled Martini / Coupe"
@@ -2061,7 +2093,7 @@
   {
     "name": "Lemon Drop",
     "imageName": "lemon_drop",
-    "glass": "other",
+    "glass": "shot",
     "method": "shake",
     "ice": "none",
     "ingredients": [
@@ -2080,6 +2112,11 @@
         "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "sugar_coated_lemon_wedge",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Shake & Fine Strain\nGlass: Shooter"
@@ -2106,6 +2143,11 @@
         "amount": 0.0,
         "unit": "fill",
         "note": "Ginger Ale"
+      },
+      {
+        "ingredientName": "lemon_spiral",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Build\nGlass: Highball"
@@ -2118,10 +2160,9 @@
     "ice": "crushed",
     "ingredients": [
       {
-        "ingredientName": "lime_wedges",
+        "ingredientName": "lime_wedge",
         "amount": 4.0,
-        "unit": "ml",
-        "note": "Lime Wedges"
+        "unit": "piece"
       },
       {
         "ingredientName": "sugar_syrup",
@@ -2131,8 +2172,7 @@
       {
         "ingredientName": "mint_leaves",
         "amount": 8.0,
-        "unit": "leaf",
-        "note": "Mint Leaves"
+        "unit": "leaf"
       },
       {
         "ingredientName": "rum",
@@ -2143,8 +2183,12 @@
       {
         "ingredientName": "soda",
         "amount": 0.0,
-        "unit": "fill",
-        "note": "Soda"
+        "unit": "fill"
+      },
+      {
+        "ingredientName": "mint_spring",
+        "amount": 1.0,
+        "unit": "piece"
       }
     ],
     "notes": "Method: Muddle Bash Build & Churn\nGlass: Highball"
@@ -2170,7 +2214,7 @@
         "ingredientName": "grenadine",
         "amount": 10.0,
         "unit": "ml",
-        "note": "Grenadine (Sink)"
+        "note": "Sink"
       }
     ],
     "notes": "Method: Build & Sink\nGlass: Highball"
@@ -2185,8 +2229,7 @@
       {
         "ingredientName": "mint_leaves",
         "amount": 8.0,
-        "unit": "leaf",
-        "note": "Mint Leaves"
+        "unit": "leaf"
       },
       {
         "ingredientName": "gin",
@@ -2197,12 +2240,17 @@
         "ingredientName": "lime_juice",
         "amount": 30.0,
         "unit": "ml",
-        "note": "Fresh Lime Juice"
+        "note": "Fresh"
       },
       {
         "ingredientName": "sugar_syrup",
         "amount": 15.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "mint_leaf",
+        "amount": 1.0,
+        "unit": "leaf"
       }
     ],
     "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe"
@@ -2210,7 +2258,7 @@
   {
     "name": "Mai Tai",
     "imageName": "mai_tai",
-    "glass": "rocks",
+    "glass": "tiki",
     "method": "shake",
     "ice": "crushed",
     "ingredients": [
@@ -2228,58 +2276,26 @@
       {
         "ingredientName": "orgeat_syrup",
         "amount": 10.0,
-        "unit": "ml",
-        "note": "Orgeat Syrup"
+        "unit": "ml"
       },
       {
         "ingredientName": "lime_juice",
         "amount": 20.0,
         "unit": "ml",
-        "note": "Fresh Lime Juice"
+        "note": "Fresh"
       },
       {
         "ingredientName": "rum",
         "amount": 10.0,
         "unit": "ml",
         "note": "Overproof Rum (Float)"
-      }
-    ],
-    "notes": "Method: Shake Strain & Float\nGlass: Rocks, Tiki Mug"
-  },
-  {
-    "name": "Mojito",
-    "glass": "highball",
-    "method": "build",
-    "ice": "cubed",
-    "ingredients": [
-      {
-        "ingredientName": "rum",
-        "amount": 60.0,
-        "unit": "ml",
-        "note": "Appleton Estate preferred"
       },
       {
-        "ingredientName": "lime_juice",
-        "amount": 30.0,
-        "unit": "ml"
-      },
-      {
-        "ingredientName": "simple_syrup",
-        "amount": 22.0,
-        "unit": "ml"
-      },
-      {
-        "ingredientName": "mint_leaves",
-        "amount": 10.0,
-        "unit": "piece",
-        "note": "Slap it first!"
-      },
-      {
-        "ingredientName": "lime_wheel",
+        "ingredientName": "mint_spring",
         "amount": 1.0,
         "unit": "piece"
       }
     ],
-    "notes": "Muddle mint and syrup. Add rum, lime juice and ice. Top with club soda. Garnish with a mint sprig."
+    "notes": "Method: Shake Strain & Float\nGlass: Rocks, Tiki Mug"
   }
 ]

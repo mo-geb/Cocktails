@@ -1,18 +1,15 @@
 import UIKit
 import SwiftUI
-import Foundation
-import CoreImage
-import CoreImage.CIFilterBuiltins
 
 extension Bundle {
     var appVersion: String {
         infoDictionary?["CFBundleShortVersionString"] as? String ?? "N/A"
     }
-    
+
     var buildNumber: String {
         infoDictionary?["CFBundleVersion"] as? String ?? "N/A"
     }
-    
+
     var fullVersionString: String {
         "v\(appVersion) (Build \(buildNumber))"
     }
@@ -25,14 +22,14 @@ extension Bundle {
 extension UIImage {
     func dominantColor() -> UIColor? {
         guard let cgImage = self.cgImage else { return nil }
-        
+
         let width = cgImage.width
         let height = cgImage.height
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let bytesPerPixel = 4
         let bytesPerRow = bytesPerPixel * width
         let totalBytes = height * bytesPerRow
-        
+
         var rawData = [UInt8](repeating: 0, count: totalBytes)
         guard let context = CGContext(
             data: &rawData,
@@ -43,32 +40,30 @@ extension UIImage {
             space: colorSpace,
             bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue
         ) else { return nil }
-        
+
         context.draw(cgImage, in: CGRect(x: 0, y: 0, width: width, height: height))
-        
+
         var bestColor: UIColor = .white
         var maxVibrancy: CGFloat = 0
-        
-        // Sample a 20x20 grid (400 points) across the image
-        // This is fast and ignores minor noise/shadows
+
+        // Sample a 20x20 grid across the image — fast and ignores minor noise/shadows
         for y in stride(from: 0, to: height, by: height / 20) {
             for x in stride(from: 0, to: width, by: width / 20) {
                 let byteIndex = (bytesPerRow * y) + (x * bytesPerPixel)
-                
-                let r = CGFloat(rawData[byteIndex]) / 255.0
+
+                let r = CGFloat(rawData[byteIndex])     / 255.0
                 let g = CGFloat(rawData[byteIndex + 1]) / 255.0
                 let b = CGFloat(rawData[byteIndex + 2]) / 255.0
                 let a = CGFloat(rawData[byteIndex + 3]) / 255.0
-                
-                // Skip transparent pixels (common in PNG drinks)
+
+                // Skip transparent pixels (common in PNG drink images)
                 if a < 0.5 { continue }
-                
+
                 let color = UIColor(red: r, green: g, blue: b, alpha: 1.0)
                 var h: CGFloat = 0, s: CGFloat = 0, v: CGFloat = 0
                 color.getHue(&h, saturation: &s, brightness: &v, alpha: nil)
-                
-                // Vibrancy = Saturation * Brightness
-                // This ignores the "muddy" browns/greys and targets the bright gradient
+
+                // Vibrancy = saturation × brightness; targets bright colours over muddy browns/greys
                 let vibrancy = s * v
                 if vibrancy > maxVibrancy {
                     maxVibrancy = vibrancy
@@ -76,9 +71,7 @@ extension UIImage {
                 }
             }
         }
-        
-        // Optional: Make the background "Soft"
-        // Return a slightly desaturated/lighter version for a modern look
-        return bestColor.withAlphaComponent(0.2) // Or use the pure color
+
+        return bestColor.withAlphaComponent(0.2)
     }
 }

@@ -22,7 +22,7 @@ enum RecipeSource: String, Codable, CaseIterable, Identifiable {
     var imageName: String {
         switch self {
         case .ebsInter2023: return "Source/ebs"
-        default: return "source_ebsInter2023"
+        default: return "Source/custom"
         }
     }
 }

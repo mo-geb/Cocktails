@@ -6,9 +6,10 @@ struct DebugTab: View {
     @Query(sort: \Ingredient.name) private var ingredients: [Ingredient]
     @Query private var cocktails: [Cocktail]
     
-    // State to track import errors for the UI
     @State private var errorMessage: String?
     @State private var showError = false
+    @State private var importSummary: String?
+    @State private var showImportSummary = false
 
     var body: some View {
         NavigationStack {
@@ -46,7 +47,7 @@ struct DebugTab: View {
                                 icon: "square.and.arrow.down.fill",
                                 color: .blue
                             ) {
-                                performImport {
+                                performImportWithResult {
                                     try CocktailImporter(context: modelContext)
                                         .importAll(from: .ebsInter2023)
                                 }
@@ -70,10 +71,15 @@ struct DebugTab: View {
             .navigationTitle("Developer")
             .background(Color(.systemGroupedBackground))
             .alert("Import Failed", isPresented: $showError, actions: {
-                    Button("OK", role: .cancel) { }
-                }, message: {
-                    Text(errorMessage ?? "Unknown error occurred")
-                })
+                Button("OK", role: .cancel) { }
+            }, message: {
+                Text(errorMessage ?? "Unknown error occurred")
+            })
+            .alert("Import Complete", isPresented: $showImportSummary, actions: {
+                Button("OK", role: .cancel) { }
+            }, message: {
+                Text(importSummary ?? "")
+            })
         }
     }
 
@@ -135,26 +141,34 @@ struct DebugTab: View {
     // MARK: - Logic Helpers
     
     private func performImport(_ action: () throws -> Void) {
-            do {
-                try action()
-            } catch {
-                errorMessage = error.localizedDescription
-                showError = true
-            }
+        do {
+            try action()
+        } catch {
+            errorMessage = error.localizedDescription
+            showError = true
         }
+    }
 
-        private func wipeData() {
-            // SwiftData handles cascading deletes if your relationships are set up with .cascade
-            // Otherwise, deleting the parent (Cocktail) is usually enough
-            for cocktail in cocktails {
-                modelContext.delete(cocktail)
-            }
-            for ingredient in ingredients {
-                modelContext.delete(ingredient)
-            }
-            
-            try? modelContext.save()
+    private func performImportWithResult(_ action: () throws -> ImportResult) {
+        do {
+            let result = try action()
+            importSummary = result.summary
+            showImportSummary = true
+        } catch {
+            errorMessage = error.localizedDescription
+            showError = true
         }
+    }
+
+    private func wipeData() {
+        for cocktail in cocktails {
+            modelContext.delete(cocktail)
+        }
+        for ingredient in ingredients {
+            modelContext.delete(ingredient)
+        }
+        try? modelContext.save()
+    }
 }
 
 #Preview {

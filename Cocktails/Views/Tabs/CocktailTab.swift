@@ -137,7 +137,7 @@ struct CocktailGridCell: View {
                 VStack(spacing: 0) {
                     Spacer()
 
-                    CocktailImageView(cocktail: cocktail)
+                    cocktail.displayImage.view(placeholder: cocktail.glass.imageNameFilled)
                         .scaledToFit()
                         .padding(.horizontal, 40)
 
@@ -175,7 +175,6 @@ struct CocktailGridCell: View {
 
                             HStack(spacing: 5) {
                                 Image(cocktail.method.customImageName)
-                                    .renderingMode(.template)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 12, height: 12)
