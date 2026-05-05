@@ -13,6 +13,7 @@ struct SearchView: View {
     @State private var query = ""
     @State private var selectedTab: SearchTab = .cocktails
     @State private var activeCocktailSheet: ActiveCocktailSheet?
+    @State private var showSettings = false
 
     let cocktailColumns = [
         GridItem(.flexible(), spacing: 12),
@@ -67,6 +68,14 @@ struct SearchView: View {
             .background(Color(.systemGroupedBackground))
             .navigationTitle("Search")
             .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: "Cocktails, Ingredients…")
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button { showSettings = true } label: {
+                        Label("Settings", systemImage: "gearshape")
+                    }
+                }
+            }
+            .sheet(isPresented: $showSettings) { SettingsView() }
             .sheet(item: $activeCocktailSheet) { sheet in
                 switch sheet {
                 case .view(let c):

@@ -4,6 +4,7 @@ import SwiftData
 struct InventoryTab: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Ingredient.name) private var ingredients: [Ingredient]
+    @State private var showSettings = false
 
     let columns = [
         GridItem(.flexible(), spacing: 10),
@@ -44,6 +45,14 @@ struct InventoryTab: View {
             }
             .background(Color(.systemGroupedBackground))
             .navigationTitle("Inventory")
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button { showSettings = true } label: {
+                        Label("Settings", systemImage: "gearshape")
+                    }
+                }
+            }
+            .sheet(isPresented: $showSettings) { SettingsView() }
         }
     }
 }

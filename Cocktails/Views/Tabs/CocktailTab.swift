@@ -7,6 +7,7 @@ struct CocktailTab: View {
     
     @State private var activeCocktailSheet: ActiveCocktailSheet?
     @State private var grouping: CocktailGrouping = .none
+    @State private var showSettings = false
     
     let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
     
@@ -32,6 +33,11 @@ struct CocktailTab: View {
             mainContent
                 .navigationTitle("Cocktails")
                 .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button { showSettings = true } label: {
+                            Label("Settings", systemImage: "gearshape")
+                        }
+                    }
                     ToolbarItem(placement: .primaryAction) {
                         HStack(spacing: 16) {
                             Menu {
@@ -53,6 +59,7 @@ struct CocktailTab: View {
                     }
                 }
                 .background(Color(.systemGroupedBackground))
+                .sheet(isPresented: $showSettings) { SettingsView() }
                 .sheet(item: $activeCocktailSheet) { sheet in
                     switch sheet {
                     case .view(let c):
