@@ -38,13 +38,7 @@ struct CocktailDetailView: View {
         }
         .scrollContentBackground(.hidden)
         .onAppear {
-            if let data = draft.imageData, let uiImage = UIImage(data: data), let uiColor = uiImage.dominantColor() {
-                self.backgroundColor = Color(uiColor)
-            } else {
-                if let uiImage = UIImage(named: draft.glass.imageNameFilled), let uiColor = uiImage.dominantColor() {
-                    self.backgroundColor = Color(uiColor)
-                }
-            }
+            backgroundColor = draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled)
         }
         .background {
             ZStack {
@@ -54,11 +48,12 @@ struct CocktailDetailView: View {
                     LinearGradient(
                         colors: [
                             backgroundColor,
-                            backgroundColor.opacity(0.0)
+                            backgroundColor.opacity(0.3)
                         ],
                         startPoint: .top,
                         endPoint: .bottom
                     )
+                    .saturation(1.9)
                     .blendMode(colorScheme == .dark ? .screen : .normal)
                     .ignoresSafeArea()
                 }
@@ -74,17 +69,33 @@ struct CocktailDetailView: View {
         CocktailDraftImageView(cocktail: draft)
             .scaledToFit()
             .frame(width: 110, height: 110)
-            .padding(20)
+            .padding(12)
     }
     
     @ViewBuilder
     private var titleSectionShowing: some View {
-        Text(draft.name.isEmpty ? "Unnamed Cocktail" : draft.name)
-            .font(.system(size: 32, weight: .bold, design: .rounded))
-            .multilineTextAlignment(.center)
-            .minimumScaleFactor(0.8)
-            .padding(.horizontal)
-            .padding(.bottom, 10)
+        VStack(spacing: 8) {
+            Text(draft.name.isEmpty ? "Unnamed Cocktail" : draft.name)
+                .font(.system(size: 32, weight: .bold, design: .rounded))
+                .multilineTextAlignment(.center)
+                .minimumScaleFactor(0.8)
+                .padding(.horizontal)
+
+            HStack(spacing: 5) {
+                Image(draft.source.imageName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                Text(draft.source.localizedName)
+                    .font(.callout)
+                    .fontDesign(.rounded)
+            }
+            .foregroundStyle(.secondary)
+            .font(.subheadline)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 6)
+            .glassEffect()
+        }
     }
     
     @ViewBuilder
@@ -95,7 +106,7 @@ struct CocktailDetailView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 16, height: 16)
-                Text(draft.glass.rawValue)
+                Text(draft.glass.localizedName)
             }
             .frame(maxWidth: .infinity)
             
@@ -106,7 +117,7 @@ struct CocktailDetailView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 16, height: 16)
-                Text(draft.ice.rawValue)
+                Text(draft.ice.localizedName)
             }
             .frame(maxWidth: .infinity)
             
@@ -117,9 +128,10 @@ struct CocktailDetailView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 16, height: 16)
-                Text(draft.method.rawValue)
+                Text(draft.method.localizedName)
             }
             .frame(maxWidth: .infinity)
+
         }
         .font(.subheadline)
         .foregroundColor(.primary)

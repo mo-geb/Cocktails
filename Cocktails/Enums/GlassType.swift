@@ -12,32 +12,46 @@ enum GlassType: String, Codable, CaseIterable, Identifiable {
     case other
     
     var id: String { rawValue }
-    
+
+    var localizedName: String {
+        switch self {
+        case .rocks:     return String(localized: "Rocks",      comment: "Glass type")
+        case .highball:  return String(localized: "Highball",   comment: "Glass type")
+        case .martini:   return String(localized: "Martini",    comment: "Glass type")
+        case .flute:     return String(localized: "Flute",      comment: "Glass type")
+        case .copperMug: return String(localized: "Copper Mug", comment: "Glass type")
+        case .hurricane: return String(localized: "Hurricane",  comment: "Glass type")
+        case .tiki:      return String(localized: "Tiki",       comment: "Glass type")
+        case .wine:      return String(localized: "Wine",       comment: "Glass type")
+        case .other:     return String(localized: "Other",      comment: "Glass type")
+        }
+    }
+
     var imageNameEmpty: String {
         switch self {
-        case .highball: return "glass_highball_empty"
-        case .martini: return "glass_martini_empty"
-        case .rocks: return "glass_rocks_empty"
-        case .tiki: return "glass_tiki_empty"
-        case .wine: return "glass_wine_empty"
-        case .flute: return "glass_flute_empty"
-        case .copperMug: return "glass_copper_mug_empty"
-        case .hurricane: return "glass_hurricane_empty"
-        default: return "glass_martini_empty"
+        case .highball: return "Glass/Empty/highball"
+        case .martini: return "Glass/Empty/martini"
+        case .rocks: return "Glass/Empty/rocks"
+        case .tiki: return "Glass/Empty/tiki"
+        case .wine: return "Glass/Empty/wine"
+        case .flute: return "Glass/Empty/flute"
+        case .copperMug: return "Glass/Empty/copper_mug"
+        case .hurricane: return "Glass/Empty/hurricane"
+        default: return "Glass/Empty/martini"
         }
     }
     
     var imageNameFilled: String {
         switch self {
-        case .highball: return "glass_highball_filled"
-        case .martini: return "glass_martini_filled"
-        case .rocks: return "glass_rocks_filled"
-        case .tiki: return "glass_tiki_filled"
-        case .wine: return "glass_wine_filled"
-        case .flute: return "glass_flute_filled"
-        case .copperMug: return "glass_copper_mug_filled"
-        case .hurricane: return "glass_hurricane_filled"
-        default: return "glass_martini_filled"
+        case .highball: return "Glass/Filled/highball"
+        case .martini: return "Glass/Filled/martini"
+        case .rocks: return "Glass/Filled/rocks"
+        case .tiki: return "Glass/Filled/tiki"
+        case .wine: return "Glass/Filled/wine"
+        case .flute: return "Glass/Filled/flute"
+        case .copperMug: return "Glass/Filled/copper_mug"
+        case .hurricane: return "Glass/Filled/hurricane"
+        default: return "Glass/Filled/martini"
         }
     }
 }

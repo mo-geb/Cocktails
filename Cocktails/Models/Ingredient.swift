@@ -41,8 +41,8 @@ import UIKit
 extension Ingredient {
     var displayImage: DisplayImageSource {
         // 1. Highest priority: System asset (with a manual check for existence)
-        if UIImage(named: id) != nil {
-            return .system(name)
+        if UIImage(named: "Ingredient/" + id) != nil {
+            return .system("Ingredient/" + id)
         }
         
         // 2. Fallback: Asset name was missing or not found in xcassets
@@ -53,8 +53,8 @@ extension Ingredient {
 extension IngredientDraft {
     var displayImage: DisplayImageSource {
         // 1. Highest priority: System asset (with a manual check for existence)
-        if UIImage(named: id) != nil {
-            return .system(name)
+        if UIImage(named: "Ingredient/" + id) != nil {
+            return .system("Ingredient/" + id)
         }
         
         // 2. Fallback: Asset name was missing or not found in xcassets

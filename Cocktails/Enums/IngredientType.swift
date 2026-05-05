@@ -14,14 +14,14 @@ enum IngredientType: String, Codable, CaseIterable, Identifiable {
     /// Asset-based fallback image for devices without Apple Intelligence
     var imageName: String {
         switch self {
-            case .spirit: return "ingredient_dark_rum"
-            case .liqueur: return "ingredient_liqueur"
-            case .syrup: return "ingredient_syrup"
-            case .juice: return "ingredient_juice"
-            case .bitters: return "ingredient_bitters"
-            case .mixer: return "ingredient_soda_bottle"
-            case .garnish: return "ingredient_lime_wedge"
-            default: return "ingredient_fluid"
+            case .spirit: return "Ingredient/dark_rum"
+            case .liqueur: return "Ingredient/liqueur"
+            case .syrup: return "Ingredient/syrup"
+            case .juice: return "Ingredient/juice"
+            case .bitters: return "Ingredient/bitters"
+            case .mixer: return "Ingredient/soda_bottle"
+            case .garnish: return "Ingredient/lime_wedge"
+            default: return "Ingredient/fluid"
         }
     }
     

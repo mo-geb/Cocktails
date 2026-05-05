@@ -10,7 +10,8 @@ final class Cocktail {
     var method: PreparationMethod = PreparationMethod.build
     var ice: IceType = IceType.cubed
     var source: RecipeSource = RecipeSource.custom
-    
+    var isFavourite: Bool = false
+
     var notes: String = ""
 
     @Attribute(.externalStorage) var imageData: Data?
@@ -47,6 +48,7 @@ struct CocktailDraft: Hashable {
     var method: PreparationMethod = .build
     var ice: IceType = .cubed
     var source: RecipeSource = RecipeSource.custom
+    var isFavourite: Bool = false
 
     var notes: String = ""
 
@@ -63,6 +65,7 @@ struct CocktailDraft: Hashable {
         self.method = cocktail.method
         self.ice = cocktail.ice
         self.source = cocktail.source
+        self.isFavourite = cocktail.isFavourite
         self.imageData = cocktail.imageData
         self.imageName = cocktail.imageName
         
@@ -82,8 +85,8 @@ extension Cocktail {
         }
         
         // 2. Secondary: System asset (with a manual check for existence)
-        if let name = imageName, UIImage(named: name) != nil {
-            return .system(name)
+        if let name = imageName, UIImage(named: "Cocktail/" + name) != nil {
+            return .system("Cocktail/" + name)
         }
         
         // 3. Fallback: Asset name was missing or not found in xcassets
@@ -99,8 +102,8 @@ extension CocktailDraft {
         }
         
         // 2. Secondary: System asset (with a manual check for existence)
-        if let name = imageName, UIImage(named: name) != nil {
-            return .system(name)
+        if let name = imageName, UIImage(named: "Cocktail/" + name) != nil {
+            return .system("Cocktail/" + name)
         }
         
         // 3. Fallback: Asset name was missing or not found in xcassets

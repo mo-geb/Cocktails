@@ -7,18 +7,18 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_vermouth",
+        "ingredientName": "vermouth",
         "amount": 30.0,
         "unit": "ml",
         "note": "Sweet Vermouth"
       },
       {
-        "ingredientName": "ingredient_campari",
+        "ingredientName": "campari",
         "amount": 30.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_soda_water",
+        "ingredientName": "soda_water",
         "amount": 30.0,
         "unit": "ml"
       }
@@ -33,17 +33,17 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_vodka",
+        "ingredientName": "vodka",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_triple_sec",
+        "ingredientName": "triple_sec",
         "amount": 10.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lime_juice",
+        "ingredientName": "lime_juice",
         "amount": 10.0,
         "unit": "ml",
         "note": "Fresh Lime Juice"
@@ -59,24 +59,24 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_orange_bitters",
+        "ingredientName": "orange_bitters",
         "amount": 2.0,
         "unit": "dash"
       },
       {
-        "ingredientName": "ingredient_maraschino",
+        "ingredientName": "maraschino",
         "amount": 1.0,
         "unit": "bsp",
         "note": "Maraschino"
       },
       {
-        "ingredientName": "ingredient_vermouth",
+        "ingredientName": "vermouth",
         "amount": 20.0,
         "unit": "ml",
         "note": "Sweet Vermouth"
       },
       {
-        "ingredientName": "ingredient_gin",
+        "ingredientName": "gin",
         "amount": 60.0,
         "unit": "ml"
       }
@@ -91,24 +91,24 @@
     "ice": "crushed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_angostura_soaked_sugar_cube",
+        "ingredientName": "angostura_soaked_sugar_cube",
         "amount": 1.0,
         "unit": "piece",
         "note": "Angostura soaked sugar cube"
       },
       {
-        "ingredientName": "ingredient_soda_water",
+        "ingredientName": "soda_water",
         "amount": 1.0,
         "unit": "bsp"
       },
       {
-        "ingredientName": "ingredient_mint_leaves",
+        "ingredientName": "mint_leaves",
         "amount": 8.0,
         "unit": "leaf",
         "note": "Mint Leaves"
       },
       {
-        "ingredientName": "ingredient_bourbon",
+        "ingredientName": "bourbon",
         "amount": 60.0,
         "unit": "ml"
       }
@@ -123,23 +123,23 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_gin",
+        "ingredientName": "gin",
         "amount": 40.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_triple_sec",
+        "ingredientName": "triple_sec",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_fresh_lemon_jucie",
+        "ingredientName": "fresh_lemon_jucie",
         "amount": 30.0,
         "unit": "ml",
         "note": "Fresh Lemon Jucie"
       },
       {
-        "ingredientName": "ingredient_sugar_syrup",
+        "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
       }
@@ -154,19 +154,19 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_lime_juice",
+        "ingredientName": "lime_juice",
         "amount": 20.0,
         "unit": "ml",
         "note": "Fresh Lime Juice"
       },
       {
-        "ingredientName": "ingredient_gin",
+        "ingredientName": "gin",
         "amount": 0.0,
         "unit": "fill",
         "note": "Ginger Beer"
       },
       {
-        "ingredientName": "ingredient_rum",
+        "ingredientName": "rum",
         "amount": 40.0,
         "unit": "ml",
         "note": "Dark Rum (Float)"
@@ -182,24 +182,24 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_gin",
+        "ingredientName": "gin",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_maraschino",
+        "ingredientName": "maraschino",
         "amount": 20.0,
         "unit": "ml",
         "note": "Maraschino"
       },
       {
-        "ingredientName": "ingredient_lime_juice",
+        "ingredientName": "lime_juice",
         "amount": 20.0,
         "unit": "ml",
         "note": "Fresh Lime Juice"
       },
       {
-        "ingredientName": "ingredient_chartreuse",
+        "ingredientName": "chartreuse",
         "amount": 20.0,
         "unit": "ml",
         "note": "Green Chartreuse"
@@ -215,25 +215,25 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_rum",
+        "ingredientName": "rum",
         "amount": 50.0,
         "unit": "ml",
         "note": "Light Rum"
       },
       {
-        "ingredientName": "ingredient_maraschino",
+        "ingredientName": "maraschino",
         "amount": 10.0,
         "unit": "ml",
         "note": "Maraschino"
       },
       {
-        "ingredientName": "ingredient_lime_juice",
+        "ingredientName": "lime_juice",
         "amount": 20.0,
         "unit": "ml",
         "note": "Fresh Lime Juice"
       },
       {
-        "ingredientName": "ingredient_grapefruit_juice",
+        "ingredientName": "grapefruit_juice",
         "amount": 20.0,
         "unit": "ml"
       }
@@ -248,29 +248,29 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_jack_daniels",
+        "ingredientName": "jack_daniels",
         "amount": 40.0,
         "unit": "ml",
         "note": "Jack Daniel’s"
       },
       {
-        "ingredientName": "ingredient_triple_sec",
+        "ingredientName": "triple_sec",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lemon_juice",
+        "ingredientName": "lemon_juice",
         "amount": 20.0,
         "unit": "ml",
         "note": "Fresh"
       },
       {
-        "ingredientName": "ingredient_sugar_syrup",
+        "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_sprite",
+        "ingredientName": "sprite",
         "amount": 0.0,
         "unit": "fill",
         "note": "Sprite / Lemonade"
@@ -286,28 +286,28 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_vodka",
+        "ingredientName": "vodka",
         "amount": 10.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_coffee_liqueur",
+        "ingredientName": "coffee_liqueur",
         "amount": 10.0,
         "unit": "ml",
         "note": "Coffee Liqueur"
       },
       {
-        "ingredientName": "ingredient_amaretto",
+        "ingredientName": "amaretto",
         "amount": 10.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_baileys",
+        "ingredientName": "baileys",
         "amount": 10.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_milk",
+        "ingredientName": "milk",
         "amount": 40.0,
         "unit": "ml"
       }
@@ -322,12 +322,12 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_vodka",
+        "ingredientName": "vodka",
         "amount": 40.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_coffee_liqueur",
+        "ingredientName": "coffee_liqueur",
         "amount": 20.0,
         "unit": "ml",
         "note": "Coffee Liqueur"
@@ -343,18 +343,18 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_vermouth",
+        "ingredientName": "vermouth",
         "amount": 20.0,
         "unit": "ml",
         "note": "Sweet Vermouth"
       },
       {
-        "ingredientName": "ingredient_campari",
+        "ingredientName": "campari",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_bourbon",
+        "ingredientName": "bourbon",
         "amount": 20.0,
         "unit": "ml",
         "note": "Bourbon or Rye"
@@ -370,51 +370,51 @@
     "ice": "crushed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_angostura_bitters",
+        "ingredientName": "angostura_bitters",
         "amount": 4.0,
         "unit": "dash"
       },
       {
-        "ingredientName": "ingredient_absinthe",
+        "ingredientName": "absinthe",
         "amount": 2.0,
         "unit": "dash"
       },
       {
-        "ingredientName": "ingredient_rum",
+        "ingredientName": "rum",
         "amount": 10.0,
         "unit": "ml",
         "note": "Overproof Rum"
       },
       {
-        "ingredientName": "ingredient_grenadine",
+        "ingredientName": "grenadine",
         "amount": 10.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_rum",
+        "ingredientName": "rum",
         "amount": 20.0,
         "unit": "ml",
         "note": "Dark Rum"
       },
       {
-        "ingredientName": "ingredient_rum",
+        "ingredientName": "rum",
         "amount": 20.0,
         "unit": "ml",
         "note": "Light Rum"
       },
       {
-        "ingredientName": "ingredient_lime_juice",
+        "ingredientName": "lime_juice",
         "amount": 20.0,
         "unit": "ml",
         "note": "Fresh Lime Juice"
       },
       {
-        "ingredientName": "ingredient_cinnamon_syrup",
+        "ingredientName": "cinnamon_syrup",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_grapefruit_juice",
+        "ingredientName": "grapefruit_juice",
         "amount": 20.0,
         "unit": "ml"
       }
@@ -429,23 +429,23 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_gin",
+        "ingredientName": "gin",
         "amount": 40.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lemon_juice",
+        "ingredientName": "lemon_juice",
         "amount": 20.0,
         "unit": "ml",
         "note": "Fresh"
       },
       {
-        "ingredientName": "ingredient_sugar_syrup",
+        "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_champagne",
+        "ingredientName": "champagne",
         "amount": 0.0,
         "unit": "fill"
       }
@@ -460,18 +460,18 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_vodka",
+        "ingredientName": "vodka",
         "amount": 40.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_coffee_liqueur",
+        "ingredientName": "coffee_liqueur",
         "amount": 20.0,
         "unit": "ml",
         "note": "Coffee Liqueur"
       },
       {
-        "ingredientName": "ingredient_milk",
+        "ingredientName": "milk",
         "amount": 0.0,
         "unit": "fill"
       }
@@ -486,18 +486,18 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_vodka",
+        "ingredientName": "vodka",
         "amount": 40.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_chambord",
+        "ingredientName": "chambord",
         "amount": 20.0,
         "unit": "ml",
         "note": "Chambord"
       },
       {
-        "ingredientName": "ingredient_pineapple_juice",
+        "ingredientName": "pineapple_juice",
         "amount": 40.0,
         "unit": "ml"
       }
@@ -512,22 +512,22 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_egg_white",
+        "ingredientName": "egg_white",
         "amount": 15.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_raspberry_puree",
+        "ingredientName": "raspberry_puree",
         "amount": 15.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_gin",
+        "ingredientName": "gin",
         "amount": 60.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lemon_juice",
+        "ingredientName": "lemon_juice",
         "amount": 30.0,
         "unit": "ml",
         "note": "Fresh"
@@ -543,13 +543,13 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_whisky",
+        "ingredientName": "whisky",
         "amount": 30.0,
         "unit": "ml",
         "note": "Grant’s Scotch Whisky"
       },
       {
-        "ingredientName": "ingredient_drambui",
+        "ingredientName": "drambui",
         "amount": 30.0,
         "unit": "ml",
         "note": "Drambui"
@@ -565,24 +565,24 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_tequila",
+        "ingredientName": "tequila",
         "amount": 30.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_crme_de_cassis",
+        "ingredientName": "crme_de_cassis",
         "amount": 10.0,
         "unit": "ml",
         "note": "Crème de Cassis"
       },
       {
-        "ingredientName": "ingredient_lime_juice",
+        "ingredientName": "lime_juice",
         "amount": 10.0,
         "unit": "ml",
         "note": "Fresh Lime Juice"
       },
       {
-        "ingredientName": "ingredient_gin",
+        "ingredientName": "gin",
         "amount": 0.0,
         "unit": "fill",
         "note": "Ginger Ale"
@@ -598,24 +598,24 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_basil_leaves",
+        "ingredientName": "basil_leaves",
         "amount": 8.0,
         "unit": "leaf",
         "note": "Basil Leaves"
       },
       {
-        "ingredientName": "ingredient_gin",
+        "ingredientName": "gin",
         "amount": 60.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lemon_juice",
+        "ingredientName": "lemon_juice",
         "amount": 30.0,
         "unit": "ml",
         "note": "Fresh"
       },
       {
-        "ingredientName": "ingredient_sugar_syrup",
+        "ingredientName": "sugar_syrup",
         "amount": 15.0,
         "unit": "ml"
       }
@@ -630,25 +630,25 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_whisky",
+        "ingredientName": "whisky",
         "amount": 20.0,
         "unit": "ml",
         "note": "Grant’s Scotch Whisky"
       },
       {
-        "ingredientName": "ingredient_vermouth",
+        "ingredientName": "vermouth",
         "amount": 20.0,
         "unit": "ml",
         "note": "Sweet Vermouth"
       },
       {
-        "ingredientName": "ingredient_brandy",
+        "ingredientName": "brandy",
         "amount": 20.0,
         "unit": "ml",
         "note": "Cherry Brandy"
       },
       {
-        "ingredientName": "ingredient_orange_juice",
+        "ingredientName": "orange_juice",
         "amount": 20.0,
         "unit": "ml"
       }
@@ -663,18 +663,18 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_peach_puree",
+        "ingredientName": "peach_puree",
         "amount": 10.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_peach_liqueur",
+        "ingredientName": "peach_liqueur",
         "amount": 10.0,
         "unit": "ml",
         "note": "Peach Liqueur"
       },
       {
-        "ingredientName": "ingredient_prosecco",
+        "ingredientName": "prosecco",
         "amount": 0.0,
         "unit": "fill"
       }
@@ -689,72 +689,72 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_vodka",
+        "ingredientName": "vodka",
         "amount": 40.0,
         "unit": "ml",
         "note": "Citron Vodka"
       },
       {
-        "ingredientName": "ingredient_triple_sec",
+        "ingredientName": "triple_sec",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lime_juice",
+        "ingredientName": "lime_juice",
         "amount": 10.0,
         "unit": "ml",
         "note": "Fresh Lime Juice"
       },
       {
-        "ingredientName": "ingredient_cranberry_juice",
+        "ingredientName": "cranberry_juice",
         "amount": 30.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_vodka",
+        "ingredientName": "vodka",
         "amount": 40.0,
         "unit": "ml",
         "note": "Citron Vodka"
       },
       {
-        "ingredientName": "ingredient_triple_sec",
+        "ingredientName": "triple_sec",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lime_juice",
+        "ingredientName": "lime_juice",
         "amount": 10.0,
         "unit": "ml",
         "note": "Fresh Lime Juice"
       },
       {
-        "ingredientName": "ingredient_cranberry_juice",
+        "ingredientName": "cranberry_juice",
         "amount": 30.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_vodka",
+        "ingredientName": "vodka",
         "amount": 40.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_triple_sec",
+        "ingredientName": "triple_sec",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lime_juice",
+        "ingredientName": "lime_juice",
         "amount": 15.0,
         "unit": "ml",
         "note": "Fresh Lime Juice"
       },
       {
-        "ingredientName": "ingredient_cranberry_juice",
+        "ingredientName": "cranberry_juice",
         "amount": 15.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_sugar",
+        "ingredientName": "sugar",
         "amount": 10.0,
         "unit": "ml",
         "note": "Sugar"
@@ -770,44 +770,44 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_vodka",
+        "ingredientName": "vodka",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_rum",
+        "ingredientName": "rum",
         "amount": 20.0,
         "unit": "ml",
         "note": "Light Rum"
       },
       {
-        "ingredientName": "ingredient_gin",
+        "ingredientName": "gin",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_tequila",
+        "ingredientName": "tequila",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_triple_sec",
+        "ingredientName": "triple_sec",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lemon_juice",
+        "ingredientName": "lemon_juice",
         "amount": 20.0,
         "unit": "ml",
         "note": "Fresh"
       },
       {
-        "ingredientName": "ingredient_sugar_syrup",
+        "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_cola",
+        "ingredientName": "cola",
         "amount": 0.0,
         "unit": "fill",
         "note": "Coca Cola"
@@ -823,45 +823,45 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_angostura_bitters",
+        "ingredientName": "angostura_bitters",
         "amount": 1.0,
         "unit": "dash"
       },
       {
-        "ingredientName": "ingredient_grenadine",
+        "ingredientName": "grenadine",
         "amount": 1.0,
         "unit": "dash"
       },
       {
-        "ingredientName": "ingredient_benectine_dom",
+        "ingredientName": "benectine_dom",
         "amount": 5.0,
         "unit": "ml",
         "note": "Benectine D.O.M"
       },
       {
-        "ingredientName": "ingredient_triple_sec",
+        "ingredientName": "triple_sec",
         "amount": 5.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_brandy",
+        "ingredientName": "brandy",
         "amount": 10.0,
         "unit": "ml",
         "note": "Cherry Brandy"
       },
       {
-        "ingredientName": "ingredient_lime_juice",
+        "ingredientName": "lime_juice",
         "amount": 10.0,
         "unit": "ml",
         "note": "Fresh Lime Juice"
       },
       {
-        "ingredientName": "ingredient_gin",
+        "ingredientName": "gin",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_pineapple_juice",
+        "ingredientName": "pineapple_juice",
         "amount": 80.0,
         "unit": "ml"
       }
@@ -876,13 +876,13 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_vermouth",
+        "ingredientName": "vermouth",
         "amount": 1.0,
         "unit": "bsp",
         "note": "Dry Vermouth"
       },
       {
-        "ingredientName": "ingredient_vodka",
+        "ingredientName": "vodka",
         "amount": 60.0,
         "unit": "ml",
         "note": "Gin or Vodka"
@@ -898,13 +898,13 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_spirit",
+        "ingredientName": "spirit",
         "amount": 40.0,
         "unit": "ml",
         "note": "Spirit"
       },
       {
-        "ingredientName": "ingredient_mixer",
+        "ingredientName": "mixer",
         "amount": 0.0,
         "unit": "fill",
         "note": "Mixer"
@@ -920,13 +920,13 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_crme_de_cassis",
+        "ingredientName": "crme_de_cassis",
         "amount": 20.0,
         "unit": "ml",
         "note": "Crème de Cassis"
       },
       {
-        "ingredientName": "ingredient_champagne",
+        "ingredientName": "champagne",
         "amount": 0.0,
         "unit": "fill"
       }
@@ -941,18 +941,18 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_brandy",
+        "ingredientName": "brandy",
         "amount": 40.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_dark_cacao_liqueur",
+        "ingredientName": "dark_cacao_liqueur",
         "amount": 20.0,
         "unit": "ml",
         "note": "Dark Cacao Liqueur"
       },
       {
-        "ingredientName": "ingredient_milk",
+        "ingredientName": "milk",
         "amount": 40.0,
         "unit": "ml"
       }
@@ -967,23 +967,23 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_gin",
+        "ingredientName": "gin",
         "amount": 60.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lemon_juice",
+        "ingredientName": "lemon_juice",
         "amount": 30.0,
         "unit": "ml",
         "note": "Fresh"
       },
       {
-        "ingredientName": "ingredient_sugar_syrup",
+        "ingredientName": "sugar_syrup",
         "amount": 15.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_soda_water",
+        "ingredientName": "soda_water",
         "amount": 0.0,
         "unit": "fill"
       }
@@ -998,29 +998,29 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_tequila",
+        "ingredientName": "tequila",
         "amount": 60.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_grapefruit_juice",
+        "ingredientName": "grapefruit_juice",
         "amount": 60.0,
         "unit": "ml",
         "note": "Pink Grapefruit Juice"
       },
       {
-        "ingredientName": "ingredient_lime_juice",
+        "ingredientName": "lime_juice",
         "amount": 10.0,
         "unit": "ml",
         "note": "Fresh Lime Juice"
       },
       {
-        "ingredientName": "ingredient_sugar_syrup",
+        "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_soda_water",
+        "ingredientName": "soda_water",
         "amount": 0.0,
         "unit": "fill"
       }
@@ -1035,12 +1035,12 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_orange_juice",
+        "ingredientName": "orange_juice",
         "amount": 1.0,
         "unit": "part"
       },
       {
-        "ingredientName": "ingredient_champagne",
+        "ingredientName": "champagne",
         "amount": 1.0,
         "unit": "part"
       }
@@ -1055,28 +1055,28 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_angostura_bitters",
+        "ingredientName": "angostura_bitters",
         "amount": 2.0,
         "unit": "dash"
       },
       {
-        "ingredientName": "ingredient_egg_white",
+        "ingredientName": "egg_white",
         "amount": 15.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_amaretto",
+        "ingredientName": "amaretto",
         "amount": 60.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lemon_juice",
+        "ingredientName": "lemon_juice",
         "amount": 30.0,
         "unit": "ml",
         "note": "Fresh"
       },
       {
-        "ingredientName": "ingredient_sugar_syrup",
+        "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
       }
@@ -1091,19 +1091,19 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_crme_de_menthe",
+        "ingredientName": "crme_de_menthe",
         "amount": 30.0,
         "unit": "ml",
         "note": "Crème de Menthe"
       },
       {
-        "ingredientName": "ingredient_white_cacao_liqueur",
+        "ingredientName": "white_cacao_liqueur",
         "amount": 30.0,
         "unit": "ml",
         "note": "White Cacao Liqueur"
       },
       {
-        "ingredientName": "ingredient_milk",
+        "ingredientName": "milk",
         "amount": 40.0,
         "unit": "ml"
       }
@@ -1118,28 +1118,28 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_angostura_bitters",
+        "ingredientName": "angostura_bitters",
         "amount": 2.0,
         "unit": "dash"
       },
       {
-        "ingredientName": "ingredient_egg_white",
+        "ingredientName": "egg_white",
         "amount": 15.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_bourbon",
+        "ingredientName": "bourbon",
         "amount": 60.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lemon_juice",
+        "ingredientName": "lemon_juice",
         "amount": 30.0,
         "unit": "ml",
         "note": "Fresh"
       },
       {
-        "ingredientName": "ingredient_sugar_syrup",
+        "ingredientName": "sugar_syrup",
         "amount": 15.0,
         "unit": "ml"
       }
@@ -1154,23 +1154,23 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_cognac",
+        "ingredientName": "cognac",
         "amount": 40.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_triple_sec",
+        "ingredientName": "triple_sec",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lemon_juice",
+        "ingredientName": "lemon_juice",
         "amount": 30.0,
         "unit": "ml",
         "note": "Fresh"
       },
       {
-        "ingredientName": "ingredient_sugar_syrup",
+        "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
       }
@@ -1185,19 +1185,19 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_rum",
+        "ingredientName": "rum",
         "amount": 40.0,
         "unit": "ml",
         "note": "Light Rum"
       },
       {
-        "ingredientName": "ingredient_lime_juice",
+        "ingredientName": "lime_juice",
         "amount": 10.0,
         "unit": "ml",
         "note": "Fresh Lime Juice"
       },
       {
-        "ingredientName": "ingredient_cola",
+        "ingredientName": "cola",
         "amount": 0.0,
         "unit": "fill",
         "note": "Coca Cola"
@@ -1213,23 +1213,23 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_vodka",
+        "ingredientName": "vodka",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_peach_liqueur",
+        "ingredientName": "peach_liqueur",
         "amount": 20.0,
         "unit": "ml",
         "note": "Peach Liqueur"
       },
       {
-        "ingredientName": "ingredient_cranberry_juice",
+        "ingredientName": "cranberry_juice",
         "amount": 0.0,
         "unit": "fill"
       },
       {
-        "ingredientName": "ingredient_orange_juice",
+        "ingredientName": "orange_juice",
         "amount": 0.0,
         "unit": "fill"
       }
@@ -1244,19 +1244,19 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_rum",
+        "ingredientName": "rum",
         "amount": 60.0,
         "unit": "ml",
         "note": "Light Rum"
       },
       {
-        "ingredientName": "ingredient_lime_juice",
+        "ingredientName": "lime_juice",
         "amount": 30.0,
         "unit": "ml",
         "note": "Fresh Lime Juice"
       },
       {
-        "ingredientName": "ingredient_sugar_syrup",
+        "ingredientName": "sugar_syrup",
         "amount": 15.0,
         "unit": "ml"
       }
@@ -1271,18 +1271,18 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_vodka",
+        "ingredientName": "vodka",
         "amount": 40.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lime_juice",
+        "ingredientName": "lime_juice",
         "amount": 20.0,
         "unit": "ml",
         "note": "Fresh Lime Juice"
       },
       {
-        "ingredientName": "ingredient_gin",
+        "ingredientName": "gin",
         "amount": 0.0,
         "unit": "fill",
         "note": "Ginger Beer"
@@ -1298,116 +1298,116 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_rum",
+        "ingredientName": "rum",
         "amount": 40.0,
         "unit": "ml",
         "note": "Light Rum"
       },
       {
-        "ingredientName": "ingredient_coconut_liqueur",
+        "ingredientName": "coconut_liqueur",
         "amount": 20.0,
         "unit": "ml",
         "note": "Coconut Liqueur"
       },
       {
-        "ingredientName": "ingredient_lime_juice",
+        "ingredientName": "lime_juice",
         "amount": 10.0,
         "unit": "ml",
         "note": "Fresh Lime Juice"
       },
       {
-        "ingredientName": "ingredient_pineapple_juice",
+        "ingredientName": "pineapple_juice",
         "amount": 60.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_cream",
+        "ingredientName": "cream",
         "amount": 40.0,
         "unit": "ml",
         "note": "Coconut Cream"
       },
       {
-        "ingredientName": "ingredient_rum",
+        "ingredientName": "rum",
         "amount": 60.0,
         "unit": "ml",
         "note": "Light Rum"
       },
       {
-        "ingredientName": "ingredient_cream",
+        "ingredientName": "cream",
         "amount": 30.0,
         "unit": "ml",
         "note": "Coconut Cream"
       },
       {
-        "ingredientName": "ingredient_milk",
+        "ingredientName": "milk",
         "amount": 30.0,
         "unit": "ml",
         "note": "Coconut Milk"
       },
       {
-        "ingredientName": "ingredient_pineapple_juice",
+        "ingredientName": "pineapple_juice",
         "amount": 180.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_crushed_ice",
+        "ingredientName": "crushed_ice",
         "amount": 240.0,
         "unit": "ml",
         "note": "Crushed Ice"
       },
       {
-        "ingredientName": "ingredient_rum",
+        "ingredientName": "rum",
         "amount": 30.0,
         "unit": "ml",
         "note": "Light Rum"
       },
       {
-        "ingredientName": "ingredient_rum",
+        "ingredientName": "rum",
         "amount": 30.0,
         "unit": "ml",
         "note": "Dark Rum"
       },
       {
-        "ingredientName": "ingredient_batida_de_coco",
+        "ingredientName": "batida_de_coco",
         "amount": 20.0,
         "unit": "ml",
         "note": "Batida De Coco"
       },
       {
-        "ingredientName": "ingredient_cream",
+        "ingredientName": "cream",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_pineapple_juice",
+        "ingredientName": "pineapple_juice",
         "amount": 0.0,
         "unit": "fill"
       },
       {
-        "ingredientName": "ingredient_rum",
+        "ingredientName": "rum",
         "amount": 20.0,
         "unit": "ml",
         "note": "Light Rum"
       },
       {
-        "ingredientName": "ingredient_batida_de_coco",
+        "ingredientName": "batida_de_coco",
         "amount": 40.0,
         "unit": "ml",
         "note": "Batida De Coco"
       },
       {
-        "ingredientName": "ingredient_cream",
+        "ingredientName": "cream",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_coco_syrup",
+        "ingredientName": "coco_syrup",
         "amount": 20.0,
         "unit": "ml",
         "note": "Coco Syrup"
       },
       {
-        "ingredientName": "ingredient_pineapple_juice",
+        "ingredientName": "pineapple_juice",
         "amount": 0.0,
         "unit": "fill"
       }
@@ -1422,12 +1422,12 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_gin",
+        "ingredientName": "gin",
         "amount": 60.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lime_cordial",
+        "ingredientName": "lime_cordial",
         "amount": 10.0,
         "unit": "ml",
         "note": "Lime Cordial"
@@ -1443,24 +1443,24 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_vodka",
+        "ingredientName": "vodka",
         "amount": 40.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_coffee_liqueur",
+        "ingredientName": "coffee_liqueur",
         "amount": 20.0,
         "unit": "ml",
         "note": "Coffee Liqueur"
       },
       {
-        "ingredientName": "ingredient_espresso",
+        "ingredientName": "espresso",
         "amount": 30.0,
         "unit": "ml",
         "note": "Espresso"
       },
       {
-        "ingredientName": "ingredient_sugar_syrup",
+        "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
       }
@@ -1475,18 +1475,18 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_angostura_bitters",
+        "ingredientName": "angostura_bitters",
         "amount": 2.0,
         "unit": "dash"
       },
       {
-        "ingredientName": "ingredient_vermouth",
+        "ingredientName": "vermouth",
         "amount": 20.0,
         "unit": "ml",
         "note": "Sweet Vermouth"
       },
       {
-        "ingredientName": "ingredient_bourbon",
+        "ingredientName": "bourbon",
         "amount": 60.0,
         "unit": "ml"
       }
@@ -1501,23 +1501,23 @@
     "ice": "crushed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_gin",
+        "ingredientName": "gin",
         "amount": 40.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lemon_juice",
+        "ingredientName": "lemon_juice",
         "amount": 20.0,
         "unit": "ml",
         "note": "Fresh"
       },
       {
-        "ingredientName": "ingredient_sugar_syrup",
+        "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_crme_de_mure_float",
+        "ingredientName": "crme_de_mure_float",
         "amount": 20.0,
         "unit": "ml",
         "note": "Crème de Mure (Float)"
@@ -1533,17 +1533,17 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_angostura_bitters",
+        "ingredientName": "angostura_bitters",
         "amount": 2.0,
         "unit": "dash"
       },
       {
-        "ingredientName": "ingredient_bourbon",
+        "ingredientName": "bourbon",
         "amount": 60.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_sugar_syrup",
+        "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
       }
@@ -1558,24 +1558,24 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_vodka",
+        "ingredientName": "vodka",
         "amount": 40.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_apple_liqueur",
+        "ingredientName": "apple_liqueur",
         "amount": 20.0,
         "unit": "ml",
         "note": "Apple Liqueur"
       },
       {
-        "ingredientName": "ingredient_lemon_juice",
+        "ingredientName": "lemon_juice",
         "amount": 30.0,
         "unit": "ml",
         "note": "Fresh"
       },
       {
-        "ingredientName": "ingredient_sugar_syrup",
+        "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
       }
@@ -1590,18 +1590,18 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_vodka",
+        "ingredientName": "vodka",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_peach_liqueur",
+        "ingredientName": "peach_liqueur",
         "amount": 20.0,
         "unit": "ml",
         "note": "Peach Liqueur"
       },
       {
-        "ingredientName": "ingredient_cranberry_juice",
+        "ingredientName": "cranberry_juice",
         "amount": 0.0,
         "unit": "fill"
       }
@@ -1616,24 +1616,24 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_absinthe",
+        "ingredientName": "absinthe",
         "amount": 0.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_peychauds_bitters",
+        "ingredientName": "peychauds_bitters",
         "amount": 3.0,
         "unit": "dash",
         "note": "Peychaud’s Bitters"
       },
       {
-        "ingredientName": "ingredient_rye",
+        "ingredientName": "rye",
         "amount": 60.0,
         "unit": "ml",
         "note": "Cognac or Rye"
       },
       {
-        "ingredientName": "ingredient_sugar_syrup",
+        "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
       }
@@ -1648,17 +1648,17 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_prosecco",
+        "ingredientName": "prosecco",
         "amount": 60.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_aperol",
+        "ingredientName": "aperol",
         "amount": 40.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_soda_water",
+        "ingredientName": "soda_water",
         "amount": 20.0,
         "unit": "ml"
       }
@@ -1673,18 +1673,18 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_coffee_liqueur",
+        "ingredientName": "coffee_liqueur",
         "amount": 20.0,
         "unit": "ml",
         "note": "Coffee Liqueur"
       },
       {
-        "ingredientName": "ingredient_baileys",
+        "ingredientName": "baileys",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_triple_sec",
+        "ingredientName": "triple_sec",
         "amount": 20.0,
         "unit": "ml"
       }
@@ -1699,18 +1699,18 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_vermouth",
+        "ingredientName": "vermouth",
         "amount": 20.0,
         "unit": "ml",
         "note": "Sweet Vermouth"
       },
       {
-        "ingredientName": "ingredient_campari",
+        "ingredientName": "campari",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_gin",
+        "ingredientName": "gin",
         "amount": 20.0,
         "unit": "ml"
       }
@@ -1725,18 +1725,18 @@
     "ice": "crushed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_lime_wedges",
+        "ingredientName": "lime_wedges",
         "amount": 6.0,
         "unit": "ml",
         "note": "Lime Wedges"
       },
       {
-        "ingredientName": "ingredient_sugar_syrup",
+        "ingredientName": "sugar_syrup",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_cachaca",
+        "ingredientName": "cachaca",
         "amount": 60.0,
         "unit": "ml",
         "note": "Cachaca"
@@ -1752,48 +1752,48 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_vodka",
+        "ingredientName": "vodka",
         "amount": 40.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lemon_juice",
+        "ingredientName": "lemon_juice",
         "amount": 10.0,
         "unit": "ml",
         "note": "Fresh"
       },
       {
-        "ingredientName": "ingredient_bloody_mary_pre_batch",
+        "ingredientName": "bloody_mary_pre_batch",
         "amount": 120.0,
         "unit": "ml",
         "note": "Bloody Mary Pre-Batch"
       },
       {
-        "ingredientName": "ingredient_worcestershire_sauce",
+        "ingredientName": "worcestershire_sauce",
         "amount": 30.0,
         "unit": "ml",
         "note": "Worcestershire Sauce"
       },
       {
-        "ingredientName": "ingredient_tabasco",
+        "ingredientName": "tabasco",
         "amount": 10.0,
         "unit": "ml",
         "note": "Tabasco"
       },
       {
-        "ingredientName": "ingredient_black_pepper",
+        "ingredientName": "black_pepper",
         "amount": 2.0,
         "unit": "ml",
         "note": "Black Pepper"
       },
       {
-        "ingredientName": "ingredient_celery_salt",
+        "ingredientName": "celery_salt",
         "amount": 4.0,
         "unit": "ml",
         "note": "Celery Salt"
       },
       {
-        "ingredientName": "ingredient_tomato_juice",
+        "ingredientName": "tomato_juice",
         "amount": 0.0,
         "unit": "fill",
         "note": "Tomato juice"
@@ -1809,13 +1809,13 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_whisky",
+        "ingredientName": "whisky",
         "amount": 30.0,
         "unit": "ml",
         "note": "Grant’s Scotch Whisky"
       },
       {
-        "ingredientName": "ingredient_amaretto",
+        "ingredientName": "amaretto",
         "amount": 30.0,
         "unit": "ml"
       }
@@ -1830,23 +1830,23 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_tequila",
+        "ingredientName": "tequila",
         "amount": 40.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_triple_sec",
+        "ingredientName": "triple_sec",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lime_juice",
+        "ingredientName": "lime_juice",
         "amount": 30.0,
         "unit": "ml",
         "note": "Fresh Lime Juice"
       },
       {
-        "ingredientName": "ingredient_sugar_syrup",
+        "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
       }
@@ -1861,18 +1861,18 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_angostura_soaked_sugar_cube",
+        "ingredientName": "angostura_soaked_sugar_cube",
         "amount": 1.0,
         "unit": "piece",
         "note": "Angostura soaked sugar cube"
       },
       {
-        "ingredientName": "ingredient_cognac",
+        "ingredientName": "cognac",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_champagne",
+        "ingredientName": "champagne",
         "amount": 0.0,
         "unit": "fill"
       }
@@ -1887,122 +1887,122 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_vodka",
+        "ingredientName": "vodka",
         "amount": 40.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_passionfruit_liqueur",
+        "ingredientName": "passionfruit_liqueur",
         "amount": 20.0,
         "unit": "ml",
         "note": "Passionfruit Liqueur"
       },
       {
-        "ingredientName": "ingredient_passionfruit_puree",
+        "ingredientName": "passionfruit_puree",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lime_juice",
+        "ingredientName": "lime_juice",
         "amount": 20.0,
         "unit": "ml",
         "note": "Fresh Lime Juice"
       },
       {
-        "ingredientName": "ingredient_vanilla_syrup",
+        "ingredientName": "vanilla_syrup",
         "amount": 10.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_champagne",
+        "ingredientName": "champagne",
         "amount": 0.0,
         "unit": "ml",
         "note": "Brut Champagne"
       },
       {
-        "ingredientName": "ingredient_vodka",
+        "ingredientName": "vodka",
         "amount": 45.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_passionfruit_liqueur",
+        "ingredientName": "passionfruit_liqueur",
         "amount": 15.0,
         "unit": "ml",
         "note": "Passionfruit Liqueur"
       },
       {
-        "ingredientName": "ingredient_passionfruit_puree",
+        "ingredientName": "passionfruit_puree",
         "amount": 60.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_vanilla_sugar",
+        "ingredientName": "vanilla_sugar",
         "amount": 2.0,
         "unit": "bsp",
         "note": "Vanilla Sugar"
       },
       {
-        "ingredientName": "ingredient_passion_fruit",
+        "ingredientName": "passion_fruit",
         "amount": 1.0,
         "unit": "ml",
         "note": "Passion Fruit"
       },
       {
-        "ingredientName": "ingredient_vodka",
+        "ingredientName": "vodka",
         "amount": 50.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_cointreau",
+        "ingredientName": "cointreau",
         "amount": 15.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lime_juice",
+        "ingredientName": "lime_juice",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_passionfruit_puree",
+        "ingredientName": "passionfruit_puree",
         "amount": 15.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_simple_syrup",
+        "ingredientName": "simple_syrup",
         "amount": 15.0,
         "unit": "ml",
         "note": "Vanilla bean simple syrup"
       },
       {
-        "ingredientName": "ingredient_vodka",
+        "ingredientName": "vodka",
         "amount": 50.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_passionfruit_liqueur",
+        "ingredientName": "passionfruit_liqueur",
         "amount": 25.0,
         "unit": "ml",
         "note": "Passionfruit Liqueur"
       },
       {
-        "ingredientName": "ingredient_lime_juice",
+        "ingredientName": "lime_juice",
         "amount": 10.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_monin_vanilla_suagr",
+        "ingredientName": "monin_vanilla_suagr",
         "amount": 15.0,
         "unit": "ml",
         "note": "Monin Vanilla Suagr"
       },
       {
-        "ingredientName": "ingredient_passion_fruit_puree",
+        "ingredientName": "passion_fruit_puree",
         "amount": 25.0,
         "unit": "ml",
         "note": "Passion Fruit puree"
       },
       {
-        "ingredientName": "ingredient_passion_fruit_juice",
+        "ingredientName": "passion_fruit_juice",
         "amount": 50.0,
         "unit": "ml",
         "note": "Passion Fruit Juice"
@@ -2018,12 +2018,12 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_gin",
+        "ingredientName": "gin",
         "amount": 40.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_tonic",
+        "ingredientName": "tonic",
         "amount": 0.0,
         "unit": "fill",
         "note": "Tonic"
@@ -2039,18 +2039,18 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_angostura_bitters",
+        "ingredientName": "angostura_bitters",
         "amount": 2.0,
         "unit": "dash"
       },
       {
-        "ingredientName": "ingredient_vermouth",
+        "ingredientName": "vermouth",
         "amount": 20.0,
         "unit": "ml",
         "note": "Sweet Vermouth"
       },
       {
-        "ingredientName": "ingredient_whisky",
+        "ingredientName": "whisky",
         "amount": 60.0,
         "unit": "ml",
         "note": "Grant’s Scotch Whisky"
@@ -2066,18 +2066,18 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_vodka",
+        "ingredientName": "vodka",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lemon_juice",
+        "ingredientName": "lemon_juice",
         "amount": 10.0,
         "unit": "ml",
         "note": "Fresh"
       },
       {
-        "ingredientName": "ingredient_sugar_syrup",
+        "ingredientName": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
       }
@@ -2092,17 +2092,17 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_angostura_bitters",
+        "ingredientName": "angostura_bitters",
         "amount": 2.0,
         "unit": "dash"
       },
       {
-        "ingredientName": "ingredient_bourbon",
+        "ingredientName": "bourbon",
         "amount": 40.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_gin",
+        "ingredientName": "gin",
         "amount": 0.0,
         "unit": "fill",
         "note": "Ginger Ale"
@@ -2118,30 +2118,30 @@
     "ice": "crushed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_lime_wedges",
+        "ingredientName": "lime_wedges",
         "amount": 4.0,
         "unit": "ml",
         "note": "Lime Wedges"
       },
       {
-        "ingredientName": "ingredient_sugar_syrup",
+        "ingredientName": "sugar_syrup",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_mint_leaves",
+        "ingredientName": "mint_leaves",
         "amount": 8.0,
         "unit": "leaf",
         "note": "Mint Leaves"
       },
       {
-        "ingredientName": "ingredient_rum",
+        "ingredientName": "rum",
         "amount": 60.0,
         "unit": "ml",
         "note": "Light Rum"
       },
       {
-        "ingredientName": "ingredient_soda",
+        "ingredientName": "soda",
         "amount": 0.0,
         "unit": "fill",
         "note": "Soda"
@@ -2157,17 +2157,17 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_tequila",
+        "ingredientName": "tequila",
         "amount": 40.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_orange_juice",
+        "ingredientName": "orange_juice",
         "amount": 0.0,
         "unit": "fill"
       },
       {
-        "ingredientName": "ingredient_grenadine",
+        "ingredientName": "grenadine",
         "amount": 10.0,
         "unit": "ml",
         "note": "Grenadine (Sink)"
@@ -2183,24 +2183,24 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "ingredient_mint_leaves",
+        "ingredientName": "mint_leaves",
         "amount": 8.0,
         "unit": "leaf",
         "note": "Mint Leaves"
       },
       {
-        "ingredientName": "ingredient_gin",
+        "ingredientName": "gin",
         "amount": 60.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_lime_juice",
+        "ingredientName": "lime_juice",
         "amount": 30.0,
         "unit": "ml",
         "note": "Fresh Lime Juice"
       },
       {
-        "ingredientName": "ingredient_sugar_syrup",
+        "ingredientName": "sugar_syrup",
         "amount": 15.0,
         "unit": "ml"
       }
@@ -2215,35 +2215,71 @@
     "ice": "crushed",
     "ingredients": [
       {
-        "ingredientName": "ingredient_rum",
+        "ingredientName": "rum",
         "amount": 40.0,
         "unit": "ml",
         "note": "Dark Rum"
       },
       {
-        "ingredientName": "ingredient_triple_sec",
+        "ingredientName": "triple_sec",
         "amount": 10.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "ingredient_orgeat_syrup",
+        "ingredientName": "orgeat_syrup",
         "amount": 10.0,
         "unit": "ml",
         "note": "Orgeat Syrup"
       },
       {
-        "ingredientName": "ingredient_lime_juice",
+        "ingredientName": "lime_juice",
         "amount": 20.0,
         "unit": "ml",
         "note": "Fresh Lime Juice"
       },
       {
-        "ingredientName": "ingredient_rum",
+        "ingredientName": "rum",
         "amount": 10.0,
         "unit": "ml",
         "note": "Overproof Rum (Float)"
       }
     ],
     "notes": "Method: Shake Strain & Float\nGlass: Rocks, Tiki Mug"
+  },
+  {
+    "name": "Mojito",
+    "glass": "highball",
+    "method": "build",
+    "ice": "cubed",
+    "ingredients": [
+      {
+        "ingredientName": "rum",
+        "amount": 60.0,
+        "unit": "ml",
+        "note": "Appleton Estate preferred"
+      },
+      {
+        "ingredientName": "lime_juice",
+        "amount": 30.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientName": "simple_syrup",
+        "amount": 22.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientName": "mint_leaves",
+        "amount": 10.0,
+        "unit": "piece",
+        "note": "Slap it first!"
+      },
+      {
+        "ingredientName": "lime_wheel",
+        "amount": 1.0,
+        "unit": "piece"
+      }
+    ],
+    "notes": "Muddle mint and syrup. Add rum, lime juice and ice. Top with club soda. Garnish with a mint sprig."
   }
 ]

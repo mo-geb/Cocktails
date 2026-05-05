@@ -25,11 +25,32 @@
     "Add Cocktail" : {
 
     },
+    "Blend" : {
+      "comment" : "Preparation method"
+    },
+    "Build" : {
+      "comment" : "Preparation method"
+    },
+    "Clear Block" : {
+      "comment" : "Ice type"
+    },
     "Close" : {
 
     },
     "Cocktails" : {
 
+    },
+    "Copper Mug" : {
+      "comment" : "Glass type"
+    },
+    "Crushed" : {
+      "comment" : "Ice type"
+    },
+    "Cubed" : {
+      "comment" : "Ice type"
+    },
+    "Custom" : {
+      "comment" : "Recipe source — user created"
     },
     "Database Controls" : {
 
@@ -40,17 +61,46 @@
     "Developer" : {
 
     },
+    "EBS International 2023" : {
+      "comment" : "Recipe source — book title"
+    },
     "fill" : {
 
+    },
+    "Flute" : {
+      "comment" : "Glass type"
     },
     "Garnish" : {
 
     },
+    "Glass" : {
+      "comment" : "Grouping by glass type"
+    },
     "Group By" : {
 
     },
+    "Highball" : {
+      "comment" : "Glass type"
+    },
+    "Hurricane" : {
+      "comment" : "Glass type"
+    },
+    "Ice" : {
+      "comment" : "Grouping by ice type"
+    },
     "Import Failed" : {
 
+    },
+    "ingredient_vodka" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vodka"
+          }
+        }
+      }
     },
     "Ingredients" : {
 
@@ -58,11 +108,20 @@
     "Inventory" : {
 
     },
+    "Martini" : {
+      "comment" : "Glass type"
+    },
+    "Method" : {
+      "comment" : "Grouping by preparation method"
+    },
     "No ingredients provided." : {
 
     },
     "No instructions provided." : {
 
+    },
+    "None" : {
+      "comment" : "Grouping — no grouping applied\nIce type — no ice"
     },
     "Notes" : {
 
@@ -70,8 +129,32 @@
     "OK" : {
 
     },
+    "Other" : {
+      "comment" : "Glass type"
+    },
+    "Rocks" : {
+      "comment" : "Glass type"
+    },
+    "Roll" : {
+      "comment" : "Preparation method"
+    },
     "Settings" : {
 
+    },
+    "Shake" : {
+      "comment" : "Preparation method"
+    },
+    "Shared" : {
+      "comment" : "Recipe source — shared recipe"
+    },
+    "Stir" : {
+      "comment" : "Preparation method"
+    },
+    "Tiki" : {
+      "comment" : "Glass type"
+    },
+    "Wine" : {
+      "comment" : "Glass type"
     }
   },
   "version" : "1.1"
