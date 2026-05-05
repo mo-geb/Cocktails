@@ -31,7 +31,7 @@ struct CocktailGridCell: View {
                     Spacer()
 
                     VStack(spacing: 6) {
-                        Text(cocktail.name.isEmpty ? "Unnamed Cocktail" : cocktail.name)
+                        Text(cocktail.name)
                             .font(.subheadline.bold())
                             .fontDesign(.rounded)
                             .multilineTextAlignment(.center)

@@ -58,7 +58,6 @@ struct CocktailTab: View {
                         }
                     }
                 }
-                .background(Color(.systemGroupedBackground))
                 .sheet(isPresented: $showSettings) { SettingsView() }
                 .sheet(item: $activeCocktailSheet) { sheet in
                     switch sheet {

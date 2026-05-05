@@ -4,6 +4,9 @@
     "" : {
 
     },
+    "%lld" : {
+
+    },
     "Add Cocktail" : {
 
     },
@@ -16,8 +19,17 @@
     "Build" : {
       "comment" : "Preparation method"
     },
+    "Choose what to delete. This cannot be undone." : {
+
+    },
     "Clear Block" : {
       "comment" : "Ice type"
+    },
+    "Clear Data" : {
+
+    },
+    "Clear Unused Ingredients" : {
+
     },
     "Close" : {
 
@@ -25,7 +37,7 @@
     "Cocktails" : {
 
     },
-    "Cocktails, ingredients…" : {
+    "Cocktails, Ingredients…" : {
 
     },
     "Copper Mug" : {
@@ -43,10 +55,19 @@
     "Database Controls" : {
 
     },
+    "Delete Everything" : {
+
+    },
+    "Delete Imported Cocktails" : {
+
+    },
     "Dev" : {
 
     },
     "Developer" : {
+
+    },
+    "Done" : {
 
     },
     "EBS" : {
@@ -75,6 +96,9 @@
     },
     "Ice" : {
       "comment" : "Grouping by ice type"
+    },
+    "Import" : {
+
     },
     "Import Complete" : {
 

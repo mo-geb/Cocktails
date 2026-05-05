@@ -28,7 +28,6 @@ struct SettingsView: View {
                 }
                 .padding()
             }
-            .background(Color(.systemGroupedBackground))
             .navigationTitle("Settings")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
@@ -71,7 +70,6 @@ struct SettingsView: View {
                         title: "Website",
                         subtitle: "mo-geb.com",
                         trailing: .externalLink)
-                    .foregroundStyle(.primary)
                 }
 
                 Divider().padding(.leading, 62)
@@ -81,7 +79,6 @@ struct SettingsView: View {
                         title: "Contact Support",
                         subtitle: "support@mo-geb.com",
                         trailing: .externalLink)
-                    .foregroundStyle(.primary)
                 }
             }
             .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
@@ -108,6 +105,7 @@ struct SettingsView: View {
     private func sectionHeader(_ title: String) -> some View {
         Text(title)
             .font(.subheadline.bold())
+            .fontDesign(.rounded)
             .foregroundStyle(.secondary)
             .padding(.leading, 4)
     }
@@ -128,6 +126,7 @@ struct SettingsView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(title)
                     .font(.body)
+                    .fontWeight(.medium)
                 Text(subtitle)
                     .font(.caption)
                     .foregroundStyle(.secondary)
@@ -167,6 +166,8 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView()
-        .modelContainer(PreviewSampleData.container)
+    NavigationStack {
+        SettingsView()
+    }
+    .modelContainer(PreviewSampleData.container)
 }

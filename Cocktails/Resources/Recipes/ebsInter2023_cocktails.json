@@ -115,7 +115,7 @@
         "unit": "bsp"
       },
       {
-        "ingredientName": "mint_leaves",
+        "ingredientName": "mint_leaf",
         "amount": 8.0,
         "unit": "leaf"
       },
@@ -873,12 +873,11 @@
         "unit": "dash"
       },
       {
-        "ingredientName": "benectine_dom",
+        "ingredientName": "benedictine_dom",
         "amount": 5.0,
-        "unit": "ml",
-        "note": "Benectine D.O.M"
+        "unit": "ml"
       },
-      {
+      { 
         "ingredientName": "triple_sec",
         "amount": 5.0,
         "unit": "ml"
@@ -2025,7 +2024,7 @@
       {
         "ingredientName": "passionfruit",
         "amount": 0.5,
-        "unit": "piece",
+        "unit": "piece"
       },
       {
         "ingredientName": "shot_of_champagne",
@@ -2173,7 +2172,7 @@
         "unit": "ml"
       },
       {
-        "ingredientName": "mint_leaves",
+        "ingredientName": "mint_leaf",
         "amount": 8.0,
         "unit": "leaf"
       },
@@ -2230,7 +2229,7 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "mint_leaves",
+        "ingredientName": "mint_leaf",
         "amount": 8.0,
         "unit": "leaf"
       },
