@@ -1,3 +1,6 @@
+# Claude Code
+.claude/
+
 # Xcode user-specific settings
 xcuserdata/
 *.xcuserstate

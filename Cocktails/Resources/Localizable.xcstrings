@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "Add Cocktail" : {
 
     },
@@ -20,6 +23,9 @@
 
     },
     "Cocktails" : {
+
+    },
+    "Cocktails, ingredients…" : {
 
     },
     "Copper Mug" : {
@@ -128,6 +134,9 @@
     },
     "Roll" : {
       "comment" : "Preparation method"
+    },
+    "Search" : {
+
     },
     "Settings" : {
 

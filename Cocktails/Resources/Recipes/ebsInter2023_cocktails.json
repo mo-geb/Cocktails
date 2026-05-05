@@ -621,10 +621,9 @@
         "note": "Grant’s Scotch Whisky"
       },
       {
-        "ingredientName": "drambui",
+        "ingredientName": "drambuie",
         "amount": 30.0,
-        "unit": "ml",
-        "note": "Drambui"
+        "unit": "ml"
       },
       {
         "ingredientName": "lemon_zest",
@@ -679,10 +678,9 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "basil_leaves",
+        "ingredientName": "basil_leaf",
         "amount": 8.0,
-        "unit": "leaf",
-        "note": "Basil Leaves"
+        "unit": "leaf"
       },
       {
         "ingredientName": "gin",
@@ -2023,6 +2021,11 @@
         "ingredientName": "vanilla_syrup",
         "amount": 10.0,
         "unit": "ml"
+      },
+      {
+        "ingredientName": "passionfruit",
+        "amount": 0.5,
+        "unit": "piece",
       },
       {
         "ingredientName": "shot_of_champagne",

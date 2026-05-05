@@ -50,19 +50,9 @@
     "type": "syrup"
   },
   {
-    "id": "mint_leaves",
-    "name": "Mint Leaves",
-    "type": "other"
-  },
-  {
     "id": "bourbon",
     "name": "Bourbon",
     "type": "spirit"
-  },
-  {
-    "id": "lemon_jucie",
-    "name": "Lemon Jucie",
-    "type": "other"
   },
   {
     "id": "sugar_syrup",
@@ -87,7 +77,7 @@
   {
     "id": "jack_daniels",
     "name": "Jack Daniel's",
-    "type": "other"
+    "type": "spirit"
   },
   {
     "id": "lemon_juice",
@@ -111,7 +101,7 @@
   },
   {
     "id": "baileys",
-    "name": "Baileys",
+    "name": "Bailey's",
     "type": "liqueur"
   },
   {
@@ -175,8 +165,8 @@
     "type": "spirit"
   },
   {
-    "id": "drambui",
-    "name": "Drambui",
+    "id": "drambuie",
+    "name": "Drambuie",
     "type": "liqueur"
   },
   {
@@ -240,7 +230,7 @@
     "type": "mixer"
   },
   {
-    "id": "benectine_dom",
+    "id": "benedictine_dom",
     "name": "Benectine Dom",
     "type": "liqueur"
   },
@@ -395,7 +385,7 @@
     "type": "syrup"
   },
   {
-    "id": "passion_fruit",
+    "id": "passionfruit",
     "name": "Passion Fruit",
     "type": "other"
   },
@@ -408,21 +398,6 @@
     "id": "simple_syrup",
     "name": "Simple Syrup",
     "type": "syrup"
-  },
-  {
-    "id": "monin_vanilla_suagr",
-    "name": "Monin Vanilla Suagr",
-    "type": "other"
-  },
-  {
-    "id": "passion_fruit_puree",
-    "name": "Passion Fruit Puree",
-    "type": "juice"
-  },
-  {
-    "id": "passion_fruit_juice",
-    "name": "Passion Fruit Juice",
-    "type": "juice"
   },
   {
     "id": "tonic",

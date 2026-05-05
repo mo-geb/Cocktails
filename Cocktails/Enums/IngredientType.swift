@@ -10,7 +10,7 @@ enum IngredientType: String, Codable, CaseIterable, Identifiable {
     case mixer
     case garnish
     case other
-    
+
     /// Asset-based fallback image for devices without Apple Intelligence
     var imageName: String {
         switch self {
@@ -24,6 +24,20 @@ enum IngredientType: String, Codable, CaseIterable, Identifiable {
             default: return "Ingredient/fluid"
         }
     }
-    
+
+    var localizedName: String {
+        switch self {
+        case .spirit: return "Spirits"
+        case .liqueur: return "Liqueurs"
+        case .fortifiedWine: return "Fortified Wine"
+        case .syrup: return "Syrups"
+        case .juice: return "Juices"
+        case .bitters: return "Bitters"
+        case .mixer: return "Mixers"
+        case .garnish: return "Garnishes"
+        case .other: return "Other"
+        }
+    }
+
     var id: String { rawValue }
 }
