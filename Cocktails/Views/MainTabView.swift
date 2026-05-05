@@ -17,6 +17,10 @@ struct MainTabView: View {
             Tab("Dev", systemImage: "hammer", value: .debug) {
                 DebugTab()
             }
+            
+            Tab(value: .search, role: .search) {
+                SearchView()
+            }
         }
     }
 }

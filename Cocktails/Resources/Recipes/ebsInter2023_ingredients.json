@@ -145,6 +145,11 @@
     "type": "other"
   },
   {
+    "id": "shot_of_champagne",
+    "name": "Champagne",
+    "type": "garnish"
+  },
+  {
     "id": "chambord",
     "name": "Chambord",
     "type": "liqueur"
@@ -490,7 +495,7 @@
     "type": "garnish"
   },
   {
-    "id": "lime_wedge",
+    "id": "lime_wedge_garnish",
     "name": "Lime Wedge",
     "type": "garnish"
   },

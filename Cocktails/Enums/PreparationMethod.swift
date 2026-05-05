@@ -19,5 +19,11 @@ enum PreparationMethod: String, Codable, CaseIterable, Identifiable {
         }
     }
 
-    var customImageName: String { "Method/shake" }
+    var customImageName: String {
+        switch self {
+        case .stir:  return "Method/stir"
+        case .shake: return "Method/shake"
+        default: return "Method/shake"
+        }
+    }
 }

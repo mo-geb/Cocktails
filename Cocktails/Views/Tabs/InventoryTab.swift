@@ -11,8 +11,7 @@ struct InventoryTab: View {
             List {
                 ForEach(ingredients) { ingredient in
                     HStack {
-                        Image(ingredient.type.imageName)
-                            .resizable()
+                        ingredient.displayImage.view(placeholder: ingredient.type.imageName)
                             .scaledToFit()
                             .frame(width: 24, height: 24)
                         
