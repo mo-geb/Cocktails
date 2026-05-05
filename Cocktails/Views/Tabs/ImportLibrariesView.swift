@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 private struct LibraryCounts {
     var cocktails: Int = 0
@@ -32,19 +33,16 @@ struct ImportLibrariesView: View {
     private func loadCounts(for source: RecipeSource) -> LibraryCounts {
         var result = LibraryCounts()
         let prefix = source.filePrefix
-
         if let url = Bundle.main.url(forResource: "\(prefix)_cocktails", withExtension: "json"),
            let data = try? Data(contentsOf: url),
            let arr = try? JSONSerialization.jsonObject(with: data) as? [[String: Any]] {
             result.cocktails = arr.count
         }
-
         if let url = Bundle.main.url(forResource: "\(prefix)_ingredients", withExtension: "json"),
            let data = try? Data(contentsOf: url),
            let arr = try? JSONSerialization.jsonObject(with: data) as? [[String: Any]] {
             result.ingredients = arr.count
         }
-
         return result
     }
 }
@@ -53,35 +51,72 @@ private struct LibraryCard: View {
     let source: RecipeSource
     let counts: LibraryCounts
 
+    @Environment(\.colorScheme) private var colorScheme
+    @State private var accentColor: Color?
+
     var body: some View {
-        VStack(spacing: 0) {
-            Image(source.imageName)
-                .resizable()
-                .scaledToFit()
-                .frame(height: 90)
-                .padding(.vertical, 20)
-                .padding(.horizontal, 12)
+        Button(action: {}) {
+            ZStack(alignment: .bottom) {
+                // Gradient background from source image dominant color
+                if let accentColor {
+                    LinearGradient(
+                        colors: [accentColor, accentColor.opacity(0.15)],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                    .saturation(1.9)
+                    .blendMode(colorScheme == .dark ? .screen : .normal)
+                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                }
 
-            Divider()
+                VStack(spacing: 0) {
+                    Spacer()
 
-            VStack(alignment: .leading, spacing: 6) {
-                Text(source.localizedName)
-                    .font(.headline)
+                    Image(source.imageName)
+                        .resizable()
+                        .scaledToFit()
+                        .padding(.horizontal, 28)
+                        .padding(.top, 24)
 
-                HStack(spacing: 14) {
-                    Label("\(counts.cocktails)", systemImage: "wineglass")
+                    Spacer()
+
+                    // Info bar
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text(source.localizedName)
+                            .font(.headline)
+                            .fontDesign(.rounded)
+
+                        HStack(spacing: 14) {
+                            Label("\(counts.cocktails) cocktails", systemImage: "wineglass")
+                            Label("\(counts.ingredients) ingredients", systemImage: "leaf")
+                        }
                         .font(.caption)
                         .foregroundStyle(.secondary)
-                    Label("\(counts.ingredients)", systemImage: "leaf")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 12)
+                    .glassEffect(in: RoundedRectangle(cornerRadius: 0, style: .continuous))
                 }
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal, 14)
-            .padding(.vertical, 12)
+            .frame(maxWidth: .infinity)
+            .aspectRatio(0.8, contentMode: .fit)
+            .glassEffect(in: RoundedRectangle(cornerRadius: 20, style: .continuous))
         }
-        .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .buttonStyle(CardPressStyle())
+        .onAppear {
+            if let uiImage = UIImage(named: source.imageName) {
+                accentColor = uiImage.dominantColor().map { Color($0) }
+            }
+        }
+    }
+}
+
+private struct CardPressStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
+            .animation(.spring(response: 0.3, dampingFraction: 0.7), value: configuration.isPressed)
     }
 }
 

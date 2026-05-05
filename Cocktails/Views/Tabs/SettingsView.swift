@@ -11,41 +11,24 @@ struct SettingsView: View {
 
     var body: some View {
         NavigationStack {
-            Form {
-                Section {
-                    NavigationLink(destination: ImportLibrariesView()) {
-                        Label("Import Library", systemImage: "square.and.arrow.down")
-                    }
-                }
+            ScrollView {
+                VStack(alignment: .leading, spacing: 28) {
+                    importSection
+                    aboutSection
+                    dataSection
 
-                Section("About") {
-                    Link(destination: URL(string: "https://mo-geb.com")!) {
-                        Label("Website", systemImage: "globe")
-                            .foregroundStyle(.primary)
-                    }
-                    Link(destination: URL(string: "mailto:support@mo-geb.com")!) {
-                        Label("Contact Support", systemImage: "envelope")
-                            .foregroundStyle(.primary)
-                    }
-                }
-
-                Section("Data") {
-                    Button(role: .destructive) {
-                        showClearConfirmation = true
-                    } label: {
-                        Label("Clear Data…", systemImage: "trash")
-                    }
-                }
-
-                Section {
                     HStack {
                         Spacer()
-                        versionInfo
+                        Text(Bundle.main.fullVersionString)
+                            .font(.caption)
+                            .foregroundStyle(.tertiary)
                         Spacer()
                     }
+                    .padding(.top, 4)
                 }
-                .listRowBackground(Color.clear)
+                .padding()
             }
+            .background(Color(.systemGroupedBackground))
             .navigationTitle("Settings")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
@@ -62,11 +45,102 @@ struct SettingsView: View {
         }
     }
 
+    // MARK: - Sections
+
+    private var importSection: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            sectionHeader("Libraries")
+
+            NavigationLink(destination: ImportLibrariesView()) {
+                row(icon: "square.and.arrow.down.fill", color: .blue,
+                    title: "Import Library",
+                    subtitle: "Browse and add cocktail collections")
+            }
+            .buttonStyle(.plain)
+            .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        }
+    }
+
+    private var aboutSection: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            sectionHeader("About")
+
+            VStack(spacing: 0) {
+                Link(destination: URL(string: "https://mo-geb.com")!) {
+                    row(icon: "globe", color: .indigo,
+                        title: "Website",
+                        subtitle: "mo-geb.com",
+                        trailing: .externalLink)
+                    .foregroundStyle(.primary)
+                }
+
+                Divider().padding(.leading, 62)
+
+                Link(destination: URL(string: "mailto:support@mo-geb.com")!) {
+                    row(icon: "envelope.fill", color: .teal,
+                        title: "Contact Support",
+                        subtitle: "support@mo-geb.com",
+                        trailing: .externalLink)
+                    .foregroundStyle(.primary)
+                }
+            }
+            .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        }
+    }
+
+    private var dataSection: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            sectionHeader("Data")
+
+            Button { showClearConfirmation = true } label: {
+                row(icon: "trash.fill", color: .red,
+                    title: "Clear Data",
+                    subtitle: "Remove cocktails or ingredients")
+            }
+            .buttonStyle(.plain)
+            .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        }
+    }
+
+    // MARK: - Helpers
+
     @ViewBuilder
-    var versionInfo: some View {
-        Text(Bundle.main.fullVersionString)
-            .font(.caption)
+    private func sectionHeader(_ title: String) -> some View {
+        Text(title)
+            .font(.subheadline.bold())
             .foregroundStyle(.secondary)
+            .padding(.leading, 4)
+    }
+
+    private enum TrailingIndicator { case chevron, externalLink }
+
+    @ViewBuilder
+    private func row(icon: String, color: Color, title: String, subtitle: String,
+                     trailing: TrailingIndicator = .chevron) -> some View {
+        HStack(spacing: 14) {
+            Image(systemName: icon)
+                .font(.system(size: 15, weight: .semibold))
+                .foregroundStyle(.white)
+                .frame(width: 34, height: 34)
+                .background(color.gradient)
+                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
+                    .font(.body)
+                Text(subtitle)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+
+            Spacer()
+
+            Image(systemName: trailing == .chevron ? "chevron.right" : "arrow.up.right")
+                .font(.caption.bold())
+                .foregroundStyle(.tertiary)
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 12)
     }
 
     // MARK: - Data actions
