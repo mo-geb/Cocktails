@@ -137,7 +137,7 @@
   {
     "id": "shot_of_champagne",
     "name": "Champagne Shot",
-    "type": "garnish"
+    "type": "other"
   },
   {
     "id": "chambord",
@@ -277,7 +277,7 @@
   {
     "id": "lime_cordial",
     "name": "Lime Cordial",
-    "type": "other"
+    "type": "mixer"
   },
   {
     "id": "espresso",
@@ -312,12 +312,12 @@
   {
     "id": "lime_wedge",
     "name": "Lime Wedge",
-    "type": "other"
+    "type": "fruit"
   },
   {
     "id": "cachaca",
     "name": "Cachaca",
-    "type": "other"
+    "type": "spirit"
   },
   {
     "id": "bloody_mary_pre_batch",
@@ -332,17 +332,17 @@
   {
     "id": "tabasco",
     "name": "Tabasco",
-    "type": "other"
+    "type": "spice"
   },
   {
     "id": "black_pepper",
     "name": "Black Pepper",
-    "type": "other"
+    "type": "spice"
   },
   {
     "id": "celery_salt",
     "name": "Celery Salt",
-    "type": "other"
+    "type": "spice"
   },
   {
     "id": "tomato_juice",
@@ -353,6 +353,11 @@
     "id": "passionfruit_liqueur",
     "name": "Passionfruit Liqueur",
     "type": "liqueur"
+  },
+  {
+    "id": "passionfruit_juice",
+    "name": "Passionfruit Juice",
+    "type": "juice"
   },
   {
     "id": "passionfruit_puree",
@@ -372,7 +377,7 @@
   {
     "id": "passionfruit",
     "name": "Passion Fruit",
-    "type": "other"
+    "type": "fruit"
   },
   {
     "id": "cointreau",
@@ -402,121 +407,111 @@
   {
     "id": "lime_wheel",
     "name": "Lime Wheel",
-    "type": "garnish"
+    "type": "fruit"
   },
   {
     "id": "basil_leaf",
     "name": "Basil Leaf",
-    "type": "garnish"
+    "type": "herb"
   },
   {
     "id": "blackberry",
     "name": "Blackberries",
-    "type": "garnish"
+    "type": "fruit"
   },
   {
     "id": "celery_stick",
     "name": "Celery Stick",
-    "type": "garnish"
+    "type": "vegetable"
   },
   {
     "id": "cherry",
     "name": "Cherry",
-    "type": "garnish"
+    "type": "fruit"
   },
   {
     "id": "coffee_beans",
     "name": "Coffee Beans",
-    "type": "garnish"
+    "type": "other"
   },
   {
     "id": "grapefruit_slice",
     "name": "Grapefruit Slice",
-    "type": "garnish"
+    "type": "fruit"
   },
   {
     "id": "grated_nutmeg",
     "name": "Grated Nutmeg",
-    "type": "garnish"
+    "type": "spice"
   },
   {
     "id": "lemon_spiral",
     "name": "Lemon Spiral",
-    "type": "garnish"
+    "type": "fruit"
   },
   {
     "id": "lemon_wedge",
     "name": "Lemon Wedge",
-    "type": "garnish"
+    "type": "fruit"
   },
   {
     "id": "lemon_zest",
     "name": "Lemon Zest",
-    "type": "garnish"
-  },
-  {
-    "id": "lime_wedge_garnish",
-    "name": "Lime Wedge",
-    "type": "garnish"
+    "type": "fruit"
   },
   {
     "id": "lime_zest",
     "name": "Lime Zest",
-    "type": "garnish"
+    "type": "fruit"
   },
   {
     "id": "mint_leaf",
     "name": "Mint Leaf",
-    "type": "garnish"
+    "type": "herb"
   },
   {
     "id": "mint_spring",
     "name": "Mint Spring",
-    "type": "garnish"
+    "type": "herb"
   },
   {
     "id": "olive",
     "name": "Olives",
-    "type": "garnish"
+    "type": "fruit"
   },
   {
     "id": "orange_slice",
     "name": "Orange Slice",
-    "type": "garnish"
+    "type": "fruit"
   },
   {
     "id": "orange_zest",
     "name": "Orange Zest",
-    "type": "garnish"
-  },
-  {
-    "id": "passionfruit_garnish",
-    "name": "Passionfruit",
-    "type": "garnish"
+    "type": "fruit"
   },
   {
     "id": "pineapple_wedge",
     "name": "Pineapple Wedge",
-    "type": "garnish"
+    "type": "fruit"
   },
   {
     "id": "raspberry",
     "name": "Raspberry",
-    "type": "garnish"
+    "type": "fruit"
   },
   {
     "id": "salt_rim",
     "name": "Salt Rim",
-    "type": "garnish"
+    "type": "spice"
   },
   {
     "id": "sugar_coated_lemon_wedge",
     "name": "Sugar coated lemon wedge",
-    "type": "garnish"
+    "type": "other"
   },
   {
     "id": "sugar_rim",
     "name": "Sugar Rim",
-    "type": "garnish"
+    "type": "spice"
   }
 ]

@@ -24,6 +24,7 @@ struct CocktailDTO: Decodable {
     let method: PreparationMethod
     let ice: IceType
     let ingredients: [RecipeIngredientDTO]
+    let garnishes: [RecipeIngredientDTO]?
     let notes: String?
 }
 
@@ -153,7 +154,10 @@ final class CocktailImporter {
         if importAllIngredients {
             neededIngredientIDs = Set(ingredientDTOs.map { $0.id })
         } else {
-            neededIngredientIDs = Set(cocktailDTOs.flatMap { $0.ingredients.map { $0.ingredientName } })
+            let allIngs = cocktailDTOs.flatMap { dto in
+                dto.ingredients.map { $0.ingredientName } + (dto.garnishes ?? []).map { $0.ingredientName }
+            }
+            neededIngredientIDs = Set(allIngs)
         }
         logger.info("Need \(neededIngredientIDs.count) ingredient IDs for this import")
 
@@ -188,12 +192,13 @@ final class CocktailImporter {
             var recipeIngredients: [RecipeIngredient] = []
 
             for ingDTO in dto.ingredients {
-                let unit = ingDTO.unit ?? .piece
+                let unit = ingDTO.unit ?? .none
 
                 let recipeIngredient = RecipeIngredient(
                     amount: ingDTO.amount,
                     unit: unit,
-                    note: ingDTO.note ?? ""
+                    note: ingDTO.note ?? "",
+                    role: .core
                 )
 
                 if let mappedIngredient = existingIngredients[ingDTO.ingredientName] {
@@ -201,6 +206,26 @@ final class CocktailImporter {
                 } else {
                     unmappedRefs.append((cocktail: dto.name, ingredientName: ingDTO.ingredientName))
                     logger.warning("  ⚠️ \(dto.name): no Ingredient found for id '\(ingDTO.ingredientName)'")
+                }
+
+                recipeIngredients.append(recipeIngredient)
+            }
+
+            for garnishDTO in dto.garnishes ?? [] {
+                let unit = garnishDTO.unit ?? .none
+
+                let recipeIngredient = RecipeIngredient(
+                    amount: garnishDTO.amount,
+                    unit: unit,
+                    note: garnishDTO.note ?? "",
+                    role: .garnish
+                )
+
+                if let mappedIngredient = existingIngredients[garnishDTO.ingredientName] {
+                    recipeIngredient.ingredient = mappedIngredient
+                } else {
+                    unmappedRefs.append((cocktail: dto.name, ingredientName: garnishDTO.ingredientName))
+                    logger.warning("  ⚠️ \(dto.name): no Ingredient found for id '\(garnishDTO.ingredientName)'")
                 }
 
                 recipeIngredients.append(recipeIngredient)

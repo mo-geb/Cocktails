@@ -14,8 +14,8 @@ struct CocktailDetailView: View {
     }
 
     var body: some View {
-        let regularIngredients = draft.ingredients.filter { $0.ingredient.type != .garnish }
-        let garnishIngredients = draft.ingredients.filter { $0.ingredient.type == .garnish }
+        let regularIngredients = draft.ingredients.filter { $0.role == .core }
+        let garnishIngredients = draft.ingredients.filter { $0.role == .garnish }
 
         ScrollView {
             VStack(spacing: 18) {

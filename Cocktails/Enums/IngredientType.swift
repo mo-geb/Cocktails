@@ -8,10 +8,12 @@ enum IngredientType: String, Codable, CaseIterable, Identifiable {
     case juice
     case bitters
     case mixer
-    case garnish
+    case fruit
+    case herb
+    case spice
+    case vegetable
     case other
 
-    /// Asset-based fallback image for devices without Apple Intelligence
     var imageName: String {
         switch self {
             case .spirit: return "Ingredient/dark_rum"
@@ -20,7 +22,10 @@ enum IngredientType: String, Codable, CaseIterable, Identifiable {
             case .juice: return "Ingredient/juice"
             case .bitters: return "Ingredient/bitters"
             case .mixer: return "Ingredient/soda_bottle"
-            case .garnish: return "Ingredient/lime_wedge"
+            case .fruit: return "Ingredient/lime_wedge"
+            case .herb: return "Ingredient/mint_leaf"
+            case .spice: return "Ingredient/black_pepper"
+            case .vegetable: return "Ingredient/celery_stick"
             default: return "Ingredient/fluid"
         }
     }
@@ -34,7 +39,10 @@ enum IngredientType: String, Codable, CaseIterable, Identifiable {
         case .juice: return "Juices"
         case .bitters: return "Bitters"
         case .mixer: return "Mixers"
-        case .garnish: return "Garnishes"
+        case .fruit: return "Fruits"
+        case .herb: return "Herbs"
+        case .spice: return "Spices"
+        case .vegetable: return "Vegetables"
         case .other: return "Other"
         }
     }
