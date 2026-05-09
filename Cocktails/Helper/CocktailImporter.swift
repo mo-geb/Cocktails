@@ -191,14 +191,15 @@ final class CocktailImporter {
             logger.debug("Processing cocktail: \(dto.name)")
             var recipeIngredients: [RecipeIngredient] = []
 
-            for ingDTO in dto.ingredients {
+            for (index, ingDTO) in dto.ingredients.enumerated() {
                 let unit = ingDTO.unit ?? .none
 
                 let recipeIngredient = RecipeIngredient(
                     amount: ingDTO.amount,
                     unit: unit,
                     note: ingDTO.note ?? "",
-                    role: .core
+                    role: .core,
+                    sortOrder: index
                 )
 
                 if let mappedIngredient = existingIngredients[ingDTO.ingredientName] {
@@ -211,14 +212,15 @@ final class CocktailImporter {
                 recipeIngredients.append(recipeIngredient)
             }
 
-            for garnishDTO in dto.garnishes ?? [] {
+            for (index, garnishDTO) in (dto.garnishes ?? []).enumerated() {
                 let unit = garnishDTO.unit ?? .none
 
                 let recipeIngredient = RecipeIngredient(
                     amount: garnishDTO.amount,
                     unit: unit,
                     note: garnishDTO.note ?? "",
-                    role: .garnish
+                    role: .garnish,
+                    sortOrder: index
                 )
 
                 if let mappedIngredient = existingIngredients[garnishDTO.ingredientName] {

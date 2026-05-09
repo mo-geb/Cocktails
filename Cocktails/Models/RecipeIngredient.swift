@@ -7,17 +7,19 @@ final class RecipeIngredient {
     var amount: Double = 0.0
     var unit: MeasurementUnit = MeasurementUnit.ml
     var note: String = ""
+    var sortOrder: Int = 0
 
     var cocktail: Cocktail?
     var ingredient: Ingredient?
     var role: IngredientRole = IngredientRole.core
 
-    init(amount: Double = 0.0, unit: MeasurementUnit = .ml, note: String = "", role: IngredientRole = .core, ingredient: Ingredient? = nil) {
+    init(amount: Double = 0.0, unit: MeasurementUnit = .ml, note: String = "", role: IngredientRole = .core, sortOrder: Int = 0, ingredient: Ingredient? = nil) {
         self.id = UUID()
         self.amount = amount
         self.unit = unit
         self.note = note
         self.role = role
+        self.sortOrder = sortOrder
         self.ingredient = ingredient
     }
 }
@@ -28,14 +30,16 @@ struct RecipeIngredientDraft: Hashable, Identifiable {
     var unit: MeasurementUnit = .ml
     var note: String = ""
     var role: IngredientRole = .core
+    var sortOrder: Int = 0
 
     var ingredient: IngredientDraft
 
-    init(amount: Double? = nil, unit: MeasurementUnit = .ml, note: String = "", role: IngredientRole = .core, ingredient: IngredientDraft = IngredientDraft()) {
+    init(amount: Double? = nil, unit: MeasurementUnit = .ml, note: String = "", role: IngredientRole = .core, sortOrder: Int = 0, ingredient: IngredientDraft = IngredientDraft()) {
         self.amount = amount
         self.unit = unit
         self.note = note
         self.role = role
+        self.sortOrder = sortOrder
         self.ingredient = ingredient
     }
 
@@ -45,6 +49,7 @@ struct RecipeIngredientDraft: Hashable, Identifiable {
         self.unit = recipeIngredient.unit
         self.note = recipeIngredient.note
         self.role = recipeIngredient.role
+        self.sortOrder = recipeIngredient.sortOrder
         self.ingredient = recipeIngredient.ingredient.map { IngredientDraft(from: $0) } ?? IngredientDraft()
     }
 }

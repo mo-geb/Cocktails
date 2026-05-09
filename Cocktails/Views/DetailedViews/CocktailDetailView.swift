@@ -14,8 +14,8 @@ struct CocktailDetailView: View {
     }
 
     var body: some View {
-        let regularIngredients = draft.ingredients.filter { $0.role == .core }
-        let garnishIngredients = draft.ingredients.filter { $0.role == .garnish }
+        let regularIngredients = draft.ingredients.filter { $0.role == .core }.sorted { $0.sortOrder < $1.sortOrder }
+        let garnishIngredients = draft.ingredients.filter { $0.role == .garnish }.sorted { $0.sortOrder < $1.sortOrder }
 
         ScrollView {
             VStack(spacing: 18) {
@@ -30,8 +30,14 @@ struct CocktailDetailView: View {
             .padding(.bottom, 40)
         }
         .scrollContentBackground(.hidden)
-        .onAppear {
-            backgroundColor = draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled)
+        .task {
+            let color = await draft.displayImage.dominantColor(
+                placeholderName: draft.glass.imageNameFilled,
+                cacheKey: draft.id
+            )
+            withAnimation(.easeInOut(duration: 0.6)) {
+                backgroundColor = color
+            }
         }
         .background {
             ZStack {
