@@ -39,14 +39,8 @@ struct IngredientGridCell: View {
         .frame(maxWidth: .infinity)
         .aspectRatio(0.85, contentMode: .fit)
         .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-        .task {
-            let color = await ingredient.displayImage.dominantColor(
-                placeholderName: ingredient.type.imageName,
-                cacheKey: ingredient.id
-            )
-            withAnimation(.easeInOut(duration: 0.6)) {
-                backgroundColor = color
-            }
+        .onAppear {
+            backgroundColor = ingredient.displayImage.dominantColor(placeholderName: ingredient.type.imageName)
         }
     }
 }

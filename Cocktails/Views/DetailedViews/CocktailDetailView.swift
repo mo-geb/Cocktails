@@ -30,14 +30,8 @@ struct CocktailDetailView: View {
             .padding(.bottom, 40)
         }
         .scrollContentBackground(.hidden)
-        .task {
-            let color = await draft.displayImage.dominantColor(
-                placeholderName: draft.glass.imageNameFilled,
-                cacheKey: draft.id
-            )
-            withAnimation(.easeInOut(duration: 0.6)) {
-                backgroundColor = color
-            }
+        .onAppear {
+            backgroundColor = draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled)
         }
         .background {
             ZStack {

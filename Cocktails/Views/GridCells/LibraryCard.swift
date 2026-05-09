@@ -61,7 +61,7 @@ struct LibraryCard: View {
                         .foregroundStyle(.secondary)
                         .padding(.horizontal, 10)
                         .padding(.vertical, 7)
-                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+                        .glassEffect()
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.horizontal, 14)
@@ -73,25 +73,9 @@ struct LibraryCard: View {
             .glassEffect(in: RoundedRectangle(cornerRadius: 20, style: .continuous))
         }
         .buttonStyle(CardPressStyle())
-        .task {
-            let cacheKey = "source-\(source.id)"
-            if let cached = await ColorCache.shared.color(for: cacheKey) {
-                accentColor = cached
-                return
-            }
-
+        .onAppear {
             if let uiImage = UIImage(named: source.imageName) {
-                let color = await Task.detached(priority: .userInitiated) {
-                    uiImage.dominantColor().map { Color($0) }
-                }.value
-                
-                if let color {
-                    await ColorCache.shared.set(color, for: cacheKey)
-                }
-
-                withAnimation(.easeInOut(duration: 0.6)) {
-                    accentColor = color
-                }
+                accentColor = uiImage.dominantColor().map { Color($0) }
             }
         }
     }
