@@ -106,8 +106,10 @@
     "ice": "crushed",
     "ingredients": [
       {
-        "ingredientName": "angostura_soaked_sugar_cube",
-        "amount": 1.0
+        "ingredientName": "sugar_cube",
+        "amount": 1.0,
+        "note": "Soaked with Angostura Bitters"
+
       },
       {
         "ingredientName": "soda_water",
@@ -217,8 +219,7 @@
       {
         "ingredientName": "maraschino",
         "amount": 20.0,
-        "unit": "ml",
-        "note": "Maraschino"
+        "unit": "ml"
       },
       {
         "ingredientName": "lime_juice",
@@ -257,8 +258,7 @@
       {
         "ingredientName": "maraschino",
         "amount": 10.0,
-        "unit": "ml",
-        "note": "Maraschino"
+        "unit": "ml"
       },
       {
         "ingredientName": "lime_juice",
@@ -291,7 +291,7 @@
         "ingredientName": "jack_daniels",
         "amount": 40.0,
         "unit": "ml",
-        "note": "Jack Daniel\u2019s"
+        "note": "Jack Daniel’s"
       },
       {
         "ingredientName": "triple_sec",
@@ -339,8 +339,7 @@
       {
         "ingredientName": "coffee_liqueur",
         "amount": 10.0,
-        "unit": "ml",
-        "note": "Coffee Liqueur"
+        "unit": "ml"
       },
       {
         "ingredientName": "amaretto",
@@ -375,8 +374,7 @@
       {
         "ingredientName": "coffee_liqueur",
         "amount": 20.0,
-        "unit": "ml",
-        "note": "Coffee Liqueur"
+        "unit": "ml"
       }
     ],
     "notes": "Method: Build\nGlass: Rocks"
@@ -535,8 +533,7 @@
       {
         "ingredientName": "coffee_liqueur",
         "amount": 20.0,
-        "unit": "ml",
-        "note": "Coffee Liqueur"
+        "unit": "ml"
       },
       {
         "ingredientName": "milk",
@@ -561,8 +558,7 @@
       {
         "ingredientName": "chambord",
         "amount": 20.0,
-        "unit": "ml",
-        "note": "Chambord"
+        "unit": "ml"
       },
       {
         "ingredientName": "pineapple_juice",
@@ -626,7 +622,7 @@
         "ingredientName": "whisky",
         "amount": 30.0,
         "unit": "ml",
-        "note": "Grant\u2019s Scotch Whisky"
+        "note": "Grant’s Scotch Whisky"
       },
       {
         "ingredientName": "drambuie",
@@ -727,7 +723,7 @@
         "ingredientName": "whisky",
         "amount": 20.0,
         "unit": "ml",
-        "note": "Grant\u2019s Scotch Whisky"
+        "note": "Grant’s Scotch Whisky"
       },
       {
         "ingredientName": "vermouth",
@@ -770,8 +766,7 @@
       {
         "ingredientName": "peach_liqueur",
         "amount": 10.0,
-        "unit": "ml",
-        "note": "Peach Liqueur"
+        "unit": "ml"
       },
       {
         "ingredientName": "prosecco",
@@ -971,14 +966,12 @@
       {
         "ingredientName": "spirit",
         "amount": 40.0,
-        "unit": "ml",
-        "note": "Spirit"
+        "unit": "ml"
       },
       {
         "ingredientName": "mixer",
         "amount": 0.0,
-        "unit": "fill",
-        "note": "Mixer"
+        "unit": "fill"
       },
       {
         "ingredientName": "lime_wedge",
@@ -1423,7 +1416,7 @@
     "notes": "Method: Build\nGlass: Cooper Mug, Highball"
   },
   {
-    "name": "Pi\u00f1a Colada",
+    "name": "Piña Colada",
     "imageName": "pina_colada",
     "glass": "hurricane",
     "method": "shake",
@@ -1887,8 +1880,7 @@
       {
         "ingredientName": "worcestershire_sauce",
         "amount": 30.0,
-        "unit": "ml",
-        "note": "Worcestershire Sauce"
+        "unit": "ml"
       },
       {
         "ingredientName": "tabasco",
@@ -1898,20 +1890,17 @@
       {
         "ingredientName": "black_pepper",
         "amount": 2.0,
-        "unit": "ml",
-        "note": "Black Pepper"
+        "unit": "ml"
       },
       {
         "ingredientName": "celery_salt",
         "amount": 4.0,
-        "unit": "ml",
-        "note": "Celery Salt"
+        "unit": "ml"
       },
       {
         "ingredientName": "tomato_juice",
         "amount": 0.0,
-        "unit": "fill",
-        "note": "Tomato juice"
+        "unit": "fill"
       }
     ],
     "garnishes": [
@@ -1933,7 +1922,7 @@
         "ingredientName": "whisky",
         "amount": 30.0,
         "unit": "ml",
-        "note": "Grant\u2019s Scotch Whisky"
+        "note": "Grant’s Scotch Whisky"
       },
       {
         "ingredientName": "amaretto",
@@ -1988,9 +1977,9 @@
     "ice": "none",
     "ingredients": [
       {
-        "ingredientName": "angostura_soaked_sugar_cube",
+        "ingredientName": "sugar_cube",
         "amount": 1.0,
-        "note": "Angostura soaked sugar cube"
+        "note": "Soaked with Angostura Bitters"
       },
       {
         "ingredientName": "cognac",
@@ -2020,8 +2009,7 @@
       {
         "ingredientName": "passionfruit_liqueur",
         "amount": 20.0,
-        "unit": "ml",
-        "note": "Passionfruit Liqueur"
+        "unit": "ml"
       },
       {
         "ingredientName": "passionfruit_puree",
@@ -2100,7 +2088,7 @@
         "ingredientName": "whisky",
         "amount": 60.0,
         "unit": "ml",
-        "note": "Grant\u2019s Scotch Whisky"
+        "note": "Grant’s Scotch Whisky"
       }
     ],
     "garnishes": [
@@ -2144,7 +2132,7 @@
     "notes": "Method: Shake & Fine Strain\nGlass: Shooter"
   },
   {
-    "name": "Horse\u2019s Neck",
+    "name": "Horse’s Neck",
     "imageName": "horses_neck",
     "glass": "highball",
     "method": "build",

@@ -7,7 +7,7 @@ enum ActiveCocktailSheet: Identifiable, Hashable {
     
     var id: String {
         switch self {
-        case .new(_): return "new"
+        case .new: return "new"
         case .edit(let c): return "edit-\(c.id)"
         case .view(let c): return "view-\(c.id)"
         }

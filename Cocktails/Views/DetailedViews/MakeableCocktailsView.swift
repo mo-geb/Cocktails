@@ -17,15 +17,11 @@ struct MakeableCocktailsView: View {
 
     private var almostMakeableCocktails: [(cocktail: Cocktail, missing: String)] {
         cocktails
-            .filter { cocktail in
-                let core = cocktail.ingredients?.filter { $0.role == .core } ?? []
-                let unstocked = core.filter { $0.ingredient?.isStocked != true }
-                return unstocked.count == 1
-            }
             .sorted { $0.name < $1.name }
             .compactMap { cocktail in
                 let core = cocktail.ingredients?.filter { $0.role == .core } ?? []
-                guard let missingName = core.first(where: { $0.ingredient?.isStocked != true })?.ingredient?.name else { return nil }
+                let unstocked = core.filter { $0.ingredient?.isStocked != true }
+                guard unstocked.count == 1, let missingName = unstocked.first?.ingredient?.name else { return nil }
                 return (cocktail: cocktail, missing: missingName)
             }
     }

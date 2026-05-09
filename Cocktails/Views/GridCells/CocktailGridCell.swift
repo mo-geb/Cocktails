@@ -98,7 +98,7 @@ struct CocktailGridCell: View {
             .aspectRatio(0.85, contentMode: .fit)
             .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
         }
-        .buttonStyle(CardPressStyle())
+        .buttonStyle(CardPressStyle(scale: 1.06))
         .contextMenu {
             Button {
                 cocktail.isFavourite.toggle()
@@ -115,10 +115,3 @@ struct CocktailGridCell: View {
     }
 }
 
-private struct CardPressStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .scaleEffect(configuration.isPressed ? 1.06 : 1.0)
-            .animation(.spring(response: 0.35, dampingFraction: 0.6), value: configuration.isPressed)
-    }
-}

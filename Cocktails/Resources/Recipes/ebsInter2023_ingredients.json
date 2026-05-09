@@ -45,9 +45,9 @@
     "type": "spirit"
   },
   {
-    "id": "angostura_soaked_sugar_cube",
-    "name": "Angostura Soaked Sugar Cube",
-    "type": "syrup"
+    "id": "sugar_cube",
+    "name": "Sugar Cube",
+    "type": "other"
   },
   {
     "id": "bourbon",

@@ -14,7 +14,6 @@ final class RecipeIngredient {
     var role: IngredientRole = IngredientRole.core
 
     init(amount: Double = 0.0, unit: MeasurementUnit = .ml, note: String = "", role: IngredientRole = .core, sortOrder: Int = 0, ingredient: Ingredient? = nil) {
-        self.id = UUID()
         self.amount = amount
         self.unit = unit
         self.note = note

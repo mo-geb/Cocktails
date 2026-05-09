@@ -31,29 +31,31 @@ enum GlassType: String, Codable, CaseIterable, Identifiable {
 
     var imageNameEmpty: String {
         switch self {
-        case .highball: return "Glass/Empty/highball"
-        case .martini: return "Glass/Empty/martini"
-        case .rocks: return "Glass/Empty/rocks"
-        case .tiki: return "Glass/Empty/tiki"
-        case .wine: return "Glass/Empty/wine"
-        case .flute: return "Glass/Empty/flute"
+        case .highball:  return "Glass/Empty/highball"
+        case .martini:   return "Glass/Empty/martini"
+        case .rocks:     return "Glass/Empty/rocks"
+        case .tiki:      return "Glass/Empty/tiki"
+        case .wine:      return "Glass/Empty/wine"
+        case .flute:     return "Glass/Empty/flute"
         case .copperMug: return "Glass/Empty/copper_mug"
         case .hurricane: return "Glass/Empty/hurricane"
-        default: return "Glass/Empty/martini"
+        case .shot:      return "Glass/Empty/martini"
+        case .other:     return "Glass/Empty/martini"
         }
     }
-    
+
     var imageNameFilled: String {
         switch self {
-        case .highball: return "Glass/Filled/highball"
-        case .martini: return "Glass/Filled/martini"
-        case .rocks: return "Glass/Filled/rocks"
-        case .tiki: return "Glass/Filled/tiki"
-        case .wine: return "Glass/Filled/wine"
-        case .flute: return "Glass/Filled/flute"
+        case .highball:  return "Glass/Filled/highball"
+        case .martini:   return "Glass/Filled/martini"
+        case .rocks:     return "Glass/Filled/rocks"
+        case .tiki:      return "Glass/Filled/tiki"
+        case .wine:      return "Glass/Filled/wine"
+        case .flute:     return "Glass/Filled/flute"
         case .copperMug: return "Glass/Filled/copper_mug"
         case .hurricane: return "Glass/Filled/hurricane"
-        default: return "Glass/Filled/martini"
+        case .shot:      return "Glass/Filled/martini"
+        case .other:     return "Glass/Filled/martini"
         }
     }
 }
