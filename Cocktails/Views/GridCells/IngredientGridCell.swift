@@ -3,22 +3,10 @@ import SwiftUI
 struct IngredientGridCell: View {
     let ingredient: Ingredient
 
-    @State private var backgroundColor: Color?
-    @Environment(\.colorScheme) private var colorScheme
-
     var body: some View {
-        ZStack {
-            if let backgroundColor {
-                LinearGradient(
-                    colors: [backgroundColor, backgroundColor.opacity(0.15)],
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-                .saturation(1.9)
-                .blendMode(colorScheme == .dark ? .screen : .normal)
-                .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-            }
-
+        Button {
+            ingredient.isStocked.toggle()
+        } label: {
             VStack(spacing: 0) {
                 ingredient.displayImage.view(placeholder: ingredient.type.imageName)
                     .scaledToFit()
@@ -35,12 +23,12 @@ struct IngredientGridCell: View {
                     .frame(maxWidth: .infinity)
             }
             .padding(.all, 4)
+            .frame(maxWidth: .infinity)
+            .aspectRatio(0.85, contentMode: .fit)
+            .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .grayscale(ingredient.isStocked ? 0 : 1)
+            .opacity(ingredient.isStocked ? 1 : 0.4)
         }
-        .frame(maxWidth: .infinity)
-        .aspectRatio(0.85, contentMode: .fit)
-        .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-        .onAppear {
-            backgroundColor = ingredient.displayImage.dominantColor(placeholderName: ingredient.type.imageName)
-        }
+        .buttonStyle(.plain)
     }
 }

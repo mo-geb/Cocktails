@@ -5,6 +5,7 @@ struct InventoryTab: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Ingredient.name) private var ingredients: [Ingredient]
     @State private var showSettings = false
+    @State private var showMakeableCocktails = false
 
     let columns = [
         GridItem(.flexible(), spacing: 10),
@@ -19,6 +20,10 @@ struct InventoryTab: View {
             guard let items = groups[type], !items.isEmpty else { return nil }
             return (type, items)
         }
+    }
+
+    private var allStocked: Bool {
+        ingredients.allSatisfy { $0.isStocked }
     }
 
     var body: some View {
@@ -51,8 +56,22 @@ struct InventoryTab: View {
                         Label("Settings", systemImage: "gearshape")
                     }
                 }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(allStocked ? "Deselect All" : "Select All") {
+                        let newValue = !allStocked
+                        for ingredient in ingredients {
+                            ingredient.isStocked = newValue
+                        }
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button { showMakeableCocktails = true } label: {
+                        Label("What can I make?", systemImage: "wineglass")
+                    }
+                }
             }
             .sheet(isPresented: $showSettings) { SettingsView() }
+            .sheet(isPresented: $showMakeableCocktails) { MakeableCocktailsView() }
         }
     }
 }

@@ -205,24 +205,24 @@ struct CocktailDetailView: View {
                 .scaledToFit()
                 .frame(width: 30, height: 30)
 
-            VStack(alignment: .leading, spacing: 4) {
-                HStack {
-                    if let amount = ingredient.amount, amount > 0 {
-                        let text = ingredient.unit.displayText(for: amount)
-                        if !text.isEmpty {
-                            Text(text)
-                                .bold()
-                                .fontDesign(.rounded)
-                        }
+            HStack(alignment: .center, spacing: 6) {
+                if let amount = ingredient.amount, amount > 0 {
+                    let text = ingredient.unit.displayText(for: amount)
+                    if !text.isEmpty {
+                        Text(text)
+                            .bold()
+                            .fontDesign(.rounded)
                     }
+                }
+                VStack(alignment: .leading, spacing: 2) {
                     Text(ingredient.ingredient.name)
-                    Spacer()
+                    if !ingredient.note.isEmpty {
+                        Text(ingredient.note)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
                 }
-                if !ingredient.note.isEmpty {
-                    Text(ingredient.note)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
+                Spacer()
             }
         }
     }

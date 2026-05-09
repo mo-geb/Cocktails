@@ -61,6 +61,9 @@
     "Delete Imported Cocktails" : {
 
     },
+    "Deselect All" : {
+
+    },
     "Dev" : {
 
     },
@@ -144,6 +147,9 @@
     "Notes" : {
 
     },
+    "Nothing to make" : {
+
+    },
     "OK" : {
 
     },
@@ -162,6 +168,9 @@
     "Search" : {
 
     },
+    "Select All" : {
+
+    },
     "Settings" : {
 
     },
@@ -177,8 +186,14 @@
     "Stir" : {
       "comment" : "Preparation method"
     },
+    "Stock ingredients in your inventory to see cocktails you can make." : {
+
+    },
     "Tiki" : {
       "comment" : "Glass type"
+    },
+    "What can I make?" : {
+
     },
     "Wine" : {
       "comment" : "Glass type"

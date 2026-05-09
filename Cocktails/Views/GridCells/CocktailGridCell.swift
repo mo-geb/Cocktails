@@ -2,6 +2,7 @@ import SwiftUI
 
 struct CocktailGridCell: View {
     let cocktail: Cocktail
+    var footerLabel: String? = nil
     let onTap: () -> Void
 
     @State private var backgroundColor: Color?
@@ -48,26 +49,33 @@ struct CocktailGridCell: View {
                         }
                         .foregroundStyle(.secondary)
 
-                        HStack(spacing: 0) {
-                            HStack(spacing: 5) {
-                                Image(cocktail.ice.imageName)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 12, height: 12)
-                                Text(cocktail.ice.localizedName)
-                            }
-                            .frame(maxWidth: .infinity)
+                        Group {
+                            if let footerLabel {
+                                Text(footerLabel)
+                                    .frame(maxWidth: .infinity)
+                            } else {
+                                HStack(spacing: 0) {
+                                    HStack(spacing: 5) {
+                                        Image(cocktail.ice.imageName)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 12, height: 12)
+                                        Text(cocktail.ice.localizedName)
+                                    }
+                                    .frame(maxWidth: .infinity)
 
-                            Divider().frame(height: 12)
+                                    Divider().frame(height: 12)
 
-                            HStack(spacing: 5) {
-                                Image(cocktail.method.customImageName)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 12, height: 12)
-                                Text(cocktail.method.localizedName)
+                                    HStack(spacing: 5) {
+                                        Image(cocktail.method.customImageName)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 12, height: 12)
+                                        Text(cocktail.method.localizedName)
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                }
                             }
-                            .frame(maxWidth: .infinity)
                         }
                         .font(.caption2)
                         .foregroundStyle(.secondary)

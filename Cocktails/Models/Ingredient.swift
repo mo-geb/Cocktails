@@ -6,13 +6,15 @@ final class Ingredient {
     var id: String = UUID().uuidString
     var name: String = ""
     var type: IngredientType = IngredientType.other
+    var isStocked: Bool = false
 
     @Relationship(inverse: \RecipeIngredient.ingredient) var usages: [RecipeIngredient]?
 
-    init(id: String = UUID().uuidString, name: String = "", type: IngredientType = .other) {
+    init(id: String = UUID().uuidString, name: String = "", type: IngredientType = .other, isStocked: Bool = false) {
         self.id = id
         self.name = name
         self.type = type
+        self.isStocked = isStocked
     }
 }
 
