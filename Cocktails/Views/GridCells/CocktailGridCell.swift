@@ -73,7 +73,7 @@ struct CocktailGridCell: View {
                         .foregroundStyle(.secondary)
                         .padding(.horizontal, 10)
                         .padding(.vertical, 7)
-                        .glassEffect()
+                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
                     }
                     .padding(.horizontal, 10)
                     .padding(.bottom, 14)
@@ -101,8 +101,14 @@ struct CocktailGridCell: View {
                 )
             }
         }
-        .onAppear {
-            backgroundColor = cocktail.displayImage.dominantColor(placeholderName: cocktail.glass.imageNameFilled)
+        .task {
+            let color = await cocktail.displayImage.dominantColor(
+                placeholderName: cocktail.glass.imageNameFilled,
+                cacheKey: cocktail.id
+            )
+            withAnimation(.easeInOut(duration: 0.6)) {
+                backgroundColor = color
+            }
         }
     }
 }
