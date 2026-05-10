@@ -4,8 +4,10 @@ import SwiftData
 struct InventoryTab: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Ingredient.name) private var ingredients: [Ingredient]
+    @Query private var cocktails: [Cocktail]
     @State private var showSettings = false
     @State private var showMakeableCocktails = false
+    @State private var showAddIngredient = false
 
     let columns = [
         GridItem(.flexible(), spacing: 10),
@@ -18,7 +20,8 @@ struct InventoryTab: View {
         let groups = Dictionary(grouping: ingredients) { $0.type }
         return IngredientType.allCases.compactMap { type in
             guard let items = groups[type], !items.isEmpty else { return nil }
-            return (type, items)
+            let sorted = items.sorted { $0.isStocked && !$1.isStocked }
+            return (type, sorted)
         }
     }
 
@@ -26,10 +29,19 @@ struct InventoryTab: View {
         ingredients.allSatisfy { $0.isStocked }
     }
 
+    private var makeableCount: Int {
+        cocktails.filter { cocktail in
+            let core = cocktail.ingredients?.filter { $0.role == .core } ?? []
+            return !core.isEmpty && core.allSatisfy { $0.ingredient?.isStocked == true }
+        }.count
+    }
+
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 28) {
+                    makeableCocktailsCard
+
                     ForEach(groupedIngredients, id: \.0) { type, items in
                         VStack(alignment: .leading, spacing: 10) {
                             Text(type.localizedName)
@@ -51,28 +63,61 @@ struct InventoryTab: View {
             .background(Color(.systemGroupedBackground))
             .navigationTitle("Inventory")
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button { showSettings = true } label: {
-                        Label("Settings", systemImage: "gearshape")
-                    }
-                }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(allStocked ? "Deselect All" : "Select All") {
-                        let newValue = !allStocked
-                        for ingredient in ingredients {
-                            ingredient.isStocked = newValue
+                    Menu {
+                        Button { showAddIngredient = true } label: {
+                            Label("Add Ingredient", systemImage: "plus")
                         }
-                    }
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button { showMakeableCocktails = true } label: {
-                        Label("What can I make?", systemImage: "wineglass")
+                        Button(allStocked ? "Deselect All" : "Select All") {
+                            let newValue = !allStocked
+                            for ingredient in ingredients {
+                                ingredient.isStocked = newValue
+                            }
+                        }
+                        Divider()
+                        Button { showSettings = true } label: {
+                            Label("Settings", systemImage: "gearshape")
+                        }
+                    } label: {
+                        Label("More", systemImage: "ellipsis.circle")
                     }
                 }
             }
             .sheet(isPresented: $showSettings) { SettingsView() }
             .sheet(isPresented: $showMakeableCocktails) { MakeableCocktailsView() }
+            .sheet(isPresented: $showAddIngredient) { Text("Add Ingredient — coming soon") }
         }
+    }
+
+    private var makeableCocktailsCard: some View {
+        Button { showMakeableCocktails = true } label: {
+            HStack(spacing: 16) {
+                Image(systemName: "wineglass")
+                    .font(.title2)
+                    .foregroundStyle(.secondary)
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(makeableCount == 0 ? "Nothing to make yet" : "\(makeableCount) cocktail\(makeableCount == 1 ? "" : "s") ready to make")
+                        .font(.subheadline.bold())
+                        .fontDesign(.rounded)
+                        .foregroundStyle(.primary)
+                    Text("Based on your stocked ingredients")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+
+                Spacer()
+
+                Image(systemName: "chevron.right")
+                    .font(.caption.bold())
+                    .foregroundStyle(.tertiary)
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 14)
+            .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .padding(.horizontal)
+        }
+        .buttonStyle(CardPressStyle())
     }
 }
 
