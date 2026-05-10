@@ -39,7 +39,7 @@ enum GlassType: String, Codable, CaseIterable, Identifiable {
         case .flute:     return "Glass/Empty/flute"
         case .copperMug: return "Glass/Empty/copper_mug"
         case .hurricane: return "Glass/Empty/hurricane"
-        case .shot:      return "Glass/Empty/martini"
+        case .shot:      return "Glass/Empty/shot"
         case .other:     return "Glass/Empty/martini"
         }
     }
@@ -54,7 +54,7 @@ enum GlassType: String, Codable, CaseIterable, Identifiable {
         case .flute:     return "Glass/Filled/flute"
         case .copperMug: return "Glass/Filled/copper_mug"
         case .hurricane: return "Glass/Filled/hurricane"
-        case .shot:      return "Glass/Filled/martini"
+        case .shot:      return "Glass/Filled/shot"
         case .other:     return "Glass/Filled/martini"
         }
     }

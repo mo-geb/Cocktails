@@ -16,12 +16,13 @@ enum IngredientType: String, Codable, CaseIterable, Identifiable {
 
     var imageName: String {
         switch self {
-            case .spirit: return "Ingredient/dark_rum"
-            case .liqueur: return "Ingredient/liqueur"
-            case .syrup: return "Ingredient/syrup"
-            case .juice: return "Ingredient/juice"
+            case .spirit: return "Ingredient/vodka"
+            case .liqueur: return "Ingredient/peach_liqueur"
+            case .fortifiedWine: return "Ingredient/vermouth"
+            case .syrup: return "Ingredient/sugar_syrup"
+            case .juice: return "Ingredient/orange_juice"
             case .bitters: return "Ingredient/bitters"
-            case .mixer: return "Ingredient/soda_bottle"
+            case .mixer: return "Ingredient/mixer"
             case .fruit: return "Ingredient/lime_wedge"
             case .herb: return "Ingredient/mint_leaf"
             case .spice: return "Ingredient/black_pepper"

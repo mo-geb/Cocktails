@@ -8,6 +8,7 @@ struct CocktailTab: View {
     @State private var activeCocktailSheet: ActiveCocktailSheet?
     @State private var grouping: CocktailGrouping = .none
     @State private var showSettings = false
+    @State private var cocktailToDelete: Cocktail?
     
     let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
     
@@ -25,6 +26,9 @@ struct CocktailTab: View {
         case .ice:
             let groups = Dictionary(grouping: sortedCocktails) { $0.ice.localizedName }
             return groups.sorted { $0.key < $1.key }
+        case .favourite:
+            let groups = Dictionary(grouping: sortedCocktails) { $0.isFavourite ? "Favourites" : "All Cocktails" }
+            return groups.sorted { $0.key > $1.key }
         }
     }
     
@@ -38,24 +42,33 @@ struct CocktailTab: View {
                             Label("Settings", systemImage: "gearshape")
                         }
                     }
-                    ToolbarItem(placement: .primaryAction) {
-                        HStack(spacing: 16) {
-                            Menu {
-                                Picker("Group By", selection: $grouping) {
-                                    ForEach(CocktailGrouping.allCases) { option in
-                                        Label(option.localizedName, systemImage: option.systemImage)
-                                            .tag(option)
-                                    }
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Menu {
+                            Picker("Group By", selection: $grouping) {
+                                ForEach(CocktailGrouping.allCases) { option in
+                                    Label(option.localizedName, systemImage: option.systemImage)
+                                        .tag(option)
                                 }
-                            } label: {
-                                Image(systemName: grouping == .none ? "line.3.horizontal.decrease.circle" : grouping.systemImage)
-                                    .symbolVariant(grouping == .none ? .none : .fill)
                             }
-
-                            Button(action: addNewCocktail) {
-                                Label("Add Cocktail", systemImage: "plus")
-                            }
+                        } label: {
+                            Image(systemName: grouping == .none ? "line.3.horizontal.decrease.circle" : grouping.systemImage)
+                                .symbolVariant(grouping == .none ? .none : .fill)
                         }
+                    }
+                    ToolbarItem(placement: .primaryAction) {
+                        Button(action: addNewCocktail) {
+                            Label("Add Cocktail", systemImage: "plus")
+                        }
+                    }
+                }
+                .confirmationDialog(
+                    "Delete \"\(cocktailToDelete?.name ?? "")\"?",
+                    isPresented: Binding(get: { cocktailToDelete != nil }, set: { if !$0 { cocktailToDelete = nil } }),
+                    titleVisibility: .visible
+                ) {
+                    Button("Delete", role: .destructive) {
+                        if let c = cocktailToDelete { modelContext.delete(c) }
+                        cocktailToDelete = nil
                     }
                 }
                 .sheet(isPresented: $showSettings) { SettingsView() }
@@ -67,7 +80,18 @@ struct CocktailTab: View {
                         }
                         .presentationDetents([.large])
                         .presentationDragIndicator(.visible)
-                    default: EmptyView()
+                    case .new(let draft):
+                        NavigationStack {
+                            CocktailEditView(draft: draft)
+                        }
+                        .presentationDetents([.large])
+                        .presentationDragIndicator(.visible)
+                    case .edit(let c):
+                        NavigationStack {
+                            CocktailEditView(cocktail: c)
+                        }
+                        .presentationDetents([.large])
+                        .presentationDragIndicator(.visible)
                     }
                 }
         }
@@ -88,7 +112,7 @@ struct CocktailTab: View {
 
                         LazyVGrid(columns: columns, spacing: 12) {
                             ForEach(cocktails) { cocktail in
-                                CocktailGridCell(cocktail: cocktail) {
+                                CocktailGridCell(cocktail: cocktail, onDelete: { cocktailToDelete = cocktail }) {
                                     activeCocktailSheet = .view(cocktail)
                                 }
                             }

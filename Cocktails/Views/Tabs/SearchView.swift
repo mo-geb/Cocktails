@@ -1,19 +1,31 @@
 import SwiftUI
 import SwiftData
 
-private enum SearchTab: String, CaseIterable {
+enum SearchTab: String, CaseIterable {
     case cocktails = "Cocktails"
     case ingredients = "Ingredients"
 }
 
 struct SearchView: View {
+    @Environment(\.modelContext) private var modelContext
     @Query private var cocktails: [Cocktail]
     @Query(sort: \Ingredient.name) private var ingredients: [Ingredient]
 
+    let preferredTab: SearchTab
+
     @State private var query = ""
-    @State private var selectedTab: SearchTab = .cocktails
+    @State private var selectedTab: SearchTab
     @State private var activeCocktailSheet: ActiveCocktailSheet?
     @State private var showSettings = false
+    @State private var showSuggestCocktail = false
+    @State private var showSuggestIngredient = false
+    @State private var suggestionName = ""
+    @State private var cocktailToDelete: Cocktail?
+
+    init(preferredTab: SearchTab = .cocktails) {
+        self.preferredTab = preferredTab
+        self._selectedTab = State(initialValue: preferredTab)
+    }
 
     let cocktailColumns = [
         GridItem(.flexible(), spacing: 12),
@@ -35,6 +47,16 @@ struct SearchView: View {
     private var filteredIngredients: [Ingredient] {
         guard !query.isEmpty else { return ingredients }
         return ingredients.filter { $0.name.localizedCaseInsensitiveContains(query) }
+    }
+
+    private var showCocktailSuggestion: Bool {
+        guard !query.isEmpty else { return false }
+        return !cocktails.contains { $0.name.localizedCaseInsensitiveCompare(query) == .orderedSame }
+    }
+
+    private var showIngredientSuggestion: Bool {
+        guard !query.isEmpty else { return false }
+        return !ingredients.contains { $0.name.localizedCaseInsensitiveCompare(query) == .orderedSame }
     }
 
     private var groupedIngredients: [(IngredientType, [Ingredient])] {
@@ -67,6 +89,7 @@ struct SearchView: View {
             }
             .background(Color(.systemGroupedBackground))
             .navigationTitle("Search")
+            .onAppear { selectedTab = preferredTab }
             .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: "Cocktails, Ingredients…")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -79,27 +102,51 @@ struct SearchView: View {
             .sheet(item: $activeCocktailSheet) { sheet in
                 switch sheet {
                 case .view(let c):
-                    NavigationStack {
-                        CocktailDetailView(cocktail: c)
-                    }
-                    .presentationDetents([.large])
-                    .presentationDragIndicator(.visible)
+                    NavigationStack { CocktailDetailView(cocktail: c) }
+                        .presentationDetents([.large])
+                        .presentationDragIndicator(.visible)
                 default: EmptyView()
                 }
+            }
+            .sheet(isPresented: $showSuggestCocktail) {
+                let draft = { var d = CocktailDraft(); d.name = suggestionName; return d }()
+                NavigationStack { CocktailEditView(draft: draft) }
+                    .presentationDetents([.large])
+                    .presentationDragIndicator(.visible)
+            }
+            .confirmationDialog(
+                "Delete \"\(cocktailToDelete?.name ?? "")\"?",
+                isPresented: Binding(get: { cocktailToDelete != nil }, set: { if !$0 { cocktailToDelete = nil } }),
+                titleVisibility: .visible
+            ) {
+                Button("Delete", role: .destructive) {
+                    if let c = cocktailToDelete { modelContext.delete(c) }
+                    cocktailToDelete = nil
+                }
+            }
+            .sheet(isPresented: $showSuggestIngredient) {
+                NavigationStack { IngredientEditView(suggestedName: suggestionName) }
+                    .presentationDetents([.medium])
             }
         }
     }
 
     @ViewBuilder
     private var cocktailGrid: some View {
-        if filteredCocktails.isEmpty {
+        if filteredCocktails.isEmpty && !showCocktailSuggestion {
             ContentUnavailableView.search(text: query)
                 .padding(.top, 60)
         } else {
             LazyVGrid(columns: cocktailColumns, spacing: 12) {
                 ForEach(filteredCocktails) { cocktail in
-                    CocktailGridCell(cocktail: cocktail) {
+                    CocktailGridCell(cocktail: cocktail, onDelete: { cocktailToDelete = cocktail }) {
                         activeCocktailSheet = .view(cocktail)
+                    }
+                }
+                if showCocktailSuggestion {
+                    cocktailAddCard(name: query) {
+                        suggestionName = query
+                        showSuggestCocktail = true
                     }
                 }
             }
@@ -110,7 +157,7 @@ struct SearchView: View {
 
     @ViewBuilder
     private var ingredientGrid: some View {
-        if filteredIngredients.isEmpty {
+        if filteredIngredients.isEmpty && !showIngredientSuggestion {
             ContentUnavailableView.search(text: query)
                 .padding(.top, 60)
         } else if query.isEmpty {
@@ -138,6 +185,15 @@ struct SearchView: View {
             LazyVGrid(columns: ingredientColumns, spacing: 10) {
                 ForEach(filteredIngredients) { ingredient in
                     IngredientGridCell(ingredient: ingredient)
+                }
+                if showIngredientSuggestion {
+                    Button {
+                        suggestionName = query
+                        showSuggestIngredient = true
+                    } label: {
+                        ingredientAddCellLabel(name: query)
+                    }
+                    .buttonStyle(.plain)
                 }
             }
             .padding(.horizontal)

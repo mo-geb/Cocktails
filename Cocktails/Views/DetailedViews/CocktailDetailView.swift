@@ -1,16 +1,18 @@
 import SwiftUI
 import SwiftData
-import PhotosUI
 
 struct CocktailDetailView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) private var colorScheme
 
+    private let cocktail: Cocktail
     @State private var draft: CocktailDraft
     @State private var backgroundColor: Color?
+    @State private var showEdit = false
 
     init(cocktail: Cocktail) {
-        self.draft = CocktailDraft(from: cocktail)
+        self.cocktail = cocktail
+        self._draft = State(initialValue: CocktailDraft(from: cocktail))
     }
 
     var body: some View {
@@ -32,6 +34,16 @@ struct CocktailDetailView: View {
         .scrollContentBackground(.hidden)
         .onAppear {
             backgroundColor = draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled)
+        }
+        .sheet(isPresented: $showEdit, onDismiss: {
+            draft = CocktailDraft(from: cocktail)
+            backgroundColor = draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled)
+        }) {
+            NavigationStack {
+                CocktailEditView(cocktail: cocktail)
+            }
+            .presentationDetents([.large])
+            .presentationDragIndicator(.visible)
         }
         .background {
             ZStack {
@@ -196,6 +208,9 @@ struct CocktailDetailView: View {
     private var toolbarContent: some ToolbarContent {
         ToolbarItem(placement: .cancellationAction) {
             Button("Close") { dismiss() }
+        }
+        ToolbarItem(placement: .primaryAction) {
+            Button("Edit") { showEdit = true }
         }
     }
 

@@ -8,6 +8,7 @@ struct InventoryTab: View {
     @State private var showSettings = false
     @State private var showMakeableCocktails = false
     @State private var showAddIngredient = false
+    @State private var ingredientToEdit: Ingredient?
 
     let columns = [
         GridItem(.flexible(), spacing: 10),
@@ -51,7 +52,9 @@ struct InventoryTab: View {
 
                             LazyVGrid(columns: columns, spacing: 10) {
                                 ForEach(items) { ingredient in
-                                    IngredientGridCell(ingredient: ingredient)
+                                    IngredientGridCell(ingredient: ingredient) {
+                                        ingredientToEdit = ingredient
+                                    }
                                 }
                             }
                             .padding(.horizontal)
@@ -63,29 +66,40 @@ struct InventoryTab: View {
             .background(Color(.systemGroupedBackground))
             .navigationTitle("Inventory")
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button { showSettings = true } label: {
+                        Label("Settings", systemImage: "gearshape")
+                    }
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu {
-                        Button { showAddIngredient = true } label: {
-                            Label("Add Ingredient", systemImage: "plus")
-                        }
-                        Button(allStocked ? "Deselect All" : "Select All") {
+                        Button {
                             let newValue = !allStocked
-                            for ingredient in ingredients {
-                                ingredient.isStocked = newValue
-                            }
-                        }
-                        Divider()
-                        Button { showSettings = true } label: {
-                            Label("Settings", systemImage: "gearshape")
+                            for ingredient in ingredients { ingredient.isStocked = newValue }
+                        } label: {
+                            Label(allStocked ? "Deselect All" : "Select All",
+                                  systemImage: allStocked ? "minus.circle" : "checkmark.circle")
                         }
                     } label: {
                         Label("More", systemImage: "ellipsis.circle")
                     }
                 }
+                ToolbarItem(placement: .primaryAction) {
+                    Button { showAddIngredient = true } label: {
+                        Label("Add Ingredient", systemImage: "plus")
+                    }
+                }
             }
             .sheet(isPresented: $showSettings) { SettingsView() }
             .sheet(isPresented: $showMakeableCocktails) { MakeableCocktailsView() }
-            .sheet(isPresented: $showAddIngredient) { Text("Add Ingredient — coming soon") }
+            .sheet(isPresented: $showAddIngredient) {
+                NavigationStack { IngredientEditView() }
+                    .presentationDetents([.medium])
+            }
+            .sheet(item: $ingredientToEdit) { ingredient in
+                NavigationStack { IngredientEditView(ingredient: ingredient) }
+                    .presentationDetents([.medium])
+            }
         }
     }
 

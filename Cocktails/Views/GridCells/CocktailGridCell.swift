@@ -3,6 +3,7 @@ import SwiftUI
 struct CocktailGridCell: View {
     let cocktail: Cocktail
     var footerLabel: String? = nil
+    var onDelete: (() -> Void)? = nil
     let onTap: () -> Void
 
     @State private var backgroundColor: Color?
@@ -108,10 +109,49 @@ struct CocktailGridCell: View {
                     systemImage: cocktail.isFavourite ? "star.slash" : "star"
                 )
             }
+            if let onDelete {
+                Button(role: .destructive, action: onDelete) {
+                    Label("Delete", systemImage: "trash")
+                }
+            }
         }
         .onAppear {
             backgroundColor = cocktail.displayImage.dominantColor(placeholderName: cocktail.glass.imageNameFilled)
         }
     }
+}
+
+func cocktailAddCard(name: String, action: @escaping () -> Void) -> some View {
+    Button(action: action) {
+        VStack(spacing: 0) {
+            Spacer()
+            Image(systemName: "plus.circle.fill")
+                .font(.system(size: 44))
+                .foregroundStyle(.tint)
+                .frame(maxWidth: .infinity)
+            Spacer()
+            VStack(spacing: 4) {
+                Text(name)
+                    .font(.subheadline.bold())
+                    .fontDesign(.rounded)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.85)
+                Text("Add cocktail")
+                    .font(.caption2)
+                    .foregroundStyle(.tint)
+            }
+            .padding(.horizontal, 10)
+            .padding(.bottom, 14)
+        }
+        .frame(maxWidth: .infinity)
+        .aspectRatio(0.85, contentMode: .fit)
+        .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .strokeBorder(.tint.opacity(0.55), lineWidth: 1.5)
+        }
+    }
+    .buttonStyle(CardPressStyle(scale: 1.06))
 }
 

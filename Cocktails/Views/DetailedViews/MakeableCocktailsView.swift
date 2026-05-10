@@ -3,8 +3,10 @@ import SwiftData
 
 struct MakeableCocktailsView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
     @Query private var cocktails: [Cocktail]
     @State private var activeCocktailSheet: ActiveCocktailSheet?
+    @State private var cocktailToDelete: Cocktail?
 
     let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
 
@@ -42,7 +44,7 @@ struct MakeableCocktailsView: View {
                                 section(title: "Ready to make") {
                                     LazyVGrid(columns: columns, spacing: 12) {
                                         ForEach(makeableCocktails) { cocktail in
-                                            CocktailGridCell(cocktail: cocktail) {
+                                            CocktailGridCell(cocktail: cocktail, onDelete: { cocktailToDelete = cocktail }) {
                                                 activeCocktailSheet = .view(cocktail)
                                             }
                                         }
@@ -54,7 +56,7 @@ struct MakeableCocktailsView: View {
                                 section(title: "Almost there") {
                                     LazyVGrid(columns: columns, spacing: 12) {
                                         ForEach(almostMakeableCocktails, id: \.cocktail.id) { item in
-                                            CocktailGridCell(cocktail: item.cocktail, footerLabel: "Missing: \(item.missing)") {
+                                            CocktailGridCell(cocktail: item.cocktail, footerLabel: "Missing: \(item.missing)", onDelete: { cocktailToDelete = item.cocktail }) {
                                                 activeCocktailSheet = .view(item.cocktail)
                                             }
                                         }
@@ -71,6 +73,16 @@ struct MakeableCocktailsView: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Close") { dismiss() }
+                }
+            }
+            .confirmationDialog(
+                "Delete \"\(cocktailToDelete?.name ?? "")\"?",
+                isPresented: Binding(get: { cocktailToDelete != nil }, set: { if !$0 { cocktailToDelete = nil } }),
+                titleVisibility: .visible
+            ) {
+                Button("Delete", role: .destructive) {
+                    if let c = cocktailToDelete { modelContext.delete(c) }
+                    cocktailToDelete = nil
                 }
             }
             .sheet(item: $activeCocktailSheet) { sheet in
