@@ -30,7 +30,7 @@ struct IngredientEditView: View {
             Section {
                 HStack {
                     Spacer()
-                    IngredientDraft(name: name, type: type).displayImage
+                    (originalIngredient?.displayImage ?? DisplayImageSource.placeholder)
                         .view(placeholder: type.imageName)
                         .scaledToFit()
                         .frame(width: 64, height: 64)

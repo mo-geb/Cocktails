@@ -23,7 +23,9 @@ enum PreparationMethod: String, Codable, CaseIterable, Identifiable {
         switch self {
         case .stir:  return "Method/stir"
         case .shake: return "Method/shake"
-        default: return "Method/shake"
+        case .blend: return "Method/blend"
+        case .build: return "Method/build"
+        case .roll: return "Method/shake"
         }
     }
 }

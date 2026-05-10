@@ -7,8 +7,6 @@ struct CocktailEditView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) private var colorScheme
 
-    @Query(sort: \Ingredient.name) private var allIngredients: [Ingredient]
-
     @State private var draft: CocktailDraft
     @State private var backgroundColor: Color?
     @State private var photoItem: PhotosPickerItem?
@@ -428,7 +426,9 @@ struct CocktailEditView: View {
     }
 
     private func findOrCreate(_ draft: IngredientDraft) -> Ingredient {
-        if let existing = allIngredients.first(where: { $0.id == draft.id }) {
+        let id = draft.id
+        let request = FetchDescriptor<Ingredient>(predicate: #Predicate { $0.id == id })
+        if let existing = try? modelContext.fetch(request).first {
             return existing
         }
         let ingredient = Ingredient(id: draft.id, name: draft.name, type: draft.type)

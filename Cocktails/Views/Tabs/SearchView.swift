@@ -8,7 +8,7 @@ enum SearchTab: String, CaseIterable {
 
 struct SearchView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var cocktails: [Cocktail]
+    @Query(sort: \Cocktail.name) private var cocktails: [Cocktail]
     @Query(sort: \Ingredient.name) private var ingredients: [Ingredient]
 
     let preferredTab: SearchTab
@@ -17,9 +17,7 @@ struct SearchView: View {
     @State private var selectedTab: SearchTab
     @State private var activeCocktailSheet: ActiveCocktailSheet?
     @State private var showSettings = false
-    @State private var showSuggestCocktail = false
-    @State private var showSuggestIngredient = false
-    @State private var suggestionName = ""
+    @State private var suggestionSheet: SuggestionSheet?
     @State private var cocktailToDelete: Cocktail?
 
     init(preferredTab: SearchTab = .cocktails) {
@@ -39,9 +37,8 @@ struct SearchView: View {
     ]
 
     private var filteredCocktails: [Cocktail] {
-        let sorted = cocktails.sorted { $0.name < $1.name }
-        guard !query.isEmpty else { return sorted }
-        return sorted.filter { $0.name.localizedCaseInsensitiveContains(query) }
+        guard !query.isEmpty else { return cocktails }
+        return cocktails.filter { $0.name.localizedCaseInsensitiveContains(query) }
     }
 
     private var filteredIngredients: [Ingredient] {
@@ -108,12 +105,7 @@ struct SearchView: View {
                 default: EmptyView()
                 }
             }
-            .sheet(isPresented: $showSuggestCocktail) {
-                let draft = { var d = CocktailDraft(); d.name = suggestionName; return d }()
-                NavigationStack { CocktailEditView(draft: draft) }
-                    .presentationDetents([.large])
-                    .presentationDragIndicator(.visible)
-            }
+            .sheet(item: $suggestionSheet) { suggestionSheetView($0) }
             .confirmationDialog(
                 "Delete \"\(cocktailToDelete?.name ?? "")\"?",
                 isPresented: Binding(get: { cocktailToDelete != nil }, set: { if !$0 { cocktailToDelete = nil } }),
@@ -124,10 +116,20 @@ struct SearchView: View {
                     cocktailToDelete = nil
                 }
             }
-            .sheet(isPresented: $showSuggestIngredient) {
-                NavigationStack { IngredientEditView(suggestedName: suggestionName) }
-                    .presentationDetents([.medium])
-            }
+        }
+    }
+
+    @ViewBuilder
+    private func suggestionSheetView(_ sheet: SuggestionSheet) -> some View {
+        switch sheet {
+        case .cocktail(let name):
+            let draft = { var d = CocktailDraft(); d.name = name; return d }()
+            NavigationStack { CocktailEditView(draft: draft) }
+                .presentationDetents([.large])
+                .presentationDragIndicator(.visible)
+        case .ingredient(let name):
+            NavigationStack { IngredientEditView(suggestedName: name) }
+                .presentationDetents([.medium])
         }
     }
 
@@ -145,8 +147,7 @@ struct SearchView: View {
                 }
                 if showCocktailSuggestion {
                     cocktailAddCard(name: query) {
-                        suggestionName = query
-                        showSuggestCocktail = true
+                        suggestionSheet = .cocktail(query)
                     }
                 }
             }
@@ -188,8 +189,7 @@ struct SearchView: View {
                 }
                 if showIngredientSuggestion {
                     Button {
-                        suggestionName = query
-                        showSuggestIngredient = true
+                        suggestionSheet = .ingredient(query)
                     } label: {
                         ingredientAddCellLabel(name: query)
                     }
@@ -198,6 +198,17 @@ struct SearchView: View {
             }
             .padding(.horizontal)
             .padding(.vertical)
+        }
+    }
+}
+
+private enum SuggestionSheet: Identifiable {
+    case cocktail(String)
+    case ingredient(String)
+    var id: String {
+        switch self {
+        case .cocktail(let name): "cocktail-\(name)"
+        case .ingredient(let name): "ingredient-\(name)"
         }
     }
 }

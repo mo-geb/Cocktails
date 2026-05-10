@@ -16,6 +16,7 @@ struct SettingsView: View {
                     importSection
                     aboutSection
                     dataSection
+                    developerSection
 
                     HStack {
                         Spacer()
@@ -81,6 +82,20 @@ struct SettingsView: View {
                         trailing: .externalLink)
                 }
             }
+            .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        }
+    }
+
+    private var developerSection: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            sectionHeader("Developer")
+
+            NavigationLink(destination: DebugTab()) {
+                row(icon: "hammer.fill", color: .orange,
+                    title: "Developer Tools",
+                    subtitle: "Database controls and statistics")
+            }
+            .buttonStyle(.plain)
             .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
         }
     }

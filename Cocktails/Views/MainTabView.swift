@@ -15,18 +15,14 @@ struct MainTabView: View {
                 InventoryTab()
             }
 
-            Tab("Dev", systemImage: "hammer", value: .debug) {
-                DebugTab()
-            }
-
             Tab(value: .search, role: .search) {
                 SearchView(preferredTab: preferredSearchTab)
             }
         }
         .onChange(of: selectedTab) { _, newTab in
             switch newTab {
-            case .cocktails, .debug: preferredSearchTab = .cocktails
-            case .inventory:         preferredSearchTab = .ingredients
+            case .cocktails: preferredSearchTab = .cocktails
+            case .inventory: preferredSearchTab = .ingredients
             default: break
             }
         }

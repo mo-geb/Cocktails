@@ -33,7 +33,7 @@ struct IngredientPickerView: View {
     private var showAddSuggestion: Bool {
         let trimmed = searchText.trimmingCharacters(in: .whitespaces)
         guard !trimmed.isEmpty else { return false }
-        return !allIngredients.contains {
+        return !filtered.contains {
             $0.name.localizedCaseInsensitiveCompare(trimmed) == .orderedSame
         }
     }

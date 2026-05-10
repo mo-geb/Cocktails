@@ -5,82 +5,76 @@ struct DebugTab: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Ingredient.name) private var ingredients: [Ingredient]
     @Query private var cocktails: [Cocktail]
-    
+
     @State private var errorMessage: String?
     @State private var showError = false
     @State private var importSummary: String?
     @State private var showImportSummary = false
 
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(spacing: 24) {
-                    // MARK: - Statistics Grid
-                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                        statCard(title: "Cocktails", value: "\(cocktails.count)", icon: "wineglass.fill", color: .purple)
-                        statCard(title: "Ingredients", value: "\(ingredients.count)", icon: "leaf.fill", color: .green)
-                    }
-                    
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("Database Controls")
-                            .font(.subheadline.bold())
-                            .foregroundStyle(.secondary)
-                            .padding(.leading, 4)
-                        
-                        // MARK: - Action Buttons
-                        VStack(spacing: 12) {
-                            debugButton(
-                                title: "Import EBS Ingredients",
-                                subtitle: "Populate dedicated ingredients catalogue",
-                                icon: "leaf.fill",
-                                color: .green
-                            ) {
-                                performImport {
-                                    try CocktailImporter(context: modelContext)
-                                        .importIngredients(from: .ebsInter2023)
-                                }
-                            }
+        ScrollView {
+            VStack(spacing: 24) {
+                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+                    statCard(title: "Cocktails", value: "\(cocktails.count)", icon: "wineglass.fill", color: .purple)
+                    statCard(title: "Ingredients", value: "\(ingredients.count)", icon: "leaf.fill", color: .green)
+                }
 
-                            debugButton(
-                                title: "Import EBS Library",
-                                subtitle: "Populate SwiftData with presets",
-                                icon: "square.and.arrow.down.fill",
-                                color: .blue
-                            ) {
-                                performImportWithResult {
-                                    try CocktailImporter(context: modelContext)
-                                        .importAll(from: .ebsInter2023)
-                                }
-                            }
-                            
-                            debugButton(
-                                title: "Wipe All Data",
-                                subtitle: "Delete all cocktails and ingredients",
-                                icon: "trash.fill",
-                                color: .red
-                            ) {
-                                wipeData()
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("Database Controls")
+                        .font(.subheadline.bold())
+                        .foregroundStyle(.secondary)
+                        .padding(.leading, 4)
+
+                    VStack(spacing: 12) {
+                        debugButton(
+                            title: "Import EBS Ingredients",
+                            subtitle: "Populate dedicated ingredients catalogue",
+                            icon: "leaf.fill",
+                            color: .green
+                        ) {
+                            performImport {
+                                try CocktailImporter(context: modelContext)
+                                    .importIngredients(from: .ebsInter2023)
                             }
                         }
+
+                        debugButton(
+                            title: "Import EBS Library",
+                            subtitle: "Populate SwiftData with presets",
+                            icon: "square.and.arrow.down.fill",
+                            color: .blue
+                        ) {
+                            performImportWithResult {
+                                try CocktailImporter(context: modelContext)
+                                    .importAll(from: .ebsInter2023)
+                            }
+                        }
+
+                        debugButton(
+                            title: "Wipe All Data",
+                            subtitle: "Delete all cocktails and ingredients",
+                            icon: "trash.fill",
+                            color: .red
+                        ) {
+                            wipeData()
+                        }
                     }
-                    
-                    Spacer()
                 }
-                .padding()
             }
-            .navigationTitle("Developer")
-            .background(Color(.systemGroupedBackground))
-            .alert("Import Failed", isPresented: $showError, actions: {
-                Button("OK", role: .cancel) { }
-            }, message: {
-                Text(errorMessage ?? "Unknown error occurred")
-            })
-            .alert("Import Complete", isPresented: $showImportSummary, actions: {
-                Button("OK", role: .cancel) { }
-            }, message: {
-                Text(importSummary ?? "")
-            })
+            .padding()
         }
+        .navigationTitle("Developer")
+        .background(Color(.systemGroupedBackground))
+        .alert("Import Failed", isPresented: $showError, actions: {
+            Button("OK", role: .cancel) { }
+        }, message: {
+            Text(errorMessage ?? "Unknown error occurred")
+        })
+        .alert("Import Complete", isPresented: $showImportSummary, actions: {
+            Button("OK", role: .cancel) { }
+        }, message: {
+            Text(importSummary ?? "")
+        })
     }
 
     // MARK: - Component Helpers
