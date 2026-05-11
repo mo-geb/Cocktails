@@ -7,23 +7,11 @@ struct CocktailPreviewCard: View {
     let isImported: Bool
     let onTap: () -> Void
 
-    @State private var backgroundColor: Color?
     @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         Button(action: onTap) {
             ZStack(alignment: .topTrailing) {
-                if let backgroundColor {
-                    LinearGradient(
-                        colors: [backgroundColor, backgroundColor.opacity(0.15)],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                    .saturation(1.9)
-                    .blendMode(colorScheme == .dark ? .screen : .normal)
-                    .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
-                }
-
                 VStack(spacing: 0) {
                     Spacer()
 
@@ -93,8 +81,27 @@ struct CocktailPreviewCard: View {
         }
         .buttonStyle(CardPressStyle(scale: 1.06))
         .disabled(isImported)
-        .onAppear {
-            backgroundColor = dto.displayImage.dominantColor(placeholderName: dto.glass.imageNameFilled)
+    }
+}
+
+#Preview {
+    let dto = CocktailDTO(
+        name: "Espresso Martini",
+        imageName: nil,
+        glass: .martini,
+        method: .shake,
+        ice: .none,
+        ingredients: [],
+        garnishes: nil,
+        notes: nil
+    )
+    let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
+    ScrollView {
+        LazyVGrid(columns: columns, spacing: 12) {
+            CocktailPreviewCard(dto: dto, source: .ebsInter2023, isSelected: false, isImported: false) {}
+            CocktailPreviewCard(dto: dto, source: .ebsInter2023, isSelected: true, isImported: false) {}
+            CocktailPreviewCard(dto: dto, source: .ebsInter2023, isSelected: false, isImported: true) {}
         }
+        .padding()
     }
 }

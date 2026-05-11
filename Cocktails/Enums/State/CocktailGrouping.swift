@@ -6,6 +6,8 @@ enum CocktailGrouping: String, CaseIterable, Identifiable {
     case method
     case ice
     case favourite
+    case source
+    case base
 
     var id: String { self.rawValue }
 
@@ -16,6 +18,8 @@ enum CocktailGrouping: String, CaseIterable, Identifiable {
         case .method:    return String(localized: "Method",    comment: "Grouping by preparation method")
         case .ice:       return String(localized: "Ice",       comment: "Grouping by ice type")
         case .favourite: return String(localized: "Favourite", comment: "Grouping by favourite status")
+        case .source:    return String(localized: "Source",    comment: "Grouping by recipe source")
+        case .base:      return String(localized: "Base",      comment: "Grouping by base spirit")
         }
     }
 
@@ -26,6 +30,8 @@ enum CocktailGrouping: String, CaseIterable, Identifiable {
         case .method:    return "slider.horizontal.3"
         case .ice:       return "snowflake"
         case .favourite: return "star"
+        case .source:    return "books.vertical"
+        case .base:      return "drop.fill"
         }
     }
 }

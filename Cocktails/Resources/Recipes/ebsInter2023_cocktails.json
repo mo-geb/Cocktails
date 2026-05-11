@@ -195,7 +195,7 @@
         "ingredientName": "rum",
         "amount": 40.0,
         "unit": "ml",
-        "note": "Dark Rum (Float)"
+        "note": "Dark (Float)"
       },
       {
         "ingredientName": "lime_wedge",
@@ -253,7 +253,7 @@
         "ingredientName": "rum",
         "amount": 50.0,
         "unit": "ml",
-        "note": "Light Rum"
+        "note": "Light"
       },
       {
         "ingredientName": "maraschino",
@@ -437,7 +437,7 @@
         "ingredientName": "rum",
         "amount": 10.0,
         "unit": "ml",
-        "note": "Overproof Rum"
+        "note": "Overproof"
       },
       {
         "ingredientName": "grenadine",
@@ -448,13 +448,13 @@
         "ingredientName": "rum",
         "amount": 20.0,
         "unit": "ml",
-        "note": "Dark Rum"
+        "note": "Dark"
       },
       {
         "ingredientName": "rum",
         "amount": 20.0,
         "unit": "ml",
-        "note": "Light Rum"
+        "note": "Light"
       },
       {
         "ingredientName": "lime_juice",
@@ -819,7 +819,7 @@
         "ingredientName": "rum",
         "amount": 20.0,
         "unit": "ml",
-        "note": "Light Rum"
+        "note": "Light"
       },
       {
         "ingredientName": "gin",
@@ -1306,7 +1306,7 @@
         "ingredientName": "rum",
         "amount": 40.0,
         "unit": "ml",
-        "note": "Light Rum"
+        "note": "Light"
       },
       {
         "ingredientName": "lime_juice",
@@ -1368,7 +1368,7 @@
         "ingredientName": "rum",
         "amount": 60.0,
         "unit": "ml",
-        "note": "Light Rum"
+        "note": "Light"
       },
       {
         "ingredientName": "lime_juice",
@@ -1426,7 +1426,7 @@
         "ingredientName": "rum",
         "amount": 40.0,
         "unit": "ml",
-        "note": "Light Rum"
+        "note": "Light"
       },
       {
         "ingredientName": "coconut_liqueur",
@@ -1445,10 +1445,9 @@
         "unit": "ml"
       },
       {
-        "ingredientName": "cream",
+        "ingredientName": "coconut_cream",
         "amount": 40.0,
-        "unit": "ml",
-        "note": "Coconut Cream"
+        "unit": "ml"
       }
     ],
     "garnishes": [
@@ -2034,10 +2033,10 @@
     ],
     "garnishes": [
       {
-        "ingredientName": "shot_of_champagne",
+        "ingredientName": "champagne",
         "amount": 0.0,
         "unit": "ml",
-        "note": "Brut Champagne"
+        "note": "Shot on the side"
       }
     ],
     "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe"
@@ -2183,7 +2182,7 @@
         "ingredientName": "rum",
         "amount": 60.0,
         "unit": "ml",
-        "note": "Light Rum"
+        "note": "Light"
       },
       {
         "ingredientName": "soda",
@@ -2279,7 +2278,7 @@
         "ingredientName": "rum",
         "amount": 40.0,
         "unit": "ml",
-        "note": "Dark Rum"
+        "note": "Dark"
       },
       {
         "ingredientName": "triple_sec",
@@ -2301,7 +2300,7 @@
         "ingredientName": "rum",
         "amount": 10.0,
         "unit": "ml",
-        "note": "Overproof Rum (Float)"
+        "note": "Overproof (Float)"
       }
     ],
     "garnishes": [

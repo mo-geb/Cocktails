@@ -7,6 +7,16 @@
     "%lld" : {
 
     },
+    "%lld cocktail%@ imported." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld cocktail%2$@ imported."
+          }
+        }
+      }
+    },
     "%lld cocktail%@ ready to make" : {
       "localizations" : {
         "en" : {
@@ -34,6 +44,9 @@
     },
     "Add to Favourites" : {
 
+    },
+    "Base" : {
+      "comment" : "Grouping by base spirit"
     },
     "Based on your stocked ingredients" : {
 
@@ -155,10 +168,19 @@
     "Import" : {
 
     },
+    "Import All" : {
+
+    },
     "Import Complete" : {
 
     },
     "Import Failed" : {
+
+    },
+    "Import Selected" : {
+
+    },
+    "Import Selected (%lld)" : {
 
     },
     "ingredient_vodka" : {
@@ -270,6 +292,9 @@
     },
     "Shot" : {
       "comment" : "Glass type"
+    },
+    "Source" : {
+      "comment" : "Grouping by recipe source"
     },
     "Stir" : {
       "comment" : "Preparation method"

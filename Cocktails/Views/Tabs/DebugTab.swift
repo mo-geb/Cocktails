@@ -34,7 +34,7 @@ struct DebugTab: View {
                         ) {
                             performImport {
                                 try CocktailImporter(context: modelContext)
-                                    .importIngredients(from: .ebsInter2023)
+                                    .importIngredients()
                             }
                         }
 

@@ -4,14 +4,14 @@ import SwiftData
 struct CocktailTab: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var cocktails: [Cocktail]
-    
+
     @State private var activeCocktailSheet: ActiveCocktailSheet?
     @State private var grouping: CocktailGrouping = .none
     @State private var showSettings = false
     @State private var cocktailToDelete: Cocktail?
-    
+
     let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
-    
+
     private var groupedCocktails: [(String, [Cocktail])] {
         let sortedCocktails = cocktails.sorted { $0.name < $1.name }
         switch grouping {
@@ -29,6 +29,16 @@ struct CocktailTab: View {
         case .favourite:
             let groups = Dictionary(grouping: sortedCocktails) { $0.isFavourite ? "Favourites" : "All Cocktails" }
             return groups.sorted { $0.key > $1.key }
+        case .source:
+            let groups = Dictionary(grouping: sortedCocktails) { $0.source.localizedName }
+            return groups.sorted { $0.key < $1.key }
+        case .base:
+            let groups = Dictionary(grouping: sortedCocktails) { $0.baseGroup }
+            return groups.sorted { l, r in
+                if l.key == "No Base" { return false }
+                if r.key == "No Base" { return true }
+                return l.key < r.key
+            }
         }
     }
     
@@ -42,6 +52,7 @@ struct CocktailTab: View {
                             Label("Settings", systemImage: "gearshape")
                         }
                     }
+                    
                     ToolbarItem(placement: .topBarTrailing) {
                         Menu {
                             Picker("Group By", selection: $grouping) {

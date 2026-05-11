@@ -23,4 +23,9 @@ struct PreviewSampleData {
         let fetchDescriptor = FetchDescriptor<Cocktail>()
         return try! container.mainContext.fetch(fetchDescriptor)
     }
+
+    static var mockIngredient: Ingredient {
+        let fetchDescriptor = FetchDescriptor<Ingredient>()
+        return try! container.mainContext.fetch(fetchDescriptor).first!
+    }
 }

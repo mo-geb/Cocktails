@@ -107,3 +107,8 @@ struct MakeableCocktailsView: View {
         }
     }
 }
+
+#Preview {
+    MakeableCocktailsView()
+        .modelContainer(PreviewSampleData.container)
+}

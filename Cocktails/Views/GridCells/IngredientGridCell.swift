@@ -74,3 +74,24 @@ func ingredientAddCellLabel(name: String) -> some View {
             .strokeBorder(.tint.opacity(0.55), lineWidth: 1.5)
     }
 }
+
+import SwiftData
+
+#Preview {
+    let columns = [
+        GridItem(.flexible(), spacing: 10),
+        GridItem(.flexible(), spacing: 10),
+        GridItem(.flexible(), spacing: 10),
+        GridItem(.flexible(), spacing: 10)
+    ]
+    ScrollView {
+        LazyVGrid(columns: columns, spacing: 10) {
+            ForEach(PreviewSampleData.mockCocktails.compactMap { $0.ingredients?.first?.ingredient }) { ingredient in
+                IngredientGridCell(ingredient: ingredient)
+            }
+            ingredientAddCellLabel(name: "New")
+        }
+        .padding()
+    }
+    .modelContainer(PreviewSampleData.container)
+}

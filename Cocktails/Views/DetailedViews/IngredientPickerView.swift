@@ -150,3 +150,9 @@ struct IngredientPickerView: View {
         dismiss()
     }
 }
+
+#Preview {
+    @Previewable @State var selection = IngredientDraft()
+    IngredientPickerView(selection: $selection)
+        .modelContainer(PreviewSampleData.container)
+}

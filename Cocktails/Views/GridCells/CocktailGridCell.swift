@@ -6,23 +6,11 @@ struct CocktailGridCell: View {
     var onDelete: (() -> Void)? = nil
     let onTap: () -> Void
 
-    @State private var backgroundColor: Color?
     @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         Button(action: onTap) {
             ZStack(alignment: .topTrailing) {
-                if let backgroundColor {
-                    LinearGradient(
-                        colors: [backgroundColor, backgroundColor.opacity(0.15)],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                    .saturation(1.9)
-                    .blendMode(colorScheme == .dark ? .screen : .normal)
-                    .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
-                }
-
                 VStack(spacing: 0) {
                     Spacer()
 
@@ -115,9 +103,6 @@ struct CocktailGridCell: View {
                 }
             }
         }
-        .onAppear {
-            backgroundColor = cocktail.displayImage.dominantColor(placeholderName: cocktail.glass.imageNameFilled)
-        }
     }
 }
 
@@ -153,5 +138,26 @@ func cocktailAddCard(name: String, action: @escaping () -> Void) -> some View {
         }
     }
     .buttonStyle(CardPressStyle(scale: 1.06))
+}
+
+import SwiftData
+
+#Preview {
+    let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
+    ScrollView {
+        LazyVGrid(columns: columns, spacing: 12) {
+            ForEach(PreviewSampleData.mockCocktails) { cocktail in
+                CocktailGridCell(cocktail: cocktail, onDelete: {}) {}
+            }
+            CocktailGridCell(
+                cocktail: PreviewSampleData.mockCocktail,
+                footerLabel: "Missing: Kahlúa",
+                onDelete: {}
+            ) {}
+            cocktailAddCard(name: "New Cocktail") {}
+        }
+        .padding()
+    }
+    .modelContainer(PreviewSampleData.container)
 }
 

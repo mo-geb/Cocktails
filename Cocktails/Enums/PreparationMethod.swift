@@ -25,7 +25,7 @@ enum PreparationMethod: String, Codable, CaseIterable, Identifiable {
         case .shake: return "Method/shake"
         case .blend: return "Method/blend"
         case .build: return "Method/build"
-        case .roll: return "Method/shake"
+        case .roll: return "Method/roll"
         }
     }
 }
