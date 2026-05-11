@@ -28,6 +28,10 @@ struct CocktailDTO: Decodable {
     let notes: String?
 }
 
+extension CocktailDTO: CocktailImageProviding {
+    var imageData: Data? { nil }
+}
+
 // MARK: - Import Result
 
 struct ImportResult {
@@ -81,10 +85,10 @@ final class CocktailImporter {
 
     // MARK: - Use Cases
 
-    /// 1. Import ONLY ingredients from a given source
+    /// 1. Import all ingredients from the central ingredients catalogue that are not yet in the store
     @discardableResult
-    func importIngredients(from source: RecipeSource) throws -> ImportResult {
-        let url = try getURL(for: source, suffix: "_ingredients")
+    func importIngredients() throws -> ImportResult {
+        let url = try getIngredientsURL()
         let dtos = try parse([IngredientDTO].self, from: url, label: "ingredients")
         var existingIngredients = try fetchExistingIngredientsMap()
 
@@ -114,25 +118,25 @@ final class CocktailImporter {
         return result
     }
 
-    /// 2. Import ALL cocktails and ALL ingredients at once for a given source
+    /// 2. Import all cocktails for a source, pulling in only the ingredients they need that are not already in the store
     @discardableResult
     func importAll(from source: RecipeSource) throws -> ImportResult {
-        let ingredientsURL = try getURL(for: source, suffix: "_ingredients")
-        let cocktailsURL = try getURL(for: source, suffix: "_cocktails")
+        let ingredientsURL = try getIngredientsURL()
+        let cocktailsURL = try getCocktailsURL(for: source)
 
         let ingredientDTOs = try parse([IngredientDTO].self, from: ingredientsURL, label: "ingredients")
         let cocktailDTOs = try parse([CocktailDTO].self, from: cocktailsURL, label: "cocktails")
 
         logger.info("Parsed \(ingredientDTOs.count) ingredients, \(cocktailDTOs.count) cocktails from '\(source.filePrefix)'")
 
-        return try processImport(cocktailDTOs: cocktailDTOs, ingredientDTOs: ingredientDTOs, importAllIngredients: true, source: source)
+        return try processImport(cocktailDTOs: cocktailDTOs, ingredientDTOs: ingredientDTOs, source: source)
     }
 
-    /// 3. Import selected cocktails with ONLY their necessary ingredients for a given source
+    /// 3. Import selected cocktails, pulling in only the ingredients they need that are not already in the store
     @discardableResult
     func importSelectedCocktails(names: [String], from source: RecipeSource) throws -> ImportResult {
-        let ingredientsURL = try getURL(for: source, suffix: "_ingredients")
-        let cocktailsURL = try getURL(for: source, suffix: "_cocktails")
+        let ingredientsURL = try getIngredientsURL()
+        let cocktailsURL = try getCocktailsURL(for: source)
 
         let ingredientDTOs = try parse([IngredientDTO].self, from: ingredientsURL, label: "ingredients")
         let allCocktailDTOs = try parse([CocktailDTO].self, from: cocktailsURL, label: "cocktails")
@@ -140,25 +144,19 @@ final class CocktailImporter {
         let selectedCocktails = allCocktailDTOs.filter { names.contains($0.name) }
         logger.info("Selected \(selectedCocktails.count)/\(allCocktailDTOs.count) cocktails by name filter")
 
-        return try processImport(cocktailDTOs: selectedCocktails, ingredientDTOs: ingredientDTOs, importAllIngredients: false, source: source)
+        return try processImport(cocktailDTOs: selectedCocktails, ingredientDTOs: ingredientDTOs, source: source)
     }
 
     // MARK: - Core Logic
 
     @discardableResult
-    private func processImport(cocktailDTOs: [CocktailDTO], ingredientDTOs: [IngredientDTO], importAllIngredients: Bool, source: RecipeSource) throws -> ImportResult {
+    private func processImport(cocktailDTOs: [CocktailDTO], ingredientDTOs: [IngredientDTO], source: RecipeSource) throws -> ImportResult {
         var existingIngredients = try fetchExistingIngredientsMap()
         logger.info("Store already has \(existingIngredients.count) ingredients")
 
-        let neededIngredientIDs: Set<String>
-        if importAllIngredients {
-            neededIngredientIDs = Set(ingredientDTOs.map { $0.id })
-        } else {
-            let allIngs = cocktailDTOs.flatMap { dto in
-                dto.ingredients.map { $0.ingredientName } + (dto.garnishes ?? []).map { $0.ingredientName }
-            }
-            neededIngredientIDs = Set(allIngs)
-        }
+        let neededIngredientIDs = Set(cocktailDTOs.flatMap { dto in
+            dto.ingredients.map { $0.ingredientName } + (dto.garnishes ?? []).map { $0.ingredientName }
+        })
         logger.info("Need \(neededIngredientIDs.count) ingredient IDs for this import")
 
         // 1. Insert needed ingredients that do not exist yet
@@ -266,8 +264,17 @@ final class CocktailImporter {
 
     // MARK: - Helpers
 
-    private func getURL(for source: RecipeSource, suffix: String) throws -> URL {
-        let fileName = "\(source.filePrefix)\(suffix)"
+    private func getIngredientsURL() throws -> URL {
+        guard let url = Bundle.main.url(forResource: "ingredients", withExtension: "json") else {
+            logger.error("File not found in bundle: ingredients.json")
+            throw ImportError.fileNotFound("ingredients")
+        }
+        logger.debug("Resolved file: \(url.lastPathComponent)")
+        return url
+    }
+
+    private func getCocktailsURL(for source: RecipeSource) throws -> URL {
+        let fileName = "\(source.filePrefix)_cocktails"
         guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
             logger.error("File not found in bundle: \(fileName).json")
             throw ImportError.fileNotFound(fileName)

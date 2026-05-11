@@ -135,11 +135,6 @@
     "type": "other"
   },
   {
-    "id": "shot_of_champagne",
-    "name": "Champagne Shot",
-    "type": "other"
-  },
-  {
     "id": "chambord",
     "name": "Chambord",
     "type": "liqueur"
@@ -267,6 +262,11 @@
   {
     "id": "cream",
     "name": "Cream",
+    "type": "mixer"
+  },
+  {
+    "id": "coconut_cream",
+    "name": "Coconut Cream",
     "type": "mixer"
   },
   {

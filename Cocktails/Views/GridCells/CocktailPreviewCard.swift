@@ -1,0 +1,100 @@
+import SwiftUI
+
+struct CocktailPreviewCard: View {
+    let dto: CocktailDTO
+    let source: RecipeSource
+    let isSelected: Bool
+    let isImported: Bool
+    let onTap: () -> Void
+
+    @State private var backgroundColor: Color?
+    @Environment(\.colorScheme) private var colorScheme
+
+    var body: some View {
+        Button(action: onTap) {
+            ZStack(alignment: .topTrailing) {
+                if let backgroundColor {
+                    LinearGradient(
+                        colors: [backgroundColor, backgroundColor.opacity(0.15)],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                    .saturation(1.9)
+                    .blendMode(colorScheme == .dark ? .screen : .normal)
+                    .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+                }
+
+                VStack(spacing: 0) {
+                    Spacer()
+
+                    dto.displayImage.view(placeholder: dto.glass.imageNameFilled)
+                        .scaledToFit()
+                        .padding(.horizontal, 40)
+
+                    Spacer()
+
+                    VStack(spacing: 6) {
+                        Text(dto.name)
+                            .font(.subheadline.bold())
+                            .fontDesign(.rounded)
+                            .multilineTextAlignment(.center)
+                            .lineLimit(2)
+                            .minimumScaleFactor(0.85)
+
+                        HStack(spacing: 0) {
+                            HStack(spacing: 5) {
+                                Image(dto.ice.imageName)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 12, height: 12)
+                                Text(dto.ice.localizedName)
+                            }
+                            .frame(maxWidth: .infinity)
+
+                            Divider().frame(height: 12)
+
+                            HStack(spacing: 5) {
+                                Image(dto.method.customImageName)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 12, height: 12)
+                                Text(dto.method.localizedName)
+                            }
+                            .frame(maxWidth: .infinity)
+                        }
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 7)
+                        .glassEffect()
+                    }
+                    .padding(.horizontal, 10)
+                    .padding(.bottom, 14)
+                }
+
+                Image(systemName: isImported || isSelected ? "checkmark.circle.fill" : "circle")
+                    .font(.title2)
+                    .foregroundStyle(isImported ? .secondary : (isSelected ? Color.accentColor : .white.opacity(0.6)))
+                    .shadow(radius: isSelected || isImported ? 0 : 2)
+                    .padding(10)
+            }
+            .frame(maxWidth: .infinity)
+            .aspectRatio(0.85, contentMode: .fit)
+            .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+            .overlay {
+                if isImported {
+                    RoundedRectangle(cornerRadius: 24, style: .continuous)
+                        .fill(.ultraThinMaterial.opacity(0.6))
+                } else if isSelected {
+                    RoundedRectangle(cornerRadius: 24, style: .continuous)
+                        .strokeBorder(Color.accentColor, lineWidth: 2.5)
+                }
+            }
+        }
+        .buttonStyle(CardPressStyle(scale: 1.06))
+        .disabled(isImported)
+        .onAppear {
+            backgroundColor = dto.displayImage.dominantColor(placeholderName: dto.glass.imageNameFilled)
+        }
+    }
+}

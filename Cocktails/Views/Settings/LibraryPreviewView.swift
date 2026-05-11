@@ -13,6 +13,8 @@ struct LibraryPreviewView: View {
     @State private var importError: String?
     @State private var isImporting = false
 
+    private let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
+
     private var alreadyImported: Set<String> {
         Set(existingCocktails.filter { $0.source == source }.map { $0.name })
     }
@@ -22,8 +24,25 @@ struct LibraryPreviewView: View {
     }
 
     var body: some View {
-        List(cocktails, id: \.name) { cocktail in
-            cocktailRow(cocktail)
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 12) {
+                ForEach(cocktails, id: \.name) { cocktail in
+                    CocktailPreviewCard(
+                        dto: cocktail,
+                        source: source,
+                        isSelected: selected.contains(cocktail.name),
+                        isImported: alreadyImported.contains(cocktail.name)
+                    ) {
+                        if selected.contains(cocktail.name) {
+                            selected.remove(cocktail.name)
+                        } else {
+                            selected.insert(cocktail.name)
+                        }
+                    }
+                }
+            }
+            .padding(.horizontal)
+            .padding(.vertical, 12)
         }
         .navigationTitle(source.localizedName)
         .toolbar {
@@ -60,51 +79,6 @@ struct LibraryPreviewView: View {
         } message: {
             if let e = importError { Text(e) }
         }
-    }
-
-    // MARK: - Row
-
-    @ViewBuilder
-    private func cocktailRow(_ cocktail: CocktailDTO) -> some View {
-        let imported = alreadyImported.contains(cocktail.name)
-        let isSelected = selected.contains(cocktail.name)
-
-        Button {
-            guard !imported else { return }
-            if isSelected { selected.remove(cocktail.name) } else { selected.insert(cocktail.name) }
-        } label: {
-            HStack(spacing: 12) {
-                Image(cocktail.glass.imageNameFilled)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 22, height: 22)
-                    .opacity(imported ? 0.35 : 1)
-
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(cocktail.name)
-                        .foregroundStyle(imported ? .secondary : .primary)
-                    Text("\(cocktail.glass.localizedName) · \(cocktail.method.localizedName)")
-                        .font(.caption)
-                        .foregroundStyle(.tertiary)
-                }
-
-                Spacer()
-
-                Group {
-                    if imported {
-                        Image(systemName: "checkmark")
-                            .font(.caption.weight(.semibold))
-                            .foregroundStyle(.secondary)
-                    } else {
-                        Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
-                            .foregroundStyle(isSelected ? Color.accentColor : .secondary)
-                    }
-                }
-                .frame(width: 20)
-            }
-            .contentShape(Rectangle())
-        }
-        .buttonStyle(.plain)
     }
 
     // MARK: - Bottom bar
