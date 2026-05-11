@@ -3,7 +3,6 @@ import UIKit
 
 struct LibraryCounts {
     var cocktails: Int = 0
-    var ingredients: Int = 0
 }
 
 struct ImportLibrariesView: View {
@@ -16,7 +15,12 @@ struct ImportLibrariesView: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(sources) { source in
-                    LibraryCard(source: source, counts: counts[source.id] ?? LibraryCounts())
+                    NavigationLink {
+                        LibraryPreviewView(source: source)
+                    } label: {
+                        LibraryCard(source: source, counts: counts[source.id] ?? LibraryCounts())
+                    }
+                    .buttonStyle(CardPressStyle())
                 }
             }
             .padding()
@@ -37,11 +41,6 @@ struct ImportLibrariesView: View {
            let data = try? Data(contentsOf: url),
            let arr = try? JSONSerialization.jsonObject(with: data) as? [[String: Any]] {
             result.cocktails = arr.count
-        }
-        if let url = Bundle.main.url(forResource: "\(prefix)_ingredients", withExtension: "json"),
-           let data = try? Data(contentsOf: url),
-           let arr = try? JSONSerialization.jsonObject(with: data) as? [[String: Any]] {
-            result.ingredients = arr.count
         }
         return result
     }
