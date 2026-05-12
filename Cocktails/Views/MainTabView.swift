@@ -2,28 +2,41 @@ import SwiftUI
 import SwiftData
 
 struct MainTabView: View {
-    @State private var selectedTab: ActiveTab = .cocktails
-    @State private var preferredSearchTab: SearchTab = .cocktails
+    @Environment(AppState.self) private var appState
+    @Environment(\.modelContext) private var modelContext
 
     var body: some View {
-        TabView(selection: $selectedTab) {
-            Tab("Cocktails", systemImage: "wineglass", value: .cocktails) {
+        @Bindable var appState = appState
+        TabView(selection: $appState.selectedTab) {
+            Tab("Cocktails", systemImage: "wineglass", value: ActiveTab.cocktails) {
                 CocktailTab()
             }
 
-            Tab("Inventory", systemImage: "cabinet", value: .inventory) {
+            Tab("Inventory", systemImage: "cabinet", value: ActiveTab.inventory) {
                 InventoryTab()
             }
 
-            Tab(value: .search, role: .search) {
-                SearchView(preferredTab: preferredSearchTab)
+            Tab(value: ActiveTab.search, role: .search) {
+                SearchView()
             }
         }
-        .onChange(of: selectedTab) { _, newTab in
-            switch newTab {
-            case .cocktails: preferredSearchTab = .cocktails
-            case .inventory: preferredSearchTab = .ingredients
-            default: break
+        .sheet(isPresented: $appState.showSettings) { SettingsView() }
+        .sheet(item: $appState.activeCocktailSheet) { sheet in
+            NavigationStack { sheet.contentView }
+                .presentationDetents([.large])
+                .presentationDragIndicator(.visible)
+        }
+        .confirmationDialog(
+            "Delete \"\(appState.cocktailToDelete?.name ?? "")\"?",
+            isPresented: Binding(
+                get: { appState.cocktailToDelete != nil },
+                set: { if !$0 { appState.cocktailToDelete = nil } }
+            ),
+            titleVisibility: .visible
+        ) {
+            Button("Delete", role: .destructive) {
+                if let c = appState.cocktailToDelete { modelContext.delete(c) }
+                appState.cocktailToDelete = nil
             }
         }
     }
@@ -31,5 +44,6 @@ struct MainTabView: View {
 
 #Preview {
     MainTabView()
+        .environment(AppState())
         .modelContainer(PreviewSampleData.container)
 }

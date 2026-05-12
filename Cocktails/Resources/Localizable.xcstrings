@@ -37,16 +37,6 @@
         }
       }
     },
-    "%lld of %lld free cocktails used" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld of %2$lld free cocktails used"
-          }
-        }
-      }
-    },
     "0" : {
 
     },
@@ -164,9 +154,6 @@
     "Flute" : {
       "comment" : "Glass type"
     },
-    "Free accounts can save up to %lld cocktails. Upgrade once for unlimited access." : {
-
-    },
     "Garnish" : {
 
     },
@@ -275,9 +262,6 @@
     "Other" : {
       "comment" : "Glass type"
     },
-    "Purchase Failed" : {
-
-    },
     "Remove from Favourites" : {
 
     },
@@ -338,13 +322,7 @@
     "Unlimited Cocktails" : {
 
     },
-    "Unlock for %@" : {
-
-    },
     "Unlock Unlimited" : {
-
-    },
-    "Unlock Unlimited Cocktails" : {
 
     },
     "Upgrade" : {
@@ -356,7 +334,7 @@
     "Wine" : {
       "comment" : "Glass type"
     },
-    "You've reached the free limit of %lld cocktails. Upgrade once to save as many as you like." : {
+    "You've reached the free limit of 10 cocktails. Upgrade once to save as many as you like." : {
 
     }
   },

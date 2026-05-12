@@ -29,7 +29,6 @@ struct LibraryPreviewView: View {
                 ForEach(cocktails, id: \.name) { cocktail in
                     CocktailPreviewCard(
                         dto: cocktail,
-                        source: source,
                         isSelected: selected.contains(cocktail.name),
                         isImported: alreadyImported.contains(cocktail.name)
                     ) {

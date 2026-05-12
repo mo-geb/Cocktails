@@ -3,9 +3,9 @@ import SwiftData
 
 struct InventoryTab: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(AppState.self) private var appState
     @Query(sort: \Ingredient.name) private var ingredients: [Ingredient]
     @Query private var cocktails: [Cocktail]
-    @State private var showSettings = false
     @State private var showMakeableCocktails = false
     @State private var showAddIngredient = false
     @State private var ingredientToEdit: Ingredient?
@@ -67,7 +67,7 @@ struct InventoryTab: View {
             .navigationTitle("Inventory")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button { showSettings = true } label: {
+                    Button { appState.showSettings = true } label: {
                         Label("Settings", systemImage: "gearshape")
                     }
                 }
@@ -90,7 +90,6 @@ struct InventoryTab: View {
                     }
                 }
             }
-            .sheet(isPresented: $showSettings) { SettingsView() }
             .sheet(isPresented: $showMakeableCocktails) { MakeableCocktailsView() }
             .sheet(isPresented: $showAddIngredient) {
                 NavigationStack { IngredientEditView() }
@@ -137,5 +136,6 @@ struct InventoryTab: View {
 
 #Preview {
     InventoryTab()
+        .environment(AppState())
         .modelContainer(PreviewSampleData.container)
 }

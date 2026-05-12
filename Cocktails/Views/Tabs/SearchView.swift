@@ -1,29 +1,15 @@
 import SwiftUI
 import SwiftData
 
-enum SearchTab: String, CaseIterable {
-    case cocktails = "Cocktails"
-    case ingredients = "Ingredients"
-}
-
 struct SearchView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(AppState.self) private var appState
     @Query(sort: \Cocktail.name) private var cocktails: [Cocktail]
     @Query(sort: \Ingredient.name) private var ingredients: [Ingredient]
 
-    let preferredTab: SearchTab
-
     @State private var query = ""
-    @State private var selectedTab: SearchTab
-    @State private var activeCocktailSheet: ActiveCocktailSheet?
-    @State private var showSettings = false
+    @State private var selectedTab: SearchTab = .cocktails
     @State private var suggestionSheet: SuggestionSheet?
-    @State private var cocktailToDelete: Cocktail?
-
-    init(preferredTab: SearchTab = .cocktails) {
-        self.preferredTab = preferredTab
-        self._selectedTab = State(initialValue: preferredTab)
-    }
 
     let cocktailColumns = [
         GridItem(.flexible(), spacing: 12),
@@ -86,36 +72,17 @@ struct SearchView: View {
             }
             .background(Color(.systemGroupedBackground))
             .navigationTitle("Search")
-            .onAppear { selectedTab = preferredTab }
+            .onAppear { selectedTab = appState.preferredSearchTab }
+            .onChange(of: appState.preferredSearchTab) { _, newTab in selectedTab = newTab }
             .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: "Cocktails, Ingredients…")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button { showSettings = true } label: {
+                    Button { appState.showSettings = true } label: {
                         Label("Settings", systemImage: "gearshape")
                     }
                 }
             }
-            .sheet(isPresented: $showSettings) { SettingsView() }
-            .sheet(item: $activeCocktailSheet) { sheet in
-                switch sheet {
-                case .view(let c):
-                    NavigationStack { CocktailDetailView(cocktail: c) }
-                        .presentationDetents([.large])
-                        .presentationDragIndicator(.visible)
-                default: EmptyView()
-                }
-            }
             .sheet(item: $suggestionSheet) { suggestionSheetView($0) }
-            .confirmationDialog(
-                "Delete \"\(cocktailToDelete?.name ?? "")\"?",
-                isPresented: Binding(get: { cocktailToDelete != nil }, set: { if !$0 { cocktailToDelete = nil } }),
-                titleVisibility: .visible
-            ) {
-                Button("Delete", role: .destructive) {
-                    if let c = cocktailToDelete { modelContext.delete(c) }
-                    cocktailToDelete = nil
-                }
-            }
         }
     }
 
@@ -141,8 +108,8 @@ struct SearchView: View {
         } else {
             LazyVGrid(columns: cocktailColumns, spacing: 12) {
                 ForEach(filteredCocktails) { cocktail in
-                    CocktailGridCell(cocktail: cocktail, onDelete: { cocktailToDelete = cocktail }) {
-                        activeCocktailSheet = .view(cocktail)
+                    CocktailGridCell(cocktail: cocktail, onDelete: { appState.cocktailToDelete = cocktail }) {
+                        appState.activeCocktailSheet = .view(cocktail)
                     }
                 }
                 if showCocktailSuggestion {
@@ -162,7 +129,6 @@ struct SearchView: View {
             ContentUnavailableView.search(text: query)
                 .padding(.top, 60)
         } else if query.isEmpty {
-            // grouped browse
             VStack(alignment: .leading, spacing: 28) {
                 ForEach(groupedIngredients, id: \.0) { type, items in
                     VStack(alignment: .leading, spacing: 10) {
@@ -182,7 +148,6 @@ struct SearchView: View {
             }
             .padding(.vertical)
         } else {
-            // flat results when searching
             LazyVGrid(columns: ingredientColumns, spacing: 10) {
                 ForEach(filteredIngredients) { ingredient in
                     IngredientGridCell(ingredient: ingredient)
@@ -215,5 +180,6 @@ private enum SuggestionSheet: Identifiable {
 
 #Preview {
     SearchView()
+        .environment(AppState())
         .modelContainer(PreviewSampleData.container)
 }

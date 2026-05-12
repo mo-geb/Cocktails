@@ -2,7 +2,6 @@ import SwiftUI
 
 struct CocktailPreviewCard: View {
     let dto: CocktailDTO
-    let source: RecipeSource
     let isSelected: Bool
     let isImported: Bool
     let onTap: () -> Void
@@ -98,9 +97,9 @@ struct CocktailPreviewCard: View {
     let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
     ScrollView {
         LazyVGrid(columns: columns, spacing: 12) {
-            CocktailPreviewCard(dto: dto, source: .ebsInter2023, isSelected: false, isImported: false) {}
-            CocktailPreviewCard(dto: dto, source: .ebsInter2023, isSelected: true, isImported: false) {}
-            CocktailPreviewCard(dto: dto, source: .ebsInter2023, isSelected: false, isImported: true) {}
+            CocktailPreviewCard(dto: dto, isSelected: false, isImported: false) {}
+            CocktailPreviewCard(dto: dto, isSelected: true, isImported: false) {}
+            CocktailPreviewCard(dto: dto, isSelected: false, isImported: true) {}
         }
         .padding()
     }

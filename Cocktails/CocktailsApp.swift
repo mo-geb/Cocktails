@@ -3,6 +3,8 @@ import SwiftData
 
 @main
 struct CocktailsApp: App {
+    @State private var appState = AppState()
+
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Cocktail.self,
@@ -21,6 +23,7 @@ struct CocktailsApp: App {
     var body: some Scene {
         WindowGroup {
             MainTabView()
+                .environment(appState)
         }
         .modelContainer(sharedModelContainer)
     }
