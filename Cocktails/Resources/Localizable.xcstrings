@@ -37,13 +37,20 @@
         }
       }
     },
+    "%lld of %lld free cocktails used" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld of %2$lld free cocktails used"
+          }
+        }
+      }
+    },
     "0" : {
 
     },
     "Add all available ingredients to your inventory" : {
-
-    },
-    "Add cocktail" : {
 
     },
     "Add Cocktail" : {
@@ -157,6 +164,9 @@
     "Flute" : {
       "comment" : "Glass type"
     },
+    "Free accounts can save up to %lld cocktails. Upgrade once for unlimited access." : {
+
+    },
     "Garnish" : {
 
     },
@@ -195,17 +205,6 @@
     },
     "Import Selected (%lld)" : {
 
-    },
-    "ingredient_vodka" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vodka"
-          }
-        }
-      }
     },
     "Ingredients" : {
 
@@ -255,6 +254,9 @@
     "None added yet." : {
 
     },
+    "Not Now" : {
+
+    },
     "Note (e.g. Sweet Vermouth)" : {
 
     },
@@ -273,7 +275,13 @@
     "Other" : {
       "comment" : "Glass type"
     },
+    "Purchase Failed" : {
+
+    },
     "Remove from Favourites" : {
+
+    },
+    "Restore Purchases" : {
 
     },
     "Rocks" : {
@@ -327,11 +335,29 @@
     "Unit" : {
 
     },
+    "Unlimited Cocktails" : {
+
+    },
+    "Unlock for %@" : {
+
+    },
+    "Unlock Unlimited" : {
+
+    },
+    "Unlock Unlimited Cocktails" : {
+
+    },
+    "Upgrade" : {
+
+    },
     "What can I make?" : {
 
     },
     "Wine" : {
       "comment" : "Glass type"
+    },
+    "You've reached the free limit of %lld cocktails. Upgrade once to save as many as you like." : {
+
     }
   },
   "version" : "1.1"

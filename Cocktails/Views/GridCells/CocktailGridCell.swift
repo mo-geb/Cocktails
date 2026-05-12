@@ -122,7 +122,7 @@ func cocktailAddCard(name: String, action: @escaping () -> Void) -> some View {
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
                     .minimumScaleFactor(0.85)
-                Text("Add cocktail")
+                Text("Add Cocktail")
                     .font(.caption2)
                     .foregroundStyle(.tint)
             }
