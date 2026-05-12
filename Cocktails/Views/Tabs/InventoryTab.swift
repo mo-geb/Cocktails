@@ -81,7 +81,7 @@ struct InventoryTab: View {
                                   systemImage: allStocked ? "minus.circle" : "checkmark.circle")
                         }
                     } label: {
-                        Label("More", systemImage: "ellipsis.circle")
+                        Label("More", systemImage: "ellipsis")
                     }
                 }
                 ToolbarItem(placement: .primaryAction) {

@@ -62,10 +62,11 @@ struct CocktailTab: View {
                                 }
                             }
                         } label: {
-                            Image(systemName: grouping == .none ? "line.3.horizontal.decrease.circle" : grouping.systemImage)
+                            Image(systemName: "ellipsis")
                                 .symbolVariant(grouping == .none ? .none : .fill)
                         }
                     }
+                    
                     ToolbarItem(placement: .primaryAction) {
                         Button(action: addNewCocktail) {
                             Label("Add Cocktail", systemImage: "plus")

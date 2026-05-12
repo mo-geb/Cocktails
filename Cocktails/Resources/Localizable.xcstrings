@@ -7,6 +7,16 @@
     "%lld" : {
 
     },
+    "%lld added, %lld already present." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld added, %2$lld already present."
+          }
+        }
+      }
+    },
     "%lld cocktail%@ imported." : {
       "localizations" : {
         "en" : {
@@ -28,6 +38,9 @@
       }
     },
     "0" : {
+
+    },
+    "Add all available ingredients to your inventory" : {
 
     },
     "Add cocktail" : {
@@ -75,6 +88,9 @@
     "Close" : {
 
     },
+    "ClutterFree" : {
+      "comment" : "Recipe source — Selection"
+    },
     "Cocktail Name" : {
 
     },
@@ -96,9 +112,6 @@
     "Custom" : {
       "comment" : "Recipe source — user created"
     },
-    "Database Controls" : {
-
-    },
     "Delete" : {
 
     },
@@ -118,9 +131,6 @@
 
     },
     "Deselect All" : {
-
-    },
-    "Developer" : {
 
     },
     "Done" : {
@@ -171,6 +181,9 @@
     "Import All" : {
 
     },
+    "Import All Ingredients" : {
+
+    },
     "Import Complete" : {
 
     },
@@ -195,6 +208,9 @@
       }
     },
     "Ingredients" : {
+
+    },
+    "Ingredients Imported" : {
 
     },
     "Inventory" : {

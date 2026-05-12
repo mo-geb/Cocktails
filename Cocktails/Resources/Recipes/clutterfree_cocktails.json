@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Rise of Tiki",
+    "imageName": "rise_of_tiki",
+    "glass": "tiki",
+    "method": "shake",
+    "ice": "cubed",
+    "ingredients": [
+      {
+        "ingredientName": "rum",
+        "amount": 60.0,
+        "unit": "ml",
+        "note": "Dark"
+      },
+      {
+        "ingredientName": "mango_juice",
+        "amount": 60.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientName": "pineapple_juice",
+        "amount": 40.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientName": "lime_juice",
+        "amount": 20.0,
+        "unit": "ml",
+        "note": "Fresh"
+      },
+      {
+        "ingredientName": "vanilla_syrup",
+        "amount": 30.0,
+        "unit": "ml"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientName": "passionfruit",
+        "amount": 0.5
+      }
+    ],
+    "notes": "Method: Shake & Strain"
+  },
+  {
+    "name": "Blue Hawaii",
+    "imageName": "blue_hawaii",
+    "glass": "hurricane",
+    "method": "shake",
+    "ice": "cubed",
+    "ingredients": [
+      {
+        "ingredientName": "vodka",
+        "amount": 20.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientName": "rum",
+        "amount": 20.0,
+        "unit": "ml",
+        "note": "Light"
+      },
+      {
+        "ingredientName": "blue_curacao",
+        "amount": 15.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientName": "pineapple_juice",
+        "amount": 90.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientName": "lime_juice",
+        "amount": 30.0,
+        "unit": "ml",
+        "note": "Fresh"
+      },
+      {
+        "ingredientName": "sugar_syrup",
+        "amount": 10.0,
+        "unit": "ml"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientName": "pineapple_wedge",
+        "amount": 1.0
+      }
+    ],
+    "notes": "Method: Shake & Strain"
+  }
+]

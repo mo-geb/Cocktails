@@ -89,9 +89,12 @@ struct LibraryPreviewView: View {
                 performImport(names: Array(selected))
             } label: {
                 Text(selected.isEmpty ? "Import Selected" : "Import Selected (\(selected.count))")
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.bordered)
+            .controlSize(.large)
             .disabled(selected.isEmpty || isImporting)
 
             Button {
@@ -101,6 +104,7 @@ struct LibraryPreviewView: View {
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.borderedProminent)
+            .controlSize(.large)
             .disabled(importable.isEmpty || isImporting)
         }
         .padding(.horizontal)
@@ -131,4 +135,11 @@ struct LibraryPreviewView: View {
             importError = error.localizedDescription
         }
     }
+}
+
+#Preview {
+    NavigationStack {
+        LibraryPreviewView(source: .ebsInter2023)
+    }
+    .modelContainer(PreviewSampleData.container)
 }

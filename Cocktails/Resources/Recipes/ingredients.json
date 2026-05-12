@@ -145,6 +145,11 @@
     "type": "juice"
   },
   {
+    "id": "mango_juice",
+    "name": "Mango Juice",
+    "type": "juice"
+  },
+  {
     "id": "egg_white",
     "name": "Egg White",
     "type": "mixer"
@@ -368,6 +373,11 @@
     "id": "vanilla_syrup",
     "name": "Vanilla Syrup",
     "type": "syrup"
+  },
+  {
+    "id": "blue_curacao",
+    "name": "Blue Curacao",
+    "type": "liqueur"
   },
   {
     "id": "vanilla_sugar",

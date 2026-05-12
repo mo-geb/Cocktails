@@ -13,10 +13,14 @@ struct SettingsView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 28) {
+                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+                        statCard(title: "Cocktails", value: "\(cocktails.count)", icon: "wineglass.fill", color: .purple)
+                        statCard(title: "Ingredients", value: "\(ingredients.count)", icon: "leaf.fill", color: .green)
+                    }
+                    
                     importSection
                     aboutSection
                     dataSection
-                    developerSection
 
                     HStack {
                         Spacer()
@@ -86,20 +90,6 @@ struct SettingsView: View {
         }
     }
 
-    private var developerSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            sectionHeader("Developer")
-
-            NavigationLink(destination: DebugTab()) {
-                row(icon: "hammer.fill", color: .orange,
-                    title: "Developer Tools",
-                    subtitle: "Database controls and statistics")
-            }
-            .buttonStyle(.plain)
-            .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-        }
-    }
-
     private var dataSection: some View {
         VStack(alignment: .leading, spacing: 10) {
             sectionHeader("Data")
@@ -155,6 +145,27 @@ struct SettingsView: View {
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 12)
+    }
+    
+    @ViewBuilder
+    private func statCard(title: String, value: String, icon: String, color: Color) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Image(systemName: icon)
+                    .foregroundStyle(color)
+                Spacer()
+            }
+            
+            VStack(alignment: .leading, spacing: 0) {
+                Text(value)
+                    .font(.system(.title, design: .rounded).bold())
+                Text(title)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .padding()
+        .glassEffect(in: RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 
     // MARK: - Data actions
