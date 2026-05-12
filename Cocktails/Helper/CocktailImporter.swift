@@ -11,7 +11,7 @@ struct IngredientDTO: Decodable {
 }
 
 struct RecipeIngredientDTO: Decodable {
-    let ingredientName: String
+    let ingredientId: String
     let amount: Double
     let unit: MeasurementUnit?
     let note: String?
@@ -155,7 +155,7 @@ final class CocktailImporter {
         logger.info("Store already has \(existingIngredients.count) ingredients")
 
         let neededIngredientIDs = Set(cocktailDTOs.flatMap { dto in
-            dto.ingredients.map { $0.ingredientName } + (dto.garnishes ?? []).map { $0.ingredientName }
+            dto.ingredients.map { $0.ingredientId } + (dto.garnishes ?? []).map { $0.ingredientId }
         })
         logger.info("Need \(neededIngredientIDs.count) ingredient IDs for this import")
 
@@ -200,11 +200,11 @@ final class CocktailImporter {
                     sortOrder: index
                 )
 
-                if let mappedIngredient = existingIngredients[ingDTO.ingredientName] {
+                if let mappedIngredient = existingIngredients[ingDTO.ingredientId] {
                     recipeIngredient.ingredient = mappedIngredient
                 } else {
-                    unmappedRefs.append((cocktail: dto.name, ingredientName: ingDTO.ingredientName))
-                    logger.warning("  ⚠️ \(dto.name): no Ingredient found for id '\(ingDTO.ingredientName)'")
+                    unmappedRefs.append((cocktail: dto.name, ingredientName: ingDTO.ingredientId))
+                    logger.warning("  ⚠️ \(dto.name): no Ingredient found for id '\(ingDTO.ingredientId)'")
                 }
 
                 recipeIngredients.append(recipeIngredient)
@@ -221,11 +221,11 @@ final class CocktailImporter {
                     sortOrder: index
                 )
 
-                if let mappedIngredient = existingIngredients[garnishDTO.ingredientName] {
+                if let mappedIngredient = existingIngredients[garnishDTO.ingredientId] {
                     recipeIngredient.ingredient = mappedIngredient
                 } else {
-                    unmappedRefs.append((cocktail: dto.name, ingredientName: garnishDTO.ingredientName))
-                    logger.warning("  ⚠️ \(dto.name): no Ingredient found for id '\(garnishDTO.ingredientName)'")
+                    unmappedRefs.append((cocktail: dto.name, ingredientName: garnishDTO.ingredientId))
+                    logger.warning("  ⚠️ \(dto.name): no Ingredient found for id '\(garnishDTO.ingredientId)'")
                 }
 
                 recipeIngredients.append(recipeIngredient)

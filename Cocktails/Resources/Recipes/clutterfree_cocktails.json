@@ -7,36 +7,36 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "rum",
+        "ingredientId": "rum",
         "amount": 60.0,
         "unit": "ml",
         "note": "Dark"
       },
       {
-        "ingredientName": "mango_juice",
+        "ingredientId": "mango_juice",
         "amount": 60.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "pineapple_juice",
+        "ingredientId": "pineapple_juice",
         "amount": 40.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "lime_juice",
+        "ingredientId": "lime_juice",
         "amount": 20.0,
         "unit": "ml",
         "note": "Fresh"
       },
       {
-        "ingredientName": "vanilla_syrup",
+        "ingredientId": "vanilla_syrup",
         "amount": 30.0,
         "unit": "ml"
       }
     ],
     "garnishes": [
       {
-        "ingredientName": "passionfruit",
+        "ingredientId": "passionfruit",
         "amount": 0.5
       }
     ],
@@ -50,41 +50,41 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientName": "vodka",
+        "ingredientId": "vodka",
         "amount": 20.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "rum",
+        "ingredientId": "rum",
         "amount": 20.0,
         "unit": "ml",
         "note": "Light"
       },
       {
-        "ingredientName": "blue_curacao",
+        "ingredientId": "blue_curacao",
         "amount": 15.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "pineapple_juice",
+        "ingredientId": "pineapple_juice",
         "amount": 90.0,
         "unit": "ml"
       },
       {
-        "ingredientName": "lime_juice",
+        "ingredientId": "lime_juice",
         "amount": 30.0,
         "unit": "ml",
         "note": "Fresh"
       },
       {
-        "ingredientName": "sugar_syrup",
+        "ingredientId": "sugar_syrup",
         "amount": 10.0,
         "unit": "ml"
       }
     ],
     "garnishes": [
       {
-        "ingredientName": "pineapple_wedge",
+        "ingredientId": "pineapple_wedge",
         "amount": 1.0
       }
     ],
