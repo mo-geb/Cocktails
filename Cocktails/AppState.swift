@@ -2,17 +2,22 @@ import SwiftUI
 
 @Observable
 final class AppState {
-    var selectedTab: ActiveTab = .cocktails
+    var selectedTab: ActiveTab = .cocktails {
+        didSet { if oldValue != .search { lastContentTab = oldValue } }
+    }
+    private var lastContentTab: ActiveTab = .cocktails
+
     var showSettings = false
     var activeCocktailSheet: ActiveCocktailSheet?
     var cocktailToDelete: Cocktail?
+    var activeIngredientSheet: ActiveIngredientSheet?
 
     var cocktailGrouping: CocktailGrouping = .none {
         didSet { UserDefaults.standard.set(cocktailGrouping.rawValue, forKey: "cocktailGrouping") }
     }
 
     var preferredSearchTab: SearchTab {
-        selectedTab == .inventory ? .ingredients : .cocktails
+        lastContentTab == .inventory ? .ingredients : .cocktails
     }
 
     init() {

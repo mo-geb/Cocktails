@@ -7,6 +7,7 @@ struct MainTabView: View {
 
     var body: some View {
         @Bindable var appState = appState
+        
         TabView(selection: $appState.selectedTab) {
             Tab("Cocktails", systemImage: "wineglass", value: ActiveTab.cocktails) {
                 CocktailTab()
@@ -21,6 +22,10 @@ struct MainTabView: View {
             }
         }
         .sheet(isPresented: $appState.showSettings) { SettingsView() }
+        .sheet(item: $appState.activeIngredientSheet) { sheet in
+            NavigationStack { sheet.contentView }
+                .presentationDetents([.medium])
+        }
         .sheet(item: $appState.activeCocktailSheet) { sheet in
             NavigationStack { sheet.contentView }
                 .presentationDetents([.large])

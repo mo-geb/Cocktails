@@ -7,8 +7,6 @@ struct InventoryTab: View {
     @Query(sort: \Ingredient.name) private var ingredients: [Ingredient]
     @Query private var cocktails: [Cocktail]
     @State private var showMakeableCocktails = false
-    @State private var showAddIngredient = false
-    @State private var ingredientToEdit: Ingredient?
 
     let columns = [
         GridItem(.flexible(), spacing: 10),
@@ -53,7 +51,7 @@ struct InventoryTab: View {
                             LazyVGrid(columns: columns, spacing: 10) {
                                 ForEach(items) { ingredient in
                                     IngredientGridCell(ingredient: ingredient) {
-                                        ingredientToEdit = ingredient
+                                        appState.activeIngredientSheet = .edit(ingredient)
                                     }
                                 }
                             }
@@ -85,20 +83,12 @@ struct InventoryTab: View {
                     }
                 }
                 ToolbarItem(placement: .primaryAction) {
-                    Button { showAddIngredient = true } label: {
+                    Button { appState.activeIngredientSheet = .add } label: {
                         Label("Add Ingredient", systemImage: "plus")
                     }
                 }
             }
             .sheet(isPresented: $showMakeableCocktails) { MakeableCocktailsView() }
-            .sheet(isPresented: $showAddIngredient) {
-                NavigationStack { IngredientEditView() }
-                    .presentationDetents([.medium])
-            }
-            .sheet(item: $ingredientToEdit) { ingredient in
-                NavigationStack { IngredientEditView(ingredient: ingredient) }
-                    .presentationDetents([.medium])
-            }
         }
     }
 

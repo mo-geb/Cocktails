@@ -9,7 +9,6 @@ struct SearchView: View {
 
     @State private var query = ""
     @State private var selectedTab: SearchTab = .cocktails
-    @State private var suggestionSheet: SuggestionSheet?
 
     let cocktailColumns = [
         GridItem(.flexible(), spacing: 12),
@@ -82,21 +81,6 @@ struct SearchView: View {
                     }
                 }
             }
-            .sheet(item: $suggestionSheet) { suggestionSheetView($0) }
-        }
-    }
-
-    @ViewBuilder
-    private func suggestionSheetView(_ sheet: SuggestionSheet) -> some View {
-        switch sheet {
-        case .cocktail(let name):
-            let draft = { var d = CocktailDraft(); d.name = name; return d }()
-            NavigationStack { CocktailEditView(draft: draft) }
-                .presentationDetents([.large])
-                .presentationDragIndicator(.visible)
-        case .ingredient(let name):
-            NavigationStack { IngredientEditView(suggestedName: name) }
-                .presentationDetents([.medium])
         }
     }
 
@@ -114,7 +98,9 @@ struct SearchView: View {
                 }
                 if showCocktailSuggestion {
                     cocktailAddCard(name: query) {
-                        suggestionSheet = .cocktail(query)
+                        var draft = CocktailDraft()
+                        draft.name = query
+                        appState.activeCocktailSheet = .new(draft)
                     }
                 }
             }
@@ -139,7 +125,7 @@ struct SearchView: View {
 
                         LazyVGrid(columns: ingredientColumns, spacing: 10) {
                             ForEach(items) { ingredient in
-                                IngredientGridCell(ingredient: ingredient)
+                                IngredientGridCell(ingredient: ingredient) { appState.activeIngredientSheet = .edit(ingredient) }
                             }
                         }
                         .padding(.horizontal)
@@ -154,7 +140,7 @@ struct SearchView: View {
                 }
                 if showIngredientSuggestion {
                     Button {
-                        suggestionSheet = .ingredient(query)
+                        appState.activeIngredientSheet = .addWithName(query)
                     } label: {
                         ingredientAddCellLabel(name: query)
                     }
@@ -163,17 +149,6 @@ struct SearchView: View {
             }
             .padding(.horizontal)
             .padding(.vertical)
-        }
-    }
-}
-
-private enum SuggestionSheet: Identifiable {
-    case cocktail(String)
-    case ingredient(String)
-    var id: String {
-        switch self {
-        case .cocktail(let name): "cocktail-\(name)"
-        case .ingredient(let name): "ingredient-\(name)"
         }
     }
 }
