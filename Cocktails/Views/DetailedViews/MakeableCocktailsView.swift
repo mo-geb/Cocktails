@@ -44,7 +44,7 @@ struct MakeableCocktailsView: View {
                                 section(title: "Ready to make") {
                                     LazyVGrid(columns: columns, spacing: 12) {
                                         ForEach(makeableCocktails) { cocktail in
-                                            CocktailGridCell(cocktail: cocktail, onDelete: { cocktailToDelete = cocktail }) {
+                                            CocktailGridCell(cocktail: cocktail, onEdit: { activeCocktailSheet = .edit(cocktail) }, onDelete: { cocktailToDelete = cocktail }) {
                                                 activeCocktailSheet = .view(cocktail)
                                             }
                                         }
@@ -56,7 +56,7 @@ struct MakeableCocktailsView: View {
                                 section(title: "Almost there") {
                                     LazyVGrid(columns: columns, spacing: 12) {
                                         ForEach(almostMakeableCocktails, id: \.cocktail.id) { item in
-                                            CocktailGridCell(cocktail: item.cocktail, footerLabel: "Missing: \(item.missing)", onDelete: { cocktailToDelete = item.cocktail }) {
+                                            CocktailGridCell(cocktail: item.cocktail, footerLabel: "Missing: \(item.missing)", onEdit: { activeCocktailSheet = .edit(item.cocktail) }, onDelete: { cocktailToDelete = item.cocktail }) {
                                                 activeCocktailSheet = .view(item.cocktail)
                                             }
                                         }

@@ -3,6 +3,7 @@ import SwiftUI
 struct CocktailGridCell: View {
     let cocktail: Cocktail
     var footerLabel: String? = nil
+    var onEdit: (() -> Void)? = nil
     var onDelete: (() -> Void)? = nil
     let onTap: () -> Void
 
@@ -86,6 +87,7 @@ struct CocktailGridCell: View {
             .frame(maxWidth: .infinity)
             .aspectRatio(0.85, contentMode: .fit)
             .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+            .contentShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
         }
         .buttonStyle(CardPressStyle(scale: 1.06))
         .contextMenu {
@@ -96,6 +98,11 @@ struct CocktailGridCell: View {
                     cocktail.isFavourite ? "Remove from Favourites" : "Add to Favourites",
                     systemImage: cocktail.isFavourite ? "star.slash" : "star"
                 )
+            }
+            if let onEdit {
+                Button(action: onEdit) {
+                    Label("Edit", systemImage: "pencil")
+                }
             }
             if let onDelete {
                 Button(role: .destructive, action: onDelete) {

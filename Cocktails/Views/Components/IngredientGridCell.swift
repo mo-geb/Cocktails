@@ -27,6 +27,7 @@ struct IngredientGridCell: View {
             .frame(maxWidth: .infinity)
             .aspectRatio(0.85, contentMode: .fit)
             .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
             .grayscale(ingredient.isStocked ? 0 : 1)
             .opacity(ingredient.isStocked ? 1 : 0.4)
         }

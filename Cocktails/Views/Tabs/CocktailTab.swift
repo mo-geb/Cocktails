@@ -87,7 +87,7 @@ struct CocktailTab: View {
 
                         LazyVGrid(columns: columns, spacing: 12) {
                             ForEach(cocktails) { cocktail in
-                                CocktailGridCell(cocktail: cocktail, onDelete: { appState.cocktailToDelete = cocktail }) {
+                                CocktailGridCell(cocktail: cocktail, onEdit: { appState.activeCocktailSheet = .edit(cocktail) }, onDelete: { appState.cocktailToDelete = cocktail }) {
                                     appState.activeCocktailSheet = .view(cocktail)
                                 }
                             }
