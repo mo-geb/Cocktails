@@ -32,6 +32,18 @@ extension CocktailDTO: CocktailImageProviding {
     var imageData: Data? { nil }
 }
 
+// MARK: - Available Images
+
+extension CocktailImporter {
+    static let availableIngredientImageNames: [String] = {
+        guard let url = Bundle.main.url(forResource: "ingredients", withExtension: "json"),
+              let data = try? Data(contentsOf: url),
+              let dtos = try? JSONDecoder().decode([IngredientDTO].self, from: data)
+        else { return [] }
+        return dtos.map(\.id).sorted()
+    }()
+}
+
 // MARK: - Import Result
 
 struct ImportResult {

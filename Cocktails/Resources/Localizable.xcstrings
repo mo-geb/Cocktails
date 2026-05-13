@@ -70,6 +70,12 @@
     "Cancel" : {
 
     },
+    "Change Image" : {
+
+    },
+    "Choose Image" : {
+
+    },
     "Choose what to delete. This cannot be undone." : {
 
     },
@@ -326,6 +332,9 @@
 
     },
     "Upgrade" : {
+
+    },
+    "Use Default" : {
 
     },
     "What can I make?" : {

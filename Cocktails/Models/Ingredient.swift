@@ -7,14 +7,16 @@ final class Ingredient {
     var name: String = ""
     var type: IngredientType = IngredientType.other
     var isStocked: Bool = false
+    var imageName: String? = nil
 
     @Relationship(inverse: \RecipeIngredient.ingredient) var usages: [RecipeIngredient]?
 
-    init(id: String = UUID().uuidString, name: String = "", type: IngredientType = .other, isStocked: Bool = false) {
+    init(id: String = UUID().uuidString, name: String = "", type: IngredientType = .other, isStocked: Bool = false, imageName: String? = nil) {
         self.id = id
         self.name = name
         self.type = type
         self.isStocked = isStocked
+        self.imageName = imageName
     }
 }
 
@@ -22,17 +24,20 @@ struct IngredientDraft: Hashable {
     var id: String
     var name: String = ""
     var type: IngredientType = .other
+    var imageName: String? = nil
 
-    init(id: String = UUID().uuidString, name: String = "", type: IngredientType = .other) {
+    init(id: String = UUID().uuidString, name: String = "", type: IngredientType = .other, imageName: String? = nil) {
         self.id = id
         self.name = name
         self.type = type
+        self.imageName = imageName
     }
 
     init(from ingredient: Ingredient) {
         self.id = ingredient.id
         self.name = ingredient.name
         self.type = ingredient.type
+        self.imageName = ingredient.imageName
     }
 }
 
@@ -40,16 +45,19 @@ import UIKit
 
 protocol IngredientImageProviding {
     var id: String { get }
+    var imageName: String? { get }
 }
 
 extension IngredientImageProviding {
     var displayImage: DisplayImageSource {
-        if UIImage(named: "Ingredient/" + id) != nil {
-            return .system("Ingredient/" + id)
+        let assetName = "Ingredient/" + (imageName ?? id)
+        if UIImage(named: assetName) != nil {
+            return .system(assetName)
         }
         return .placeholder
     }
 }
+
 
 extension Ingredient: IngredientImageProviding {}
 extension IngredientDraft: IngredientImageProviding {}

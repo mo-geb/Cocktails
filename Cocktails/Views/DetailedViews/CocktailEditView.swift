@@ -64,22 +64,47 @@ struct CocktailEditView: View {
 
     @ViewBuilder
     private var imageSection: some View {
-        PhotosPicker(selection: $photoItem, matching: .images) {
-            ZStack(alignment: .bottomTrailing) {
-                draft.displayImage.view(placeholder: draft.glass.imageNameFilled)
-                    .scaledToFit()
-                    .frame(width: 110, height: 110)
-                    .padding(12)
+        ZStack(alignment: .topTrailing) {
+            PhotosPicker(selection: $photoItem, matching: .images) {
+                ZStack(alignment: .bottomTrailing) {
+                    if draft.displayImage.isCustom {
+                        draft.displayImage.view(placeholder: draft.glass.imageNameFilled)
+                            .scaledToFill()
+                            .frame(width: 140, height: 140)
+                            .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
+                            .padding(8)
+                            .glassEffect(in: RoundedRectangle(cornerRadius: 40, style: .continuous))
+                    } else {
+                        draft.displayImage.view(placeholder: draft.glass.imageNameFilled)
+                            .scaledToFit()
+                            .frame(width: 110, height: 110)
+                            .padding(12)
+                    }
 
-                Image(systemName: "camera.fill")
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.secondary)
-                    .padding(7)
-                    .background(.thinMaterial, in: Circle())
-                    .offset(x: 2, y: 2)
+                    Image(systemName: "camera.fill")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                        .padding(7)
+                        .background(.thinMaterial, in: Circle())
+                        .offset(x: 2, y: 2)
+                }
+            }
+            .buttonStyle(.plain)
+
+            if draft.displayImage.isCustom {
+                Button {
+                    photoItem = nil
+                    draft.imageData = nil
+                } label: {
+                    Image(systemName: "xmark")
+                        .font(.caption2.weight(.bold))
+                        .foregroundStyle(.white)
+                        .padding(6)
+                        .background(.black.opacity(0.6), in: Circle())
+                }
+                .offset(x: -4, y: 4)
             }
         }
-        .buttonStyle(.plain)
     }
 
     @ViewBuilder
@@ -357,7 +382,6 @@ struct CocktailEditView: View {
         Task {
             if let data = try? await photoItem?.loadTransferable(type: Data.self) {
                 draft.imageData = data
-                draft.imageName = nil
             }
         }
     }

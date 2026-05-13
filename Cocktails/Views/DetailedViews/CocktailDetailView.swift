@@ -68,10 +68,21 @@ struct CocktailDetailView: View {
 
     @ViewBuilder
     private var pictureSectionShowing: some View {
-        draft.displayImage.view(placeholder: draft.glass.imageNameFilled)
-            .scaledToFit()
-            .frame(width: 110, height: 110)
-            .padding(12)
+        if draft.displayImage.isCustom {
+            draft.displayImage.view(placeholder: draft.glass.imageNameFilled)
+                .scaledToFill()
+                .frame(width: 140, height: 140)
+                .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
+                .padding(8)
+                .glassEffect(in: RoundedRectangle(cornerRadius: 40, style: .continuous))
+                .padding(.top, 12)
+                .padding(.bottom, 8)
+        } else {
+            draft.displayImage.view(placeholder: draft.glass.imageNameFilled)
+                .scaledToFit()
+                .frame(width: 110, height: 110)
+                .padding(12)
+        }
     }
 
     @ViewBuilder

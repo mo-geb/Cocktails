@@ -7,7 +7,9 @@ struct IngredientEditView: View {
 
     @State private var name: String
     @State private var type: IngredientType
+    @State private var imageName: String?
     @State private var showDeleteConfirmation = false
+    @State private var showImagePicker = false
 
     private let originalIngredient: Ingredient?
 
@@ -15,25 +17,43 @@ struct IngredientEditView: View {
         self.originalIngredient = ingredient
         self._name = State(initialValue: ingredient.name)
         self._type = State(initialValue: ingredient.type)
+        self._imageName = State(initialValue: ingredient.imageName)
     }
 
     init(suggestedName: String = "") {
         self.originalIngredient = nil
         self._name = State(initialValue: suggestedName)
         self._type = State(initialValue: .other)
+        self._imageName = State(initialValue: nil)
     }
 
     private var isNew: Bool { originalIngredient == nil }
+
+    private var previewImage: DisplayImageSource {
+        let assetName = "Ingredient/" + (imageName ?? (originalIngredient?.id ?? ""))
+        if UIImage(named: assetName) != nil { return .system(assetName) }
+        return .placeholder
+    }
 
     var body: some View {
         Form {
             Section {
                 HStack {
                     Spacer()
-                    (originalIngredient?.displayImage ?? DisplayImageSource.placeholder)
-                        .view(placeholder: type.imageName)
-                        .scaledToFit()
-                        .frame(width: 64, height: 64)
+                    Button {
+                        showImagePicker = true
+                    } label: {
+                        VStack(spacing: 6) {
+                            previewImage
+                                .view(placeholder: type.imageName)
+                                .scaledToFit()
+                                .frame(width: 64, height: 64)
+                            Text("Change Image")
+                                .font(.caption)
+                                .foregroundStyle(.tint)
+                        }
+                    }
+                    .buttonStyle(.plain)
                     Spacer()
                 }
                 .listRowBackground(Color.clear)
@@ -73,6 +93,9 @@ struct IngredientEditView: View {
                     .fontWeight(.semibold)
             }
         }
+        .sheet(isPresented: $showImagePicker) {
+            IngredientImagePickerSheet(selectedImageName: $imageName)
+        }
         .confirmationDialog(
             "Delete \"\(originalIngredient?.name ?? "")\"?",
             isPresented: $showDeleteConfirmation,
@@ -91,8 +114,9 @@ struct IngredientEditView: View {
         if let ingredient = originalIngredient {
             ingredient.name = trimmed
             ingredient.type = type
+            ingredient.imageName = imageName
         } else {
-            let ingredient = Ingredient(name: trimmed, type: type)
+            let ingredient = Ingredient(name: trimmed, type: type, imageName: imageName)
             modelContext.insert(ingredient)
         }
         dismiss()

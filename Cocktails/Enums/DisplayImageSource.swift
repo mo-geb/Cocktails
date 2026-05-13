@@ -8,6 +8,11 @@ enum DisplayImageSource {
 }
 
 extension DisplayImageSource {
+    var isCustom: Bool {
+        if case .custom = self { return true }
+        return false
+    }
+
     func dominantColor(placeholderName: String) -> Color? {
         let uiImage: UIImage? = switch self {
         case .custom(let img):  img

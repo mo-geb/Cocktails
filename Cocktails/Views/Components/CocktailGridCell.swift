@@ -15,9 +15,20 @@ struct CocktailGridCell: View {
                 VStack(spacing: 0) {
                     Spacer()
 
-                    cocktail.displayImage.view(placeholder: cocktail.glass.imageNameFilled)
-                        .scaledToFit()
-                        .padding(.horizontal, 40)
+                    if cocktail.displayImage.isCustom {
+                        cocktail.displayImage.view(placeholder: cocktail.glass.imageNameFilled)
+                            .scaledToFill()
+                            .frame(width: 80, height: 80)
+                            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                            .padding(6)
+                            .glassEffect(in: RoundedRectangle(cornerRadius: 26, style: .continuous))
+                            .padding(.top, 16)
+                            .padding(.bottom, 8)
+                    } else {
+                        cocktail.displayImage.view(placeholder: cocktail.glass.imageNameFilled)
+                            .scaledToFit()
+                            .padding(.horizontal, 40)
+                    }
 
                     Spacer()
 
