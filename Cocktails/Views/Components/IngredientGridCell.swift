@@ -85,9 +85,10 @@ import SwiftData
         GridItem(.flexible(), spacing: 10),
         GridItem(.flexible(), spacing: 10)
     ]
+    let ingredients = try! PreviewSampleData.container.mainContext.fetch(FetchDescriptor<Ingredient>())
     ScrollView {
         LazyVGrid(columns: columns, spacing: 10) {
-            ForEach(PreviewSampleData.mockCocktails.compactMap { $0.ingredients?.first?.ingredient }) { ingredient in
+            ForEach(ingredients) { ingredient in
                 IngredientGridCell(ingredient: ingredient)
             }
             ingredientAddCellLabel(name: "New")

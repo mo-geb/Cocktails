@@ -109,7 +109,6 @@
         "ingredientId": "sugar_cube",
         "amount": 1.0,
         "note": "Soaked with Angostura Bitters"
-
       },
       {
         "ingredientId": "soda_water",
@@ -129,7 +128,7 @@
         "unit": "leaf"
       },
       {
-        "ingredientId": "mint_spring",
+        "ingredientId": "mint_sprig",
         "amount": 1.0
       }
     ],
@@ -288,7 +287,7 @@
     "ice": "cubed",
     "ingredients": [
       {
-        "ingredientId": "jack_daniels",
+        "ingredientId": "whisky",
         "amount": 40.0,
         "unit": "ml",
         "note": "Jack Daniel’s"
@@ -475,7 +474,7 @@
     ],
     "garnishes": [
       {
-        "ingredientId": "mint_spring",
+        "ingredientId": "mint_sprig",
         "amount": 1.0
       }
     ],
@@ -732,10 +731,9 @@
         "note": "Sweet Vermouth"
       },
       {
-        "ingredientId": "brandy",
+        "ingredientId": "cherry_liqueur",
         "amount": 20.0,
-        "unit": "ml",
-        "note": "Cherry Brandy"
+        "unit": "ml"
       },
       {
         "ingredientId": "orange_juice",
@@ -880,7 +878,7 @@
         "unit": "dash"
       },
       {
-        "ingredientId": "benedictine_dom",
+        "ingredientId": "benedictine",
         "amount": 5.0,
         "unit": "ml"
       },
@@ -890,10 +888,9 @@
         "unit": "ml"
       },
       {
-        "ingredientId": "brandy",
+        "ingredientId": "cherry_liqueur",
         "amount": 10.0,
-        "unit": "ml",
-        "note": "Cherry Brandy"
+        "unit": "ml"
       },
       {
         "ingredientId": "lime_juice",
@@ -2197,7 +2194,7 @@
         "unit": "leaf"
       },
       {
-        "ingredientId": "mint_spring",
+        "ingredientId": "mint_sprig",
         "amount": 1.0
       }
     ],
@@ -2305,7 +2302,7 @@
     ],
     "garnishes": [
       {
-        "ingredientId": "mint_spring",
+        "ingredientId": "mint_sprig",
         "amount": 1.0
       }
     ],

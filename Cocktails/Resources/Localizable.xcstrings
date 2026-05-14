@@ -175,6 +175,9 @@
     "Hurricane" : {
       "comment" : "Glass type"
     },
+    "IBA Unforgettables" : {
+      "comment" : "Recipe source — IBA classic cocktails"
+    },
     "Ice" : {
       "comment" : "Grouping by ice type"
     },

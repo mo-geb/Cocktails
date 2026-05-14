@@ -75,11 +75,6 @@
     "type": "juice"
   },
   {
-    "id": "jack_daniels",
-    "name": "Jack Daniel's",
-    "type": "spirit"
-  },
-  {
     "id": "lemon_juice",
     "name": "Lemon Juice",
     "type": "juice"
@@ -132,7 +127,7 @@
   {
     "id": "champagne",
     "name": "Champagne",
-    "type": "other"
+    "type": "fortifiedWine"
   },
   {
     "id": "chambord",
@@ -207,7 +202,7 @@
   {
     "id": "prosecco",
     "name": "Prosecco",
-    "type": "liqueur"
+    "type": "fortifiedWine"
   },
   {
     "id": "cranberry_juice",
@@ -217,7 +212,7 @@
   {
     "id": "sugar",
     "name": "Sugar",
-    "type": "syrup"
+    "type": "other"
   },
   {
     "id": "cola",
@@ -225,8 +220,8 @@
     "type": "mixer"
   },
   {
-    "id": "benedictine_dom",
-    "name": "Benectine Dom",
+    "id": "benedictine",
+    "name": "Bénédictine",
     "type": "liqueur"
   },
   {
@@ -390,16 +385,6 @@
     "type": "fruit"
   },
   {
-    "id": "cointreau",
-    "name": "Cointreau",
-    "type": "liqueur"
-  },
-  {
-    "id": "simple_syrup",
-    "name": "Simple Syrup",
-    "type": "syrup"
-  },
-  {
     "id": "tonic",
     "name": "Tonic",
     "type": "mixer"
@@ -480,8 +465,8 @@
     "type": "herb"
   },
   {
-    "id": "mint_spring",
-    "name": "Mint Spring",
+    "id": "mint_sprig",
+    "name": "Mint Sprig",
     "type": "herb"
   },
   {
@@ -523,5 +508,60 @@
     "id": "sugar_rim",
     "name": "Sugar Rim",
     "type": "spice"
+  },
+  {
+    "id": "apricot_brandy",
+    "name": "Apricot Brandy",
+    "type": "liqueur"
+  },
+  {
+    "id": "calvados",
+    "name": "Calvados",
+    "type": "spirit"
+  },
+  {
+    "id": "creme_de_violette",
+    "name": "Crème de Violette",
+    "type": "liqueur"
+  },
+  {
+    "id": "raspberry_syrup",
+    "name": "Raspberry Syrup",
+    "type": "syrup"
+  },
+  {
+    "id": "fernet",
+    "name": "Fernet",
+    "type": "liqueur"
+  },
+  {
+    "id": "sugar_cane_juice",
+    "name": "Sugar Cane Juice",
+    "type": "juice"
+  },
+  {
+    "id": "port",
+    "name": "Tawny Port",
+    "type": "fortifiedWine"
+  },
+  {
+    "id": "egg_yolk",
+    "name": "Egg Yolk",
+    "type": "other"
+  },
+  {
+    "id": "vanilla_extract",
+    "name": "Vanilla Extract",
+    "type": "other"
+  },
+  {
+    "id": "orange_flower_water",
+    "name": "Orange Flower Water",
+    "type": "other"
+  },
+  {
+    "id": "cherry_liqueur",
+    "name": "Cherry Brandy Liqueur",
+    "type": "liqueur"
   }
 ]

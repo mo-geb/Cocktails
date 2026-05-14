@@ -1,0 +1,1222 @@
+[
+  {
+    "name": "Alexander",
+    "imageName": "alexander",
+    "glass": "martini",
+    "method": "shake",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "cognac",
+        "amount": 30.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "dark_cacao_liqueur",
+        "amount": 30.0,
+        "unit": "ml",
+        "note": "Brown Crème de Cacao"
+      },
+      {
+        "ingredientId": "cream",
+        "amount": 30.0,
+        "unit": "ml",
+        "note": "Fresh"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "grated_nutmeg",
+        "amount": 1.0
+      }
+    ],
+    "notes": "Method: Shake & Strain\nGlass: Chilled Cocktail / Coupe"
+  },
+  {
+    "name": "Americano",
+    "imageName": "americano",
+    "glass": "rocks",
+    "method": "build",
+    "ice": "cubed",
+    "ingredients": [
+      {
+        "ingredientId": "campari",
+        "amount": 30.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "vermouth",
+        "amount": 30.0,
+        "unit": "ml",
+        "note": "Sweet Vermouth"
+      },
+      {
+        "ingredientId": "soda_water",
+        "amount": 0.0,
+        "unit": "fill",
+        "note": "Splash"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "orange_slice",
+        "amount": 1.0,
+        "note": "Half slice"
+      },
+      {
+        "ingredientId": "lemon_zest",
+        "amount": 1.0
+      }
+    ],
+    "notes": "Method: Build & Stir\nGlass: Old Fashioned"
+  },
+  {
+    "name": "Angel Face",
+    "imageName": "angel_face",
+    "glass": "martini",
+    "method": "shake",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 30.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "apricot_brandy",
+        "amount": 30.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "calvados",
+        "amount": 30.0,
+        "unit": "ml"
+      }
+    ],
+    "notes": "Method: Shake & Strain\nGlass: Chilled Cocktail / Coupe"
+  },
+  {
+    "name": "Aviation",
+    "imageName": "aviation",
+    "glass": "martini",
+    "method": "shake",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 45.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "maraschino",
+        "amount": 15.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "lemon_juice",
+        "amount": 15.0,
+        "unit": "ml",
+        "note": "Fresh"
+      },
+      {
+        "ingredientId": "creme_de_violette",
+        "amount": 1.0,
+        "unit": "bsp"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "cherry",
+        "amount": 1.0,
+        "note": "Maraschino cherry (optional)"
+      }
+    ],
+    "notes": "Method: Shake & Strain\nGlass: Chilled Cocktail / Coupe"
+  },
+  {
+    "name": "Between the Sheets",
+    "imageName": "between_the_sheets",
+    "glass": "martini",
+    "method": "shake",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "rum",
+        "amount": 30.0,
+        "unit": "ml",
+        "note": "White"
+      },
+      {
+        "ingredientId": "cognac",
+        "amount": 30.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "triple_sec",
+        "amount": 30.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "lemon_juice",
+        "amount": 20.0,
+        "unit": "ml",
+        "note": "Fresh"
+      }
+    ],
+    "notes": "Method: Shake & Strain\nGlass: Chilled Cocktail / Coupe"
+  },
+  {
+    "name": "Boulevardier",
+    "imageName": "boulevardier",
+    "glass": "martini",
+    "method": "stir",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "bourbon",
+        "amount": 45.0,
+        "unit": "ml",
+        "note": "Bourbon or Rye"
+      },
+      {
+        "ingredientId": "campari",
+        "amount": 30.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "vermouth",
+        "amount": 30.0,
+        "unit": "ml",
+        "note": "Sweet Vermouth"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "orange_zest",
+        "amount": 1.0
+      }
+    ],
+    "notes": "Method: Stir & Strain\nGlass: Chilled Cocktail / Coupe"
+  },
+  {
+    "name": "Brandy Crusta",
+    "imageName": "brandy_crusta",
+    "glass": "martini",
+    "method": "stir",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "brandy",
+        "amount": 52.5,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "maraschino",
+        "amount": 7.5,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "triple_sec",
+        "amount": 1.0,
+        "unit": "bsp",
+        "note": "Curaçao"
+      },
+      {
+        "ingredientId": "lemon_juice",
+        "amount": 15.0,
+        "unit": "ml",
+        "note": "Fresh"
+      },
+      {
+        "ingredientId": "sugar_syrup",
+        "amount": 1.0,
+        "unit": "bsp"
+      },
+      {
+        "ingredientId": "angostura_bitters",
+        "amount": 2.0,
+        "unit": "dash",
+        "note": "Aromatic bitters"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "sugar_rim",
+        "amount": 1.0
+      },
+      {
+        "ingredientId": "lemon_spiral",
+        "amount": 1.0
+      }
+    ],
+    "notes": "Method: Stir & Strain\nGlass: Slim Cocktail (sugar rim)"
+  },
+  {
+    "name": "Casino",
+    "imageName": "casino",
+    "glass": "rocks",
+    "method": "shake",
+    "ice": "cubed",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 40.0,
+        "unit": "ml",
+        "note": "Old Tom"
+      },
+      {
+        "ingredientId": "maraschino",
+        "amount": 10.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "lemon_juice",
+        "amount": 10.0,
+        "unit": "ml",
+        "note": "Fresh"
+      },
+      {
+        "ingredientId": "orange_bitters",
+        "amount": 2.0,
+        "unit": "dash"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "lemon_zest",
+        "amount": 1.0
+      },
+      {
+        "ingredientId": "cherry",
+        "amount": 1.0,
+        "note": "Maraschino cherry"
+      }
+    ],
+    "notes": "Method: Shake & Strain\nGlass: Chilled Rocks with Ice"
+  },
+  {
+    "name": "Clover Club",
+    "imageName": "clover_club",
+    "glass": "martini",
+    "method": "shake",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 45.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "raspberry_syrup",
+        "amount": 15.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "lemon_juice",
+        "amount": 15.0,
+        "unit": "ml",
+        "note": "Fresh"
+      },
+      {
+        "ingredientId": "egg_white",
+        "amount": 1.0,
+        "unit": "dash",
+        "note": "Few drops"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "raspberry",
+        "amount": 3.0,
+        "note": "Fresh"
+      }
+    ],
+    "notes": "Method: Shake & Strain\nGlass: Chilled Cocktail / Coupe"
+  },
+  {
+    "name": "Daiquiri",
+    "imageName": "daiquiri",
+    "glass": "martini",
+    "method": "shake",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "rum",
+        "amount": 60.0,
+        "unit": "ml",
+        "note": "White Cuban"
+      },
+      {
+        "ingredientId": "lime_juice",
+        "amount": 20.0,
+        "unit": "ml",
+        "note": "Fresh"
+      },
+      {
+        "ingredientId": "sugar",
+        "amount": 2.0,
+        "unit": "bsp",
+        "note": "Superfine"
+      }
+    ],
+    "notes": "Method: Dissolve sugar, Shake & Strain\nGlass: Chilled Cocktail / Coupe"
+  },
+  {
+    "name": "Dry Martini",
+    "imageName": "dry_martini",
+    "glass": "martini",
+    "method": "stir",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 60.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "vermouth",
+        "amount": 10.0,
+        "unit": "ml",
+        "note": "Dry Vermouth"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "lemon_zest",
+        "amount": 1.0,
+        "note": "Or green olive"
+      },
+      {
+        "ingredientId": "olive",
+        "amount": 1.0,
+        "note": "Optional"
+      }
+    ],
+    "notes": "Method: Stir & Strain\nGlass: Chilled Martini"
+  },
+  {
+    "name": "Gin Fizz",
+    "imageName": "gin_fizz",
+    "glass": "highball",
+    "method": "shake",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 45.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "lemon_juice",
+        "amount": 30.0,
+        "unit": "ml",
+        "note": "Fresh"
+      },
+      {
+        "ingredientId": "sugar_syrup",
+        "amount": 10.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "soda_water",
+        "amount": 0.0,
+        "unit": "fill",
+        "note": "Splash"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "lemon_zest",
+        "amount": 1.0
+      }
+    ],
+    "notes": "Method: Shake (without soda) & Strain, top with soda\nGlass: Thin Tall Tumbler"
+  },
+  {
+    "name": "Hanky Panky",
+    "imageName": "hanky_panky",
+    "glass": "martini",
+    "method": "stir",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 45.0,
+        "unit": "ml",
+        "note": "London Dry"
+      },
+      {
+        "ingredientId": "vermouth",
+        "amount": 45.0,
+        "unit": "ml",
+        "note": "Sweet Vermouth"
+      },
+      {
+        "ingredientId": "fernet",
+        "amount": 7.5,
+        "unit": "ml"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "orange_zest",
+        "amount": 1.0
+      }
+    ],
+    "notes": "Method: Stir & Strain\nGlass: Chilled Cocktail / Coupe"
+  },
+  {
+    "name": "John Collins",
+    "imageName": "john_collins",
+    "glass": "highball",
+    "method": "build",
+    "ice": "cubed",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 45.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "lemon_juice",
+        "amount": 30.0,
+        "unit": "ml",
+        "note": "Fresh"
+      },
+      {
+        "ingredientId": "sugar_syrup",
+        "amount": 15.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "soda_water",
+        "amount": 60.0,
+        "unit": "ml"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "lemon_wedge",
+        "amount": 1.0,
+        "note": "Lemon slice"
+      },
+      {
+        "ingredientId": "cherry",
+        "amount": 1.0,
+        "note": "Maraschino"
+      }
+    ],
+    "notes": "Method: Build & Stir\nGlass: Highball"
+  },
+  {
+    "name": "Last Word",
+    "imageName": "last_word",
+    "glass": "martini",
+    "method": "shake",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 22.5,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "chartreuse",
+        "amount": 22.5,
+        "unit": "ml",
+        "note": "Green"
+      },
+      {
+        "ingredientId": "maraschino",
+        "amount": 22.5,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "lime_juice",
+        "amount": 22.5,
+        "unit": "ml",
+        "note": "Fresh"
+      }
+    ],
+    "notes": "Method: Shake & Strain\nGlass: Chilled Cocktail / Coupe"
+  },
+  {
+    "name": "Manhattan",
+    "imageName": "manhattan",
+    "glass": "martini",
+    "method": "stir",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "rye",
+        "amount": 50.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "vermouth",
+        "amount": 20.0,
+        "unit": "ml",
+        "note": "Sweet Vermouth"
+      },
+      {
+        "ingredientId": "angostura_bitters",
+        "amount": 1.0,
+        "unit": "dash"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "cherry",
+        "amount": 1.0,
+        "note": "Cocktail cherry"
+      }
+    ],
+    "notes": "Method: Stir & Strain\nGlass: Chilled Cocktail / Coupe"
+  },
+  {
+    "name": "Martinez",
+    "imageName": "martinez",
+    "glass": "martini",
+    "method": "stir",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 45.0,
+        "unit": "ml",
+        "note": "London Dry"
+      },
+      {
+        "ingredientId": "vermouth",
+        "amount": 45.0,
+        "unit": "ml",
+        "note": "Sweet Vermouth"
+      },
+      {
+        "ingredientId": "maraschino",
+        "amount": 1.0,
+        "unit": "bsp"
+      },
+      {
+        "ingredientId": "orange_bitters",
+        "amount": 2.0,
+        "unit": "dash"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "lemon_zest",
+        "amount": 1.0
+      }
+    ],
+    "notes": "Method: Stir & Strain\nGlass: Chilled Cocktail / Coupe"
+  },
+  {
+    "name": "Mary Pickford",
+    "imageName": "mary_pickford",
+    "glass": "martini",
+    "method": "shake",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "rum",
+        "amount": 45.0,
+        "unit": "ml",
+        "note": "White"
+      },
+      {
+        "ingredientId": "pineapple_juice",
+        "amount": 45.0,
+        "unit": "ml",
+        "note": "Fresh"
+      },
+      {
+        "ingredientId": "maraschino",
+        "amount": 7.5,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "grenadine",
+        "amount": 5.0,
+        "unit": "ml"
+      }
+    ],
+    "notes": "Method: Shake & Strain\nGlass: Chilled Cocktail / Coupe"
+  },
+  {
+    "name": "Monkey Gland",
+    "imageName": "monkey_gland",
+    "glass": "martini",
+    "method": "shake",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 45.0,
+        "unit": "ml",
+        "note": "Dry"
+      },
+      {
+        "ingredientId": "orange_juice",
+        "amount": 45.0,
+        "unit": "ml",
+        "note": "Fresh"
+      },
+      {
+        "ingredientId": "absinthe",
+        "amount": 15.0,
+        "unit": "ml",
+        "note": "1 tbsp"
+      },
+      {
+        "ingredientId": "grenadine",
+        "amount": 15.0,
+        "unit": "ml",
+        "note": "1 tbsp"
+      }
+    ],
+    "notes": "Method: Shake & Strain\nGlass: Chilled Cocktail / Coupe"
+  },
+  {
+    "name": "Negroni",
+    "imageName": "negroni",
+    "glass": "rocks",
+    "method": "build",
+    "ice": "cubed",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 30.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "campari",
+        "amount": 30.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "vermouth",
+        "amount": 30.0,
+        "unit": "ml",
+        "note": "Sweet Vermouth"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "orange_slice",
+        "amount": 1.0,
+        "note": "Half slice"
+      }
+    ],
+    "notes": "Method: Build & Stir\nGlass: Chilled Old Fashioned"
+  },
+  {
+    "name": "Old Fashioned",
+    "imageName": "old_fashioned",
+    "glass": "rocks",
+    "method": "build",
+    "ice": "cubed",
+    "ingredients": [
+      {
+        "ingredientId": "bourbon",
+        "amount": 45.0,
+        "unit": "ml",
+        "note": "Bourbon or Rye"
+      },
+      {
+        "ingredientId": "sugar_cube",
+        "amount": 1.0
+      },
+      {
+        "ingredientId": "angostura_bitters",
+        "amount": 3.0,
+        "unit": "dash",
+        "note": "Few dashes; saturate sugar cube"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "orange_zest",
+        "amount": 1.0,
+        "note": "Or orange slice"
+      },
+      {
+        "ingredientId": "cherry",
+        "amount": 1.0,
+        "note": "Cocktail cherry"
+      }
+    ],
+    "notes": "Method: Muddle sugar with bitters & few dashes water, Build & Stir\nGlass: Old Fashioned"
+  },
+  {
+    "name": "Paradise",
+    "imageName": "paradise",
+    "glass": "martini",
+    "method": "shake",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 30.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "apricot_brandy",
+        "amount": 20.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "orange_juice",
+        "amount": 15.0,
+        "unit": "ml",
+        "note": "Fresh"
+      }
+    ],
+    "notes": "Method: Shake & Strain\nGlass: Chilled Cocktail / Coupe"
+  },
+  {
+    "name": "Planter's Punch",
+    "imageName": "planters_punch",
+    "glass": "highball",
+    "method": "build",
+    "ice": "cubed",
+    "ingredients": [
+      {
+        "ingredientId": "rum",
+        "amount": 45.0,
+        "unit": "ml",
+        "note": "Jamaican"
+      },
+      {
+        "ingredientId": "lime_juice",
+        "amount": 15.0,
+        "unit": "ml",
+        "note": "Fresh"
+      },
+      {
+        "ingredientId": "sugar_cane_juice",
+        "amount": 30.0,
+        "unit": "ml"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "orange_zest",
+        "amount": 1.0
+      }
+    ],
+    "notes": "Method: Build\nGlass: Small Tumbler or Terracotta"
+  },
+  {
+    "name": "Porto Flip",
+    "imageName": "porto_flip",
+    "glass": "martini",
+    "method": "shake",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "brandy",
+        "amount": 15.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "port",
+        "amount": 45.0,
+        "unit": "ml",
+        "note": "Red Tawny"
+      },
+      {
+        "ingredientId": "egg_yolk",
+        "amount": 10.0,
+        "unit": "ml"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "grated_nutmeg",
+        "amount": 1.0
+      }
+    ],
+    "notes": "Method: Shake & Strain\nGlass: Chilled Cocktail / Coupe"
+  },
+  {
+    "name": "Ramos Fizz",
+    "imageName": "ramos_fizz",
+    "glass": "highball",
+    "method": "shake",
+    "ice": "cubed",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 45.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "lime_juice",
+        "amount": 15.0,
+        "unit": "ml",
+        "note": "Fresh"
+      },
+      {
+        "ingredientId": "lemon_juice",
+        "amount": 15.0,
+        "unit": "ml",
+        "note": "Fresh"
+      },
+      {
+        "ingredientId": "sugar_syrup",
+        "amount": 30.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "cream",
+        "amount": 60.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "egg_white",
+        "amount": 30.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "orange_flower_water",
+        "amount": 3.0,
+        "unit": "dash"
+      },
+      {
+        "ingredientId": "vanilla_extract",
+        "amount": 2.0,
+        "unit": "dash",
+        "note": "2 drops"
+      },
+      {
+        "ingredientId": "soda_water",
+        "amount": 0.0,
+        "unit": "fill"
+      }
+    ],
+    "notes": "Method: Shake hard (2 min with ice, 1 min dry), top with soda\nGlass: Highball"
+  },
+  {
+    "name": "Remember the Maine",
+    "imageName": "remember_the_maine",
+    "glass": "martini",
+    "method": "stir",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "rye",
+        "amount": 60.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "vermouth",
+        "amount": 22.5,
+        "unit": "ml",
+        "note": "Sweet Vermouth"
+      },
+      {
+        "ingredientId": "cherry_liqueur",
+        "amount": 15.0,
+        "unit": "ml",
+        "note": "Cherry Brandy"
+      },
+      {
+        "ingredientId": "absinthe",
+        "amount": 7.5,
+        "unit": "ml",
+        "note": "Rinse glass"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "lemon_zest",
+        "amount": 1.0
+      }
+    ],
+    "notes": "Method: Rinse coupe with absinthe, Stir & Strain remaining\nGlass: Coupe"
+  },
+  {
+    "name": "Rusty Nail",
+    "imageName": "rusty_nail",
+    "glass": "rocks",
+    "method": "build",
+    "ice": "cubed",
+    "ingredients": [
+      {
+        "ingredientId": "whisky",
+        "amount": 45.0,
+        "unit": "ml",
+        "note": "Scotch"
+      },
+      {
+        "ingredientId": "drambuie",
+        "amount": 25.0,
+        "unit": "ml"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "lemon_zest",
+        "amount": 1.0
+      }
+    ],
+    "notes": "Method: Build & Stir\nGlass: Old Fashioned"
+  },
+  {
+    "name": "Sazerac",
+    "imageName": "sazerac",
+    "glass": "rocks",
+    "method": "stir",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "cognac",
+        "amount": 50.0,
+        "unit": "ml",
+        "note": "Cognac or Rye"
+      },
+      {
+        "ingredientId": "absinthe",
+        "amount": 10.0,
+        "unit": "ml",
+        "note": "Rinse glass"
+      },
+      {
+        "ingredientId": "sugar_cube",
+        "amount": 1.0
+      },
+      {
+        "ingredientId": "peychauds_bitters",
+        "amount": 2.0,
+        "unit": "dash"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "lemon_zest",
+        "amount": 1.0
+      }
+    ],
+    "notes": "Method: Rinse chilled Old Fashioned with absinthe, Stir remaining & Strain\nGlass: Chilled Old Fashioned"
+  },
+  {
+    "name": "Sidecar",
+    "imageName": "side_car",
+    "glass": "martini",
+    "method": "shake",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "cognac",
+        "amount": 50.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "triple_sec",
+        "amount": 20.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "lemon_juice",
+        "amount": 20.0,
+        "unit": "ml",
+        "note": "Fresh"
+      }
+    ],
+    "notes": "Method: Shake & Strain\nGlass: Chilled Cocktail / Coupe"
+  },
+  {
+    "name": "Stinger",
+    "imageName": "stinger",
+    "glass": "martini",
+    "method": "stir",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "cognac",
+        "amount": 50.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "creme_de_menthe",
+        "amount": 20.0,
+        "unit": "ml",
+        "note": "White"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "mint_leaf",
+        "amount": 1.0,
+        "unit": "leaf",
+        "note": "Optional"
+      }
+    ],
+    "notes": "Method: Stir & Strain\nGlass: Chilled Martini"
+  },
+  {
+    "name": "Tuxedo",
+    "imageName": "tuxedo",
+    "glass": "martini",
+    "method": "stir",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 30.0,
+        "unit": "ml",
+        "note": "Old Tom"
+      },
+      {
+        "ingredientId": "vermouth",
+        "amount": 30.0,
+        "unit": "ml",
+        "note": "Dry Vermouth"
+      },
+      {
+        "ingredientId": "maraschino",
+        "amount": 0.5,
+        "unit": "bsp"
+      },
+      {
+        "ingredientId": "absinthe",
+        "amount": 0.25,
+        "unit": "bsp"
+      },
+      {
+        "ingredientId": "orange_bitters",
+        "amount": 3.0,
+        "unit": "dash"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "cherry",
+        "amount": 1.0
+      },
+      {
+        "ingredientId": "lemon_zest",
+        "amount": 1.0
+      }
+    ],
+    "notes": "Method: Stir & Strain\nGlass: Chilled Martini"
+  },
+  {
+    "name": "Vieux Carré",
+    "imageName": "vieux_carre",
+    "glass": "rocks",
+    "method": "stir",
+    "ice": "cubed",
+    "ingredients": [
+      {
+        "ingredientId": "rye",
+        "amount": 30.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "cognac",
+        "amount": 30.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "vermouth",
+        "amount": 30.0,
+        "unit": "ml",
+        "note": "Sweet Vermouth"
+      },
+      {
+        "ingredientId": "benedictine",
+        "amount": 1.0,
+        "unit": "bsp"
+      },
+      {
+        "ingredientId": "peychauds_bitters",
+        "amount": 2.0,
+        "unit": "dash"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "orange_zest",
+        "amount": 1.0
+      },
+      {
+        "ingredientId": "cherry",
+        "amount": 1.0,
+        "note": "Maraschino"
+      }
+    ],
+    "notes": "Method: Stir & Strain\nGlass: Chilled Cocktail / Old Fashioned"
+  },
+  {
+    "name": "Whiskey Sour",
+    "imageName": "whiskey_sour",
+    "glass": "rocks",
+    "method": "shake",
+    "ice": "cubed",
+    "ingredients": [
+      {
+        "ingredientId": "bourbon",
+        "amount": 45.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "lemon_juice",
+        "amount": 25.0,
+        "unit": "ml",
+        "note": "Fresh"
+      },
+      {
+        "ingredientId": "sugar_syrup",
+        "amount": 20.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "egg_white",
+        "amount": 1.0,
+        "unit": "dash",
+        "note": "Few drops (optional)"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "orange_slice",
+        "amount": 1.0,
+        "note": "Half slice"
+      },
+      {
+        "ingredientId": "cherry",
+        "amount": 1.0,
+        "note": "Maraschino"
+      }
+    ],
+    "notes": "Method: Shake & Strain (dry shake if egg white)\nGlass: Cobbler / Old Fashioned"
+  },
+  {
+    "name": "White Lady",
+    "imageName": "white_lady",
+    "glass": "martini",
+    "method": "shake",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 40.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "triple_sec",
+        "amount": 30.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "lemon_juice",
+        "amount": 20.0,
+        "unit": "ml",
+        "note": "Fresh"
+      }
+    ],
+    "notes": "Method: Shake & Strain\nGlass: Chilled Cocktail / Coupe"
+  }
+]
