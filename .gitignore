@@ -17,6 +17,10 @@ DerivedData/
 .build/
 .swiftpm/
 
+# uv (Python package manager)
+scripts/.venv/
+scripts/uv.lock
+
 # Obj-C / Swift build artifacts
 *.o
 *.hmap

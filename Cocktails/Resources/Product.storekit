@@ -9,7 +9,7 @@
       }
     ]
   },
-  "identifier" : "91762AC5",
+  "identifier" : "BF6E42A4",
   "nonRenewingSubscriptions" : [
 
   ],
@@ -17,25 +17,28 @@
     {
       "displayPrice" : "3.99",
       "familyShareable" : false,
-      "internalID" : "586E3B2E",
+      "internalID" : "6769720529",
       "localizations" : [
         {
-          "description" : "Unlock unlimited cocktails. One-time purchase, yours forever.",
+          "description" : "Add and import as many Cocktails as you want",
           "displayName" : "Unlimited Cocktails",
           "locale" : "en_US"
         }
       ],
-      "productID" : "cocktails_unlimited",
+      "productID" : "com.mo.Cocktails.unlimited",
       "referenceName" : "Unlimited Cocktails",
       "type" : "NonConsumable"
     }
   ],
   "settings" : {
+    "_applicationInternalID" : "6768787366",
     "_askToBuyEnabled" : false,
     "_billingGracePeriodEnabled" : false,
     "_billingIssuesEnabled" : false,
+    "_developerTeamID" : "3UC3S478RS",
     "_disableDialogs" : false,
     "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 800532885.60670197,
     "_locale" : "en_US",
     "_renewalBillingIssuesEnabled" : false,
     "_storefront" : "USA",

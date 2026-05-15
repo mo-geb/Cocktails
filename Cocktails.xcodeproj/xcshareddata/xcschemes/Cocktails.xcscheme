@@ -51,7 +51,7 @@
          </BuildableReference>
       </BuildableProductRunnable>
       <StoreKitConfigurationFileReference
-         identifier = "../../Cocktails/Resources/TestProducts.storekit">
+         identifier = "../../Cocktails/Resources/Product.storekit">
       </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
