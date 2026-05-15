@@ -65,11 +65,14 @@ struct ImportLibrariesView: View {
         Button {
             guard !isImportingIngredients else { return }
             isImportingIngredients = true
-            defer { isImportingIngredients = false }
-            do {
-                ingredientsResult = try CocktailImporter(context: modelContext).importIngredients()
-            } catch {
-                ingredientsError = error.localizedDescription
+            Task { @MainActor in
+                defer { isImportingIngredients = false }
+                await Task.yield()
+                do {
+                    ingredientsResult = try CocktailImporter(context: modelContext).importIngredients()
+                } catch {
+                    ingredientsError = error.localizedDescription
+                }
             }
         } label: {
             HStack(spacing: 14) {

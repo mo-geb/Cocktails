@@ -105,8 +105,7 @@ struct CocktailTab: View {
     }
 }
 
-#Preview {
+#Preview(traits: .sampleData) {
     CocktailTab()
         .environment(AppState())
-        .modelContainer(PreviewSampleData.container)
 }

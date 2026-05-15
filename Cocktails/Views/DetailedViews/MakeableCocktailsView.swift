@@ -23,7 +23,7 @@ struct MakeableCocktailsView: View {
             .compactMap { cocktail in
                 let core = cocktail.ingredients?.filter { $0.role == .core } ?? []
                 let unstocked = core.filter { $0.ingredient?.isStocked != true }
-                guard unstocked.count == 1, let missingName = unstocked.first?.ingredient?.name else { return nil }
+                guard unstocked.count == 1, let missingName = unstocked.first?.ingredient?.localizedName else { return nil }
                 return (cocktail: cocktail, missing: missingName)
             }
     }
@@ -108,7 +108,6 @@ struct MakeableCocktailsView: View {
     }
 }
 
-#Preview {
+#Preview(traits: .sampleData) {
     MakeableCocktailsView()
-        .modelContainer(PreviewSampleData.container)
 }

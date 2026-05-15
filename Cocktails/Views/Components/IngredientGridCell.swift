@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 struct IngredientGridCell: View {
     let ingredient: Ingredient
@@ -13,7 +14,7 @@ struct IngredientGridCell: View {
                     .scaledToFit()
                     .padding(4)
 
-                Text(ingredient.name)
+                Text(ingredient.localizedName)
                     .font(.caption.bold())
                     .fontDesign(.rounded)
                     .multilineTextAlignment(.center)
@@ -76,9 +77,7 @@ func ingredientAddCellLabel(name: String) -> some View {
     }
 }
 
-import SwiftData
-
-#Preview {
+#Preview(traits: .sampleData) {
     let columns = [
         GridItem(.flexible(), spacing: 10),
         GridItem(.flexible(), spacing: 10),
@@ -95,5 +94,4 @@ import SwiftData
         }
         .padding()
     }
-    .modelContainer(PreviewSampleData.container)
 }

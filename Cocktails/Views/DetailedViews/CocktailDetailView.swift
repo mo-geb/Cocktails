@@ -241,7 +241,7 @@ struct CocktailDetailView: View {
                     }
                 }
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(ingredient.ingredient.name)
+                    Text(ingredient.ingredient?.localizedName ?? "")
                     if !ingredient.note.isEmpty {
                         Text(ingredient.note)
                             .font(.caption)
@@ -254,9 +254,8 @@ struct CocktailDetailView: View {
     }
 }
 
-#Preview {
+#Preview(traits: .sampleData) {
     NavigationStack {
         CocktailDetailView(cocktail: PreviewSampleData.mockCocktail)
     }
-    .modelContainer(PreviewSampleData.container)
 }

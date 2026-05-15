@@ -124,8 +124,7 @@ struct InventoryTab: View {
     }
 }
 
-#Preview {
+#Preview(traits: .sampleData) {
     InventoryTab()
         .environment(AppState())
-        .modelContainer(PreviewSampleData.container)
 }

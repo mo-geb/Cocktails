@@ -29,7 +29,6 @@ struct CocktailsApp: App {
     }
 }
 
-#Preview {
+#Preview(traits: .sampleData) {
     MainTabView()
-        .modelContainer(PreviewSampleData.container)
 }

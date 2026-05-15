@@ -125,20 +125,22 @@ struct LibraryPreviewView: View {
     private func performImport(names: [String]) {
         guard !names.isEmpty, !isImporting else { return }
         isImporting = true
-        defer { isImporting = false }
-        do {
-            importResult = try CocktailImporter(context: modelContext)
-                .importSelectedCocktails(names: names, from: source)
-            selected = []
-        } catch {
-            importError = error.localizedDescription
+        Task { @MainActor in
+            defer { isImporting = false }
+            await Task.yield()
+            do {
+                importResult = try CocktailImporter(context: modelContext)
+                    .importSelectedCocktails(names: names, from: source)
+                selected = []
+            } catch {
+                importError = error.localizedDescription
+            }
         }
     }
 }
 
-#Preview {
+#Preview(traits: .sampleData) {
     NavigationStack {
         LibraryPreviewView(source: .ebsInter2023)
     }
-    .modelContainer(PreviewSampleData.container)
 }

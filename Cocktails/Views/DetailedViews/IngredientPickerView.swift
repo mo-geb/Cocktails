@@ -19,7 +19,7 @@ struct IngredientPickerView: View {
 
     private var filtered: [Ingredient] {
         guard !searchText.isEmpty else { return allIngredients }
-        return allIngredients.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+        return allIngredients.filter { $0.localizedName.localizedCaseInsensitiveContains(searchText) }
     }
 
     private var groupedIngredients: [(IngredientType, [Ingredient])] {
@@ -116,7 +116,7 @@ struct IngredientPickerView: View {
                     .scaledToFit()
                     .padding(4)
 
-                Text(ingredient.name)
+                Text(ingredient.localizedName)
                     .font(.caption.bold())
                     .fontDesign(.rounded)
                     .multilineTextAlignment(.center)
@@ -151,8 +151,7 @@ struct IngredientPickerView: View {
     }
 }
 
-#Preview {
+#Preview(traits: .sampleData) {
     @Previewable @State var selection = IngredientDraft()
     IngredientPickerView(selection: $selection)
-        .modelContainer(PreviewSampleData.container)
 }

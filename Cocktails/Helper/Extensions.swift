@@ -58,8 +58,10 @@ extension UIImage {
         var maxVibrancy: CGFloat = 0
 
         // Sample a 20x20 grid across the image — fast and ignores minor noise/shadows
-        for y in stride(from: 0, to: height, by: height / 20) {
-            for x in stride(from: 0, to: width, by: width / 20) {
+        let strideY = max(1, height / 20)
+        let strideX = max(1, width / 20)
+        for y in stride(from: 0, to: height, by: strideY) {
+            for x in stride(from: 0, to: width, by: strideX) {
                 let byteIndex = (bytesPerRow * y) + (x * bytesPerPixel)
 
                 let r = CGFloat(rawData[byteIndex])     / 255.0

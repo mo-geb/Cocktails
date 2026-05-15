@@ -153,8 +153,7 @@ struct SearchView: View {
     }
 }
 
-#Preview {
+#Preview(traits: .sampleData) {
     SearchView()
         .environment(AppState())
-        .modelContainer(PreviewSampleData.container)
 }

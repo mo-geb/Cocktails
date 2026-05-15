@@ -191,9 +191,8 @@ struct SettingsView: View {
     }
 }
 
-#Preview {
+#Preview(traits: .sampleData) {
     NavigationStack {
         SettingsView()
     }
-    .modelContainer(PreviewSampleData.container)
 }

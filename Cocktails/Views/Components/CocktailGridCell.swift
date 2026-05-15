@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 struct CocktailGridCell: View {
     let cocktail: Cocktail
@@ -158,9 +159,7 @@ func cocktailAddCard(name: String, action: @escaping () -> Void) -> some View {
     .buttonStyle(CardPressStyle(scale: 1.06))
 }
 
-import SwiftData
-
-#Preview {
+#Preview(traits: .sampleData) {
     let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
     ScrollView {
         LazyVGrid(columns: columns, spacing: 12) {
@@ -176,6 +175,5 @@ import SwiftData
         }
         .padding()
     }
-    .modelContainer(PreviewSampleData.container)
 }
 

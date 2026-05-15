@@ -124,15 +124,17 @@ struct IngredientEditView: View {
 
     private func delete() {
         if let ingredient = originalIngredient {
+            for usage in ingredient.usages ?? [] {
+                modelContext.delete(usage)
+            }
             modelContext.delete(ingredient)
         }
         dismiss()
     }
 }
 
-#Preview {
+#Preview(traits: .sampleData) {
     NavigationStack {
         IngredientEditView()
     }
-    .modelContainer(PreviewSampleData.container)
 }

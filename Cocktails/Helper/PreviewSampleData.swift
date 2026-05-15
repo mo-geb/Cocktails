@@ -1,6 +1,20 @@
 import SwiftUI
 import SwiftData
 
+struct SampleDataModifier: PreviewModifier {
+    static func makeSharedContext() async throws -> ModelContainer {
+        await PreviewSampleData.container
+    }
+
+    func body(content: Content, context: ModelContainer) -> some View {
+        content.modelContainer(context)
+    }
+}
+
+extension PreviewTrait where T == Preview.ViewTraits {
+    static var sampleData: Self = .modifier(SampleDataModifier())
+}
+
 @MainActor
 struct PreviewSampleData {
     static let container: ModelContainer = {

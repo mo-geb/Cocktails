@@ -47,8 +47,7 @@ struct MainTabView: View {
     }
 }
 
-#Preview {
+#Preview(traits: .sampleData) {
     MainTabView()
         .environment(AppState())
-        .modelContainer(PreviewSampleData.container)
 }

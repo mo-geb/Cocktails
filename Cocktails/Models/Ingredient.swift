@@ -11,6 +11,12 @@ final class Ingredient {
 
     @Relationship(inverse: \RecipeIngredient.ingredient) var usages: [RecipeIngredient]?
 
+    var localizedName: String {
+        let key = "ingredient.\(id)"
+        let localized = String(localized: String.LocalizationValue(key))
+        return localized == key ? name : localized
+    }
+
     init(id: String = UUID().uuidString, name: String = "", type: IngredientType = .other, isStocked: Bool = false, imageName: String? = nil) {
         self.id = id
         self.name = name
@@ -25,6 +31,12 @@ struct IngredientDraft: Hashable {
     var name: String = ""
     var type: IngredientType = .other
     var imageName: String? = nil
+
+    var localizedName: String {
+        let key = "ingredient.\(id)"
+        let localized = String(localized: String.LocalizationValue(key))
+        return localized == key ? name : localized
+    }
 
     init(id: String = UUID().uuidString, name: String = "", type: IngredientType = .other, imageName: String? = nil) {
         self.id = id

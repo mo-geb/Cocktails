@@ -256,9 +256,9 @@ struct CocktailEditView: View {
                             ingredientPickerTarget = IngredientPickerTarget(index: index)
                         }
                     } label: {
-                        Text(ingredient.ingredient.name.isEmpty ? "Select ingredient…" : ingredient.ingredient.name)
+                        Text(ingredient.ingredient.name.isEmpty ? "Select ingredient…" : ingredient.ingredient.localizedName)
                             .fontDesign(.rounded)
-                            .foregroundStyle(ingredient.ingredient.name.isEmpty ? .secondary : .primary)
+                            .foregroundStyle(ingredient.ingredient.name.isEmpty ? AnyShapeStyle(.red) : AnyShapeStyle(.primary))
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     .buttonStyle(.plain)
@@ -348,9 +348,13 @@ struct CocktailEditView: View {
         }
         ToolbarItem(placement: .confirmationAction) {
             Button("Save") { save() }
-                .disabled(draft.name.trimmingCharacters(in: .whitespaces).isEmpty)
+                .disabled(draft.name.trimmingCharacters(in: .whitespaces).isEmpty || hasIncompleteIngredient)
                 .fontWeight(.semibold)
         }
+    }
+
+    private var hasIncompleteIngredient: Bool {
+        draft.ingredients.contains { $0.ingredient.name.isEmpty }
     }
 
     // MARK: - Background
@@ -468,9 +472,8 @@ private struct IngredientPickerTarget: Identifiable {
     let index: Int
 }
 
-#Preview {
+#Preview(traits: .sampleData) {
     NavigationStack {
         CocktailEditView()
     }
-    .modelContainer(PreviewSampleData.container)
 }

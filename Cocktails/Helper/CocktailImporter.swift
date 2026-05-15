@@ -166,6 +166,16 @@ final class CocktailImporter {
         var existingIngredients = try fetchExistingIngredientsMap()
         logger.info("Store already has \(existingIngredients.count) ingredients")
 
+        // Skip cocktails that already exist for this source (by name) — prevents duplicates on re-import
+        let allExisting = (try? context.fetch(FetchDescriptor<Cocktail>())) ?? []
+        let existingNamesForSource = Set(allExisting.filter { $0.source == source }.map { $0.name })
+        let originalCount = cocktailDTOs.count
+        let cocktailDTOs = cocktailDTOs.filter { !existingNamesForSource.contains($0.name) }
+        let skippedDuplicates = originalCount - cocktailDTOs.count
+        if skippedDuplicates > 0 {
+            logger.info("Skipping \(skippedDuplicates) already-imported cocktails for source '\(source.filePrefix)'")
+        }
+
         let neededIngredientIDs = Set(cocktailDTOs.flatMap { dto in
             dto.ingredients.map { $0.ingredientId } + (dto.garnishes ?? []).map { $0.ingredientId }
         })
