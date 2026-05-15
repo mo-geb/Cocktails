@@ -4,6 +4,8 @@ import SwiftData
 struct CocktailGridCell: View {
     let cocktail: Cocktail
     var footerLabel: String? = nil
+    var isSelected: Bool = false
+    var isSelecting: Bool = false
     var onEdit: (() -> Void)? = nil
     var onDelete: (() -> Void)? = nil
     let onTap: () -> Void
@@ -95,33 +97,48 @@ struct CocktailGridCell: View {
                         .foregroundStyle(.yellow)
                         .padding(12)
                 }
+
+                if isSelecting {
+                    Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
+                        .font(.title2)
+                        .foregroundStyle(isSelected ? Color.accentColor : Color.primary.opacity(0.3))
+                        .padding(10)
+                }
             }
             .frame(maxWidth: .infinity)
             .aspectRatio(0.85, contentMode: .fit)
             .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+            .overlay {
+                if isSelecting && isSelected {
+                    RoundedRectangle(cornerRadius: 24, style: .continuous)
+                        .strokeBorder(Color.accentColor, lineWidth: 2.5)
+                }
+            }
             .contentShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
         }
         .buttonStyle(CardPressStyle(scale: 1.06))
-        .contextMenu {
-            Button {
-                cocktail.isFavourite.toggle()
-            } label: {
-                Label(
-                    cocktail.isFavourite ? "Remove from Favourites" : "Add to Favourites",
-                    systemImage: cocktail.isFavourite ? "star.slash" : "star"
-                )
-            }
-            if let onEdit {
-                Button(action: onEdit) {
-                    Label("Edit", systemImage: "pencil")
+        .contextMenu(menuItems: {
+            if !isSelecting {
+                Button {
+                    cocktail.isFavourite.toggle()
+                } label: {
+                    Label(
+                        cocktail.isFavourite ? "Remove from Favourites" : "Add to Favourites",
+                        systemImage: cocktail.isFavourite ? "star.slash" : "star"
+                    )
+                }
+                if let onEdit {
+                    Button(action: onEdit) {
+                        Label("Edit", systemImage: "pencil")
+                    }
+                }
+                if let onDelete {
+                    Button(role: .destructive, action: onDelete) {
+                        Label("Delete", systemImage: "trash")
+                    }
                 }
             }
-            if let onDelete {
-                Button(role: .destructive, action: onDelete) {
-                    Label("Delete", systemImage: "trash")
-                }
-            }
-        }
+        })
     }
 }
 

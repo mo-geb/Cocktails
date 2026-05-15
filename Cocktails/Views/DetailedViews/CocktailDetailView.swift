@@ -9,6 +9,7 @@ struct CocktailDetailView: View {
     @State private var draft: CocktailDraft
     @State private var backgroundColor: Color?
     @State private var showEdit = false
+    @State private var cocktailWasDeleted = false
 
     init(cocktail: Cocktail) {
         self.cocktail = cocktail
@@ -36,11 +37,15 @@ struct CocktailDetailView: View {
             backgroundColor = draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled)
         }
         .sheet(isPresented: $showEdit, onDismiss: {
+            if cocktailWasDeleted {
+                dismiss()
+                return
+            }
             draft = CocktailDraft(from: cocktail)
             backgroundColor = draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled)
         }) {
             NavigationStack {
-                CocktailEditView(cocktail: cocktail)
+                CocktailEditView(cocktail: cocktail, onDelete: { cocktailWasDeleted = true })
             }
             .presentationDetents([.large])
             .presentationDragIndicator(.visible)

@@ -1,31 +1,27 @@
 import Foundation
 
 enum PreparationMethod: String, Codable, CaseIterable, Identifiable {
-    case stir
-    case shake
-    case build
-    case blend
-    case roll
+    case stir, shake, build, blend, roll
 
     var id: String { rawValue }
 
     var localizedName: String {
         switch self {
-        case .stir:  return String(localized: "Stir",  comment: "Preparation method")
-        case .shake: return String(localized: "Shake", comment: "Preparation method")
-        case .build: return String(localized: "Build", comment: "Preparation method")
-        case .blend: return String(localized: "Blend", comment: "Preparation method")
-        case .roll:  return String(localized: "Roll",  comment: "Preparation method")
+        case .stir:     return String(localized: "Stir",  comment: "Preparation method")
+        case .shake:    return String(localized: "Shake", comment: "Preparation method")
+        case .build:    return String(localized: "Build", comment: "Preparation method")
+        case .blend:    return String(localized: "Blend", comment: "Preparation method")
+        case .roll:     return String(localized: "Roll",  comment: "Preparation method")
         }
     }
 
     var customImageName: String {
         switch self {
-        case .stir:  return "Method/stir"
-        case .shake: return "Method/shake"
-        case .blend: return "Method/blend"
-        case .build: return "Method/build"
-        case .roll: return "Method/roll"
+        case .stir:     return "Method/stir"
+        case .shake:    return "Method/shake"
+        case .blend:    return "Method/blend"
+        case .build:    return "Method/build"
+        case .roll:     return "Method/roll"
         }
     }
 }

@@ -12,9 +12,6 @@
       },
       "shouldTranslate" : false
     },
-    "%@ imported." : {
-
-    },
     "%lld" : {
       "shouldTranslate" : false
     },
@@ -120,7 +117,14 @@
       }
     },
     "All Cocktails" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Cocktails"
+          }
+        }
+      }
     },
     "Base" : {
       "comment" : "Grouping by base spirit",
@@ -554,6 +558,9 @@
         }
       }
     },
+    "Import %@" : {
+
+    },
     "Import All" : {
       "localizations" : {
         "de" : {
@@ -590,16 +597,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Import fehlgeschlagen"
-          }
-        }
-      }
-    },
-    "Import Recipe" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rezept Importieren"
           }
         }
       }
@@ -2974,6 +2971,9 @@
           }
         }
       }
+    },
+    "Select Cocktails" : {
+
     },
     "Select Ingredient" : {
       "localizations" : {

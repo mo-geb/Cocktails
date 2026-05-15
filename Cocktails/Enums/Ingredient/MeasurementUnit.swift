@@ -1,15 +1,7 @@
 import Foundation
 
 enum MeasurementUnit: String, Codable, CaseIterable, Identifiable {
-    case ml
-    case oz
-    case dash
-    case bsp
-    case piece
-    case part
-    case leaf
-    case fill
-    case none
+    case ml, oz, dash, bsp, piece, part, leaf, fill, none
 
     var id: String { rawValue }
 

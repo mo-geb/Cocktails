@@ -42,11 +42,7 @@ struct SearchView: View {
     }
 
     private var groupedIngredients: [(IngredientType, [Ingredient])] {
-        let groups = Dictionary(grouping: filteredIngredients) { $0.type }
-        return IngredientType.allCases.compactMap { type in
-            guard let items = groups[type], !items.isEmpty else { return nil }
-            return (type, items)
-        }
+        filteredIngredients.groupedByType()
     }
 
     var body: some View {

@@ -5,7 +5,7 @@ struct LibraryCounts {
     var cocktails: Int = 0
 }
 
-struct ImportLibrariesView: View {
+struct RecipeLibrariesView: View {
     @Environment(\.modelContext) private var modelContext
 
     private let sources = RecipeSource.allCases.filter { !$0.filePrefix.isEmpty }
@@ -24,7 +24,7 @@ struct ImportLibrariesView: View {
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(sources) { source in
                         NavigationLink {
-                            LibraryPreviewView(source: source)
+                            LibraryCocktailsView(source: source)
                         } label: {
                             LibraryCard(source: source, counts: counts[source.id] ?? LibraryCounts())
                         }
@@ -125,6 +125,6 @@ struct ImportLibrariesView: View {
 
 #Preview {
     NavigationStack {
-        ImportLibrariesView()
+        RecipeLibrariesView()
     }
 }

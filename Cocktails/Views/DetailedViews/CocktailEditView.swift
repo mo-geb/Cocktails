@@ -14,14 +14,17 @@ struct CocktailEditView: View {
     @State private var showDeleteConfirmation = false
 
     private let originalCocktail: Cocktail?
+    private let onDelete: (() -> Void)?
 
-    init(cocktail: Cocktail) {
+    init(cocktail: Cocktail, onDelete: (() -> Void)? = nil) {
         self.originalCocktail = cocktail
+        self.onDelete = onDelete
         self._draft = State(initialValue: CocktailDraft(from: cocktail))
     }
 
     init(draft: CocktailDraft = CocktailDraft()) {
         self.originalCocktail = nil
+        self.onDelete = nil
         self._draft = State(initialValue: draft)
     }
 
@@ -318,6 +321,7 @@ struct CocktailEditView: View {
                 if let cocktail = originalCocktail {
                     modelContext.delete(cocktail)
                 }
+                onDelete?()
                 dismiss()
             }
         }

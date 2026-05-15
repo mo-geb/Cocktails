@@ -16,12 +16,9 @@ struct InventoryTab: View {
     ]
 
     private var groupedIngredients: [(IngredientType, [Ingredient])] {
-        let groups = Dictionary(grouping: ingredients) { $0.type }
-        return IngredientType.allCases.compactMap { type in
-            guard let items = groups[type], !items.isEmpty else { return nil }
-            let sorted = items.sorted { $0.isStocked && !$1.isStocked }
-            return (type, sorted)
-        }
+        ingredients
+            .sorted { $0.isStocked && !$1.isStocked }
+            .groupedByType()
     }
 
     private var allStocked: Bool {
@@ -29,10 +26,7 @@ struct InventoryTab: View {
     }
 
     private var makeableCount: Int {
-        cocktails.filter { cocktail in
-            let core = cocktail.ingredients?.filter { $0.role == .core } ?? []
-            return !core.isEmpty && core.allSatisfy { $0.ingredient?.isStocked == true }
-        }.count
+        cocktails.filter { !$0.coreIngredients.isEmpty && $0.coreIngredients.allSatisfy { $0.ingredient?.isStocked == true } }.count
     }
 
     var body: some View {

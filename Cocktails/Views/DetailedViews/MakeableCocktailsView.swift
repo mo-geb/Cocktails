@@ -11,18 +11,16 @@ struct MakeableCocktailsView: View {
     let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
 
     private var makeableCocktails: [Cocktail] {
-        cocktails.filter { cocktail in
-            let core = cocktail.ingredients?.filter { $0.role == .core } ?? []
-            return !core.isEmpty && core.allSatisfy { $0.ingredient?.isStocked == true }
-        }.sorted { $0.name < $1.name }
+        cocktails
+            .filter { !$0.coreIngredients.isEmpty && $0.coreIngredients.allSatisfy { $0.ingredient?.isStocked == true } }
+            .sorted { $0.name < $1.name }
     }
 
     private var almostMakeableCocktails: [(cocktail: Cocktail, missing: String)] {
         cocktails
             .sorted { $0.name < $1.name }
             .compactMap { cocktail in
-                let core = cocktail.ingredients?.filter { $0.role == .core } ?? []
-                let unstocked = core.filter { $0.ingredient?.isStocked != true }
+                let unstocked = cocktail.coreIngredients.filter { $0.ingredient?.isStocked != true }
                 guard unstocked.count == 1, let missingName = unstocked.first?.ingredient?.localizedName else { return nil }
                 return (cocktail: cocktail, missing: missingName)
             }

@@ -1,8 +1,7 @@
 import Foundation
 
 enum IngredientRole: String, Codable, CaseIterable, Identifiable {
-    case core
-    case garnish
+    case core, garnish
 
     var id: String { rawValue }
 }

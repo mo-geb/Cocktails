@@ -7,21 +7,27 @@ extension UTType {
 }
 
 struct CocktailTransferable: Transferable {
-    let cocktailName: String
+    let fileName: String
     let data: Data
 
     @MainActor
-    init?(cocktail: Cocktail) {
-        guard let data = try? JSONEncoder().encode(SharedCocktailPackage(from: cocktail)) else { return nil }
-        self.cocktailName = cocktail.name
+    init?(cocktails: [Cocktail]) {
+        guard !cocktails.isEmpty,
+              let data = try? JSONEncoder().encode(SharedCocktailPackage(from: cocktails)) else { return nil }
+        self.fileName = cocktails.count == 1 ? cocktails[0].name : "\(cocktails.count) Cocktails"
         self.data = data
+    }
+
+    @MainActor
+    init?(cocktail: Cocktail) {
+        self.init(cocktails: [cocktail])
     }
 
     static var transferRepresentation: some TransferRepresentation {
         FileRepresentation(exportedContentType: .cocktailRecipe) { item in
-            let url = FileManager.default.temporaryDirectory
-                .appendingPathComponent(item.cocktailName)
-                .appendingPathExtension("cocktail")
+            let dir = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+            try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+            let url = dir.appendingPathComponent(item.fileName).appendingPathExtension("cocktail")
             try item.data.write(to: url)
             return SentTransferredFile(url)
         }
@@ -29,26 +35,24 @@ struct CocktailTransferable: Transferable {
 }
 
 extension SharedCocktailPackage {
-    init(from cocktail: Cocktail) {
-        let allRecipeIngredients = cocktail.ingredients ?? []
-
-        let uniqueIngredients = allRecipeIngredients
+    init(from cocktails: [Cocktail]) {
+        let uniqueIngredients = cocktails
+            .flatMap { $0.ingredients ?? [] }
             .compactMap(\.ingredient)
             .reduce(into: [String: Ingredient]()) { $0[$1.id] = $1 }
             .values
             .map { IngredientDTO(id: $0.id, name: $0.name, type: $0.type) }
 
-        let core = allRecipeIngredients
-            .filter { $0.role == .core }
-            .sorted { $0.sortOrder < $1.sortOrder }
-            .map { RecipeIngredientDTO(from: $0) }
+        self.cocktails = cocktails.map { CocktailDTO(from: $0) }
+        self.ingredients = Array(uniqueIngredients)
+    }
+}
 
-        let garnishes = allRecipeIngredients
-            .filter { $0.role == .garnish }
-            .sorted { $0.sortOrder < $1.sortOrder }
-            .map { RecipeIngredientDTO(from: $0) }
-
-        self.cocktail = CocktailDTO(
+extension CocktailDTO {
+    init(from cocktail: Cocktail) {
+        let core = cocktail.coreIngredients.sorted { $0.sortOrder < $1.sortOrder }.map { RecipeIngredientDTO(from: $0) }
+        let garnishes = cocktail.garnishIngredients.sorted { $0.sortOrder < $1.sortOrder }.map { RecipeIngredientDTO(from: $0) }
+        self.init(
             name: cocktail.name,
             imageName: cocktail.imageName,
             glass: cocktail.glass,
@@ -58,7 +62,6 @@ extension SharedCocktailPackage {
             garnishes: garnishes.isEmpty ? nil : garnishes,
             notes: cocktail.notes.isEmpty ? nil : cocktail.notes
         )
-        self.ingredients = Array(uniqueIngredients)
     }
 }
 

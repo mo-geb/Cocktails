@@ -1,7 +1,7 @@
 import SwiftUI
 import SwiftData
 
-struct LibraryPreviewView: View {
+struct LibraryCocktailsView: View {
     let source: RecipeSource
 
     @Environment(\.modelContext) private var modelContext
@@ -141,6 +141,6 @@ struct LibraryPreviewView: View {
 
 #Preview(traits: .sampleData) {
     NavigationStack {
-        LibraryPreviewView(source: .ebsInter2023)
+        LibraryCocktailsView(source: .ebsInter2023)
     }
 }

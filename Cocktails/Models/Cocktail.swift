@@ -94,6 +94,16 @@ extension Cocktail: CocktailImageProviding {}
 extension CocktailDraft: CocktailImageProviding {}
 
 extension Cocktail {
+    var coreIngredients: [RecipeIngredient] {
+        (ingredients ?? []).filter { $0.role == .core }
+    }
+
+    var garnishIngredients: [RecipeIngredient] {
+        (ingredients ?? []).filter { $0.role == .garnish }
+    }
+}
+
+extension Cocktail {
     static let baseTypePriority: [IngredientType] = [.spirit, .liqueur, .fortifiedWine]
 
     var baseGroup: String {

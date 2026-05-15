@@ -39,7 +39,7 @@ struct MainTabView: View {
             set: { if !$0 { appState.pendingImportURL = nil } }
         )) {
             if let url = appState.pendingImportURL {
-                ImportPreviewView(url: url, onDismiss: { appState.pendingImportURL = nil })
+                ReceivedRecipesView(url: url, onDismiss: { appState.pendingImportURL = nil })
             }
         }
         .confirmationDialog(

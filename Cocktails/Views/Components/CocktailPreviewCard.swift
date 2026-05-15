@@ -61,8 +61,7 @@ struct CocktailPreviewCard: View {
 
                 Image(systemName: isImported || isSelected ? "checkmark.circle.fill" : "circle")
                     .font(.title2)
-                    .foregroundStyle(isImported ? .secondary : (isSelected ? Color.accentColor : .white.opacity(0.6)))
-                    .shadow(radius: isSelected || isImported ? 0 : 2)
+                    .foregroundStyle(isImported ? .secondary : (isSelected ? Color.accentColor : Color.primary.opacity(0.3)))
                     .padding(10)
             }
             .frame(maxWidth: .infinity)

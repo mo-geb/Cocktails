@@ -55,7 +55,7 @@ struct SettingsView: View {
         VStack(alignment: .leading, spacing: 10) {
             sectionHeader("Libraries")
 
-            NavigationLink(destination: ImportLibrariesView()) {
+            NavigationLink(destination: RecipeLibrariesView()) {
                 row(icon: "square.and.arrow.down.fill", color: .blue,
                     title: "Import Library",
                     subtitle: "Browse and add cocktail collections")
@@ -145,6 +145,7 @@ struct SettingsView: View {
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 12)
+        .contentShape(Rectangle())
     }
     
     @ViewBuilder

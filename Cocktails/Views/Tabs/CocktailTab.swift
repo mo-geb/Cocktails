@@ -8,39 +8,77 @@ struct CocktailTab: View {
 
     let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
 
+    @State private var isSelecting = false
+    @State private var selection = Set<UUID>()
+
+    private var selectedCocktails: [Cocktail] {
+        cocktails.filter { selection.contains($0.id) }
+    }
+
     var body: some View {
         @Bindable var appState = appState
         NavigationStack {
             mainContent
-                .navigationTitle("Cocktails")
+                .navigationTitle(isSelecting ? selectionTitle : "Cocktails")
                 .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button { appState.showSettings = true } label: {
-                            Label("Settings", systemImage: "gearshape")
+                    if isSelecting {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button("Cancel") { stopSelecting() }
                         }
-                    }
-
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Menu {
-                            Picker("Group By", selection: $appState.cocktailGrouping) {
-                                ForEach(CocktailGrouping.allCases) { option in
-                                    Label(option.localizedName, systemImage: option.systemImage)
-                                        .tag(option)
-                                }
+                        ToolbarItem(placement: .primaryAction) {
+                            if let shareItem = CocktailTransferable(cocktails: selectedCocktails) {
+                                ShareLink(item: shareItem, preview: SharePreview(shareItem.fileName))
                             }
-                        } label: {
-                            Image(systemName: "ellipsis")
-                                .symbolVariant(appState.cocktailGrouping == .none ? .none : .fill)
                         }
-                    }
-
-                    ToolbarItem(placement: .primaryAction) {
-                        Button(action: addNewCocktail) {
-                            Label("Add Cocktail", systemImage: "plus")
+                    } else {
+                        ToolbarItem(placement: .topBarLeading) {
+                            Button { appState.showSettings = true } label: {
+                                Label("Settings", systemImage: "gearshape")
+                            }
+                        }
+                        ToolbarItem(placement: .topBarTrailing) {
+                            Menu {
+                                Button(action: startSelecting) {
+                                    Label("Select Cocktails", systemImage: "checkmark.circle")
+                                }
+                                Divider()
+                                Menu {
+                                    Picker("Group By", selection: $appState.cocktailGrouping) {
+                                        ForEach(CocktailGrouping.allCases) { option in
+                                            Label(option.localizedName, systemImage: option.systemImage)
+                                                .tag(option)
+                                        }
+                                    }
+                                } label: {
+                                    Label("Group By", systemImage: "rectangle.3.group")
+                                }
+                            } label: {
+                                Image(systemName: "ellipsis")
+                                    .symbolVariant(appState.cocktailGrouping == .none ? .none : .fill)
+                            }
+                        }
+                        ToolbarItem(placement: .primaryAction) {
+                            Button(action: addNewCocktail) {
+                                Label("Add Cocktail", systemImage: "plus")
+                            }
                         }
                     }
                 }
         }
+    }
+
+    private var selectionTitle: String {
+        selection.isEmpty ? "Select Cocktails" : "\(selection.count) Selected"
+    }
+
+    private func startSelecting() {
+        isSelecting = true
+        selection = []
+    }
+
+    private func stopSelecting() {
+        isSelecting = false
+        selection = []
     }
 
     @ViewBuilder
@@ -66,8 +104,18 @@ struct CocktailTab: View {
 
                         LazyVGrid(columns: columns, spacing: 12) {
                             ForEach(group.items) { cocktail in
-                                CocktailGridCell(cocktail: cocktail, onEdit: { appState.activeCocktailSheet = .edit(cocktail) }, onDelete: { appState.cocktailToDelete = cocktail }) {
-                                    appState.activeCocktailSheet = .view(cocktail)
+                                CocktailGridCell(
+                                    cocktail: cocktail,
+                                    isSelected: selection.contains(cocktail.id),
+                                    isSelecting: isSelecting,
+                                    onEdit: isSelecting ? nil : { appState.activeCocktailSheet = .edit(cocktail) },
+                                    onDelete: isSelecting ? nil : { appState.cocktailToDelete = cocktail }
+                                ) {
+                                    if isSelecting {
+                                        selection.toggle(cocktail.id)
+                                    } else {
+                                        appState.activeCocktailSheet = .view(cocktail)
+                                    }
                                 }
                             }
                         }

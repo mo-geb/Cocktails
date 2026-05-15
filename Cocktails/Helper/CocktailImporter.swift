@@ -29,7 +29,7 @@ struct CocktailDTO: Codable {
 }
 
 struct SharedCocktailPackage: Codable {
-    let cocktail: CocktailDTO
+    let cocktails: [CocktailDTO]
     let ingredients: [IngredientDTO]
 }
 
@@ -149,7 +149,7 @@ final class CocktailImporter {
         return try processImport(cocktailDTOs: cocktailDTOs, ingredientDTOs: ingredientDTOs, source: source)
     }
 
-    /// 4. Import a single cocktail from a shared .cocktail file
+    /// 4. Import cocktails from a shared .cocktail file
     @discardableResult
     func importSharedCocktail(from data: Data) throws -> ImportResult {
         let package: SharedCocktailPackage
@@ -158,8 +158,13 @@ final class CocktailImporter {
         } catch let decodingError as DecodingError {
             throw ImportError.decodingError("shared cocktail", decodingError)
         }
-        logger.info("Importing shared cocktail: \(package.cocktail.name)")
-        return try processImport(cocktailDTOs: [package.cocktail], ingredientDTOs: package.ingredients, source: .shared)
+        return try importSharedCocktail(package: package)
+    }
+
+    @discardableResult
+    func importSharedCocktail(package: SharedCocktailPackage) throws -> ImportResult {
+        logger.info("Importing \(package.cocktails.count) shared cocktail(s)")
+        return try processImport(cocktailDTOs: package.cocktails, ingredientDTOs: package.ingredients, source: .shared)
     }
 
     /// 3. Import selected cocktails, pulling in only the ingredients they need that are not already in the store

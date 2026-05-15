@@ -1,17 +1,8 @@
 import Foundation
 
 enum GlassType: String, Codable, CaseIterable, Identifiable {
-    case rocks
-    case highball
-    case martini
-    case flute
-    case copperMug
-    case hurricane
-    case tiki
-    case wine
-    case shot
-    case other
-    
+    case rocks, highball, martini, flute, copperMug, hurricane, tiki, wine, shot, other
+
     var id: String { rawValue }
 
     var localizedName: String {
