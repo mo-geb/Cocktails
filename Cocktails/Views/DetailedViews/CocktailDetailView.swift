@@ -241,7 +241,7 @@ struct CocktailDetailView: View {
                     }
                 }
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(ingredient.ingredient?.localizedName ?? "")
+                    Text(ingredient.ingredient.localizedName)
                     if !ingredient.note.isEmpty {
                         Text(ingredient.note)
                             .font(.caption)

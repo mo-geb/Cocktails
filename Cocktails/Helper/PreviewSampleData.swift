@@ -3,7 +3,7 @@ import SwiftData
 
 struct SampleDataModifier: PreviewModifier {
     static func makeSharedContext() async throws -> ModelContainer {
-        await PreviewSampleData.container
+        await MainActor.run { PreviewSampleData.container }
     }
 
     func body(content: Content, context: ModelContainer) -> some View {
