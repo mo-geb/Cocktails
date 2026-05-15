@@ -4,6 +4,7 @@ import SwiftData
 struct IngredientGridCell: View {
     let ingredient: Ingredient
     var onEdit: (() -> Void)? = nil
+    var onDelete: (() -> Void)? = nil
 
     var body: some View {
         Button {
@@ -44,6 +45,11 @@ struct IngredientGridCell: View {
                 onEdit?()
             } label: {
                 Label("Edit", systemImage: "pencil")
+            }
+            if let onDelete {
+                Button(role: .destructive, action: onDelete) {
+                    Label("Delete", systemImage: "trash")
+                }
             }
         }
     }

@@ -16,54 +16,10 @@ struct CocktailTab: View {
     }
 
     var body: some View {
-        @Bindable var appState = appState
         NavigationStack {
             mainContent
                 .navigationTitle(isSelecting ? selectionTitle : "Cocktails")
-                .toolbar {
-                    if isSelecting {
-                        ToolbarItem(placement: .cancellationAction) {
-                            Button("Cancel") { stopSelecting() }
-                        }
-                        ToolbarItem(placement: .primaryAction) {
-                            if let shareItem = CocktailTransferable(cocktails: selectedCocktails) {
-                                ShareLink(item: shareItem, preview: SharePreview(shareItem.fileName))
-                            }
-                        }
-                    } else {
-                        ToolbarItem(placement: .topBarLeading) {
-                            Button { appState.showSettings = true } label: {
-                                Label("Settings", systemImage: "gearshape")
-                            }
-                        }
-                        ToolbarItem(placement: .topBarTrailing) {
-                            Menu {
-                                Button(action: startSelecting) {
-                                    Label("Select Cocktails", systemImage: "checkmark.circle")
-                                }
-                                Divider()
-                                Menu {
-                                    Picker("Group By", selection: $appState.cocktailGrouping) {
-                                        ForEach(CocktailGrouping.allCases) { option in
-                                            Label(option.localizedName, systemImage: option.systemImage)
-                                                .tag(option)
-                                        }
-                                    }
-                                } label: {
-                                    Label("Group By", systemImage: "rectangle.3.group")
-                                }
-                            } label: {
-                                Image(systemName: "ellipsis")
-                                    .symbolVariant(appState.cocktailGrouping == .none ? .none : .fill)
-                            }
-                        }
-                        ToolbarItem(placement: .primaryAction) {
-                            Button(action: addNewCocktail) {
-                                Label("Add Cocktail", systemImage: "plus")
-                            }
-                        }
-                    }
-                }
+                .toolbar { toolbarContent }
         }
     }
 
@@ -83,47 +39,103 @@ struct CocktailTab: View {
 
     @ViewBuilder
     private var mainContent: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 28) {
-                ForEach(groupedCocktails) { group in
-                    VStack(alignment: .leading, spacing: 12) {
-                        if appState.cocktailGrouping != .none {
-                            HStack(spacing: 4) {
-                                if let imageName = group.imageName {
-                                    Image(imageName)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 28, height: 28)
+        if cocktails.isEmpty {
+            ContentUnavailableView(
+                "No Cocktails",
+                systemImage: "wineglass",
+                description: Text("Tap + to add your first cocktail.")
+            )
+        } else {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 28) {
+                    ForEach(groupedCocktails) { group in
+                        VStack(alignment: .leading, spacing: 12) {
+                            if appState.cocktailGrouping != .none {
+                                HStack(spacing: 4) {
+                                    if let imageName = group.imageName {
+                                        Image(imageName)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 28, height: 28)
+                                    }
+                                    Text(group.name)
                                 }
-                                Text(group.name)
+                                .font(.title3.bold())
+                                .fontDesign(.rounded)
+                                .padding(.horizontal)
                             }
-                            .font(.title3.bold())
-                            .fontDesign(.rounded)
-                            .padding(.horizontal)
-                        }
 
-                        LazyVGrid(columns: columns, spacing: 12) {
-                            ForEach(group.items) { cocktail in
-                                CocktailGridCell(
-                                    cocktail: cocktail,
-                                    isSelected: selection.contains(cocktail.id),
-                                    isSelecting: isSelecting,
-                                    onEdit: isSelecting ? nil : { appState.activeCocktailSheet = .edit(cocktail) },
-                                    onDelete: isSelecting ? nil : { appState.cocktailToDelete = cocktail }
-                                ) {
-                                    if isSelecting {
-                                        selection.toggle(cocktail.id)
-                                    } else {
-                                        appState.activeCocktailSheet = .view(cocktail)
+                            LazyVGrid(columns: columns, spacing: 12) {
+                                ForEach(group.items) { cocktail in
+                                    CocktailGridCell(
+                                        cocktail: cocktail,
+                                        isSelected: selection.contains(cocktail.id),
+                                        isSelecting: isSelecting,
+                                        onEdit: isSelecting ? nil : { appState.activeCocktailSheet = .edit(cocktail) },
+                                        onDelete: isSelecting ? nil : { appState.cocktailToDelete = cocktail }
+                                    ) {
+                                        if isSelecting {
+                                            selection.toggle(cocktail.id)
+                                        } else {
+                                            appState.activeCocktailSheet = .view(cocktail)
+                                        }
                                     }
                                 }
                             }
+                            .padding(.horizontal)
                         }
-                        .padding(.horizontal)
                     }
                 }
+                .padding(.vertical)
             }
-            .padding(.vertical)
+        }
+    }
+    
+    @ToolbarContentBuilder
+    private var toolbarContent: some ToolbarContent {
+        @Bindable var appState = appState
+
+        if isSelecting {
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Cancel") { stopSelecting() }
+            }
+            ToolbarItem(placement: .primaryAction) {
+                if let shareItem = CocktailTransferable(cocktails: selectedCocktails) {
+                    ShareLink(item: shareItem, preview: SharePreview(shareItem.fileName))
+                }
+            }
+        } else {
+            ToolbarItem(placement: .topBarLeading) {
+                Button { appState.showSettings = true } label: {
+                    Label("Settings", systemImage: "gearshape")
+                }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Menu {
+                    Button(action: startSelecting) {
+                        Label("Select Cocktails", systemImage: "checkmark.circle")
+                    }
+                    Divider()
+                    Menu {
+                        Picker("Group By", selection: $appState.cocktailGrouping) {
+                            ForEach(CocktailGrouping.allCases) { option in
+                                Label(option.localizedName, systemImage: option.systemImage)
+                                    .tag(option)
+                            }
+                        }
+                    } label: {
+                        Label("Group By", systemImage: "rectangle.3.group")
+                    }
+                } label: {
+                    Image(systemName: "ellipsis")
+                        .symbolVariant(appState.cocktailGrouping == .none ? .none : .fill)
+                }
+            }
+            ToolbarItem(placement: .primaryAction) {
+                Button(action: addNewCocktail) {
+                    Label("Add Cocktail", systemImage: "plus")
+                }
+            }
         }
     }
 
@@ -143,7 +155,6 @@ struct CocktailTab: View {
         case .none:      return ("", nil)
         case .glass:     return (cocktail.glass.localizedName, cocktail.glass.imageNameEmpty)
         case .method:    return (cocktail.method.localizedName, cocktail.method.customImageName)
-        case .ice:       return (cocktail.ice.localizedName, cocktail.ice.imageName)
         case .source:    return (cocktail.source.localizedName, cocktail.source.imageName)
         case .favourite:
             return cocktail.isFavourite
@@ -157,15 +168,16 @@ struct CocktailTab: View {
     }
 
     private var groupedCocktails: [CocktailGroup] {
-        let groups = Dictionary(grouping: cocktails) { groupKey(for: $0).name }
+        let keyed = cocktails.map { (key: groupKey(for: $0), cocktail: $0) }
+        let groups = Dictionary(grouping: keyed) { $0.key.name }
         return groups
             .sorted { l, r in
                 if l.key == "No Base" { return false }
                 if r.key == "No Base" { return true }
                 return l.key < r.key
             }
-            .map { key, items in
-                CocktailGroup(name: key, imageName: groupKey(for: items[0]).imageName, items: items)
+            .map { name, pairs in
+                CocktailGroup(name: name, imageName: pairs[0].key.imageName, items: pairs.map(\.cocktail))
             }
     }
 }

@@ -1,52 +1,70 @@
 import SwiftUI
 import SwiftData
 
-struct InventoryTab: View {
+struct IngredientsTab: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(AppState.self) private var appState
     @Query(sort: \Ingredient.name) private var ingredients: [Ingredient]
     @Query private var cocktails: [Cocktail]
     @State private var showMakeableCocktails = false
-
+    
     let columns = [
         GridItem(.flexible(), spacing: 10),
         GridItem(.flexible(), spacing: 10),
         GridItem(.flexible(), spacing: 10),
         GridItem(.flexible(), spacing: 10)
     ]
-
+    
     private var groupedIngredients: [(IngredientType, [Ingredient])] {
         ingredients
             .sorted { $0.isStocked && !$1.isStocked }
             .groupedByType()
     }
-
+    
     private var allStocked: Bool {
         ingredients.allSatisfy { $0.isStocked }
     }
-
+    
     private var makeableCount: Int {
         cocktails.filter { !$0.coreIngredients.isEmpty && $0.coreIngredients.allSatisfy { $0.ingredient?.isStocked == true } }.count
     }
-
+    
     var body: some View {
         NavigationStack {
+            mainContent
+                .navigationTitle("Ingredients")
+                .toolbar { toolbarContent }
+                .sheet(isPresented: $showMakeableCocktails) { MakeableCocktailsView() }
+        }
+    }
+    
+    @ViewBuilder
+    private var mainContent: some View {
+        if ingredients.isEmpty {
+            ContentUnavailableView(
+                "No Ingredients",
+                systemImage: "leaf",
+                description: Text("Tap + to add ingredients to your bar.")
+            )
+        } else {
             ScrollView {
                 VStack(alignment: .leading, spacing: 28) {
                     makeableCocktailsCard
-
+                    
                     ForEach(groupedIngredients, id: \.0) { type, items in
                         VStack(alignment: .leading, spacing: 10) {
                             Text(type.localizedName)
                                 .font(.title3.bold())
                                 .fontDesign(.rounded)
                                 .padding(.horizontal)
-
+                            
                             LazyVGrid(columns: columns, spacing: 10) {
                                 ForEach(items) { ingredient in
-                                    IngredientGridCell(ingredient: ingredient) {
-                                        appState.activeIngredientSheet = .edit(ingredient)
-                                    }
+                                    IngredientGridCell(
+                                        ingredient: ingredient,
+                                        onEdit: { appState.activeIngredientSheet = .edit(ingredient) },
+                                        onDelete: { appState.ingredientToDelete = ingredient }
+                                    )
                                 }
                             }
                             .padding(.horizontal)
@@ -55,34 +73,35 @@ struct InventoryTab: View {
                 }
                 .padding(.vertical)
             }
-            .background(Color(.systemGroupedBackground))
-            .navigationTitle("Inventory")
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button { appState.showSettings = true } label: {
-                        Label("Settings", systemImage: "gearshape")
-                    }
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Menu {
-                        Button {
-                            let newValue = !allStocked
-                            for ingredient in ingredients { ingredient.isStocked = newValue }
-                        } label: {
-                            Label(allStocked ? "Deselect All" : "Select All",
-                                  systemImage: allStocked ? "minus.circle" : "checkmark.circle")
-                        }
-                    } label: {
-                        Label("More", systemImage: "ellipsis")
-                    }
-                }
-                ToolbarItem(placement: .primaryAction) {
-                    Button { appState.activeIngredientSheet = .add } label: {
-                        Label("Add Ingredient", systemImage: "plus")
-                    }
-                }
+        }
+    }
+    
+    @ToolbarContentBuilder
+    private var toolbarContent: some ToolbarContent {
+        ToolbarItem(placement: .topBarLeading) {
+            Button { appState.showSettings = true } label: {
+                Label("Settings", systemImage: "gearshape")
             }
-            .sheet(isPresented: $showMakeableCocktails) { MakeableCocktailsView() }
+        }
+        
+        ToolbarItem(placement: .topBarTrailing) {
+            Menu {
+                Button {
+                    let newValue = !allStocked
+                    for ingredient in ingredients { ingredient.isStocked = newValue }
+                } label: {
+                    Label(allStocked ? "Deselect All" : "Select All",
+                          systemImage: allStocked ? "minus.circle" : "checkmark.circle")
+                }
+            } label: {
+                Label("More", systemImage: "ellipsis")
+            }
+        }
+        
+        ToolbarItem(placement: .primaryAction) {
+            Button { appState.activeIngredientSheet = .add } label: {
+                Label("Add Ingredient", systemImage: "plus")
+            }
         }
     }
 
@@ -119,6 +138,6 @@ struct InventoryTab: View {
 }
 
 #Preview(traits: .sampleData) {
-    InventoryTab()
+    IngredientsTab()
         .environment(AppState())
 }

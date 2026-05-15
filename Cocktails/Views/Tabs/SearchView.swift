@@ -82,7 +82,14 @@ struct SearchView: View {
 
     @ViewBuilder
     private var cocktailGrid: some View {
-        if filteredCocktails.isEmpty && !showCocktailSuggestion {
+        if cocktails.isEmpty {
+            ContentUnavailableView(
+                "No Cocktails",
+                systemImage: "wineglass",
+                description: Text("Add cocktails in the Cocktails tab.")
+            )
+            .padding(.top, 60)
+        } else if filteredCocktails.isEmpty && !showCocktailSuggestion {
             ContentUnavailableView.search(text: query)
                 .padding(.top, 60)
         } else {
@@ -107,7 +114,14 @@ struct SearchView: View {
 
     @ViewBuilder
     private var ingredientGrid: some View {
-        if filteredIngredients.isEmpty && !showIngredientSuggestion {
+        if ingredients.isEmpty {
+            ContentUnavailableView(
+                "No Ingredients",
+                systemImage: "leaf",
+                description: Text("Add ingredients in the Ingredients tab.")
+            )
+            .padding(.top, 60)
+        } else if filteredIngredients.isEmpty && !showIngredientSuggestion {
             ContentUnavailableView.search(text: query)
                 .padding(.top, 60)
         } else if query.isEmpty {
@@ -121,7 +135,11 @@ struct SearchView: View {
 
                         LazyVGrid(columns: ingredientColumns, spacing: 10) {
                             ForEach(items) { ingredient in
-                                IngredientGridCell(ingredient: ingredient) { appState.activeIngredientSheet = .edit(ingredient) }
+                                IngredientGridCell(
+                                    ingredient: ingredient,
+                                    onEdit: { appState.activeIngredientSheet = .edit(ingredient) },
+                                    onDelete: { appState.ingredientToDelete = ingredient }
+                                )
                             }
                         }
                         .padding(.horizontal)
@@ -132,7 +150,11 @@ struct SearchView: View {
         } else {
             LazyVGrid(columns: ingredientColumns, spacing: 10) {
                 ForEach(filteredIngredients) { ingredient in
-                    IngredientGridCell(ingredient: ingredient)
+                    IngredientGridCell(
+                        ingredient: ingredient,
+                        onEdit: { appState.activeIngredientSheet = .edit(ingredient) },
+                        onDelete: { appState.ingredientToDelete = ingredient }
+                    )
                 }
                 if showIngredientSuggestion {
                     Button {

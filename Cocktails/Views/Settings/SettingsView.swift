@@ -12,26 +12,32 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 28) {
-                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                        statCard(title: "Cocktails", value: "\(cocktails.count)", icon: "wineglass.fill", color: .purple)
-                        statCard(title: "Ingredients", value: "\(ingredients.count)", icon: "leaf.fill", color: .green)
+                GlassEffectContainer {
+                    VStack(spacing: 28) {
+                        Grid(horizontalSpacing: 16) {
+                            GridRow {
+                                statCard(title: "Cocktails", value: "\(cocktails.count)", icon: "wineglass.fill", color: .purple)
+                                statCard(title: "Ingredients", value: "\(ingredients.count)", icon: "leaf.fill", color: .green)
+                            }
+                        }
+                        
+                        
+                        importSection
+                        aboutSection
+                        dataSection
+                        
+                        
+                        HStack {
+                            Spacer()
+                            Text(Bundle.main.fullVersionString)
+                                .font(.caption)
+                                .foregroundStyle(.tertiary)
+                            Spacer()
+                        }
+                        .padding(.top, 4)
                     }
-                    
-                    importSection
-                    aboutSection
-                    dataSection
-
-                    HStack {
-                        Spacer()
-                        Text(Bundle.main.fullVersionString)
-                            .font(.caption)
-                            .foregroundStyle(.tertiary)
-                        Spacer()
-                    }
-                    .padding(.top, 4)
+                    .padding()
                 }
-                .padding()
             }
             .navigationTitle("Settings")
             .toolbar {
@@ -67,23 +73,42 @@ struct SettingsView: View {
 
     private var aboutSection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            sectionHeader("About")
+            sectionHeader("More")
 
             VStack(spacing: 0) {
                 Link(destination: URL(string: "https://mo-geb.com")!) {
-                    row(icon: "globe", color: .indigo,
+                    row(icon: "globe", color: .cyan,
                         title: "Website",
                         subtitle: "mo-geb.com",
-                        trailing: .externalLink)
+                    )
                 }
 
                 Divider().padding(.leading, 62)
 
+                Link(destination: URL(string: "https://mo-geb.com")!) {
+                    row(icon: "doc.text", color: .blue,
+                        title: "Terms of Service",
+                        subtitle: "not linked yet",
+                    )
+                }
+                
+                Divider().padding(.leading, 62)
+
+                Link(destination: URL(string: "https://mo-geb.com")!) {
+                    row(icon: "book", color: .indigo,
+                        title: "User Guide",
+                        subtitle: "not linked yet",
+                    )
+                }
+                
+                Divider().padding(.leading, 62)
+
+                
                 Link(destination: URL(string: "mailto:support@mo-geb.com")!) {
-                    row(icon: "envelope.fill", color: .teal,
+                    row(icon: "envelope.fill", color: .purple,
                         title: "Contact Support",
                         subtitle: "support@mo-geb.com",
-                        trailing: .externalLink)
+                    )
                 }
             }
             .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
@@ -115,11 +140,8 @@ struct SettingsView: View {
             .padding(.leading, 4)
     }
 
-    private enum TrailingIndicator { case chevron, externalLink }
-
     @ViewBuilder
-    private func row(icon: String, color: Color, title: String, subtitle: String,
-                     trailing: TrailingIndicator = .chevron) -> some View {
+    private func row(icon: String, color: Color, title: String, subtitle: String) -> some View {
         HStack(spacing: 14) {
             Image(systemName: icon)
                 .font(.system(size: 15, weight: .semibold))
@@ -139,7 +161,7 @@ struct SettingsView: View {
 
             Spacer()
 
-            Image(systemName: trailing == .chevron ? "chevron.right" : "arrow.up.right")
+            Image(systemName: "chevron.right")
                 .font(.caption.bold())
                 .foregroundStyle(.tertiary)
         }
@@ -166,6 +188,7 @@ struct SettingsView: View {
             }
         }
         .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .glassEffect(in: RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 

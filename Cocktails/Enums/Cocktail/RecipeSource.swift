@@ -1,6 +1,6 @@
 import Foundation
 enum RecipeSource: String, Codable, CaseIterable, Identifiable {
-    case custom, ebsInter2023, clutterfree, ibaUnforgettables, shared
+    case custom, clutterfree, ebsInter2023, ibaUnforgettables, shared
 
     var id: String { rawValue }
 

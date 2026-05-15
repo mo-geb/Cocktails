@@ -86,6 +86,9 @@
         }
       }
     },
+    "Add cocktails in the Cocktails tab." : {
+
+    },
     "Add Ingredient" : {
       "localizations" : {
         "de" : {
@@ -95,6 +98,9 @@
           }
         }
       }
+    },
+    "Add ingredients in the Ingredients tab." : {
+
     },
     "Add preparation notes…" : {
       "localizations" : {
@@ -536,17 +542,6 @@
     "IBA Unforgettables" : {
       "comment" : "Recipe source — IBA classic cocktails",
       "shouldTranslate" : false
-    },
-    "Ice" : {
-      "comment" : "Grouping by ice type",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eis"
-          }
-        }
-      }
     },
     "Import" : {
       "localizations" : {
@@ -2675,16 +2670,6 @@
         }
       }
     },
-    "Inventory" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inventar"
-          }
-        }
-      }
-    },
     "It will be removed from any recipes that use it." : {
       "localizations" : {
         "de" : {
@@ -2767,6 +2752,9 @@
         }
       }
     },
+    "No Cocktails" : {
+
+    },
     "No Ice" : {
       "comment" : "Ice type — no ice",
       "localizations" : {
@@ -2777,6 +2765,9 @@
           }
         }
       }
+    },
+    "No Ingredients" : {
+
     },
     "No ingredients provided." : {
       "localizations" : {
@@ -3059,6 +3050,12 @@
           }
         }
       }
+    },
+    "Tap + to add ingredients to your bar." : {
+
+    },
+    "Tap + to add your first cocktail." : {
+
     },
     "Tiki" : {
       "comment" : "Glass type",

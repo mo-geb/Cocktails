@@ -13,8 +13,8 @@ struct MainTabView: View {
                 CocktailTab()
             }
 
-            Tab("Inventory", systemImage: "cabinet", value: ActiveTab.inventory) {
-                InventoryTab()
+            Tab("Ingredients", systemImage: "leaf", value: ActiveTab.ingredients) {
+                IngredientsTab()
             }
 
             Tab(value: ActiveTab.search, role: .search) {
@@ -54,6 +54,21 @@ struct MainTabView: View {
                 if let c = appState.cocktailToDelete { modelContext.delete(c) }
                 appState.cocktailToDelete = nil
             }
+        }
+        .confirmationDialog(
+            "Delete \"\(appState.ingredientToDelete?.name ?? "")\"?",
+            isPresented: Binding(
+                get: { appState.ingredientToDelete != nil },
+                set: { if !$0 { appState.ingredientToDelete = nil } }
+            ),
+            titleVisibility: .visible
+        ) {
+            Button("Delete", role: .destructive) {
+                if let i = appState.ingredientToDelete { modelContext.delete(i) }
+                appState.ingredientToDelete = nil
+            }
+        } message: {
+            Text("It will be removed from any recipes that use it.")
         }
     }
 }

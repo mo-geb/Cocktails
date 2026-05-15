@@ -10,6 +10,7 @@ final class AppState {
     var showSettings = false
     var activeCocktailSheet: ActiveCocktailSheet?
     var cocktailToDelete: Cocktail?
+    var ingredientToDelete: Ingredient?
     var activeIngredientSheet: ActiveIngredientSheet?
 
     var pendingImportURL: URL?
@@ -19,7 +20,7 @@ final class AppState {
     }
 
     var preferredSearchTab: SearchTab {
-        lastContentTab == .inventory ? .ingredients : .cocktails
+        lastContentTab == .ingredients ? .ingredients : .cocktails
     }
 
     init() {

@@ -223,15 +223,18 @@ struct CocktailDetailView: View {
     @ToolbarContentBuilder
     private var toolbarContent: some ToolbarContent {
         ToolbarItem(placement: .cancellationAction) {
-            Button("Close") { dismiss() }
+            Button("Close", systemImage: "chevron.down") { dismiss() }
         }
-        ToolbarItem(placement: .primaryAction) {
+        ToolbarItem(placement: .automatic) {
             if let shareItem = CocktailTransferable(cocktail: cocktail) {
                 ShareLink(item: shareItem, preview: SharePreview(cocktail.name, image: Image(cocktail.glass.imageNameEmpty)))
             }
         }
-        ToolbarItem(placement: .primaryAction) {
-            Button("Edit") { showEdit = true }
+        
+        ToolbarSpacer()
+        
+        ToolbarItem(placement: .confirmationAction) {
+            Button("Edit", systemImage: "pencil") { showEdit = true }
         }
     }
 

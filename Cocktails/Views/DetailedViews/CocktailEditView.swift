@@ -348,12 +348,13 @@ struct CocktailEditView: View {
     @ToolbarContentBuilder
     private var toolbarContent: some ToolbarContent {
         ToolbarItem(placement: .cancellationAction) {
-            Button("Cancel") { dismiss() }
+            Button("Cancel", systemImage: "xmark") { dismiss() }
         }
+        
         ToolbarItem(placement: .confirmationAction) {
-            Button("Save") { save() }
+            Button("Save", systemImage: "checkmark") { save() }
+                .tint(.green)
                 .disabled(draft.name.trimmingCharacters(in: .whitespaces).isEmpty || hasIncompleteIngredient)
-                .fontWeight(.semibold)
         }
     }
 

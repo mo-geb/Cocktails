@@ -9,7 +9,7 @@ final class Ingredient {
     var isStocked: Bool = false
     var imageName: String? = nil
 
-    @Relationship(inverse: \RecipeIngredient.ingredient) var usages: [RecipeIngredient]?
+    @Relationship(deleteRule: .cascade, inverse: \RecipeIngredient.ingredient) var usages: [RecipeIngredient]?
 
     var localizedName: String {
         let key = "ingredient.\(id)"
