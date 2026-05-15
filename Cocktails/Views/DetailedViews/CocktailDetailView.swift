@@ -221,6 +221,11 @@ struct CocktailDetailView: View {
             Button("Close") { dismiss() }
         }
         ToolbarItem(placement: .primaryAction) {
+            if let shareItem = CocktailTransferable(cocktail: cocktail) {
+                ShareLink(item: shareItem, preview: SharePreview(cocktail.name, image: Image(cocktail.glass.imageNameEmpty)))
+            }
+        }
+        ToolbarItem(placement: .primaryAction) {
             Button("Edit") { showEdit = true }
         }
     }

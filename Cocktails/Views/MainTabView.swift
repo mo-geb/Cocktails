@@ -31,6 +31,17 @@ struct MainTabView: View {
                 .presentationDetents([.large])
                 .presentationDragIndicator(.visible)
         }
+        .onOpenURL { url in
+            appState.pendingImportURL = url
+        }
+        .sheet(isPresented: Binding(
+            get: { appState.pendingImportURL != nil },
+            set: { if !$0 { appState.pendingImportURL = nil } }
+        )) {
+            if let url = appState.pendingImportURL {
+                ImportPreviewView(url: url, onDismiss: { appState.pendingImportURL = nil })
+            }
+        }
         .confirmationDialog(
             "Delete \"\(appState.cocktailToDelete?.name ?? "")\"?",
             isPresented: Binding(

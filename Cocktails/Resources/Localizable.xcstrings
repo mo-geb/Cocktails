@@ -12,6 +12,9 @@
       },
       "shouldTranslate" : false
     },
+    "%@ imported." : {
+
+    },
     "%lld" : {
       "shouldTranslate" : false
     },
@@ -116,6 +119,9 @@
         }
       }
     },
+    "All Cocktails" : {
+
+    },
     "Base" : {
       "comment" : "Grouping by base spirit",
       "localizations" : {
@@ -168,6 +174,9 @@
           }
         }
       }
+    },
+    "Cannot Open File" : {
+
     },
     "Change Image" : {
       "localizations" : {
@@ -242,14 +251,7 @@
     },
     "ClutterFree" : {
       "comment" : "Recipe source — Selection",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unordnungfrei"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "Cocktail Name" : {
       "localizations" : {
@@ -417,14 +419,7 @@
     },
     "EBS" : {
       "comment" : "Recipe source — book title",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "EBS"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "Edit" : {
       "localizations" : {
@@ -456,6 +451,9 @@
           }
         }
       }
+    },
+    "Favourites" : {
+
     },
     "fill" : {
       "localizations" : {
@@ -533,14 +531,7 @@
     },
     "IBA Unforgettables" : {
       "comment" : "Recipe source — IBA classic cocktails",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "IBA Unvergessliche"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "Ice" : {
       "comment" : "Grouping by ice type",
@@ -603,6 +594,16 @@
         }
       }
     },
+    "Import Recipe" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rezept Importieren"
+          }
+        }
+      }
+    },
     "Import Selected" : {
       "localizations" : {
         "de" : {
@@ -625,6 +626,7 @@
     },
     "ingredient.absinthe" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -642,6 +644,7 @@
     },
     "ingredient.amaretto" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -659,6 +662,7 @@
     },
     "ingredient.angostura_bitters" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -676,6 +680,7 @@
     },
     "ingredient.aperol" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -693,6 +698,7 @@
     },
     "ingredient.apple_liqueur" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -710,6 +716,7 @@
     },
     "ingredient.apricot_brandy" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -727,6 +734,7 @@
     },
     "ingredient.baileys" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -744,6 +752,7 @@
     },
     "ingredient.basil_leaf" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -761,6 +770,7 @@
     },
     "ingredient.benedictine" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -778,6 +788,7 @@
     },
     "ingredient.black_pepper" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -795,6 +806,7 @@
     },
     "ingredient.blackberry" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -812,6 +824,7 @@
     },
     "ingredient.bloody_mary_pre_batch" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -829,6 +842,7 @@
     },
     "ingredient.blue_curacao" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -846,6 +860,7 @@
     },
     "ingredient.bourbon" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -863,6 +878,7 @@
     },
     "ingredient.brandy" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -880,6 +896,7 @@
     },
     "ingredient.cachaca" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -897,6 +914,7 @@
     },
     "ingredient.calvados" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -914,6 +932,7 @@
     },
     "ingredient.campari" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -931,6 +950,7 @@
     },
     "ingredient.celery_salt" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -948,6 +968,7 @@
     },
     "ingredient.celery_stick" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -965,6 +986,7 @@
     },
     "ingredient.chambord" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -982,6 +1004,7 @@
     },
     "ingredient.champagne" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -999,6 +1022,7 @@
     },
     "ingredient.chartreuse" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1016,6 +1040,7 @@
     },
     "ingredient.cherry" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1033,6 +1058,7 @@
     },
     "ingredient.cherry_liqueur" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1050,6 +1076,7 @@
     },
     "ingredient.cinnamon_syrup" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1067,6 +1094,7 @@
     },
     "ingredient.coco_syrup" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1084,6 +1112,7 @@
     },
     "ingredient.coconut_cream" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1101,6 +1130,7 @@
     },
     "ingredient.coconut_liqueur" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1118,6 +1148,7 @@
     },
     "ingredient.coffee_beans" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1135,6 +1166,7 @@
     },
     "ingredient.coffee_liqueur" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1152,6 +1184,7 @@
     },
     "ingredient.cognac" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1169,6 +1202,7 @@
     },
     "ingredient.cola" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1186,6 +1220,7 @@
     },
     "ingredient.cranberry_juice" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1203,6 +1238,7 @@
     },
     "ingredient.cream" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1220,6 +1256,7 @@
     },
     "ingredient.creme_de_cassis" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1237,6 +1274,7 @@
     },
     "ingredient.creme_de_menthe" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1254,6 +1292,7 @@
     },
     "ingredient.creme_de_mure" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1271,6 +1310,7 @@
     },
     "ingredient.creme_de_violette" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1288,6 +1328,7 @@
     },
     "ingredient.dark_cacao_liqueur" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1305,6 +1346,7 @@
     },
     "ingredient.drambuie" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1322,6 +1364,7 @@
     },
     "ingredient.egg_white" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1339,6 +1382,7 @@
     },
     "ingredient.egg_yolk" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1356,6 +1400,7 @@
     },
     "ingredient.espresso" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1373,6 +1418,7 @@
     },
     "ingredient.fernet" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1390,6 +1436,7 @@
     },
     "ingredient.gin" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1407,6 +1454,7 @@
     },
     "ingredient.ginger_beer" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1424,6 +1472,7 @@
     },
     "ingredient.grapefruit_juice" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1441,6 +1490,7 @@
     },
     "ingredient.grapefruit_slice" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1458,6 +1508,7 @@
     },
     "ingredient.grated_nutmeg" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1475,6 +1526,7 @@
     },
     "ingredient.grenadine" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1492,6 +1544,7 @@
     },
     "ingredient.lemon_juice" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1509,6 +1562,7 @@
     },
     "ingredient.lemon_spiral" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1526,6 +1580,7 @@
     },
     "ingredient.lemon_wedge" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1543,6 +1598,7 @@
     },
     "ingredient.lemon_zest" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1560,6 +1616,7 @@
     },
     "ingredient.lime_cordial" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1577,6 +1634,7 @@
     },
     "ingredient.lime_juice" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1594,6 +1652,7 @@
     },
     "ingredient.lime_wedge" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1611,6 +1670,7 @@
     },
     "ingredient.lime_wheel" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1628,6 +1688,7 @@
     },
     "ingredient.lime_zest" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1645,6 +1706,7 @@
     },
     "ingredient.mango_juice" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1662,6 +1724,7 @@
     },
     "ingredient.maraschino" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1679,6 +1742,7 @@
     },
     "ingredient.milk" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1696,6 +1760,7 @@
     },
     "ingredient.mint_leaf" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1713,6 +1778,7 @@
     },
     "ingredient.mint_sprig" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1730,6 +1796,7 @@
     },
     "ingredient.mixer" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1747,6 +1814,7 @@
     },
     "ingredient.olive" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1764,6 +1832,7 @@
     },
     "ingredient.orange_bitters" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1781,6 +1850,7 @@
     },
     "ingredient.orange_flower_water" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1798,6 +1868,7 @@
     },
     "ingredient.orange_juice" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1815,6 +1886,7 @@
     },
     "ingredient.orange_slice" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1832,6 +1904,7 @@
     },
     "ingredient.orange_zest" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1849,6 +1922,7 @@
     },
     "ingredient.orgeat_syrup" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1866,6 +1940,7 @@
     },
     "ingredient.passionfruit" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1883,6 +1958,7 @@
     },
     "ingredient.passionfruit_juice" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1900,6 +1976,7 @@
     },
     "ingredient.passionfruit_liqueur" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1917,6 +1994,7 @@
     },
     "ingredient.passionfruit_puree" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1934,6 +2012,7 @@
     },
     "ingredient.peach_liqueur" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1951,6 +2030,7 @@
     },
     "ingredient.peach_puree" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1968,6 +2048,7 @@
     },
     "ingredient.peychauds_bitters" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1985,6 +2066,7 @@
     },
     "ingredient.pineapple_juice" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2002,6 +2084,7 @@
     },
     "ingredient.pineapple_wedge" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2019,6 +2102,7 @@
     },
     "ingredient.port" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2036,6 +2120,7 @@
     },
     "ingredient.prosecco" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2053,6 +2138,7 @@
     },
     "ingredient.raspberry" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2070,6 +2156,7 @@
     },
     "ingredient.raspberry_puree" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2087,6 +2174,7 @@
     },
     "ingredient.raspberry_syrup" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2104,6 +2192,7 @@
     },
     "ingredient.rum" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2121,6 +2210,7 @@
     },
     "ingredient.rye" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2138,6 +2228,7 @@
     },
     "ingredient.salt_rim" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2155,6 +2246,7 @@
     },
     "ingredient.soda" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2172,6 +2264,7 @@
     },
     "ingredient.soda_water" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2189,6 +2282,7 @@
     },
     "ingredient.spirit" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2206,6 +2300,7 @@
     },
     "ingredient.sprite" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2223,6 +2318,7 @@
     },
     "ingredient.sugar" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2240,6 +2336,7 @@
     },
     "ingredient.sugar_cane_juice" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2257,6 +2354,7 @@
     },
     "ingredient.sugar_coated_lemon_wedge" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2274,6 +2372,7 @@
     },
     "ingredient.sugar_cube" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2291,6 +2390,7 @@
     },
     "ingredient.sugar_rim" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2308,6 +2408,7 @@
     },
     "ingredient.sugar_syrup" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2325,6 +2426,7 @@
     },
     "ingredient.tabasco" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2342,6 +2444,7 @@
     },
     "ingredient.tequila" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2359,6 +2462,7 @@
     },
     "ingredient.tomato_juice" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2376,6 +2480,7 @@
     },
     "ingredient.tonic" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2393,6 +2498,7 @@
     },
     "ingredient.triple_sec" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2410,6 +2516,7 @@
     },
     "ingredient.vanilla_extract" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2427,6 +2534,7 @@
     },
     "ingredient.vanilla_sugar" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2444,6 +2552,7 @@
     },
     "ingredient.vanilla_syrup" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2461,6 +2570,7 @@
     },
     "ingredient.vermouth" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2478,6 +2588,7 @@
     },
     "ingredient.vodka" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2495,6 +2606,7 @@
     },
     "ingredient.whisky" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2512,6 +2624,7 @@
     },
     "ingredient.white_cacao_liqueur" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2529,6 +2642,7 @@
     },
     "ingredient.worcestershire_sauce" : {
       "comment" : "Ingredient name",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {

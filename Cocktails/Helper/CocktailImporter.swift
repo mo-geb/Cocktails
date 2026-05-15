@@ -4,20 +4,20 @@ import OSLog
 
 // MARK: - DTOs
 
-struct IngredientDTO: Decodable {
+struct IngredientDTO: Codable {
     let id: String
     let name: String
     let type: IngredientType
 }
 
-struct RecipeIngredientDTO: Decodable {
+struct RecipeIngredientDTO: Codable {
     let ingredientId: String
     let amount: Double
     let unit: MeasurementUnit?
     let note: String?
 }
 
-struct CocktailDTO: Decodable {
+struct CocktailDTO: Codable {
     let name: String
     let imageName: String?
     let glass: GlassType
@@ -26,6 +26,11 @@ struct CocktailDTO: Decodable {
     let ingredients: [RecipeIngredientDTO]
     let garnishes: [RecipeIngredientDTO]?
     let notes: String?
+}
+
+struct SharedCocktailPackage: Codable {
+    let cocktail: CocktailDTO
+    let ingredients: [IngredientDTO]
 }
 
 extension CocktailDTO: CocktailImageProviding {
@@ -142,6 +147,19 @@ final class CocktailImporter {
         logger.info("Parsed \(ingredientDTOs.count) ingredients, \(cocktailDTOs.count) cocktails from '\(source.filePrefix)'")
 
         return try processImport(cocktailDTOs: cocktailDTOs, ingredientDTOs: ingredientDTOs, source: source)
+    }
+
+    /// 4. Import a single cocktail from a shared .cocktail file
+    @discardableResult
+    func importSharedCocktail(from data: Data) throws -> ImportResult {
+        let package: SharedCocktailPackage
+        do {
+            package = try JSONDecoder().decode(SharedCocktailPackage.self, from: data)
+        } catch let decodingError as DecodingError {
+            throw ImportError.decodingError("shared cocktail", decodingError)
+        }
+        logger.info("Importing shared cocktail: \(package.cocktail.name)")
+        return try processImport(cocktailDTOs: [package.cocktail], ingredientDTOs: package.ingredients, source: .shared)
     }
 
     /// 3. Import selected cocktails, pulling in only the ingredients they need that are not already in the store

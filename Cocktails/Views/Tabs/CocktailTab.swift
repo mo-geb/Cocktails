@@ -8,35 +8,6 @@ struct CocktailTab: View {
 
     let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
 
-    private var groupedCocktails: [(String, [Cocktail])] {
-        switch appState.cocktailGrouping {
-        case .none:
-            return [("", cocktails)]
-        case .glass:
-            let groups = Dictionary(grouping: cocktails) { $0.glass.localizedName }
-            return groups.sorted { $0.key < $1.key }
-        case .method:
-            let groups = Dictionary(grouping: cocktails) { $0.method.localizedName }
-            return groups.sorted { $0.key < $1.key }
-        case .ice:
-            let groups = Dictionary(grouping: cocktails) { $0.ice.localizedName }
-            return groups.sorted { $0.key < $1.key }
-        case .favourite:
-            let groups = Dictionary(grouping: cocktails) { $0.isFavourite ? "Favourites" : "All Cocktails" }
-            return groups.sorted { $0.key > $1.key }
-        case .source:
-            let groups = Dictionary(grouping: cocktails) { $0.source.localizedName }
-            return groups.sorted { $0.key < $1.key }
-        case .base:
-            let groups = Dictionary(grouping: cocktails) { $0.baseGroup }
-            return groups.sorted { l, r in
-                if l.key == "No Base" { return false }
-                if r.key == "No Base" { return true }
-                return l.key < r.key
-            }
-        }
-    }
-
     var body: some View {
         @Bindable var appState = appState
         NavigationStack {
@@ -76,17 +47,25 @@ struct CocktailTab: View {
     private var mainContent: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 28) {
-                ForEach(groupedCocktails, id: \.0) { groupName, cocktails in
+                ForEach(groupedCocktails) { group in
                     VStack(alignment: .leading, spacing: 12) {
                         if appState.cocktailGrouping != .none {
-                            Text(groupName)
-                                .font(.title3.bold())
-                                .fontDesign(.rounded)
-                                .padding(.horizontal)
+                            HStack(spacing: 4) {
+                                if let imageName = group.imageName {
+                                    Image(imageName)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 28, height: 28)
+                                }
+                                Text(group.name)
+                            }
+                            .font(.title3.bold())
+                            .fontDesign(.rounded)
+                            .padding(.horizontal)
                         }
 
                         LazyVGrid(columns: columns, spacing: 12) {
-                            ForEach(cocktails) { cocktail in
+                            ForEach(group.items) { cocktail in
                                 CocktailGridCell(cocktail: cocktail, onEdit: { appState.activeCocktailSheet = .edit(cocktail) }, onDelete: { appState.cocktailToDelete = cocktail }) {
                                     appState.activeCocktailSheet = .view(cocktail)
                                 }
@@ -102,6 +81,44 @@ struct CocktailTab: View {
 
     private func addNewCocktail() {
         appState.activeCocktailSheet = .new(CocktailDraft())
+    }
+    
+    private struct CocktailGroup: Identifiable {
+        let name: String
+        let imageName: String?
+        let items: [Cocktail]
+        var id: String { name }
+    }
+
+    private func groupKey(for cocktail: Cocktail) -> (name: String, imageName: String?) {
+        switch appState.cocktailGrouping {
+        case .none:      return ("", nil)
+        case .glass:     return (cocktail.glass.localizedName, cocktail.glass.imageNameEmpty)
+        case .method:    return (cocktail.method.localizedName, cocktail.method.customImageName)
+        case .ice:       return (cocktail.ice.localizedName, cocktail.ice.imageName)
+        case .source:    return (cocktail.source.localizedName, cocktail.source.imageName)
+        case .favourite:
+            return cocktail.isFavourite
+                ? (String(localized: "Favourites"), nil)
+                : (String(localized: "All Cocktails"), nil)
+        case .base:
+            let name = cocktail.baseGroup
+            let image = Cocktail.baseTypePriority.first { $0.localizedName == name }?.imageName
+            return (name, image)
+        }
+    }
+
+    private var groupedCocktails: [CocktailGroup] {
+        let groups = Dictionary(grouping: cocktails) { groupKey(for: $0).name }
+        return groups
+            .sorted { l, r in
+                if l.key == "No Base" { return false }
+                if r.key == "No Base" { return true }
+                return l.key < r.key
+            }
+            .map { key, items in
+                CocktailGroup(name: key, imageName: groupKey(for: items[0]).imageName, items: items)
+            }
     }
 }
 

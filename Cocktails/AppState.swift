@@ -12,6 +12,8 @@ final class AppState {
     var cocktailToDelete: Cocktail?
     var activeIngredientSheet: ActiveIngredientSheet?
 
+    var pendingImportURL: URL?
+
     var cocktailGrouping: CocktailGrouping = .none {
         didSet { UserDefaults.standard.set(cocktailGrouping.rawValue, forKey: "cocktailGrouping") }
     }
