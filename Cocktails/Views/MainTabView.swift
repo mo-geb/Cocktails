@@ -76,4 +76,5 @@ struct MainTabView: View {
 #Preview(traits: .sampleData) {
     MainTabView()
         .environment(AppState())
+        .modelContainer(for: Cocktail.self, inMemory: true)
 }

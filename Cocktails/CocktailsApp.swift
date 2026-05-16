@@ -11,7 +11,7 @@ struct CocktailsApp: App {
             RecipeIngredient.self,
             Ingredient.self
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        let modelConfiguration = ModelConfiguration(schema: schema, cloudKitDatabase: .automatic)
 
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
@@ -31,4 +31,6 @@ struct CocktailsApp: App {
 
 #Preview(traits: .sampleData) {
     MainTabView()
+        .environment(AppState())
+        .modelContainer(for: Cocktail.self, inMemory: true)
 }

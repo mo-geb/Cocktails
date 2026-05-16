@@ -18,8 +18,8 @@ DerivedData/
 .swiftpm/
 
 # uv (Python package manager)
-scripts/.venv/
-scripts/uv.lock
+Scripts/.venv/
+Scripts/uv.lock
 
 # Obj-C / Swift build artifacts
 *.o
@@ -27,3 +27,6 @@ scripts/uv.lock
 *.ipa
 *.dSYM.zip
 *.dSYM
+
+# Stray binaries (must never live in the source tree)
+Cocktails/test
