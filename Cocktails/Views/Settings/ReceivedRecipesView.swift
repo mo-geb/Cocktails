@@ -92,6 +92,8 @@ struct ReceivedRecipesView: View {
     }
 
     private func loadPackage() {
+        let accessed = url.startAccessingSecurityScopedResource()
+        defer { if accessed { url.stopAccessingSecurityScopedResource() } }
         do {
             let data = try Data(contentsOf: url)
             let decoded = try JSONDecoder().decode(SharedCocktailPackage.self, from: data)

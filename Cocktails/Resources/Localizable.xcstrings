@@ -87,7 +87,14 @@
       }
     },
     "Add cocktails in the Cocktails tab." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Füge Cocktails im Cocktails-Tab hinzu."
+          }
+        }
+      }
     },
     "Add Ingredient" : {
       "localizations" : {
@@ -100,7 +107,14 @@
       }
     },
     "Add ingredients in the Ingredients tab." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Füge Zutaten im Zutaten-Tab hinzu."
+          }
+        }
+      }
     },
     "Add preparation notes…" : {
       "localizations" : {
@@ -154,7 +168,14 @@
       }
     },
     "Bitters" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitters"
+          }
+        }
+      }
     },
     "Blend" : {
       "comment" : "Preparation method",
@@ -189,7 +210,14 @@
       }
     },
     "Cannot Open File" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datei kann nicht geöffnet werden"
+          }
+        }
+      }
     },
     "Change Image" : {
       "localizations" : {
@@ -466,7 +494,14 @@
       }
     },
     "Favourites" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favoriten"
+          }
+        }
+      }
     },
     "fill" : {
       "localizations" : {
@@ -490,10 +525,24 @@
       }
     },
     "Fortified Wine" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Likörwein"
+          }
+        }
+      }
     },
     "Fruits" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Früchte"
+          }
+        }
+      }
     },
     "Garnish" : {
       "localizations" : {
@@ -527,7 +576,14 @@
       }
     },
     "Herbs" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kräuter"
+          }
+        }
+      }
     },
     "Highball" : {
       "comment" : "Glass type",
@@ -566,7 +622,14 @@
       }
     },
     "Import %@" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importiere %@"
+          }
+        }
+      }
     },
     "Import All" : {
       "localizations" : {
@@ -2693,10 +2756,24 @@
       }
     },
     "Juices" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Säfte"
+          }
+        }
+      }
     },
     "Liqueurs" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liköre"
+          }
+        }
+      }
     },
     "Mark as Stocked" : {
       "localizations" : {
@@ -2741,7 +2818,14 @@
       }
     },
     "Mixers" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mixer"
+          }
+        }
+      }
     },
     "More" : {
       "localizations" : {
@@ -2774,7 +2858,14 @@
       }
     },
     "No Cocktails" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Cocktails"
+          }
+        }
+      }
     },
     "No Ice" : {
       "comment" : "Ice type — no ice",
@@ -2788,7 +2879,14 @@
       }
     },
     "No Ingredients" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Zutaten"
+          }
+        }
+      }
     },
     "No ingredients provided." : {
       "localizations" : {
@@ -2866,7 +2964,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nichts zu machen"
+            "value" : "Nichts zu mixen"
           }
         }
       }
@@ -2876,7 +2974,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Noch nichts zu machen"
+            "value" : "Noch nichts zu mixen"
           }
         }
       }
@@ -2985,7 +3083,14 @@
       }
     },
     "Select Cocktails" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle Cocktails"
+          }
+        }
+      }
     },
     "Select Ingredient" : {
       "localizations" : {
@@ -3052,10 +3157,24 @@
       }
     },
     "Spices" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gewürze"
+          }
+        }
+      }
     },
     "Spirits" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spirituosen"
+          }
+        }
+      }
     },
     "Stir" : {
       "comment" : "Preparation method",
@@ -3073,19 +3192,40 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lager Zutaten in deinem Inventar, um Cocktails zu sehen, die du machen kannst."
+            "value" : "Lager Zutaten in deinem Inventar, um Cocktails zu sehen, die du mixen kannst."
           }
         }
       }
     },
     "Syrups" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sirups"
+          }
+        }
+      }
     },
     "Tap + to add ingredients to your bar." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippe auf +, um Zutaten zu deiner Bar hinzuzufügen."
+          }
+        }
+      }
     },
     "Tap + to add your first cocktail." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippe auf +, um deinen ersten Cocktail hinzuzufügen."
+          }
+        }
+      }
     },
     "Tiki" : {
       "comment" : "Glass type",
@@ -3159,14 +3299,21 @@
       }
     },
     "Vegetables" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gemüse"
+          }
+        }
+      }
     },
     "What can I make?" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Was kann ich machen?"
+            "value" : "Was kann ich mixen?"
           }
         }
       }
