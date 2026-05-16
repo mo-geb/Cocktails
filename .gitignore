@@ -19,7 +19,6 @@ DerivedData/
 
 # uv (Python package manager)
 Scripts/.venv/
-Scripts/uv.lock
 
 # Obj-C / Swift build artifacts
 *.o
