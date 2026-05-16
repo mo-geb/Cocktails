@@ -7,6 +7,8 @@ struct ReceivedRecipesView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var package: SharedCocktailPackage?
     @State private var errorMessage: String?
+    @State private var importResult: ImportResult?
+    @State private var importError: String?
     @State private var selected = Set<String>()
     @State private var imported = Set<String>()
 
@@ -41,6 +43,25 @@ struct ReceivedRecipesView: View {
         }
         .onAppear { loadPackage() }
         .presentationDetents([.medium, .large])
+        .alert("Import Complete", isPresented: .init(
+            get: { importResult != nil },
+            set: { if !$0 { importResult = nil } }
+        )) {
+            Button("OK") { importResult = nil }
+        } message: {
+            if let r = importResult {
+                let n = r.cocktailsInserted
+                Text("\(n) cocktail\(n == 1 ? "" : "s") imported.")
+            }
+        }
+        .alert("Import Failed", isPresented: .init(
+            get: { importError != nil },
+            set: { if !$0 { importError = nil } }
+        )) {
+            Button("OK") { importError = nil }
+        } message: {
+            if let e = importError { Text(e) }
+        }
     }
 
     private var navigationTitle: String {
@@ -86,10 +107,12 @@ struct ReceivedRecipesView: View {
         let toImport = package.cocktails.filter { selected.contains($0.name) }
         let filtered = SharedCocktailPackage(cocktails: toImport, ingredients: package.ingredients)
         do {
-            try CocktailImporter(context: modelContext).importSharedCocktail(package: filtered)
+            let result = try CocktailImporter(context: modelContext).importSharedCocktail(package: filtered)
             imported = imported.union(selected)
+            selected.removeAll()
+            importResult = result
         } catch {
-            errorMessage = error.localizedDescription
+            importError = error.localizedDescription
         }
     }
 }

@@ -1,7 +1,7 @@
 import SwiftUI
 import SwiftData
 
-struct IngredientsTab: View {
+struct IngredientTab: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(AppState.self) private var appState
     @Query(sort: \Ingredient.name) private var ingredients: [Ingredient]
@@ -138,6 +138,6 @@ struct IngredientsTab: View {
 }
 
 #Preview(traits: .sampleData) {
-    IngredientsTab()
+    IngredientTab()
         .environment(AppState())
 }

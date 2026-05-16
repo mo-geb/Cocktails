@@ -2,77 +2,6 @@ import Foundation
 import SwiftData
 import OSLog
 
-// MARK: - DTOs
-
-struct IngredientDTO: Codable {
-    let id: String
-    let name: String
-    let type: IngredientType
-}
-
-struct RecipeIngredientDTO: Codable {
-    let ingredientId: String
-    let amount: Double
-    let unit: MeasurementUnit?
-    let note: String?
-}
-
-struct CocktailDTO: Codable {
-    let name: String
-    let imageName: String?
-    let glass: GlassType
-    let method: PreparationMethod
-    let ice: IceType
-    let ingredients: [RecipeIngredientDTO]
-    let garnishes: [RecipeIngredientDTO]?
-    let notes: String?
-}
-
-struct SharedCocktailPackage: Codable {
-    let cocktails: [CocktailDTO]
-    let ingredients: [IngredientDTO]
-}
-
-extension CocktailDTO: CocktailImageProviding {
-    var imageData: Data? { nil }
-}
-
-// MARK: - Available Images
-
-extension CocktailImporter {
-    static let availableIngredientImageNames: [String] = {
-        guard let url = Bundle.main.url(forResource: "ingredients", withExtension: "json"),
-              let data = try? Data(contentsOf: url),
-              let dtos = try? JSONDecoder().decode([IngredientDTO].self, from: data)
-        else { return [] }
-        return dtos.map(\.id).sorted()
-    }()
-}
-
-// MARK: - Import Result
-
-struct ImportResult {
-    let ingredientsInserted: Int
-    let ingredientsSkipped: Int
-    let cocktailsInserted: Int
-    let unmappedIngredientRefs: [(cocktail: String, ingredientName: String)]
-
-    var summary: String {
-        var lines = [
-            "Cocktails inserted: \(cocktailsInserted)",
-            "Ingredients inserted: \(ingredientsInserted)",
-            "Ingredients already present (skipped): \(ingredientsSkipped)"
-        ]
-        if !unmappedIngredientRefs.isEmpty {
-            lines.append("⚠️ Unresolved ingredient refs: \(unmappedIngredientRefs.count)")
-            for ref in unmappedIngredientRefs {
-                lines.append("  • \(ref.cocktail) → \"\(ref.ingredientName)\"")
-            }
-        }
-        return lines.joined(separator: "\n")
-    }
-}
-
 // MARK: - Importer
 
 private let logger = Logger(subsystem: "dev.mog.cocktails", category: "CocktailImporter")
@@ -361,3 +290,14 @@ final class CocktailImporter {
     }
 }
 
+// MARK: - Available Images
+
+extension CocktailImporter {
+    static let availableIngredientImageNames: [String] = {
+        guard let url = Bundle.main.url(forResource: "ingredients", withExtension: "json"),
+              let data = try? Data(contentsOf: url),
+              let dtos = try? JSONDecoder().decode([IngredientDTO].self, from: data)
+        else { return [] }
+        return dtos.map(\.id).sorted()
+    }()
+}

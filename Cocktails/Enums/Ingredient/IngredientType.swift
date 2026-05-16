@@ -22,18 +22,18 @@ enum IngredientType: String, Codable, CaseIterable, Identifiable {
 
     var localizedName: String {
         switch self {
-        case .spirit:           return "Spirits"
-        case .liqueur:          return "Liqueurs"
-        case .fortifiedWine:    return "Fortified Wine"
-        case .syrup:            return "Syrups"
-        case .juice:            return "Juices"
-        case .bitters:          return "Bitters"
-        case .mixer:            return "Mixers"
-        case .fruit:            return "Fruits"
-        case .herb:             return "Herbs"
-        case .spice:            return "Spices"
-        case .vegetable:        return "Vegetables"
-        case .other:            return "Other"
+        case .spirit:           return String(localized: "Spirits")
+        case .liqueur:          return String(localized: "Liqueurs")
+        case .fortifiedWine:    return String(localized: "Fortified Wine")
+        case .syrup:            return String(localized: "Syrups")
+        case .juice:            return String(localized: "Juices")
+        case .bitters:          return String(localized: "Bitters")
+        case .mixer:            return String(localized: "Mixers")
+        case .fruit:            return String(localized: "Fruits")
+        case .herb:             return String(localized: "Herbs")
+        case .spice:            return String(localized: "Spices")
+        case .vegetable:        return String(localized: "Vegetables")
+        case .other:            return String(localized: "Other")
         }
     }
 

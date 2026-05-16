@@ -14,7 +14,7 @@ struct MainTabView: View {
             }
 
             Tab("Ingredients", systemImage: "leaf", value: ActiveTab.ingredients) {
-                IngredientsTab()
+                IngredientTab()
             }
 
             Tab(value: ActiveTab.search, role: .search) {
