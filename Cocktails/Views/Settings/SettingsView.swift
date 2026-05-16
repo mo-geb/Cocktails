@@ -85,19 +85,19 @@ struct SettingsView: View {
 
                 Divider().padding(.leading, 62)
 
-                Link(destination: URL(string: "https://mo-geb.com")!) {
+                Link(destination: URL(string: "https://mo-geb.com/projects/cocktails/terms")!) {
                     row(icon: "doc.text", color: .blue,
                         title: "Terms of Service",
-                        subtitle: "not linked yet",
+                        subtitle: "Read the terms of service",
                     )
                 }
                 
                 Divider().padding(.leading, 62)
 
-                Link(destination: URL(string: "https://mo-geb.com")!) {
+                Link(destination: URL(string: "https://mo-geb.com/projects/cocktails/privacy")!) {
                     row(icon: "book", color: .indigo,
-                        title: "User Guide",
-                        subtitle: "not linked yet",
+                        title: "Privacy Policy",
+                        subtitle: "Read the privacy policy",
                     )
                 }
                 

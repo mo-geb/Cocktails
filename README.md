@@ -34,27 +34,27 @@ Pick an iPhone simulator (or your signed device) and run. For Python tooling und
 Cocktails/                      # Xcode project root
 ├── Cocktails.xcodeproj/        # Xcode project
 ├── Cocktails/                  # App target source
-│   ├── CocktailsApp.swift      # @main entrypoint, model container
-│   ├── AppState.swift          # @Observable app-wide state
-│   ├── Info.plist              # Document types, UTI for .cocktail
+│   ├── App/                    # App entry point & AppState definition
+│   │   ├── CocktailsApp.swift  # Main entrypoint, SwiftData model container setup
+│   │   └── AppState.swift      # App-wide Observable state
+│   ├── Info.plist              # Document types, UTI for .cocktail, configuration
 │   ├── Cocktails.entitlements  # iCloud (CloudKit), remote notifications
-│   ├── Models/                 # SwiftData @Model types + Draft structs
-│   ├── Enums/                  # Domain enums (glass, method, ice, etc.)
-│   ├── Views/                  # SwiftUI views (tabs, detail, components, settings)
-│   ├── Helper/                 # Importer, Transferable, extensions, preview data
-│   └── Resources/              # Asset catalog, .xcstrings, .storekit, bundled recipe JSON
-├── Docs/                       # Project documentation (this folder)
-├── DesignAssets/               # Source-of-truth design files (e.g., CocktailsIcon.pxd)
-└── Scripts/                    # Python tooling (translations, icon generation)
+│   ├── Models/                 # SwiftData @Model entities & temporary schemas
+│   ├── Enums/                  # Domain-specific enums (IngredientType, Glass, etc.)
+│   ├── Views/                  # SwiftUI user interface (tabs, components, details, settings)
+│   ├── Services/               # Core services (Importer, Transferable support, Extensions)
+│   ├── PreviewContent/         # Assets & test data utilized for Xcode Canvas Previews
+│   └── Resources/              # Localizations (.xcstrings), assets, StoreKit configuration, JSON recipes
+├── Docs/                       # Project documentation and specifications
+├── DesignAssets/               # Design assets (Pixelmator source files & App Store exports)
+└── Scripts/                    # Python workflow automation (Translation, missing asset generators)
 ```
 
 ## Documentation index
 
-- `Docs/ARCHITECTURE.md` — runtime architecture, data model, key flows
-- `Docs/BUILD.md` — Xcode and Python toolchain setup, signing, StoreKit
-- `Docs/CONTRIBUTING.md` — coding conventions, branch/PR practice
-- `Docs/PROJECT_STRUCTURE_REVIEW.md` — recommendations for cleaning up the file layout
-- `Docs/AppStore/` — submission-ready copy, screenshot specs, review notes, marketing assets
+- [Docs/ARCHITECTURE.md](Docs/ARCHITECTURE.md) — runtime architecture, data model, and user flows
+- [Docs/BUILD.md](Docs/BUILD.md) — Xcode setup, signing, and Python automation toolchain
+- [DesignAssets/AppStore/](DesignAssets/AppStore/) — screenshot specs, review notes, and marketing assets
 
 ## Status
 
