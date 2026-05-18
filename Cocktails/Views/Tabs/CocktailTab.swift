@@ -7,8 +7,6 @@ struct CocktailTab: View {
     @Environment(StoreManager.self) private var store
     @Query(sort: \Cocktail.name) private var cocktails: [Cocktail]
 
-    let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
-
     @State private var isSelecting = false
     @State private var selection = Set<UUID>()
 
@@ -66,7 +64,7 @@ struct CocktailTab: View {
                                 .padding(.horizontal)
                             }
 
-                            LazyVGrid(columns: columns, spacing: 12) {
+                            LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
                                 ForEach(group.items) { cocktail in
                                     CocktailGridCell(
                                         cocktail: cocktail,

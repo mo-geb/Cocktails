@@ -179,9 +179,8 @@ func cocktailAddCard(name: String, action: @escaping () -> Void) -> some View {
 }
 
 #Preview(traits: .sampleData) {
-    let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
     ScrollView {
-        LazyVGrid(columns: columns, spacing: 12) {
+        LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
             ForEach(PreviewSampleData.mockCocktails) { cocktail in
                 CocktailGridCell(cocktail: cocktail, onDelete: {}) {}
             }

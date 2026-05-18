@@ -8,13 +8,6 @@ struct IngredientTab: View {
     @Query private var cocktails: [Cocktail]
     @State private var showMakeableCocktails = false
     
-    let columns = [
-        GridItem(.flexible(), spacing: 10),
-        GridItem(.flexible(), spacing: 10),
-        GridItem(.flexible(), spacing: 10),
-        GridItem(.flexible(), spacing: 10)
-    ]
-    
     private var groupedIngredients: [(IngredientType, [Ingredient])] {
         ingredients
             .sorted { $0.isStocked && !$1.isStocked }
@@ -58,7 +51,7 @@ struct IngredientTab: View {
                                 .fontDesign(.rounded)
                                 .padding(.horizontal)
                             
-                            LazyVGrid(columns: columns, spacing: 10) {
+                            LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
                                 ForEach(items) { ingredient in
                                     IngredientGridCell(
                                         ingredient: ingredient,
@@ -89,6 +82,7 @@ struct IngredientTab: View {
                 Button {
                     let newValue = !allStocked
                     for ingredient in ingredients { ingredient.isStocked = newValue }
+                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                 } label: {
                     Label(allStocked ? "Deselect All" : "Select All",
                           systemImage: allStocked ? "minus.circle" : "checkmark.circle")

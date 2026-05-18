@@ -85,15 +85,9 @@ func ingredientAddCellLabel(name: String) -> some View {
 }
 
 #Preview(traits: .sampleData) {
-    let columns = [
-        GridItem(.flexible(), spacing: 10),
-        GridItem(.flexible(), spacing: 10),
-        GridItem(.flexible(), spacing: 10),
-        GridItem(.flexible(), spacing: 10)
-    ]
     let ingredients = try! PreviewSampleData.container.mainContext.fetch(FetchDescriptor<Ingredient>())
     ScrollView {
-        LazyVGrid(columns: columns, spacing: 10) {
+        LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
             ForEach(ingredients) { ingredient in
                 IngredientGridCell(ingredient: ingredient)
             }

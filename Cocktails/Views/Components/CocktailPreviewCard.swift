@@ -93,9 +93,8 @@ struct CocktailPreviewCard: View {
         garnishes: nil,
         notes: nil
     )
-    let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
     ScrollView {
-        LazyVGrid(columns: columns, spacing: 12) {
+        LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
             CocktailPreviewCard(dto: dto, isSelected: false, isImported: false) {}
             CocktailPreviewCard(dto: dto, isSelected: true, isImported: false) {}
             CocktailPreviewCard(dto: dto, isSelected: false, isImported: true) {}

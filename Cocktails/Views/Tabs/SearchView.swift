@@ -10,16 +10,6 @@ struct SearchView: View {
     @State private var query = ""
     @State private var selectedTab: SearchTab = .cocktails
 
-    let cocktailColumns = [
-        GridItem(.flexible(), spacing: 12),
-        GridItem(.flexible(), spacing: 12)
-    ]
-    let ingredientColumns = [
-        GridItem(.flexible(), spacing: 10),
-        GridItem(.flexible(), spacing: 10),
-        GridItem(.flexible(), spacing: 10),
-        GridItem(.flexible(), spacing: 10)
-    ]
 
     private var filteredCocktails: [Cocktail] {
         guard !query.isEmpty else { return cocktails }
@@ -93,7 +83,7 @@ struct SearchView: View {
             ContentUnavailableView.search(text: query)
                 .padding(.top, 60)
         } else {
-            LazyVGrid(columns: cocktailColumns, spacing: 12) {
+            LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
                 ForEach(filteredCocktails) { cocktail in
                     CocktailGridCell(cocktail: cocktail, onEdit: { appState.activeCocktailSheet = .edit(cocktail) }, onDelete: { appState.cocktailToDelete = cocktail }) {
                         appState.activeCocktailSheet = .view(cocktail)
@@ -133,7 +123,7 @@ struct SearchView: View {
                             .fontDesign(.rounded)
                             .padding(.horizontal)
 
-                        LazyVGrid(columns: ingredientColumns, spacing: 10) {
+                        LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
                             ForEach(items) { ingredient in
                                 IngredientGridCell(
                                     ingredient: ingredient,
@@ -148,7 +138,7 @@ struct SearchView: View {
             }
             .padding(.vertical)
         } else {
-            LazyVGrid(columns: ingredientColumns, spacing: 10) {
+            LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
                 ForEach(filteredIngredients) { ingredient in
                     IngredientGridCell(
                         ingredient: ingredient,

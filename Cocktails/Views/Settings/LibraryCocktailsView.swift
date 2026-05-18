@@ -15,8 +15,6 @@ struct LibraryCocktailsView: View {
     @State private var isImporting = false
     @State private var showPaywall = false
 
-    private let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
-
     private var alreadyImported: Set<String> {
         Set(existingCocktails.filter { $0.source == source }.map { $0.name })
     }
@@ -27,7 +25,7 @@ struct LibraryCocktailsView: View {
 
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: columns, spacing: 12) {
+            LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
                 ForEach(cocktails, id: \.name) { cocktail in
                     CocktailPreviewCard(
                         dto: cocktail,

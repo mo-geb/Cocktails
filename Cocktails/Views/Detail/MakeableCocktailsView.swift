@@ -8,8 +8,6 @@ struct MakeableCocktailsView: View {
     @State private var activeCocktailSheet: ActiveCocktailSheet?
     @State private var cocktailToDelete: Cocktail?
 
-    let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
-
     private var makeableCocktails: [Cocktail] {
         cocktails
             .filter { !$0.coreIngredients.isEmpty && $0.coreIngredients.allSatisfy { $0.ingredient?.isStocked == true } }
@@ -40,7 +38,7 @@ struct MakeableCocktailsView: View {
                         VStack(alignment: .leading, spacing: 28) {
                             if !makeableCocktails.isEmpty {
                                 section(title: "Ready to make") {
-                                    LazyVGrid(columns: columns, spacing: 12) {
+                                    LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
                                         ForEach(makeableCocktails) { cocktail in
                                             CocktailGridCell(cocktail: cocktail, onEdit: { activeCocktailSheet = .edit(cocktail) }, onDelete: { cocktailToDelete = cocktail }) {
                                                 activeCocktailSheet = .view(cocktail)
@@ -52,7 +50,7 @@ struct MakeableCocktailsView: View {
 
                             if !almostMakeableCocktails.isEmpty {
                                 section(title: "Almost there") {
-                                    LazyVGrid(columns: columns, spacing: 12) {
+                                    LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
                                         ForEach(almostMakeableCocktails, id: \.cocktail.id) { item in
                                             CocktailGridCell(cocktail: item.cocktail, footerLabel: "Missing: \(item.missing)", onEdit: { activeCocktailSheet = .edit(item.cocktail) }, onDelete: { cocktailToDelete = item.cocktail }) {
                                                 activeCocktailSheet = .view(item.cocktail)

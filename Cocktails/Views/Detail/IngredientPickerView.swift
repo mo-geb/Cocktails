@@ -10,13 +10,6 @@ struct IngredientPickerView: View {
     @State private var showIngredientEdit = false
     @State private var pendingName = ""
 
-    private let columns = [
-        GridItem(.flexible(), spacing: 10),
-        GridItem(.flexible(), spacing: 10),
-        GridItem(.flexible(), spacing: 10),
-        GridItem(.flexible(), spacing: 10)
-    ]
-
     private var filtered: [Ingredient] {
         guard !searchText.isEmpty else { return allIngredients }
         return allIngredients.filter { $0.localizedName.localizedCaseInsensitiveContains(searchText) }
@@ -50,7 +43,7 @@ struct IngredientPickerView: View {
                                     .fontDesign(.rounded)
                                     .padding(.horizontal)
 
-                                LazyVGrid(columns: columns, spacing: 10) {
+                                LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
                                     ForEach(items) { ingredient in
                                         pickerCell(for: ingredient)
                                     }
@@ -59,7 +52,7 @@ struct IngredientPickerView: View {
                             }
                         }
                     } else {
-                        LazyVGrid(columns: columns, spacing: 10) {
+                        LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
                             ForEach(filtered) { ingredient in
                                 pickerCell(for: ingredient)
                             }

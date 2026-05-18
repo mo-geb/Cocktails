@@ -15,8 +15,6 @@ struct ReceivedRecipesView: View {
     @State private var selected = Set<String>()
     @State private var imported = Set<String>()
 
-    let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
-
     private var allImported: Bool { package.map { imported == Set($0.cocktails.map(\.name)) } ?? false }
 
     var body: some View {
@@ -81,7 +79,7 @@ struct ReceivedRecipesView: View {
     @ViewBuilder
     private func cocktailGrid(_ package: SharedCocktailPackage) -> some View {
         ScrollView {
-            LazyVGrid(columns: columns, spacing: 12) {
+            LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
                 ForEach(Array(package.cocktails.enumerated()), id: \.offset) { _, cocktail in
                     CocktailPreviewCard(
                         dto: cocktail,

@@ -63,9 +63,8 @@ struct LibraryCard: View {
 }
 
 #Preview {
-    let columns = [GridItem(.flexible(), spacing: 16), GridItem(.flexible(), spacing: 16)]
     ScrollView {
-        LazyVGrid(columns: columns, spacing: 16) {
+        LazyVGrid(columns: GridColumns.libraries, spacing: 16) {
             LibraryCard(source: .ebsInter2023, counts: LibraryCounts(cocktails: 42))
             LibraryCard(source: .custom, counts: LibraryCounts(cocktails: 7))
         }

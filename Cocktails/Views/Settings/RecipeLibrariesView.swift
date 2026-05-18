@@ -9,8 +9,6 @@ struct RecipeLibrariesView: View {
     @Environment(\.modelContext) private var modelContext
 
     private let sources = RecipeSource.allCases.filter { !$0.filePrefix.isEmpty }
-    private let columns = [GridItem(.flexible(), spacing: 16), GridItem(.flexible(), spacing: 16)]
-
     @State private var counts: [String: LibraryCounts] = [:]
     @State private var isImportingIngredients = false
     @State private var ingredientsResult: ImportResult?
@@ -21,7 +19,7 @@ struct RecipeLibrariesView: View {
             VStack(spacing: 20) {
                 importAllIngredientsCard
 
-                LazyVGrid(columns: columns, spacing: 16) {
+                LazyVGrid(columns: GridColumns.libraries, spacing: 16) {
                     ForEach(sources) { source in
                         NavigationLink {
                             LibraryCocktailsView(source: source)
