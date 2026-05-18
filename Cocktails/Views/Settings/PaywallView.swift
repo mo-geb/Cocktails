@@ -5,6 +5,8 @@ struct PaywallView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(StoreManager.self) private var store
 
+    @State private var celebrate = false
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -16,10 +18,16 @@ struct PaywallView: View {
                 .padding(.horizontal, 24)
                 .padding(.vertical, 32)
             }
+            .overlay { if celebrate { ConfettiView() } }
             .navigationTitle("Upgrade")
             .navigationBarTitleDisplayMode(.inline)
             .onChange(of: store.isUnlimited) { _, unlimited in
-                if unlimited { dismiss() }
+                guard unlimited else { return }
+                celebrate = true
+                Task {
+                    try? await Task.sleep(for: .seconds(1.8))
+                    dismiss()
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

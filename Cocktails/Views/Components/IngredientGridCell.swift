@@ -33,6 +33,7 @@ struct IngredientGridCell: View {
             .grayscale(ingredient.isStocked ? 0 : 1)
             .opacity(ingredient.isStocked ? 1 : 0.4)
         }
+        .sensoryFeedback(.impact(weight: .medium), trigger: ingredient.isStocked)
         .buttonStyle(.plain)
         .contextMenu {
             Button {

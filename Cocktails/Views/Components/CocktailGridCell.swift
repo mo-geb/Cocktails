@@ -116,6 +116,8 @@ struct CocktailGridCell: View {
             }
             .contentShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
         }
+        .sensoryFeedback(.selection, trigger: isSelected)
+        .sensoryFeedback(.impact(weight: .light), trigger: cocktail.isFavourite)
         .buttonStyle(CardPressStyle(scale: 1.06))
         .contextMenu(menuItems: {
             if !isSelecting {

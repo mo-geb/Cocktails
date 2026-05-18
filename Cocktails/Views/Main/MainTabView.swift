@@ -4,6 +4,7 @@ import SwiftData
 struct MainTabView: View {
     @Environment(AppState.self) private var appState
     @Environment(\.modelContext) private var modelContext
+    @State private var deleteHapticTrigger = false
 
     var body: some View {
         @Bindable var appState = appState
@@ -21,6 +22,7 @@ struct MainTabView: View {
                 SearchView()
             }
         }
+        .sensoryFeedback(.warning, trigger: deleteHapticTrigger)
         .sheet(isPresented: $appState.showSettings) { SettingsView() }
         .sheet(isPresented: $appState.showPaywall) { PaywallView() }
         .sheet(item: $appState.activeIngredientSheet) { sheet in
@@ -54,6 +56,7 @@ struct MainTabView: View {
             Button("Delete", role: .destructive) {
                 if let c = appState.cocktailToDelete { modelContext.delete(c) }
                 appState.cocktailToDelete = nil
+                deleteHapticTrigger.toggle()
             }
         }
         .confirmationDialog(
@@ -67,6 +70,7 @@ struct MainTabView: View {
             Button("Delete", role: .destructive) {
                 if let i = appState.ingredientToDelete { modelContext.delete(i) }
                 appState.ingredientToDelete = nil
+                deleteHapticTrigger.toggle()
             }
         } message: {
             Text("It will be removed from any recipes that use it.")

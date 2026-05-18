@@ -12,6 +12,7 @@ struct CocktailEditView: View {
     @State private var photoItem: PhotosPickerItem?
     @State private var ingredientPickerTarget: IngredientPickerTarget?
     @State private var showDeleteConfirmation = false
+    @State private var saveHapticTrigger = false
 
     private let originalCocktail: Cocktail?
     private let onDelete: (() -> Void)?
@@ -49,6 +50,7 @@ struct CocktailEditView: View {
         .dismissKeyboardOnTap()
         .background { gradientBackground }
         .toolbar { toolbarContent }
+        .sensoryFeedback(.success, trigger: saveHapticTrigger)
         .onChange(of: draft.glass) { updateBackground() }
         .onChange(of: draft.imageData) { updateBackground() }
         .onChange(of: photoItem) { loadPhoto() }
@@ -406,6 +408,7 @@ struct CocktailEditView: View {
         } else {
             createNew()
         }
+        saveHapticTrigger.toggle()
         dismiss()
     }
 

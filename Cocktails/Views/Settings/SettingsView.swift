@@ -10,6 +10,7 @@ struct SettingsView: View {
 
     @State private var showClearConfirmation = false
     @State private var showPaywall = false
+    @State private var celebrate = false
 
     var body: some View {
         NavigationStack {
@@ -43,6 +44,10 @@ struct SettingsView: View {
                 }
             }
             .sheet(isPresented: $showPaywall) { PaywallView() }
+            .overlay { if celebrate { ConfettiView() } }
+            .onChange(of: store.isUnlimited) { _, unlimited in
+                if unlimited { celebrate = true }
+            }
             .navigationTitle("Settings")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
@@ -81,6 +86,18 @@ struct SettingsView: View {
                 }
                 .buttonStyle(.plain)
                 .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+
+                Button {
+                    Task { await store.restore() }
+                } label: {
+                    row(icon: "arrow.clockwise", color: .gray,
+                        title: "Restore Purchases",
+                        subtitle: "Already bought? Restore here",
+                        trailing: store.purchaseInFlight ? AnyView(ProgressView().scaleEffect(0.8)) : nil)
+                }
+                .buttonStyle(.plain)
+                .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                .disabled(store.purchaseInFlight)
             }
         }
     }

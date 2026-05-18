@@ -46,6 +46,7 @@ struct ReceivedRecipesView: View {
         }
         .onAppear { loadPackage() }
         .presentationDetents([.medium, .large])
+        .sensoryFeedback(.success, trigger: imported)
         .sheet(isPresented: $showPaywall) { PaywallView() }
         .alert("Import Complete", isPresented: .init(
             get: { importResult != nil },

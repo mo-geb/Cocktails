@@ -10,6 +10,7 @@ struct IngredientEditView: View {
     @State private var imageName: String?
     @State private var showDeleteConfirmation = false
     @State private var showImagePicker = false
+    @State private var saveHapticTrigger = false
 
     private let originalIngredient: Ingredient?
 
@@ -105,6 +106,7 @@ struct IngredientEditView: View {
         } message: {
             Text("It will be removed from any recipes that use it.")
         }
+        .sensoryFeedback(.success, trigger: saveHapticTrigger)
     }
 
     // MARK: - Actions
@@ -119,6 +121,7 @@ struct IngredientEditView: View {
             let ingredient = Ingredient(name: trimmed, type: type, imageName: imageName)
             modelContext.insert(ingredient)
         }
+        saveHapticTrigger.toggle()
         dismiss()
     }
 
