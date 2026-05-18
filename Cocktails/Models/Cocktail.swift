@@ -71,28 +71,6 @@ struct CocktailDraft: Hashable {
     }
 }
 
-import UIKit
-
-protocol CocktailImageProviding {
-    var imageData: Data? { get }
-    var imageName: String? { get }
-}
-
-extension CocktailImageProviding {
-    var displayImage: DisplayImageSource {
-        if let data = imageData, let uiImage = UIImage(data: data) {
-            return .custom(uiImage)
-        }
-        if let name = imageName, UIImage(named: "Cocktail/" + name) != nil {
-            return .system("Cocktail/" + name)
-        }
-        return .placeholder
-    }
-}
-
-extension Cocktail: CocktailImageProviding {}
-extension CocktailDraft: CocktailImageProviding {}
-
 extension Cocktail {
     var coreIngredients: [RecipeIngredient] {
         (ingredients ?? []).filter { $0.role == .core }

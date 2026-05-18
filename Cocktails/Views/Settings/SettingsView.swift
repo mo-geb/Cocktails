@@ -72,7 +72,7 @@ struct SettingsView: View {
             VStack(spacing: 0) {
                 if store.isUnlimited {
                     row(icon: "infinity", color: .purple,
-                        title: "Cocktails Unlimited",
+                        title: "Unlimited Cocktails",
                         subtitle: "Thanks for your support",
                         trailing: AnyView(
                             Image(systemName: "checkmark.seal.fill").foregroundStyle(.green)
@@ -80,7 +80,7 @@ struct SettingsView: View {
                 } else {
                     Button { showPaywall = true } label: {
                         row(icon: "infinity", color: .purple,
-                            title: "Cocktails Unlimited",
+                            title: "Unlimited Cocktails",
                             subtitle: "Unlock more than \(StoreManager.freeCocktailLimit) cocktails")
                     }
                     .buttonStyle(.plain)
@@ -178,7 +178,7 @@ struct SettingsView: View {
     // MARK: - Helpers
 
     @ViewBuilder
-    private func sectionHeader(_ title: String) -> some View {
+    private func sectionHeader(_ title: LocalizedStringKey) -> some View {
         Text(title)
             .font(.subheadline.bold())
             .fontDesign(.rounded)
@@ -187,7 +187,7 @@ struct SettingsView: View {
     }
 
     @ViewBuilder
-    private func row(icon: String, color: Color, title: String, subtitle: String, trailing: AnyView? = nil) -> some View {
+    private func row(icon: String, color: Color, title: LocalizedStringKey, subtitle: LocalizedStringKey, trailing: AnyView? = nil) -> some View {
         HStack(spacing: 14) {
             Image(systemName: icon)
                 .font(.system(size: 15, weight: .semibold))
@@ -221,7 +221,7 @@ struct SettingsView: View {
     }
     
     @ViewBuilder
-    private func statCard(title: String, value: String, icon: String, color: Color) -> some View {
+    private func statCard(title: LocalizedStringKey, value: String, icon: String, color: Color) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Image(systemName: icon)

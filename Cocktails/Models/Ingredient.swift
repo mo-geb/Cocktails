@@ -1,8 +1,21 @@
 import Foundation
 import SwiftData
 
+protocol IngredientNaming {
+    var id: String { get }
+    var name: String { get }
+}
+
+extension IngredientNaming {
+    var localizedName: String {
+        let key = "ingredient.\(id)"
+        let localized = String(localized: String.LocalizationValue(key))
+        return localized == key ? name : localized
+    }
+}
+
 @Model
-final class Ingredient {
+final class Ingredient: IngredientNaming {
     var id: String = UUID().uuidString
     var name: String = ""
     var type: IngredientType = IngredientType.other
@@ -10,12 +23,6 @@ final class Ingredient {
     var imageName: String? = nil
 
     @Relationship(deleteRule: .cascade, inverse: \RecipeIngredient.ingredient) var usages: [RecipeIngredient]?
-
-    var localizedName: String {
-        let key = "ingredient.\(id)"
-        let localized = String(localized: String.LocalizationValue(key))
-        return localized == key ? name : localized
-    }
 
     init(id: String = UUID().uuidString, name: String = "", type: IngredientType = .other, isStocked: Bool = false, imageName: String? = nil) {
         self.id = id
@@ -26,17 +33,11 @@ final class Ingredient {
     }
 }
 
-struct IngredientDraft: Hashable {
+struct IngredientDraft: Hashable, IngredientNaming {
     var id: String
     var name: String = ""
     var type: IngredientType = .other
     var imageName: String? = nil
-
-    var localizedName: String {
-        let key = "ingredient.\(id)"
-        let localized = String(localized: String.LocalizationValue(key))
-        return localized == key ? name : localized
-    }
 
     init(id: String = UUID().uuidString, name: String = "", type: IngredientType = .other, imageName: String? = nil) {
         self.id = id
@@ -53,23 +54,3 @@ struct IngredientDraft: Hashable {
     }
 }
 
-import UIKit
-
-protocol IngredientImageProviding {
-    var id: String { get }
-    var imageName: String? { get }
-}
-
-extension IngredientImageProviding {
-    var displayImage: DisplayImageSource {
-        let assetName = "Ingredient/" + (imageName ?? id)
-        if UIImage(named: assetName) != nil {
-            return .system(assetName)
-        }
-        return .placeholder
-    }
-}
-
-
-extension Ingredient: IngredientImageProviding {}
-extension IngredientDraft: IngredientImageProviding {}

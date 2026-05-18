@@ -88,7 +88,7 @@ struct RecipeLibrariesView: View {
         importActionCard(
             icon: "leaf.fill", color: .green,
             title: "Import All Ingredients",
-            subtitle: "Add all available ingredients to your inventory",
+            subtitle: "Add all available ingredients",
             isLoading: isImportingIngredients
         ) {
             guard !isImportingIngredients else { return }

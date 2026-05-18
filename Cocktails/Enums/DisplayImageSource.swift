@@ -31,3 +31,48 @@ extension DisplayImageSource {
         }
     }
 }
+
+// MARK: - Cocktail image providing
+
+protocol CocktailImageProviding {
+    var imageData: Data? { get }
+    var imageName: String? { get }
+}
+
+extension CocktailImageProviding {
+    var displayImage: DisplayImageSource {
+        if let data = imageData, let uiImage = UIImage(data: data) {
+            return .custom(uiImage)
+        }
+        if let name = imageName, UIImage(named: "Cocktail/" + name) != nil {
+            return .system("Cocktail/" + name)
+        }
+        return .placeholder
+    }
+}
+
+extension Cocktail: CocktailImageProviding {}
+extension CocktailDraft: CocktailImageProviding {}
+extension CocktailDTO: CocktailImageProviding {
+    var imageData: Data? { nil }
+}
+
+// MARK: - Ingredient image providing
+
+protocol IngredientImageProviding {
+    var id: String { get }
+    var imageName: String? { get }
+}
+
+extension IngredientImageProviding {
+    var displayImage: DisplayImageSource {
+        let assetName = "Ingredient/" + (imageName ?? id)
+        if UIImage(named: assetName) != nil {
+            return .system(assetName)
+        }
+        return .placeholder
+    }
+}
+
+extension Ingredient: IngredientImageProviding {}
+extension IngredientDraft: IngredientImageProviding {}

@@ -1,3406 +1,3540 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": ""
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
           }
         }
       },
-      "shouldTranslate": false
+      "shouldTranslate" : false
     },
-    "%lld": {
-      "shouldTranslate": false
+    "%lld" : {
+      "shouldTranslate" : false
     },
-    "%lld added, %lld already present.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$lld hinzugefügt, %2$lld bereits vorhanden."
+    "%lld added, %lld already present." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld hinzugefügt, %2$lld bereits vorhanden."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "%1$lld added, %2$lld already present."
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld added, %2$lld already present."
           }
         }
       }
     },
-    "%lld cocktail%@ imported.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$lld Cocktail%2$@ importiert."
+    "%lld cocktail%@ imported." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld Cocktail%2$@ importiert."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "%1$lld cocktail%2$@ imported."
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld cocktail%2$@ imported."
           }
         }
       }
     },
-    "%lld cocktail%@ ready to make": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$lld Cocktail%2$@ bereit zum Mixen"
+    "%lld cocktail%@ ready to make" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld Cocktail%2$@ bereit zum Mixen"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "%1$lld cocktail%2$@ ready to make"
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld cocktail%2$@ ready to make"
           }
         }
       }
     },
-    "%lld cocktails reimported.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "%lld Cocktails reimportiert."
+    "%lld cocktails reimported." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Cocktails neu importiert."
           }
         }
       }
     },
-    "0": {
-      "shouldTranslate": false
+    "0" : {
+      "shouldTranslate" : false
     },
-    "Add all available ingredients to your inventory": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alle verfügbaren Zutaten zu deinem Inventar hinzufügen"
+    "Add all available ingredients" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Füge alle verfügbaren Zutaten hinzu"
           }
         }
       }
     },
-    "Add Cocktail": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cocktail hinzufügen"
+    "Add Cocktail" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cocktail hinzufügen"
           }
         }
       }
     },
-    "Add cocktails in the Cocktails tab.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Füge Cocktails im Cocktails-Tab hinzu."
+    "Add cocktails in the Cocktails tab." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Füge Cocktails im Cocktails-Tab hinzu."
           }
         }
       }
     },
-    "Add Ingredient": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zutat hinzufügen"
+    "Add Ingredient" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zutat hinzufügen"
           }
         }
       }
     },
-    "Add ingredients in the Ingredients tab.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Füge Zutaten im Zutaten-Tab hinzu."
+    "Add ingredients in the Ingredients tab." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Füge Zutaten im Zutaten-Tab hinzu."
           }
         }
       }
     },
-    "Add preparation notes…": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zubereitungshinweise hinzufügen…"
+    "Add preparation notes…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zubereitungshinweise hinzufügen…"
           }
         }
       }
     },
-    "Add to Favourites": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zu Favoriten hinzufügen"
+    "Add to Favourites" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zu Favoriten hinzufügen"
           }
         }
       }
     },
-    "All Cocktails": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alle Cocktails"
+    "All Cocktails" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Cocktails"
           }
         }
       }
     },
-    "Base": {
-      "comment": "Grouping by base spirit",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Basis"
+    "Already bought? Restore here" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bereits gekauft? Hier wiederherstellen"
           }
         }
       }
     },
-    "Based on your stocked ingredients": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Basierend auf deinen vorrätigen Zutaten"
+    "Base" : {
+      "comment" : "Grouping by base spirit",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basis"
           }
         }
       }
     },
-    "Bitters": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bitters"
+    "Based on your stocked ingredients" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basierend auf deinen vorrätigen Zutaten"
           }
         }
       }
     },
-    "Blend": {
-      "comment": "Preparation method",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mixen"
+    "Bitters" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitters"
           }
         }
       }
     },
-    "Build": {
-      "comment": "Preparation method",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aufbauen"
+    "Blend" : {
+      "comment" : "Preparation method",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mixen"
           }
         }
       }
     },
-    "Cancel": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Abbrechen"
+    "Browse and add cocktail collections" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cocktail-Sammlungen durchsuchen und hinzufügen"
           }
         }
       }
     },
-    "Cannot Open File": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Datei kann nicht geöffnet werden"
+    "Build" : {
+      "comment" : "Preparation method",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aufbauen"
           }
         }
       }
     },
-    "Change Image": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bild ändern"
+    "Cancel" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
           }
         }
       }
     },
-    "Choose Image": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bild auswählen"
+    "Cannot Open File" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datei kann nicht geöffnet werden"
           }
         }
       }
     },
-    "Choose what to delete. This cannot be undone.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wähle, was gelöscht werden soll. Dies kann nicht rückgängig gemacht werden."
+    "Change Image" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bild ändern"
           }
         }
       }
     },
-    "Clear Block": {
-      "comment": "Ice type",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Block löschen"
+    "Choose Image" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bild auswählen"
           }
         }
       }
     },
-    "Clear Data": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Daten löschen"
+    "Choose what to delete. This cannot be undone." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle, was gelöscht werden soll. Dies kann nicht rückgängig gemacht werden."
           }
         }
       }
     },
-    "Clear Unused Ingredients": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nicht verwendete Zutaten löschen"
+    "Clear Block" : {
+      "comment" : "Ice type",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klarer Block"
           }
         }
       }
     },
-    "Close": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schließen"
+    "Clear Data" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daten löschen"
           }
         }
       }
     },
-    "ClutterFree": {
-      "comment": "Recipe source — Selection",
-      "shouldTranslate": false
+    "Clear Unused Ingredients" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht verwendete Zutaten löschen"
+          }
+        }
+      }
+    },
+    "Close" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schließen"
+          }
+        }
+      }
+    },
+    "ClutterFree" : {
+      "comment" : "Recipe source — Selection",
+      "shouldTranslate" : false
+    },
+    "Cocktail Name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cocktailname"
+          }
+        }
+      }
+    },
+    "Cocktails" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cocktails"
+          }
+        }
+      }
     },
-    "Cocktail Name": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cocktailname"
+    "Cocktails Reimported" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cocktails neu importiert"
           }
         }
       }
     },
-    "Cocktails": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cocktails"
+    "Cocktails, Ingredients…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cocktails, Zutaten…"
           }
         }
       }
     },
-    "Cocktails Reimported": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Cocktails reimportiert"
+    "Contact Support" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support kontaktieren"
           }
         }
       }
     },
-    "Cocktails, Ingredients…": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cocktails, Zutaten…"
+    "Copper Mug" : {
+      "comment" : "Glass type",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kupferbecher"
           }
         }
       }
     },
-    "Copper Mug": {
-      "comment": "Glass type",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kupferbecher"
+    "Crushed" : {
+      "comment" : "Ice type",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zerkleinert"
           }
         }
       }
     },
-    "Crushed": {
-      "comment": "Ice type",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zerkleinert"
+    "Cubed" : {
+      "comment" : "Ice type",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Würfel"
           }
         }
       }
     },
-    "Cubed": {
-      "comment": "Ice type",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Würfel"
+    "Custom" : {
+      "comment" : "Recipe source — user created",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eigene"
           }
         }
       }
     },
-    "Custom": {
-      "comment": "Recipe source — user created",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Benutzerdefiniert"
+    "Data" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daten"
           }
         }
       }
     },
-    "Delete": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Löschen"
+    "Delete" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Löschen"
           }
         }
       }
     },
-    "Delete \"%@\"?": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "\"%@\" löschen?"
+    "Delete \"%@\"?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"%@\" löschen?"
           }
         }
       }
     },
-    "Delete Cocktail": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cocktail löschen"
+    "Delete Cocktail" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cocktail löschen"
           }
         }
       }
     },
-    "Delete Everything": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alles löschen"
+    "Delete Everything" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alles löschen"
           }
         }
       }
     },
-    "Delete Imported Cocktails": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Importierte Cocktails löschen"
+    "Delete Imported Cocktails" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importierte Cocktails löschen"
           }
         }
       }
     },
-    "Delete Ingredient": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zutat löschen"
+    "Delete Ingredient" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zutat löschen"
           }
         }
       }
     },
-    "Deselect All": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alle abwählen"
+    "Deselect All" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle abwählen"
           }
         }
       }
     },
-    "Done": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fertig"
+    "Done" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fertig"
           }
         }
       }
     },
-    "e.g. Campari": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "z.B. Campari"
+    "e.g. Campari" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "z.B. Campari"
           }
         }
       }
     },
-    "EBS": {
-      "comment": "Recipe source — book title",
-      "shouldTranslate": false
+    "EBS" : {
+      "comment" : "Recipe source — book title",
+      "shouldTranslate" : false
     },
-    "Edit": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bearbeiten"
+    "Edit" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bearbeiten"
           }
         }
       }
     },
-    "Edit Ingredient": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zutat bearbeiten"
+    "Edit Ingredient" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zutat bearbeiten"
           }
         }
       }
     },
-    "Favourite": {
-      "comment": "Grouping by favourite status",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Favorit"
+    "Favourite" : {
+      "comment" : "Grouping by favourite status",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorit"
           }
         }
       }
     },
-    "Favourites": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Favoriten"
+    "Favourites" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favoriten"
           }
         }
       }
     },
-    "fill": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "füllen"
+    "fill" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "füllen"
           }
         }
       }
     },
-    "Flute": {
-      "comment": "Glass type",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Flöte"
+    "Flute" : {
+      "comment" : "Glass type",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flöte"
           }
         }
       }
     },
-    "Fortified Wine": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Likörwein"
+    "Fortified Wine" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Likörwein"
           }
         }
       }
     },
-    "Fruits": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Früchte"
+    "Fruits" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Früchte"
           }
         }
       }
     },
-    "Garnish": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Garnitur"
+    "Garnish" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garnitur"
           }
         }
       }
     },
-    "Glass": {
-      "comment": "Grouping by glass type",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Glas"
+    "Glass" : {
+      "comment" : "Grouping by glass type",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glas"
           }
         }
       }
     },
-    "Group By": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gruppieren nach"
+    "Group By" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gruppieren nach"
           }
         }
       }
     },
-    "Herbs": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kräuter"
+    "Herbs" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kräuter"
           }
         }
       }
     },
-    "Highball": {
-      "comment": "Glass type",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Highball"
+    "Highball" : {
+      "comment" : "Glass type",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Highball"
           }
         }
       }
     },
-    "Hurricane": {
-      "comment": "Glass type",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hurricane"
+    "Hurricane" : {
+      "comment" : "Glass type",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hurricane"
           }
         }
       }
     },
-    "IBA Unforgettables": {
-      "comment": "Recipe source — IBA classic cocktails",
-      "shouldTranslate": false
+    "IBA Unforgettables" : {
+      "comment" : "Recipe source — IBA classic cocktails",
+      "shouldTranslate" : false
+    },
+    "Import" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importieren"
+          }
+        }
+      }
     },
-    "Import": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Importieren"
+    "Import %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importiere %@"
           }
         }
       }
     },
-    "Import %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Importiere %@"
+    "Import All" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alles importieren"
           }
         }
       }
     },
-    "Import All": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alles importieren"
+    "Import All Ingredients" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Zutaten importieren"
           }
         }
       }
     },
-    "Import All Ingredients": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alle Zutaten importieren"
+    "Import Complete" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import abgeschlossen"
           }
         }
       }
     },
-    "Import Complete": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Import abgeschlossen"
+    "Import Failed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import fehlgeschlagen"
           }
         }
       }
     },
-    "Import Failed": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Import fehlgeschlagen"
+    "Import Library" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bibliothek importieren"
           }
         }
       }
     },
-    "Import Selected": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Auswahl importieren"
+    "Import Selected" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auswahl importieren"
           }
         }
       }
     },
-    "Import Selected (%lld)": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Auswahl importieren (%lld)"
+    "Import Selected (%lld)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auswahl importieren (%lld)"
           }
         }
       }
     },
-    "ingredient.absinthe": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Absinthe"
+    "ingredient.absinthe" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Absinthe"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Absinthe"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Absinthe"
           }
         }
       }
     },
-    "ingredient.amaretto": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Amaretto"
+    "ingredient.amaretto" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amaretto"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Amaretto"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amaretto"
           }
         }
       }
     },
-    "ingredient.angostura_bitters": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Angostura Bitters"
+    "ingredient.angostura_bitters" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Angostura Bitters"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Angostura Bitters"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Angostura Bitters"
           }
         }
       }
     },
-    "ingredient.aperol": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aperol"
+    "ingredient.aperol" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aperol"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aperol"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aperol"
           }
         }
       }
     },
-    "ingredient.apple_liqueur": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Apfellikör"
+    "ingredient.apple_liqueur" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apfellikör"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Apple Liqueur"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Liqueur"
           }
         }
       }
     },
-    "ingredient.apricot_brandy": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aprikosenbrand"
+    "ingredient.apricot_brandy" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aprikosenbrand"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Apricot Brandy"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apricot Brandy"
           }
         }
       }
     },
-    "ingredient.baileys": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bailey's"
+    "ingredient.baileys" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bailey's"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bailey's"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bailey's"
           }
         }
       }
     },
-    "ingredient.basil_leaf": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Basilikumblatt"
+    "ingredient.basil_leaf" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basilikumblatt"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Basil Leaf"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basil Leaf"
           }
         }
       }
     },
-    "ingredient.benedictine": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bénédictine"
+    "ingredient.benedictine" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bénédictine"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bénédictine"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bénédictine"
           }
         }
       }
     },
-    "ingredient.black_pepper": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schwarzer Pfeffer"
+    "ingredient.black_pepper" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schwarzer Pfeffer"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Black Pepper"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Black Pepper"
           }
         }
       }
     },
-    "ingredient.blackberry": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Brombeeren"
+    "ingredient.blackberry" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brombeeren"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Blackberries"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blackberries"
           }
         }
       }
     },
-    "ingredient.bloody_mary_pre_batch": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bloody Mary Pre Batch"
+    "ingredient.bloody_mary_pre_batch" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloody Mary Pre Batch"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bloody Mary Pre Batch"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloody Mary Pre Batch"
           }
         }
       }
     },
-    "ingredient.blue_curacao": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Blue Curacao"
+    "ingredient.blue_curacao" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blue Curacao"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Blue Curacao"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blue Curacao"
           }
         }
       }
     },
-    "ingredient.bourbon": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bourbon"
+    "ingredient.bourbon" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bourbon"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bourbon"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bourbon"
           }
         }
       }
     },
-    "ingredient.brandy": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Brandy"
+    "ingredient.brandy" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brandy"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Brandy"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brandy"
           }
         }
       }
     },
-    "ingredient.cachaca": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cachaca"
+    "ingredient.cachaca" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cachaca"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cachaca"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cachaca"
           }
         }
       }
     },
-    "ingredient.calvados": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Calvados"
+    "ingredient.calvados" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calvados"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Calvados"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calvados"
           }
         }
       }
     },
-    "ingredient.campari": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Campari"
+    "ingredient.campari" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Campari"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Campari"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Campari"
           }
         }
       }
     },
-    "ingredient.celery_salt": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Selleriesalz"
+    "ingredient.celery_salt" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selleriesalz"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Celery Salt"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celery Salt"
           }
         }
       }
     },
-    "ingredient.celery_stick": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Selleriestange"
+    "ingredient.celery_stick" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selleriestange"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Celery Stick"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celery Stick"
           }
         }
       }
     },
-    "ingredient.chambord": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chambord"
+    "ingredient.chambord" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chambord"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chambord"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chambord"
           }
         }
       }
     },
-    "ingredient.champagne": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Champagner"
+    "ingredient.champagne" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Champagner"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Champagne"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Champagne"
           }
         }
       }
     },
-    "ingredient.chartreuse": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chartreuse"
+    "ingredient.chartreuse" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chartreuse"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chartreuse"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chartreuse"
           }
         }
       }
     },
-    "ingredient.cherry": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kirsche"
+    "ingredient.cherry" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kirsche"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cherry"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cherry"
           }
         }
       }
     },
-    "ingredient.cherry_liqueur": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kirschlikör"
+    "ingredient.cherry_liqueur" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kirschlikör"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cherry Brandy Liqueur"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cherry Brandy Liqueur"
           }
         }
       }
     },
-    "ingredient.cinnamon_syrup": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zimtsirup"
+    "ingredient.cinnamon_syrup" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zimtsirup"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cinnamon Syrup"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cinnamon Syrup"
           }
         }
       }
     },
-    "ingredient.coco_syrup": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kokossirup"
+    "ingredient.coco_syrup" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kokossirup"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Coco Syrup"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coco Syrup"
           }
         }
       }
     },
-    "ingredient.coconut_cream": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kokoscreme"
+    "ingredient.coconut_cream" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kokoscreme"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Coconut Cream"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coconut Cream"
           }
         }
       }
     },
-    "ingredient.coconut_liqueur": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kokoslikör"
+    "ingredient.coconut_liqueur" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kokoslikör"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Coconut Liqueur"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coconut Liqueur"
           }
         }
       }
     },
-    "ingredient.coffee_beans": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kaffeebohnen"
+    "ingredient.coffee_beans" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaffeebohnen"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Coffee Beans"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coffee Beans"
           }
         }
       }
     },
-    "ingredient.coffee_liqueur": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kaffeelikör"
+    "ingredient.coffee_liqueur" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaffeelikör"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Coffee Liqueur"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coffee Liqueur"
           }
         }
       }
     },
-    "ingredient.cognac": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cognac"
+    "ingredient.cognac" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cognac"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cognac"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cognac"
           }
         }
       }
     },
-    "ingredient.cola": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cola"
+    "ingredient.cola" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cola"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cola"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cola"
           }
         }
       }
     },
-    "ingredient.cranberry_juice": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cranberrysaft"
+    "ingredient.cranberry_juice" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cranberrysaft"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cranberry Juice"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cranberry Juice"
           }
         }
       }
     },
-    "ingredient.cream": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sahne"
+    "ingredient.cream" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sahne"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cream"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cream"
           }
         }
       }
     },
-    "ingredient.creme_de_cassis": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Crème De Cassis"
+    "ingredient.creme_de_cassis" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crème De Cassis"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Crème De Cassis"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crème De Cassis"
           }
         }
       }
     },
-    "ingredient.creme_de_menthe": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Crème De Menthe"
+    "ingredient.creme_de_menthe" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crème De Menthe"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Crème De Menthe"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crème De Menthe"
           }
         }
       }
     },
-    "ingredient.creme_de_mure": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Crème De Mure"
+    "ingredient.creme_de_mure" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crème De Mure"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Crème De Mure"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crème De Mure"
           }
         }
       }
     },
-    "ingredient.creme_de_violette": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Crème de Violette"
+    "ingredient.creme_de_violette" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crème de Violette"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Crème de Violette"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crème de Violette"
           }
         }
       }
     },
-    "ingredient.dark_cacao_liqueur": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dunkler Kakaolikör"
+    "ingredient.dark_cacao_liqueur" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dunkler Kakaolikör"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dark Cacao Liqueur"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark Cacao Liqueur"
           }
         }
       }
     },
-    "ingredient.drambuie": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Drambuie"
+    "ingredient.drambuie" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drambuie"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Drambuie"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drambuie"
           }
         }
       }
     },
-    "ingredient.egg_white": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eiweiß"
+    "ingredient.egg_white" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eiweiß"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Egg White"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Egg White"
           }
         }
       }
     },
-    "ingredient.egg_yolk": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eigelb"
+    "ingredient.egg_yolk" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eigelb"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Egg Yolk"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Egg Yolk"
           }
         }
       }
     },
-    "ingredient.espresso": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Espresso"
+    "ingredient.espresso" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Espresso"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Espresso"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Espresso"
           }
         }
       }
     },
-    "ingredient.fernet": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fernet"
+    "ingredient.fernet" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fernet"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fernet"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fernet"
           }
         }
       }
     },
-    "ingredient.gin": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gin"
+    "ingredient.gin" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gin"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gin"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gin"
           }
         }
       }
     },
-    "ingredient.ginger_beer": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ginger Beer"
+    "ingredient.ginger_beer" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ginger Beer"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ginger Beer"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ginger Beer"
           }
         }
       }
     },
-    "ingredient.grapefruit_juice": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Grapefruitsaft"
+    "ingredient.grapefruit_juice" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grapefruitsaft"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Grapefruit Juice"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grapefruit Juice"
           }
         }
       }
     },
-    "ingredient.grapefruit_slice": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Grapefruitscheibe"
+    "ingredient.grapefruit_slice" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grapefruitscheibe"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Grapefruit Slice"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grapefruit Slice"
           }
         }
       }
     },
-    "ingredient.grated_nutmeg": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Geriebene Muskatnuss"
+    "ingredient.grated_nutmeg" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geriebene Muskatnuss"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Grated Nutmeg"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grated Nutmeg"
           }
         }
       }
     },
-    "ingredient.grenadine": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Grenadine"
+    "ingredient.grenadine" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grenadine"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Grenadine"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grenadine"
           }
         }
       }
     },
-    "ingredient.lemon_juice": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zitronensaft"
+    "ingredient.lemon_juice" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zitronensaft"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lemon Juice"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lemon Juice"
           }
         }
       }
     },
-    "ingredient.lemon_spiral": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zitronenspirale"
+    "ingredient.lemon_spiral" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zitronenspirale"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lemon Spiral"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lemon Spiral"
           }
         }
       }
     },
-    "ingredient.lemon_wedge": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zitronenspalte"
+    "ingredient.lemon_wedge" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zitronenspalte"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lemon Wedge"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lemon Wedge"
           }
         }
       }
     },
-    "ingredient.lemon_zest": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zitronenschale"
+    "ingredient.lemon_zest" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zitronenschale"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lemon Zest"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lemon Zest"
           }
         }
       }
     },
-    "ingredient.lime_cordial": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lime Cordial"
+    "ingredient.lime_cordial" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lime Cordial"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lime Cordial"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lime Cordial"
           }
         }
       }
     },
-    "ingredient.lime_juice": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Limettensaft"
+    "ingredient.lime_juice" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limettensaft"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lime Juice"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lime Juice"
           }
         }
       }
     },
-    "ingredient.lime_wedge": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Limettenspalte"
+    "ingredient.lime_wedge" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limettenspalte"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lime Wedge"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lime Wedge"
           }
         }
       }
     },
-    "ingredient.lime_wheel": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Limettenrad"
+    "ingredient.lime_wheel" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limettenrad"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lime Wheel"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lime Wheel"
           }
         }
       }
     },
-    "ingredient.lime_zest": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Limettenschale"
+    "ingredient.lime_zest" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limettenschale"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lime Zest"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lime Zest"
           }
         }
       }
     },
-    "ingredient.mango_juice": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mangosaft"
+    "ingredient.mango_juice" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mangosaft"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mango Juice"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mango Juice"
           }
         }
       }
     },
-    "ingredient.maraschino": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Maraschino"
+    "ingredient.maraschino" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maraschino"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Maraschino"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maraschino"
           }
         }
       }
     },
-    "ingredient.milk": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Milch"
+    "ingredient.milk" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Milch"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Milk"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Milk"
           }
         }
       }
     },
-    "ingredient.mint_leaf": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Minzblatt"
+    "ingredient.mint_leaf" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minzblatt"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mint Leaf"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mint Leaf"
           }
         }
       }
     },
-    "ingredient.mint_sprig": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Minzzweig"
+    "ingredient.mint_sprig" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minzzweig"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mint Sprig"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mint Sprig"
           }
         }
       }
     },
-    "ingredient.mixer": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mixer"
+    "ingredient.mixer" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mixer"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mixer"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mixer"
           }
         }
       }
     },
-    "ingredient.olive": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Oliven"
+    "ingredient.olive" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oliven"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Olives"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Olives"
           }
         }
       }
     },
-    "ingredient.orange_bitters": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Orangenbitter"
+    "ingredient.orange_bitters" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orangenbitter"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Orange Bitters"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orange Bitters"
           }
         }
       }
     },
-    "ingredient.orange_flower_water": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Orangenblütenwasser"
+    "ingredient.orange_flower_water" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orangenblütenwasser"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Orange Flower Water"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orange Flower Water"
           }
         }
       }
     },
-    "ingredient.orange_juice": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Orangensaft"
+    "ingredient.orange_juice" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orangensaft"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Orange Juice"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orange Juice"
           }
         }
       }
     },
-    "ingredient.orange_slice": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Orangenscheibe"
+    "ingredient.orange_slice" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orangenscheibe"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Orange Slice"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orange Slice"
           }
         }
       }
     },
-    "ingredient.orange_zest": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Orangenschale"
+    "ingredient.orange_zest" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orangenschale"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Orange Zest"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orange Zest"
           }
         }
       }
     },
-    "ingredient.orgeat_syrup": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Orgeat-Sirup"
+    "ingredient.orgeat_syrup" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orgeat-Sirup"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Orgeat Syrup"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orgeat Syrup"
           }
         }
       }
     },
-    "ingredient.passionfruit": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Passionsfrucht"
+    "ingredient.passionfruit" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passionsfrucht"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Passion Fruit"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passion Fruit"
           }
         }
       }
     },
-    "ingredient.passionfruit_juice": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Passionsfruchtsaft"
+    "ingredient.passionfruit_juice" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passionsfruchtsaft"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Passionfruit Juice"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passionfruit Juice"
           }
         }
       }
     },
-    "ingredient.passionfruit_liqueur": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Passionsfruchtlikör"
+    "ingredient.passionfruit_liqueur" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passionsfruchtlikör"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Passionfruit Liqueur"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passionfruit Liqueur"
           }
         }
       }
     },
-    "ingredient.passionfruit_puree": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Passionsfruchtpüree"
+    "ingredient.passionfruit_puree" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passionsfruchtpüree"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Passionfruit Puree"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passionfruit Puree"
           }
         }
       }
     },
-    "ingredient.peach_liqueur": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pfirsichlikör"
+    "ingredient.peach_liqueur" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pfirsichlikör"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Peach Liqueur"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peach Liqueur"
           }
         }
       }
     },
-    "ingredient.peach_puree": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pfirsichpüree"
+    "ingredient.peach_puree" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pfirsichpüree"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Peach Puree"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peach Puree"
           }
         }
       }
     },
-    "ingredient.peychauds_bitters": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Peychaud's Bitter"
+    "ingredient.peychauds_bitters" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peychaud's Bitter"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Peychauds Bitters"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peychauds Bitters"
           }
         }
       }
     },
-    "ingredient.pineapple_juice": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ananassaft"
+    "ingredient.pineapple_juice" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ananassaft"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pineapple Juice"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pineapple Juice"
           }
         }
       }
     },
-    "ingredient.pineapple_wedge": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ananasspalte"
+    "ingredient.pineapple_wedge" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ananasspalte"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pineapple Wedge"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pineapple Wedge"
           }
         }
       }
     },
-    "ingredient.port": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tawny Port"
+    "ingredient.port" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tawny Port"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tawny Port"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tawny Port"
           }
         }
       }
     },
-    "ingredient.prosecco": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prosecco"
+    "ingredient.prosecco" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prosecco"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prosecco"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prosecco"
           }
         }
       }
     },
-    "ingredient.raspberry": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Himbeere"
+    "ingredient.raspberry" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Himbeere"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Raspberry"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raspberry"
           }
         }
       }
     },
-    "ingredient.raspberry_puree": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Himbeerpüree"
+    "ingredient.raspberry_puree" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Himbeerpüree"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Raspberry Puree"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raspberry Puree"
           }
         }
       }
     },
-    "ingredient.raspberry_syrup": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Himbeersirup"
+    "ingredient.raspberry_syrup" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Himbeersirup"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Raspberry Syrup"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raspberry Syrup"
           }
         }
       }
     },
-    "ingredient.rum": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rum"
+    "ingredient.rum" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rum"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rum"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rum"
           }
         }
       }
     },
-    "ingredient.rye": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Roggen"
+    "ingredient.rye" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rye"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rye"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rye"
           }
         }
       }
     },
-    "ingredient.salt_rim": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Salzrand"
+    "ingredient.salt_rim" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salzrand"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Salt Rim"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salt Rim"
           }
         }
       }
     },
-    "ingredient.soda": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Soda"
+    "ingredient.soda" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soda"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Soda"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soda"
           }
         }
       }
     },
-    "ingredient.soda_water": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sodawasser"
+    "ingredient.soda_water" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sodawasser"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Soda Water"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soda Water"
           }
         }
       }
     },
-    "ingredient.spirit": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Spirituose"
+    "ingredient.spirit" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spirituose"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Spirit"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spirit"
           }
         }
       }
     },
-    "ingredient.sprite": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sprite"
+    "ingredient.sprite" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sprite"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sprite"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sprite"
           }
         }
       }
     },
-    "ingredient.sugar": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zucker"
+    "ingredient.sugar" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zucker"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sugar"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sugar"
           }
         }
       }
     },
-    "ingredient.sugar_cane_juice": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zuckerrohrsaft"
+    "ingredient.sugar_cane_juice" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zuckerrohrsaft"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sugar Cane Juice"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sugar Cane Juice"
           }
         }
       }
     },
-    "ingredient.sugar_coated_lemon_wedge": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zuckerüberzogene Zitronenscheibe"
+    "ingredient.sugar_coated_lemon_wedge" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zuckerüberzogene Zitronenscheibe"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sugar coated lemon wedge"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sugar coated lemon wedge"
           }
         }
       }
     },
-    "ingredient.sugar_cube": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zuckerwürfel"
+    "ingredient.sugar_cube" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zuckerwürfel"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sugar Cube"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sugar Cube"
           }
         }
       }
     },
-    "ingredient.sugar_rim": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zuckerrand"
+    "ingredient.sugar_rim" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zuckerrand"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sugar Rim"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sugar Rim"
           }
         }
       }
     },
-    "ingredient.sugar_syrup": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zuckersirup"
+    "ingredient.sugar_syrup" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zuckersirup"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sugar Syrup"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sugar Syrup"
           }
         }
       }
     },
-    "ingredient.tabasco": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tabasco"
+    "ingredient.tabasco" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tabasco"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tabasco"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tabasco"
           }
         }
       }
     },
-    "ingredient.tequila": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tequila"
+    "ingredient.tequila" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tequila"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tequila"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tequila"
           }
         }
       }
     },
-    "ingredient.tomato_juice": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tomatensaft"
+    "ingredient.tomato_juice" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tomatensaft"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tomato Juice"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tomato Juice"
           }
         }
       }
     },
-    "ingredient.tonic": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tonic"
+    "ingredient.tonic" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tonic"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tonic"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tonic"
           }
         }
       }
     },
-    "ingredient.triple_sec": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Triple Sec"
+    "ingredient.triple_sec" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Triple Sec"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Triple Sec"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Triple Sec"
           }
         }
       }
     },
-    "ingredient.vanilla_extract": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vanilleextrakt"
+    "ingredient.vanilla_extract" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vanilleextrakt"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vanilla Extract"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vanilla Extract"
           }
         }
       }
     },
-    "ingredient.vanilla_sugar": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vanillezucker"
+    "ingredient.vanilla_sugar" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vanillezucker"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vanilla Sugar"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vanilla Sugar"
           }
         }
       }
     },
-    "ingredient.vanilla_syrup": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vanillesirup"
+    "ingredient.vanilla_syrup" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vanillesirup"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vanilla Syrup"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vanilla Syrup"
           }
         }
       }
     },
-    "ingredient.vermouth": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wermut"
+    "ingredient.vermouth" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wermut"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vermouth"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vermouth"
           }
         }
       }
     },
-    "ingredient.vodka": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wodka"
+    "ingredient.vodka" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wodka"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vodka"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vodka"
           }
         }
       }
     },
-    "ingredient.whisky": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Whisky"
+    "ingredient.whisky" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Whisky"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Whisky"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Whisky"
           }
         }
       }
     },
-    "ingredient.white_cacao_liqueur": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Weißer Kakaolikör"
+    "ingredient.white_cacao_liqueur" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weißer Kakaolikör"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "White Cacao Liqueur"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "White Cacao Liqueur"
           }
         }
       }
     },
-    "ingredient.worcestershire_sauce": {
-      "comment": "Ingredient name",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Worcestersauce"
+    "ingredient.worcestershire_sauce" : {
+      "comment" : "Ingredient name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Worcestersauce"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Worcestershire Sauce"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Worcestershire Sauce"
+          }
+        }
+      }
+    },
+    "Ingredients" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zutaten"
+          }
+        }
+      }
+    },
+    "Ingredients Imported" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zutaten importiert"
+          }
+        }
+      }
+    },
+    "It will be removed from any recipes that use it." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es wird aus allen Rezepten entfernt, die es verwenden."
+          }
+        }
+      }
+    },
+    "Juices" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Säfte"
+          }
+        }
+      }
+    },
+    "Libraries" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bibliotheken"
           }
         }
       }
     },
-    "Ingredients": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zutaten"
+    "Liqueurs" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liköre"
           }
         }
       }
     },
-    "Ingredients Imported": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zutaten importiert"
+    "Mark as Stocked" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Als vorrätig markieren"
           }
         }
       }
     },
-    "It will be removed from any recipes that use it.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Es wird aus allen Rezepten entfernt, die es verwenden."
+    "Mark as Unstocked" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Als nicht vorrätig markieren"
           }
         }
       }
     },
-    "Juices": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Säfte"
+    "Martini" : {
+      "comment" : "Glass type",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Martini"
           }
         }
       }
     },
-    "Liqueurs": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Liköre"
+    "Method" : {
+      "comment" : "Grouping by preparation method",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Methode"
           }
         }
       }
     },
-    "Mark as Stocked": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Als vorrätig markieren"
+    "Mixers" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mixer"
           }
         }
       }
     },
-    "Mark as Unstocked": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Als nicht vorrätig markieren"
+    "mo-geb.com" : {
+      "shouldTranslate" : false
+    },
+    "More" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mehr"
+          }
+        }
+      }
+    },
+    "Name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        }
+      }
+    },
+    "New Ingredient" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neue Zutat"
+          }
+        }
+      }
+    },
+    "No Cocktails" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Cocktails"
           }
         }
       }
     },
-    "Martini": {
-      "comment": "Glass type",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Martini"
+    "No Ice" : {
+      "comment" : "Ice type — no ice",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kein Eis"
           }
         }
       }
     },
-    "Method": {
-      "comment": "Grouping by preparation method",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Methode"
+    "No Ingredients" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Zutaten"
           }
         }
       }
     },
-    "Mixers": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mixer"
+    "No ingredients provided." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Zutaten angegeben."
           }
         }
       }
     },
-    "More": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mehr"
+    "No instructions provided." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Anweisungen angegeben."
           }
         }
       }
     },
-    "Name": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Name"
+    "None" : {
+      "comment" : "Grouping — no grouping applied",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine"
           }
         }
       }
     },
-    "New Ingredient": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Neue Zutat"
+    "None added yet." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noch nichts hinzugefügt."
           }
         }
       }
     },
-    "No Cocktails": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keine Cocktails"
+    "Not Now" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht jetzt"
           }
         }
       }
     },
-    "No Ice": {
-      "comment": "Ice type — no ice",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kein Eis"
+    "Note (e.g. Sweet Vermouth)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinweis (z.B. Süßer Wermut)"
           }
         }
       }
     },
-    "No Ingredients": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keine Zutaten"
+    "Notes" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notizen"
           }
         }
       }
     },
-    "No ingredients provided.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keine Zutaten angegeben."
+    "Nothing to make" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nichts zu mixen"
           }
         }
       }
     },
-    "No instructions provided.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keine Anweisungen angegeben."
+    "Nothing to make yet" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noch nichts zu mixen"
           }
         }
       }
     },
-    "None": {
-      "comment": "Grouping — no grouping applied",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keine"
+    "OK" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
           }
         }
       }
     },
-    "None added yet.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Noch nichts hinzugefügt."
+    "Other" : {
+      "comment" : "Glass type",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Andere"
           }
         }
       }
     },
-    "Not Now": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nicht jetzt"
+    "Privacy Policy" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datenschutzerklärung"
           }
         }
       }
     },
-    "Note (e.g. Sweet Vermouth)": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hinweis (z.B. Süßer Wermut)"
+    "Read the privacy policy" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datenschutzerklärung lesen"
           }
         }
       }
     },
-    "Notes": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Notizen"
+    "Read the terms of service" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutzungsbedingungen lesen"
           }
         }
       }
     },
-    "Nothing to make": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nichts zu mixen"
+    "Reimport All Cocktails" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Cocktails neu importieren"
           }
         }
       }
     },
-    "Nothing to make yet": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Noch nichts zu mixen"
+    "Reimport Failed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neuimport fehlgeschlagen"
           }
         }
       }
     },
-    "OK": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "OK"
+    "Remove cocktails or ingredients" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cocktails oder Zutaten entfernen"
           }
         }
       }
     },
-    "Other": {
-      "comment": "Glass type",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Andere"
+    "Remove from Favourites" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aus Favoriten entfernen"
           }
         }
       }
     },
-    "Reimport All Cocktails": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Alle Cocktails reimportieren"
+    "Replace all library cocktails with the latest versions" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ersetze alle gespeicherten Cocktails durch die neuesten Versionen"
           }
         }
       }
     },
-    "Reimport Failed": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Reimport fehlgeschlagen"
+    "Restore Purchases" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einkäufe wiederherstellen"
           }
         }
       }
     },
-    "Remove from Favourites": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aus Favoriten entfernen"
+    "Rocks" : {
+      "comment" : "Glass type",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rocks"
           }
         }
       }
     },
-    "Replace all library cocktails with the latest versions": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Ersetze alle Bibliotheks-Cocktails durch die neuesten Versionen"
+    "Roll" : {
+      "comment" : "Preparation method",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rollen"
           }
         }
       }
     },
-    "Restore Purchases": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Einkäufe wiederherstellen"
+    "Save" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speichern"
           }
         }
       }
     },
-    "Rocks": {
-      "comment": "Glass type",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rocks"
+    "Search" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suche"
           }
         }
       }
     },
-    "Roll": {
-      "comment": "Preparation method",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rollen"
+    "Search ingredients" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zutaten suchen"
           }
         }
       }
     },
-    "Save": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Speichern"
+    "Select All" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle auswählen"
           }
         }
       }
     },
-    "Search": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Suche"
+    "Select Cocktails" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle Cocktails"
           }
         }
       }
     },
-    "Search ingredients": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zutaten suchen"
+    "Select Ingredient" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zutat auswählen"
           }
         }
       }
     },
-    "Select All": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alle auswählen"
+    "Settings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
           }
         }
       }
     },
-    "Select Cocktails": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wähle Cocktails"
+    "Shake" : {
+      "comment" : "Preparation method",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schütteln"
           }
         }
       }
     },
-    "Select Ingredient": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zutat auswählen"
+    "Shared" : {
+      "comment" : "Recipe source — shared recipe",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geteilt"
           }
         }
       }
     },
-    "Settings": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Einstellungen"
+    "Shot" : {
+      "comment" : "Glass type",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shot"
           }
         }
       }
     },
-    "Shake": {
-      "comment": "Preparation method",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schütteln"
+    "Source" : {
+      "comment" : "Grouping by recipe source",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quelle"
           }
         }
       }
     },
-    "Shared": {
-      "comment": "Recipe source — shared recipe",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Geteilt"
+    "Spices" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gewürze"
           }
         }
       }
     },
-    "Shot": {
-      "comment": "Glass type",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Shot"
+    "Spirits" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spirituosen"
           }
         }
       }
     },
-    "Source": {
-      "comment": "Grouping by recipe source",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quelle"
+    "Stir" : {
+      "comment" : "Preparation method",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rühren"
           }
         }
       }
     },
-    "Spices": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gewürze"
+    "Stock ingredients in your inventory to see cocktails you can make." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lagere Zutaten in deinem Inventar, um Cocktails zu sehen, die du mixen kannst."
           }
         }
       }
+    },
+    "support@mo-geb.com" : {
+      "shouldTranslate" : false
     },
-    "Spirits": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Spirituosen"
+    "Syrups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sirupe"
           }
         }
       }
     },
-    "Stir": {
-      "comment": "Preparation method",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rühren"
+    "Tap + to add ingredients to your bar." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippe auf +, um Zutaten zu deiner Bar hinzuzufügen."
           }
         }
       }
     },
-    "Stock ingredients in your inventory to see cocktails you can make.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lager Zutaten in deinem Inventar, um Cocktails zu sehen, die du mixen kannst."
+    "Tap + to add your first cocktail." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippe auf +, um deinen ersten Cocktail hinzuzufügen."
           }
         }
       }
     },
-    "Syrups": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sirups"
+    "Terms of Service" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutzungsbedingungen"
           }
         }
       }
     },
-    "Tap + to add ingredients to your bar.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tippe auf +, um Zutaten zu deiner Bar hinzuzufügen."
+    "Thanks for your support" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Danke für deine Unterstützung"
           }
         }
       }
     },
-    "Tap + to add your first cocktail.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tippe auf +, um deinen ersten Cocktail hinzuzufügen."
+    "Tiki" : {
+      "comment" : "Glass type",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiki"
           }
         }
       }
     },
-    "Tiki": {
-      "comment": "Glass type",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tiki"
+    "Type" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Art"
           }
         }
       }
     },
-    "Type": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Art"
+    "Unit" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einheit"
           }
         }
       }
     },
-    "Unit": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Einheit"
+    "Unlimited" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unbegrenzt"
           }
         }
       }
     },
-    "Unlimited Cocktails": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unbegrenzte Cocktails"
+    "Unlimited Cocktails" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unbegrenzte Cocktails"
           }
         }
       }
     },
-    "Unlock Unlimited": {
-      "extractionState": "stale",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unbegrenzte freischalten"
+    "Unlock more than %lld cocktails" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mehr als %lld Cocktails freischalten"
           }
         }
       }
     },
-    "Upgrade": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Upgrade"
+    "Upgrade" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upgrade"
           }
         }
       }
     },
-    "Use Default": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Standard verwenden"
+    "Use Default" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard verwenden"
           }
         }
       }
     },
-    "Vegetables": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gemüse"
+    "Vegetables" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gemüse"
           }
         }
       }
     },
-    "What can I make?": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Was kann ich mixen?"
+    "Website" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Website"
           }
         }
       }
     },
-    "Wine": {
-      "comment": "Glass type",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wein"
+    "What can I make?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was kann ich mixen?"
           }
         }
       }
     },
-    "You've reached the free limit of %lld cocktails. Upgrade once to save as many as you like.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Du hast das kostenlose Limit von %lld Cocktails erreicht. Upgrade einmal, um so viele zu speichern, wie du möchtest."
+    "Wine" : {
+      "comment" : "Glass type",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wein"
           }
         }
       }
     },
-    "You've reached the free limit of 10 cocktails. Upgrade once to save as many as you like.": {
-      "extractionState": "stale",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Du hast das kostenlose Limit von 10 Cocktails erreicht. Upgrade einmal, um so viele zu speichern, wie du möchtest."
+    "You've reached the free limit of %lld cocktails. Upgrade once to save as many as you like." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du hast das kostenlose Limit von %lld Cocktails erreicht. Upgrade einmalig, um so viele zu speichern, wie du möchtest."
           }
         }
       }
     }
   },
-  "version": "1.1"
+  "version" : "1.1"
 }

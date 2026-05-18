@@ -185,47 +185,8 @@ final class CocktailImporter {
             logger.debug("Processing cocktail: \(dto.name)")
             var recipeIngredients: [RecipeIngredient] = []
 
-            for (index, ingDTO) in dto.ingredients.enumerated() {
-                let unit = ingDTO.unit ?? .none
-
-                let recipeIngredient = RecipeIngredient(
-                    amount: ingDTO.amount,
-                    unit: unit,
-                    note: ingDTO.note ?? "",
-                    role: .core,
-                    sortOrder: index
-                )
-
-                if let mappedIngredient = existingIngredients[ingDTO.ingredientId] {
-                    recipeIngredient.ingredient = mappedIngredient
-                } else {
-                    unmappedRefs.append((cocktail: dto.name, ingredientName: ingDTO.ingredientId))
-                    logger.warning("  ⚠️ \(dto.name): no Ingredient found for id '\(ingDTO.ingredientId)'")
-                }
-
-                recipeIngredients.append(recipeIngredient)
-            }
-
-            for (index, garnishDTO) in (dto.garnishes ?? []).enumerated() {
-                let unit = garnishDTO.unit ?? .none
-
-                let recipeIngredient = RecipeIngredient(
-                    amount: garnishDTO.amount,
-                    unit: unit,
-                    note: garnishDTO.note ?? "",
-                    role: .garnish,
-                    sortOrder: index
-                )
-
-                if let mappedIngredient = existingIngredients[garnishDTO.ingredientId] {
-                    recipeIngredient.ingredient = mappedIngredient
-                } else {
-                    unmappedRefs.append((cocktail: dto.name, ingredientName: garnishDTO.ingredientId))
-                    logger.warning("  ⚠️ \(dto.name): no Ingredient found for id '\(garnishDTO.ingredientId)'")
-                }
-
-                recipeIngredients.append(recipeIngredient)
-            }
+            recipeIngredients += mapRecipeIngredients(dto.ingredients, role: .core, cocktailName: dto.name, existingIngredients: existingIngredients, unmappedRefs: &unmappedRefs)
+            recipeIngredients += mapRecipeIngredients(dto.garnishes ?? [], role: .garnish, cocktailName: dto.name, existingIngredients: existingIngredients, unmappedRefs: &unmappedRefs)
 
             let cocktail = Cocktail(
                 name: dto.name,
@@ -259,6 +220,25 @@ final class CocktailImporter {
     }
 
     // MARK: - Helpers
+
+    private func mapRecipeIngredients(
+        _ dtos: [RecipeIngredientDTO],
+        role: IngredientRole,
+        cocktailName: String,
+        existingIngredients: [String: Ingredient],
+        unmappedRefs: inout [(cocktail: String, ingredientName: String)]
+    ) -> [RecipeIngredient] {
+        dtos.enumerated().map { index, dto in
+            let ri = RecipeIngredient(amount: dto.amount, unit: dto.unit ?? .none, note: dto.note ?? "", role: role, sortOrder: index)
+            if let ingredient = existingIngredients[dto.ingredientId] {
+                ri.ingredient = ingredient
+            } else {
+                unmappedRefs.append((cocktail: cocktailName, ingredientName: dto.ingredientId))
+                logger.warning("  ⚠️ \(cocktailName): no Ingredient found for id '\(dto.ingredientId)'")
+            }
+            return ri
+        }
+    }
 
     private func getIngredientsURL() throws -> URL {
         guard let url = Bundle.main.url(forResource: "ingredients", withExtension: "json") else {
@@ -322,4 +302,59 @@ extension CocktailImporter {
         else { return [] }
         return dtos.map(\.id).sorted()
     }()
+}
+
+// MARK: - DTOs
+
+struct IngredientDTO: Codable {
+    let id: String
+    let name: String
+    let type: IngredientType
+}
+
+struct RecipeIngredientDTO: Codable {
+    let ingredientId: String
+    let amount: Double
+    let unit: MeasurementUnit?
+    let note: String?
+}
+
+struct CocktailDTO: Codable {
+    let name: String
+    let imageName: String?
+    let glass: GlassType
+    let method: PreparationMethod
+    let ice: IceType
+    let ingredients: [RecipeIngredientDTO]
+    let garnishes: [RecipeIngredientDTO]?
+    let notes: String?
+}
+
+struct SharedCocktailPackage: Codable {
+    let cocktails: [CocktailDTO]
+    let ingredients: [IngredientDTO]
+}
+
+// MARK: - Import Result
+
+struct ImportResult {
+    let ingredientsInserted: Int
+    let ingredientsSkipped: Int
+    let cocktailsInserted: Int
+    let unmappedIngredientRefs: [(cocktail: String, ingredientName: String)]
+
+    var summary: String {
+        var lines = [
+            "Cocktails inserted: \(cocktailsInserted)",
+            "Ingredients inserted: \(ingredientsInserted)",
+            "Ingredients already present (skipped): \(ingredientsSkipped)"
+        ]
+        if !unmappedIngredientRefs.isEmpty {
+            lines.append("⚠️ Unresolved ingredient refs: \(unmappedIngredientRefs.count)")
+            for ref in unmappedIngredientRefs {
+                lines.append("  • \(ref.cocktail) → \"\(ref.ingredientName)\"")
+            }
+        }
+        return lines.joined(separator: "\n")
+    }
 }
