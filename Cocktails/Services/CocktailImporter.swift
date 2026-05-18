@@ -31,7 +31,6 @@ final class CocktailImporter {
 
     // MARK: - Use Cases
 
-    /// 1. Import all ingredients from the central ingredients catalogue that are not yet in the store
     @discardableResult
     func importIngredients() throws -> ImportResult {
         let url = try getIngredientsURL()
@@ -64,7 +63,30 @@ final class CocktailImporter {
         return result
     }
 
-    /// 2. Import all cocktails for a source, pulling in only the ingredients they need that are not already in the store
+    @discardableResult
+    func reimportAllCocktails() throws -> ImportResult {
+        let bundleSources = RecipeSource.allCases.filter { !$0.filePrefix.isEmpty }
+
+        let allCocktails = try context.fetch(FetchDescriptor<Cocktail>())
+        var namesBySource: [RecipeSource: [String]] = [:]
+        for cocktail in allCocktails where bundleSources.contains(cocktail.source) {
+            namesBySource[cocktail.source, default: []].append(cocktail.name)
+            context.delete(cocktail)
+        }
+        try context.save()
+
+        var totalCocktails = 0
+        var totalIngredients = 0
+        for source in bundleSources {
+            guard let names = namesBySource[source], !names.isEmpty else { continue }
+            let result = try importSelectedCocktails(names: names, from: source)
+            totalCocktails += result.cocktailsInserted
+            totalIngredients += result.ingredientsInserted
+        }
+
+        return ImportResult(ingredientsInserted: totalIngredients, ingredientsSkipped: 0, cocktailsInserted: totalCocktails, unmappedIngredientRefs: [])
+    }
+
     @discardableResult
     func importAll(from source: RecipeSource) throws -> ImportResult {
         let ingredientsURL = try getIngredientsURL()

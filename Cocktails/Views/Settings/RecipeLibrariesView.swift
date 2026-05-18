@@ -14,10 +14,17 @@ struct RecipeLibrariesView: View {
     @State private var ingredientsResult: ImportResult?
     @State private var ingredientsError: String?
 
+    @State private var isReimportingCocktails = false
+    @State private var cocktailsResult: ImportResult?
+    @State private var cocktailsError: String?
+
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                importAllIngredientsCard
+                VStack(spacing: 8) {
+                    importAllIngredientsCard
+                    reimportAllCocktailsCard
+                }
 
                 LazyVGrid(columns: GridColumns.libraries, spacing: 16) {
                     ForEach(sources) { source in
@@ -57,10 +64,33 @@ struct RecipeLibrariesView: View {
         } message: {
             if let e = ingredientsError { Text(e) }
         }
+        .alert("Cocktails Reimported", isPresented: .init(
+            get: { cocktailsResult != nil },
+            set: { if !$0 { cocktailsResult = nil } }
+        )) {
+            Button("OK") { cocktailsResult = nil }
+        } message: {
+            if let r = cocktailsResult {
+                Text("\(r.cocktailsInserted) cocktails reimported.")
+            }
+        }
+        .alert("Reimport Failed", isPresented: .init(
+            get: { cocktailsError != nil },
+            set: { if !$0 { cocktailsError = nil } }
+        )) {
+            Button("OK") { cocktailsError = nil }
+        } message: {
+            if let e = cocktailsError { Text(e) }
+        }
     }
 
     private var importAllIngredientsCard: some View {
-        Button {
+        importActionCard(
+            icon: "leaf.fill", color: .green,
+            title: "Import All Ingredients",
+            subtitle: "Add all available ingredients to your inventory",
+            isLoading: isImportingIngredients
+        ) {
             guard !isImportingIngredients else { return }
             isImportingIngredients = true
             Task { @MainActor in
@@ -72,28 +102,60 @@ struct RecipeLibrariesView: View {
                     ingredientsError = error.localizedDescription
                 }
             }
-        } label: {
+        }
+    }
+
+    private var reimportAllCocktailsCard: some View {
+        importActionCard(
+            icon: "arrow.clockwise", color: .blue,
+            title: "Reimport All Cocktails",
+            subtitle: "Replace all library cocktails with the latest versions",
+            isLoading: isReimportingCocktails
+        ) {
+            guard !isReimportingCocktails else { return }
+            isReimportingCocktails = true
+            Task { @MainActor in
+                defer { isReimportingCocktails = false }
+                await Task.yield()
+                do {
+                    cocktailsResult = try CocktailImporter(context: modelContext).reimportAllCocktails()
+                } catch {
+                    cocktailsError = error.localizedDescription
+                }
+            }
+        }
+    }
+
+    private func importActionCard(
+        icon: String,
+        color: Color,
+        title: LocalizedStringKey,
+        subtitle: LocalizedStringKey,
+        isLoading: Bool,
+        action: @escaping () -> Void
+    ) -> some View {
+        Button(action: action) {
             HStack(spacing: 14) {
-                Image(systemName: "leaf.fill")
+                Image(systemName: icon)
                     .font(.title2)
                     .foregroundStyle(.white)
                     .frame(width: 44, height: 44)
-                    .background(.green.gradient)
+                    .background(color.gradient)
                     .clipShape(Circle())
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("Import All Ingredients")
+                    Text(title)
                         .font(.subheadline.bold())
                         .fontDesign(.rounded)
                         .foregroundStyle(.primary)
-                    Text("Add all available ingredients to your inventory")
+                    Text(subtitle)
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
 
                 Spacer()
 
-                if isImportingIngredients {
+                if isLoading {
                     ProgressView()
                 } else {
                     Image(systemName: "chevron.right")
@@ -106,7 +168,7 @@ struct RecipeLibrariesView: View {
             .glassEffect()
         }
         .buttonStyle(CardPressStyle())
-        .disabled(isImportingIngredients)
+        .disabled(isLoading)
     }
 
     private func loadCounts(for source: RecipeSource) -> LibraryCounts {
