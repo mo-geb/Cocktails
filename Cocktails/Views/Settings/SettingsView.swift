@@ -4,10 +4,12 @@ import SwiftData
 struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
+    @Environment(StoreManager.self) private var store
     @Query private var cocktails: [Cocktail]
     @Query(sort: \Ingredient.name) private var ingredients: [Ingredient]
 
     @State private var showClearConfirmation = false
+    @State private var showPaywall = false
 
     var body: some View {
         NavigationStack {
@@ -22,6 +24,7 @@ struct SettingsView: View {
                         }
                         
                         
+                        upgradeSection
                         importSection
                         aboutSection
                         dataSection
@@ -39,6 +42,7 @@ struct SettingsView: View {
                     .padding()
                 }
             }
+            .sheet(isPresented: $showPaywall) { PaywallView() }
             .navigationTitle("Settings")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
@@ -56,6 +60,30 @@ struct SettingsView: View {
     }
 
     // MARK: - Sections
+
+    private var upgradeSection: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            sectionHeader("Unlimited")
+
+            if store.isUnlimited {
+                row(icon: "infinity", color: .purple,
+                    title: "Cocktails Unlimited",
+                    subtitle: "Thanks for your support",
+                    trailing: AnyView(
+                        Image(systemName: "checkmark.seal.fill").foregroundStyle(.green)
+                    ))
+                    .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            } else {
+                Button { showPaywall = true } label: {
+                    row(icon: "infinity", color: .purple,
+                        title: "Cocktails Unlimited",
+                        subtitle: "Unlock more than \(StoreManager.freeCocktailLimit) cocktails")
+                }
+                .buttonStyle(.plain)
+                .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            }
+        }
+    }
 
     private var importSection: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -141,7 +169,7 @@ struct SettingsView: View {
     }
 
     @ViewBuilder
-    private func row(icon: String, color: Color, title: String, subtitle: String) -> some View {
+    private func row(icon: String, color: Color, title: String, subtitle: String, trailing: AnyView? = nil) -> some View {
         HStack(spacing: 14) {
             Image(systemName: icon)
                 .font(.system(size: 15, weight: .semibold))
@@ -161,9 +189,13 @@ struct SettingsView: View {
 
             Spacer()
 
-            Image(systemName: "chevron.right")
-                .font(.caption.bold())
-                .foregroundStyle(.tertiary)
+            if let trailing {
+                trailing
+            } else {
+                Image(systemName: "chevron.right")
+                    .font(.caption.bold())
+                    .foregroundStyle(.tertiary)
+            }
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 12)
@@ -218,5 +250,6 @@ struct SettingsView: View {
 #Preview(traits: .sampleData) {
     NavigationStack {
         SettingsView()
+            .environment(StoreManager())
     }
 }

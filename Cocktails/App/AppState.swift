@@ -8,6 +8,7 @@ final class AppState {
     private var lastContentTab: ActiveTab = .cocktails
 
     var showSettings = false
+    var showPaywall = false
     var activeCocktailSheet: ActiveCocktailSheet?
     var cocktailToDelete: Cocktail?
     var ingredientToDelete: Ingredient?

@@ -22,6 +22,7 @@ struct MainTabView: View {
             }
         }
         .sheet(isPresented: $appState.showSettings) { SettingsView() }
+        .sheet(isPresented: $appState.showPaywall) { PaywallView() }
         .sheet(item: $appState.activeIngredientSheet) { sheet in
             NavigationStack { sheet.contentView }
                 .presentationDetents([.medium])
@@ -76,5 +77,6 @@ struct MainTabView: View {
 #Preview(traits: .sampleData) {
     MainTabView()
         .environment(AppState())
+        .environment(StoreManager())
         .modelContainer(for: Cocktail.self, inMemory: true)
 }

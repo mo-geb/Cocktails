@@ -5,6 +5,7 @@ struct LibraryCocktailsView: View {
     let source: RecipeSource
 
     @Environment(\.modelContext) private var modelContext
+    @Environment(StoreManager.self) private var store
     @Query private var existingCocktails: [Cocktail]
 
     @State private var cocktails: [CocktailDTO] = []
@@ -12,6 +13,7 @@ struct LibraryCocktailsView: View {
     @State private var importResult: ImportResult?
     @State private var importError: String?
     @State private var isImporting = false
+    @State private var showPaywall = false
 
     private let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
 
@@ -59,6 +61,7 @@ struct LibraryCocktailsView: View {
         .task {
             loadCocktails()
         }
+        .sheet(isPresented: $showPaywall) { PaywallView() }
         .alert("Import Complete", isPresented: .init(
             get: { importResult != nil },
             set: { if !$0 { importResult = nil } }
@@ -124,8 +127,15 @@ struct LibraryCocktailsView: View {
 
     private func performImport(names: [String]) {
         guard !names.isEmpty, !isImporting else { return }
+
+        let newCount = names.filter { !alreadyImported.contains($0) }.count
+        guard store.canImport(currentCount: existingCocktails.count, requestedCount: newCount) else {
+            showPaywall = true
+            return
+        }
+
         isImporting = true
-        Task { @MainActor in
+        Task {
             defer { isImporting = false }
             await Task.yield()
             do {
@@ -142,5 +152,6 @@ struct LibraryCocktailsView: View {
 #Preview(traits: .sampleData) {
     NavigationStack {
         LibraryCocktailsView(source: .ebsInter2023)
+            .environment(StoreManager())
     }
 }

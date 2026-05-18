@@ -1,10 +1,13 @@
 import SwiftUI
+import SwiftData
 
 struct ReceivedRecipesView: View {
     let url: URL
     let onDismiss: () -> Void
 
     @Environment(\.modelContext) private var modelContext
+    @Environment(StoreManager.self) private var store
+    @State private var showPaywall = false
     @State private var package: SharedCocktailPackage?
     @State private var errorMessage: String?
     @State private var importResult: ImportResult?
@@ -43,6 +46,7 @@ struct ReceivedRecipesView: View {
         }
         .onAppear { loadPackage() }
         .presentationDetents([.medium, .large])
+        .sheet(isPresented: $showPaywall) { PaywallView() }
         .alert("Import Complete", isPresented: .init(
             get: { importResult != nil },
             set: { if !$0 { importResult = nil } }
@@ -104,8 +108,15 @@ struct ReceivedRecipesView: View {
         }
     }
 
-    @MainActor
     private func performImport(_ package: SharedCocktailPackage) {
+        let existing = (try? modelContext.fetch(FetchDescriptor<Cocktail>())) ?? []
+        let sharedNames = Set(existing.filter { $0.source == .shared }.map(\.name))
+        let newCount = selected.subtracting(sharedNames).count
+        guard store.canImport(currentCount: existing.count, requestedCount: newCount) else {
+            showPaywall = true
+            return
+        }
+
         let toImport = package.cocktails.filter { selected.contains($0.name) }
         let filtered = SharedCocktailPackage(cocktails: toImport, ingredients: package.ingredients)
         do {
@@ -128,6 +139,7 @@ struct ReceivedRecipesView: View {
         return url
     }()
     ReceivedRecipesView(url: url, onDismiss: {})
+        .environment(StoreManager())
 }
 
 #Preview("Multiple cocktails", traits: .sampleData) {
@@ -139,4 +151,5 @@ struct ReceivedRecipesView: View {
         return url
     }()
     ReceivedRecipesView(url: url, onDismiss: {})
+        .environment(StoreManager())
 }

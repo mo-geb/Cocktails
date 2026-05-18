@@ -3,6 +3,7 @@ import StoreKit
 
 struct PaywallView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(StoreManager.self) private var store
 
     var body: some View {
         NavigationStack {
@@ -17,6 +18,9 @@ struct PaywallView: View {
             }
             .navigationTitle("Upgrade")
             .navigationBarTitleDisplayMode(.inline)
+            .onChange(of: store.isUnlimited) { _, unlimited in
+                if unlimited { dismiss() }
+            }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Not Now") { dismiss() }
@@ -39,7 +43,7 @@ struct PaywallView: View {
                     .font(.title2.bold())
                     .fontDesign(.rounded)
                 
-                Text("You've reached the free limit of 10 cocktails. Upgrade once to save as many as you like.")
+                Text("You've reached the free limit of \(StoreManager.freeCocktailLimit) cocktails. Upgrade once to save as many as you like.")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -64,25 +68,37 @@ struct PaywallView: View {
     private var actionSection: some View {
         VStack(spacing: 12) {
             Button {
-                
+                Task { await store.purchase() }
             } label: {
                 Group {
-                    Text("Unlock Unlimited").font(.body.bold())
-                    
+                    if store.purchaseInFlight {
+                        ProgressView()
+                    } else {
+                        Text(purchaseLabel).font(.body.bold())
+                    }
                 }
                 .frame(maxWidth: .infinity)
             }
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
+            .disabled(store.product == nil || store.purchaseInFlight)
 
             Button {
-                
+                Task { await store.restore() }
             } label: {
                 Text("Restore Purchases")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
+            .disabled(store.purchaseInFlight)
         }
+    }
+
+    private var purchaseLabel: String {
+        if let price = store.product?.displayPrice {
+            return "Unlock Unlimited · \(price)"
+        }
+        return "Unlock Unlimited"
     }
 
     // MARK: - Helpers
@@ -108,4 +124,5 @@ struct PaywallView: View {
 
 #Preview {
     PaywallView()
+        .environment(StoreManager())
 }

@@ -3269,6 +3269,7 @@
       }
     },
     "Unlock Unlimited" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3329,7 +3330,11 @@
         }
       }
     },
+    "You've reached the free limit of %lld cocktails. Upgrade once to save as many as you like." : {
+
+    },
     "You've reached the free limit of 10 cocktails. Upgrade once to save as many as you like." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

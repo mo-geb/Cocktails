@@ -4,6 +4,7 @@ import SwiftData
 struct CocktailTab: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(AppState.self) private var appState
+    @Environment(StoreManager.self) private var store
     @Query(sort: \Cocktail.name) private var cocktails: [Cocktail]
 
     let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
@@ -140,6 +141,10 @@ struct CocktailTab: View {
     }
 
     private func addNewCocktail() {
+        guard store.canAddMore(currentCount: cocktails.count) else {
+            appState.showPaywall = true
+            return
+        }
         appState.activeCocktailSheet = .new(CocktailDraft())
     }
     
@@ -185,4 +190,5 @@ struct CocktailTab: View {
 #Preview(traits: .sampleData) {
     CocktailTab()
         .environment(AppState())
+        .environment(StoreManager())
 }

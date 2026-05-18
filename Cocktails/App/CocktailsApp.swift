@@ -4,6 +4,7 @@ import SwiftData
 @main
 struct CocktailsApp: App {
     @State private var appState = AppState()
+    @State private var store = StoreManager()
 
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
@@ -24,6 +25,7 @@ struct CocktailsApp: App {
         WindowGroup {
             MainTabView()
                 .environment(appState)
+                .environment(store)
         }
         .modelContainer(sharedModelContainer)
     }
@@ -32,5 +34,6 @@ struct CocktailsApp: App {
 #Preview(traits: .sampleData) {
     MainTabView()
         .environment(AppState())
+        .environment(StoreManager())
         .modelContainer(for: Cocktail.self, inMemory: true)
 }
