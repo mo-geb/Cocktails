@@ -57,3 +57,10 @@ private struct Particle {
     let color: Color
     let w, h, delay: Double
 }
+
+#Preview {
+    ZStack {
+        Color(.systemBackground).ignoresSafeArea()
+        ConfettiView()
+    }
+}

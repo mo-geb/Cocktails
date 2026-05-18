@@ -69,36 +69,37 @@ struct SettingsView: View {
     private var upgradeSection: some View {
         VStack(alignment: .leading, spacing: 10) {
             sectionHeader("Unlimited")
-
-            if store.isUnlimited {
-                row(icon: "infinity", color: .purple,
-                    title: "Cocktails Unlimited",
-                    subtitle: "Thanks for your support",
-                    trailing: AnyView(
-                        Image(systemName: "checkmark.seal.fill").foregroundStyle(.green)
-                    ))
-                    .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-            } else {
-                Button { showPaywall = true } label: {
+            VStack(spacing: 0) {
+                if store.isUnlimited {
                     row(icon: "infinity", color: .purple,
                         title: "Cocktails Unlimited",
-                        subtitle: "Unlock more than \(StoreManager.freeCocktailLimit) cocktails")
+                        subtitle: "Thanks for your support",
+                        trailing: AnyView(
+                            Image(systemName: "checkmark.seal.fill").foregroundStyle(.green)
+                        ))
+                } else {
+                    Button { showPaywall = true } label: {
+                        row(icon: "infinity", color: .purple,
+                            title: "Cocktails Unlimited",
+                            subtitle: "Unlock more than \(StoreManager.freeCocktailLimit) cocktails")
+                    }
+                    .buttonStyle(.plain)
+                    
+                    Divider().padding(.leading, 62)
+                    
+                    Button {
+                        Task { await store.restore() }
+                    } label: {
+                        row(icon: "arrow.clockwise", color: .gray,
+                            title: "Restore Purchases",
+                            subtitle: "Already bought? Restore here",
+                            trailing: store.purchaseInFlight ? AnyView(ProgressView().scaleEffect(0.8)) : nil)
+                    }
+                    .buttonStyle(.plain)
+                    .disabled(store.purchaseInFlight)
                 }
-                .buttonStyle(.plain)
-                .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-
-                Button {
-                    Task { await store.restore() }
-                } label: {
-                    row(icon: "arrow.clockwise", color: .gray,
-                        title: "Restore Purchases",
-                        subtitle: "Already bought? Restore here",
-                        trailing: store.purchaseInFlight ? AnyView(ProgressView().scaleEffect(0.8)) : nil)
-                }
-                .buttonStyle(.plain)
-                .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-                .disabled(store.purchaseInFlight)
             }
+            .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
         }
     }
 
