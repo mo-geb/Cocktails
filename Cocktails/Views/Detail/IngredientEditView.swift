@@ -49,9 +49,12 @@ struct IngredientEditView: View {
                                 .view(placeholder: type.imageName)
                                 .scaledToFit()
                                 .frame(width: 64, height: 64)
-                            Text("Change Image")
-                                .font(.caption)
-                                .foregroundStyle(.tint)
+                                .overlay(alignment: .bottomTrailing) {
+                                    Image(systemName: "pencil.circle.fill")
+                                        .symbolRenderingMode(.palette)
+                                        .foregroundStyle(.white, .tint)
+                                        .font(.system(size: 20))
+                                }
                         }
                     }
                     .buttonStyle(.plain)
@@ -137,7 +140,9 @@ struct IngredientEditView: View {
 }
 
 #Preview(traits: .sampleData) {
-    NavigationStack {
-        IngredientEditView()
+    ScrollView {
+        NavigationStack {
+            IngredientEditView()
+        }
     }
 }

@@ -249,16 +249,6 @@
         }
       }
     },
-    "Change Image" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bild ändern"
-          }
-        }
-      }
-    },
     "Choose Image" : {
       "localizations" : {
         "de" : {
