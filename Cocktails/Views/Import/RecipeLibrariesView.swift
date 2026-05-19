@@ -23,7 +23,7 @@ struct RecipeLibrariesView: View {
             VStack(spacing: 20) {
                 VStack(spacing: 8) {
                     importAllIngredientsCard
-                    reimportAllCocktailsCard
+                    reimportEverythingCard
                 }
 
                 LazyVGrid(columns: GridColumns.libraries, spacing: 16) {
@@ -64,14 +64,14 @@ struct RecipeLibrariesView: View {
         } message: {
             if let e = ingredientsError { Text(e) }
         }
-        .alert("Cocktails Reimported", isPresented: .init(
+        .alert("Reimport Complete", isPresented: .init(
             get: { cocktailsResult != nil },
             set: { if !$0 { cocktailsResult = nil } }
         )) {
             Button("OK") { cocktailsResult = nil }
         } message: {
             if let r = cocktailsResult {
-                Text("\(r.cocktailsInserted) cocktails reimported.")
+                Text("\(r.cocktailsInserted) cocktails reimported. \(r.ingredientsInserted) ingredients added, \(r.ingredientsSkipped) updated.")
             }
         }
         .alert("Reimport Failed", isPresented: .init(
@@ -105,11 +105,11 @@ struct RecipeLibrariesView: View {
         }
     }
 
-    private var reimportAllCocktailsCard: some View {
+    private var reimportEverythingCard: some View {
         importActionCard(
             icon: "arrow.clockwise", color: .blue,
-            title: "Reimport All Cocktails",
-            subtitle: "Replace all library cocktails with the latest versions",
+            title: "Reimport Everything",
+            subtitle: "Refresh ingredients and replace all library cocktails with the latest versions",
             isLoading: isReimportingCocktails
         ) {
             guard !isReimportingCocktails else { return }
@@ -118,7 +118,7 @@ struct RecipeLibrariesView: View {
                 defer { isReimportingCocktails = false }
                 await Task.yield()
                 do {
-                    cocktailsResult = try CocktailImporter(context: modelContext).reimportAllCocktails()
+                    cocktailsResult = try CocktailImporter(context: modelContext).reimportEverything()
                 } catch {
                     cocktailsError = error.localizedDescription
                 }

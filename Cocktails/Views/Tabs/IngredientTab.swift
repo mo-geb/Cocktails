@@ -107,7 +107,7 @@ struct IngredientTab: View {
                     .foregroundStyle(.secondary)
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(makeableCount == 0 ? "Nothing to make yet" : "\(makeableCount) cocktail\(makeableCount == 1 ? "" : "s") ready to make")
+                    Text(makeableCount == 0 ? "Nothing to make yet" : "\(makeableCount) cocktails ready to make")
                         .font(.subheadline.bold())
                         .fontDesign(.rounded)
                         .foregroundStyle(.primary)

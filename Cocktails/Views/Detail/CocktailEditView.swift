@@ -225,12 +225,12 @@ struct CocktailEditView: View {
                     .font(.subheadline)
             } else {
                 VStack(spacing: 14) {
-                    ForEach($draft.ingredients) { $item in
-                        if item.role == role {
-                            ingredientRow(item: $item) {
+                    ForEach(Array(roleIngredients.enumerated()), id: \.element.id) { position, item in
+                        if let index = draft.ingredients.firstIndex(where: { $0.id == item.id }) {
+                            ingredientRow(item: $draft.ingredients[index]) {
                                 draft.ingredients.removeAll { $0.id == item.id }
                             }
-                            if item.id != roleIngredients.last?.id {
+                            if position != roleIngredients.count - 1 {
                                 Divider().padding(.leading, 42)
                             }
                         }
@@ -369,18 +369,29 @@ struct CocktailEditView: View {
     @ViewBuilder
     private var gradientBackground: some View {
         ZStack {
-            Color(.systemBackground).ignoresSafeArea()
+            Color(.systemBackground)
+
             if let backgroundColor {
-                LinearGradient(
-                    colors: [backgroundColor, backgroundColor.opacity(0.3)],
-                    startPoint: .top,
-                    endPoint: .bottom
+                MeshGradient(
+                    width: 3,
+                    height: 3,
+                    points: [
+                        .init(0.0, 0.0), .init(0.5, 0.0), .init(1.0, 0.0),
+                        .init(0.0, 0.5), .init(0.7, 0.4), .init(1.0, 0.5),
+                        .init(0.0, 1.0), .init(0.5, 1.0), .init(1.0, 1.0)
+                    ],
+                    colors: [
+                        backgroundColor,                 backgroundColor.opacity(0.8), backgroundColor.opacity(0.5),
+                        backgroundColor.opacity(0.7),    backgroundColor.opacity(0.3), .clear,
+                        backgroundColor.opacity(0.2),    .clear,                       .clear
+                    ]
                 )
                 .saturation(1.9)
                 .blendMode(colorScheme == .dark ? .screen : .normal)
-                .ignoresSafeArea()
             }
         }
+        .ignoresSafeArea()
+        .animation(.easeInOut(duration: 0.5), value: backgroundColor)
     }
 
     // MARK: - Actions
@@ -423,6 +434,7 @@ struct CocktailEditView: View {
             imageData: draft.imageData,
             imageName: draft.imageName
         )
+        cocktail.isFavourite = draft.isFavourite
         modelContext.insert(cocktail)
         insertIngredients(for: draft.ingredients, into: cocktail)
     }
@@ -433,6 +445,7 @@ struct CocktailEditView: View {
         cocktail.glass = draft.glass
         cocktail.method = draft.method
         cocktail.ice = draft.ice
+        cocktail.isFavourite = draft.isFavourite
         cocktail.source = .custom
         cocktail.imageData = draft.imageData
         cocktail.imageName = draft.imageName
@@ -465,6 +478,9 @@ struct CocktailEditView: View {
         let id = draft.id
         let request = FetchDescriptor<Ingredient>(predicate: #Predicate { $0.id == id })
         if let existing = try? modelContext.fetch(request).first {
+            existing.name = draft.name
+            existing.type = draft.type
+            existing.imageName = draft.imageName
             return existing
         }
         let ingredient = Ingredient(id: draft.id, name: draft.name, type: draft.type)

@@ -2,15 +2,17 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
+      "shouldTranslate" : false
+    },
+    "%lld cocktails reimported. %lld ingredients added, %lld updated." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "%1$lld Cocktails neu importiert. %2$lld Zutaten hinzugefügt, %3$lld aktualisiert."
           }
         }
-      },
-      "shouldTranslate" : false
+      }
     },
     "%lld" : {
       "shouldTranslate" : false
@@ -25,50 +27,88 @@
         },
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%1$lld added, %2$lld already present."
           }
         }
       }
     },
-    "%lld cocktail%@ imported." : {
+    "%lld cocktails imported." : {
       "localizations" : {
         "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$lld Cocktail%2$@ importiert."
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Cocktail importiert."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Cocktails importiert."
+                }
+              }
+            }
           }
         },
         "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld cocktail%2$@ imported."
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld cocktail imported."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld cocktails imported."
+                }
+              }
+            }
           }
         }
       }
     },
-    "%lld cocktail%@ ready to make" : {
+    "%lld cocktails ready to make" : {
       "localizations" : {
         "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$lld Cocktail%2$@ bereit zum Mixen"
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Cocktail bereit zum Mixen"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Cocktails bereit zum Mixen"
+                }
+              }
+            }
           }
         },
         "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld cocktail%2$@ ready to make"
-          }
-        }
-      }
-    },
-    "%lld cocktails reimported." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld Cocktails neu importiert."
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld cocktail ready to make"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld cocktails ready to make"
+                }
+              }
+            }
           }
         }
       }
@@ -275,7 +315,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Klarer Block"
+            "value" : "Klarer Eisblock"
           }
         }
       }
@@ -334,16 +374,6 @@
         }
       }
     },
-    "Cocktails Reimported" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cocktails neu importiert"
-          }
-        }
-      }
-    },
     "Cocktails, Ingredients…" : {
       "localizations" : {
         "de" : {
@@ -381,7 +411,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zerkleinert"
+            "value" : "Zerstoßen"
           }
         }
       }
@@ -569,7 +599,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Flöte"
+            "value" : "Sektflöte"
           }
         }
       }
@@ -758,7 +788,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Absinthe"
+            "value" : "Absinth"
           }
         },
         "en" : {
@@ -938,7 +968,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Brombeeren"
+            "value" : "Brombeere"
           }
         },
         "en" : {
@@ -1388,13 +1418,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Crème De Cassis"
+            "value" : "Crème de Cassis"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Crème De Cassis"
+            "value" : "Crème de Cassis"
           }
         }
       }
@@ -1406,13 +1436,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Crème De Menthe"
+            "value" : "Crème de Menthe"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Crème De Menthe"
+            "value" : "Crème de Menthe"
           }
         }
       }
@@ -1424,13 +1454,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Crème De Mure"
+            "value" : "Crème de Mûre"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Crème De Mure"
+            "value" : "Crème de Mûre"
           }
         }
       }
@@ -1928,7 +1958,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mixer"
+            "value" : "Filler"
           }
         },
         "en" : {
@@ -1946,7 +1976,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Oliven"
+            "value" : "Olive"
           }
         },
         "en" : {
@@ -2234,7 +2264,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tawny Port"
+            "value" : "Portwein"
           }
         },
         "en" : {
@@ -2486,7 +2516,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zuckerüberzogene Zitronenscheibe"
+            "value" : "Zuckerüberzogene Zitronenspalte"
           }
         },
         "en" : {
@@ -2892,7 +2922,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mixer"
+            "value" : "Filler"
           }
         }
       }
@@ -3103,12 +3133,22 @@
         }
       }
     },
-    "Reimport All Cocktails" : {
+    "Reimport Complete" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alle Cocktails neu importieren"
+            "value" : "Neuimport abgeschlossen"
+          }
+        }
+      }
+    },
+    "Reimport Everything" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alles neu importieren"
           }
         }
       }
@@ -3119,6 +3159,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Neuimport fehlgeschlagen"
+          }
+        }
+      }
+    },
+    "Refresh ingredients and replace all library cocktails with the latest versions" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zutaten aktualisieren und alle Bibliotheks-Cocktails durch die neuesten Versionen ersetzen"
           }
         }
       }
@@ -3139,16 +3189,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aus Favoriten entfernen"
-          }
-        }
-      }
-    },
-    "Replace all library cocktails with the latest versions" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ersetze alle gespeicherten Cocktails durch die neuesten Versionen"
           }
         }
       }

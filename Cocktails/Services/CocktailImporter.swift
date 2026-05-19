@@ -64,40 +64,59 @@ final class CocktailImporter {
     }
 
     @discardableResult
-    func reimportAllCocktails() throws -> ImportResult {
+    func reimportEverything() throws -> ImportResult {
+        // 1. Refresh metadata (name/type) of ingredients that already exist, matching
+        //    by id against the bundle. Ingredients absent from the store are NOT
+        //    inserted here — cocktail reimport below pulls in only the ones it needs.
+        let ingredientsURL = try getIngredientsURL()
+        let ingredientDTOs = try parse([IngredientDTO].self, from: ingredientsURL, label: "ingredients")
+        let existingIngredients = try fetchExistingIngredientsMap()
+        var ingredientsUpdated = 0
+        for dto in ingredientDTOs {
+            guard let existing = existingIngredients[dto.id] else { continue }
+            if existing.name != dto.name || existing.type != dto.type {
+                existing.name = dto.name
+                existing.type = dto.type
+                ingredientsUpdated += 1
+            }
+        }
+        logger.info("Ingredients refreshed — updated \(ingredientsUpdated)")
+
+        // 2. Replace all bundle cocktails, preserving user favourites.
         let bundleSources = RecipeSource.allCases.filter { !$0.filePrefix.isEmpty }
 
         let allCocktails = try context.fetch(FetchDescriptor<Cocktail>())
         var namesBySource: [RecipeSource: [String]] = [:]
+        var favouriteNamesBySource: [RecipeSource: Set<String>] = [:]
         for cocktail in allCocktails where bundleSources.contains(cocktail.source) {
             namesBySource[cocktail.source, default: []].append(cocktail.name)
+            if cocktail.isFavourite {
+                favouriteNamesBySource[cocktail.source, default: []].insert(cocktail.name)
+            }
             context.delete(cocktail)
         }
         try context.save()
 
         var totalCocktails = 0
-        var totalIngredients = 0
+        var ingredientsInserted = 0
         for source in bundleSources {
             guard let names = namesBySource[source], !names.isEmpty else { continue }
             let result = try importSelectedCocktails(names: names, from: source)
             totalCocktails += result.cocktailsInserted
-            totalIngredients += result.ingredientsInserted
+            ingredientsInserted += result.ingredientsInserted
         }
 
-        return ImportResult(ingredientsInserted: totalIngredients, ingredientsSkipped: 0, cocktailsInserted: totalCocktails, unmappedIngredientRefs: [])
-    }
+        if !favouriteNamesBySource.isEmpty {
+            let reimported = try context.fetch(FetchDescriptor<Cocktail>())
+            for cocktail in reimported {
+                if favouriteNamesBySource[cocktail.source]?.contains(cocktail.name) == true {
+                    cocktail.isFavourite = true
+                }
+            }
+            try context.save()
+        }
 
-    @discardableResult
-    func importAll(from source: RecipeSource) throws -> ImportResult {
-        let ingredientsURL = try getIngredientsURL()
-        let cocktailsURL = try getCocktailsURL(for: source)
-
-        let ingredientDTOs = try parse([IngredientDTO].self, from: ingredientsURL, label: "ingredients")
-        let cocktailDTOs = try parse([CocktailDTO].self, from: cocktailsURL, label: "cocktails")
-
-        logger.info("Parsed \(ingredientDTOs.count) ingredients, \(cocktailDTOs.count) cocktails from '\(source.filePrefix)'")
-
-        return try processImport(cocktailDTOs: cocktailDTOs, ingredientDTOs: ingredientDTOs, source: source)
+        return ImportResult(ingredientsInserted: ingredientsInserted, ingredientsSkipped: ingredientsUpdated, cocktailsInserted: totalCocktails, unmappedIngredientRefs: [])
     }
 
     /// 4. Import cocktails from a shared .cocktail file

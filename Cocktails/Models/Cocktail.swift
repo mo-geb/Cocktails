@@ -43,7 +43,7 @@ final class Cocktail {
 struct CocktailDraft: Hashable {
     var name: String = ""
 
-    var glass: GlassType = .highball
+    var glass: GlassType = .rocks
     var method: PreparationMethod = .build
     var ice: IceType = .cubed
     var source: RecipeSource = .custom

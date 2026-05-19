@@ -67,8 +67,7 @@ struct LibraryCocktailsView: View {
             Button("OK") { importResult = nil }
         } message: {
             if let r = importResult {
-                let n = r.cocktailsInserted
-                Text("\(n) cocktail\(n == 1 ? "" : "s") imported.")
+                Text("\(r.cocktailsInserted) cocktails imported.")
             }
         }
         .alert("Import Failed", isPresented: .init(

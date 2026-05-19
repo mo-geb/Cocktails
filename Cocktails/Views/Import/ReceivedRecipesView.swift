@@ -53,8 +53,7 @@ struct ReceivedRecipesView: View {
             Button("OK") { importResult = nil }
         } message: {
             if let r = importResult {
-                let n = r.cocktailsInserted
-                Text("\(n) cocktail\(n == 1 ? "" : "s") imported.")
+                Text("\(r.cocktailsInserted) cocktails imported.")
             }
         }
         .alert("Import Failed", isPresented: .init(
@@ -100,8 +99,13 @@ struct ReceivedRecipesView: View {
         do {
             let data = try Data(contentsOf: url)
             let decoded = try JSONDecoder().decode(SharedCocktailPackage.self, from: data)
-            package = decoded
-            selected = Set(decoded.cocktails.map(\.name))
+            // Selection/imported state is keyed by name, and the importer dedupes by
+            // name too — collapse same-name duplicates (first wins) so the grid matches.
+            var seen = Set<String>()
+            let uniqueCocktails = decoded.cocktails.filter { seen.insert($0.name).inserted }
+            let deduped = SharedCocktailPackage(cocktails: uniqueCocktails, ingredients: decoded.ingredients)
+            package = deduped
+            selected = Set(deduped.cocktails.map(\.name))
         } catch {
             errorMessage = error.localizedDescription
         }

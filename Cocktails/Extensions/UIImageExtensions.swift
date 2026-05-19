@@ -8,8 +8,13 @@ extension UIImage {
     func dominantColor() -> UIColor? {
         guard let cgImage = self.cgImage else { return nil }
 
-        let width = cgImage.width
-        let height = cgImage.height
+        // Sampling at full resolution allocates width*height*4 bytes and draws the
+        // entire CGImage on the calling (main) thread — a multi-MP user photo causes
+        // a visible hitch. Cap the longest side; the dominant colour is unaffected.
+        let maxDimension = 80
+        let scale = min(1.0, Double(maxDimension) / Double(max(cgImage.width, cgImage.height)))
+        let width = max(1, Int(Double(cgImage.width) * scale))
+        let height = max(1, Int(Double(cgImage.height) * scale))
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let bytesPerPixel = 4
         let bytesPerRow = bytesPerPixel * width
