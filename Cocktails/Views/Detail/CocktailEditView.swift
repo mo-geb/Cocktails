@@ -247,11 +247,29 @@ struct CocktailEditView: View {
         let ingredient = item.wrappedValue
 
         HStack(alignment: .top, spacing: 12) {
-            ingredient.ingredient.displayImage
-                .view(placeholder: ingredient.ingredient.type.imageName)
-                .scaledToFit()
-                .frame(width: 34, height: 34)
-                .padding(.top, 2)
+            let isEmpty = ingredient.ingredient.name.isEmpty
+            Button {
+                if let index = draft.ingredients.firstIndex(where: { $0.id == ingredient.id }) {
+                    ingredientPickerTarget = IngredientPickerTarget(index: index)
+                }
+            } label: {
+                if isEmpty {
+                    Image(systemName: "questionmark.circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 34, height: 34)
+                        .foregroundStyle(.tint)
+                        .padding(.top, 4)
+                        .padding(.leading, 3)
+                } else {
+                    ingredient.ingredient.displayImage
+                        .view(placeholder: ingredient.ingredient.type.imageName)
+                        .scaledToFit()
+                        .frame(width: 42, height: 42)
+                        .padding(.top, 2)
+                }
+            }
+            .buttonStyle(.plain)
 
             VStack(alignment: .leading, spacing: 6) {
                 // Name + remove
@@ -261,9 +279,10 @@ struct CocktailEditView: View {
                             ingredientPickerTarget = IngredientPickerTarget(index: index)
                         }
                     } label: {
-                        Text(ingredient.ingredient.name.isEmpty ? "Select ingredient…" : ingredient.ingredient.localizedName)
+                        Text(isEmpty ? "Select ingredient…" : ingredient.ingredient.localizedName)
                             .fontDesign(.rounded)
-                            .foregroundStyle(ingredient.ingredient.name.isEmpty ? AnyShapeStyle(.red) : AnyShapeStyle(.primary))
+                            .fontWeight(.medium)
+                            .foregroundStyle(isEmpty ? AnyShapeStyle(.tint) : AnyShapeStyle(.primary))
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     .buttonStyle(.plain)
@@ -276,15 +295,18 @@ struct CocktailEditView: View {
                 }
 
                 // Amount + unit
-                HStack(spacing: 6) {
+                HStack(spacing: 0) {
                     TextField("0", value: Binding(
                         get: { ingredient.amount ?? 0.0 },
                         set: { item.wrappedValue.amount = $0 == 0 ? nil : $0 }
                     ), format: .number)
                     .keyboardType(.decimalPad)
-                    .frame(width: 44)
+                    .fixedSize()
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .glassEffect()
 
                     Picker("Unit", selection: item.unit) {
                         ForEach(MeasurementUnit.allCases) { unit in
