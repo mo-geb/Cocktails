@@ -34,6 +34,9 @@ struct PaywallView: View {
                     Button("Not Now") { dismiss() }
                 }
             }
+            .task {
+                await store.loadProductIfNeeded()
+            }
         }
     }
 
@@ -75,21 +78,43 @@ struct PaywallView: View {
 
     private var actionSection: some View {
         VStack(spacing: 12) {
-            Button {
-                Task { await store.purchase() }
-            } label: {
-                Group {
-                    if store.purchaseInFlight {
-                        ProgressView()
-                    } else {
-                        Text(purchaseLabel).font(.body.bold())
+            if store.product == nil {
+                if store.isLoadingProduct {
+                    ProgressView("Loading purchase details...")
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 8)
+                } else {
+                    VStack(spacing: 8) {
+                        Text("Could not load purchase details.")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                        
+                        Button("Retry") {
+                            Task {
+                                await store.loadProduct()
+                            }
+                        }
+                        .buttonStyle(.bordered)
+                        .controlSize(.small)
                     }
                 }
-                .frame(maxWidth: .infinity)
+            } else {
+                Button {
+                    Task { await store.purchase() }
+                } label: {
+                    Group {
+                        if store.purchaseInFlight {
+                            ProgressView()
+                        } else {
+                            Text(purchaseLabel).font(.body.bold())
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                .disabled(store.purchaseInFlight)
             }
-            .buttonStyle(.borderedProminent)
-            .controlSize(.large)
-            .disabled(store.product == nil || store.purchaseInFlight)
 
             Button {
                 Task { await store.restore() }

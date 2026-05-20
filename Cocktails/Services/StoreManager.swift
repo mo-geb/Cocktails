@@ -12,6 +12,7 @@ final class StoreManager {
 
     private(set) var product: Product?
     private(set) var isUnlimited = false
+    private(set) var isLoadingProduct = false
     var purchaseInFlight = false
 
     init() {
@@ -29,8 +30,15 @@ final class StoreManager {
 
     // MARK: - Loading
 
-    private func loadProduct() async {
+    func loadProduct() async {
+        isLoadingProduct = true
+        defer { isLoadingProduct = false }
         product = try? await Product.products(for: [productID]).first
+    }
+
+    func loadProductIfNeeded() async {
+        guard product == nil, !isLoadingProduct else { return }
+        await loadProduct()
     }
 
     private func refreshEntitlements() async {

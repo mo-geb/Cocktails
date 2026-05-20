@@ -4,6 +4,7 @@ import SwiftData
 struct SearchView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(AppState.self) private var appState
+    @Environment(StoreManager.self) private var store
     @Query(sort: \Cocktail.name) private var cocktails: [Cocktail]
     @Query(sort: \Ingredient.name) private var ingredients: [Ingredient]
 
@@ -91,6 +92,10 @@ struct SearchView: View {
                 }
                 if showCocktailSuggestion {
                     cocktailAddCard(name: query) {
+                        guard store.canAddMore(currentCount: cocktails.count) else {
+                            appState.showPaywall = true
+                            return
+                        }
                         var draft = CocktailDraft()
                         draft.name = query
                         appState.activeCocktailSheet = .new(draft)
