@@ -5,7 +5,6 @@ import PhotosUI
 struct CocktailEditView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.colorScheme) private var colorScheme
 
     @State private var draft: CocktailDraft
     @State private var backgroundColor: Color?
@@ -48,7 +47,7 @@ struct CocktailEditView: View {
         .scrollContentBackground(.hidden)
         .scrollDismissesKeyboard(.interactively)
         .dismissKeyboardOnTap()
-        .background { gradientBackground }
+        .background { CocktailGradientBackground(backgroundColor: backgroundColor) }
         .toolbar { toolbarContent }
         .sensoryFeedback(.success, trigger: saveHapticTrigger)
         .onChange(of: draft.glass) { updateBackground() }
@@ -205,7 +204,7 @@ struct CocktailEditView: View {
     private func ingredientListCard(title: String, role: IngredientRole) -> some View {
         let roleIngredients = draft.ingredients.filter { $0.role == role }
 
-        VStack(alignment: .leading, spacing: 16) {
+        CocktailSectionCard {
             HStack {
                 Text(title)
                     .font(.title3.bold())
@@ -216,9 +215,7 @@ struct CocktailEditView: View {
                         .font(.title3)
                 }
             }
-
-            Divider()
-
+        } content: {
             if roleIngredients.isEmpty {
                 Text("None added yet.")
                     .foregroundStyle(.secondary)
@@ -238,8 +235,6 @@ struct CocktailEditView: View {
                 }
             }
         }
-        .padding(20)
-        .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 
     @ViewBuilder
@@ -353,18 +348,10 @@ struct CocktailEditView: View {
 
     @ViewBuilder
     private var notesCard: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Notes")
-                .font(.title3.bold())
-                .fontDesign(.rounded)
-
-            Divider()
-
+        CocktailSectionCard(title: "Notes") {
             TextField("Add preparation notes…", text: $draft.notes, axis: .vertical)
                 .font(.body)
         }
-        .padding(20)
-        .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 
     // MARK: - Toolbar
@@ -384,36 +371,6 @@ struct CocktailEditView: View {
 
     private var hasIncompleteIngredient: Bool {
         draft.ingredients.contains { $0.ingredient.name.isEmpty }
-    }
-
-    // MARK: - Background
-
-    @ViewBuilder
-    private var gradientBackground: some View {
-        ZStack {
-            Color(.systemBackground)
-
-            if let backgroundColor {
-                MeshGradient(
-                    width: 3,
-                    height: 3,
-                    points: [
-                        .init(0.0, 0.0), .init(0.5, 0.0), .init(1.0, 0.0),
-                        .init(0.0, 0.5), .init(0.7, 0.4), .init(1.0, 0.5),
-                        .init(0.0, 1.0), .init(0.5, 1.0), .init(1.0, 1.0)
-                    ],
-                    colors: [
-                        backgroundColor,                 backgroundColor.opacity(0.8), backgroundColor.opacity(0.5),
-                        backgroundColor.opacity(0.7),    backgroundColor.opacity(0.3), .clear,
-                        backgroundColor.opacity(0.2),    .clear,                       .clear
-                    ]
-                )
-                .saturation(1.9)
-                .blendMode(colorScheme == .dark ? .screen : .normal)
-            }
-        }
-        .ignoresSafeArea()
-        .animation(.easeInOut(duration: 0.5), value: backgroundColor)
     }
 
     // MARK: - Actions

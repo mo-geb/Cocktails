@@ -3,7 +3,6 @@ import SwiftData
 
 struct CocktailDetailView: View {
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.colorScheme) private var colorScheme
 
     private let cocktail: Cocktail
     @State private var draft: CocktailDraft
@@ -22,12 +21,12 @@ struct CocktailDetailView: View {
 
         ScrollView {
             VStack(spacing: 18) {
-                pictureSectionShowing
-                titleSectionShowing
-                propertiesPillShowing
-                ingredientsSectionShowing(regularIngredients)
-                garnishSectionShowing(garnishIngredients)
-                instructionsSectionShowing
+                imageSection
+                titleSection
+                propertiesPill
+                ingredientListCard(regularIngredients)
+                ingredientListCard(garnishIngredients, title: "Garnish", hideWhenEmpty: true)
+                notesCard
             }
             .padding(.horizontal)
             .padding(.bottom, 40)
@@ -50,14 +49,14 @@ struct CocktailDetailView: View {
             .presentationDetents([.large])
             .presentationDragIndicator(.visible)
         }
-        .background { gradientBackground }
+        .background { CocktailGradientBackground(backgroundColor: backgroundColor) }
         .toolbar { toolbarContent }
     }
 
     // MARK: - View Components
 
     @ViewBuilder
-    private var pictureSectionShowing: some View {
+    private var imageSection: some View {
         if draft.displayImage.isCustom {
             draft.displayImage.view(placeholder: draft.glass.imageNameFilled)
                 .scaledToFill()
@@ -76,7 +75,7 @@ struct CocktailDetailView: View {
     }
 
     @ViewBuilder
-    private var titleSectionShowing: some View {
+    private var titleSection: some View {
         VStack(spacing: 8) {
             Text(draft.name.isEmpty ? "Unnamed Cocktail" : draft.name)
                 .font(.system(size: 32, weight: .bold, design: .rounded))
@@ -102,7 +101,7 @@ struct CocktailDetailView: View {
     }
 
     @ViewBuilder
-    private var propertiesPillShowing: some View {
+    private var propertiesPill: some View {
         HStack(spacing: 0) {
             HStack(spacing: 6) {
                 Image(draft.glass.imageNameEmpty)
@@ -142,55 +141,24 @@ struct CocktailDetailView: View {
     }
 
     @ViewBuilder
-    private func ingredientsSectionShowing(_ ingredients: [RecipeIngredientDraft]) -> some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Ingredients")
-                .font(.title3.bold())
-                .fontDesign(.rounded)
-
-            Divider()
-
-            if !ingredients.isEmpty {
-                VStack(spacing: 16) {
-                    ForEach(ingredients) { ingredientRow(for: $0) }
-                }
-            } else {
-                Text("No ingredients provided.")
-                    .foregroundStyle(.secondary)
-            }
-        }
-        .padding(20)
-        .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
-    }
-
-    @ViewBuilder
-    private func garnishSectionShowing(_ garnishes: [RecipeIngredientDraft]) -> some View {
-        if !garnishes.isEmpty {
-            VStack(alignment: .leading, spacing: 16) {
-                Text("Garnish")
-                    .font(.title3.bold())
-                    .fontDesign(.rounded)
-
-                Divider()
-
-                VStack(spacing: 16) {
-                    ForEach(garnishes) { ingredientRow(for: $0) }
+    private func ingredientListCard(_ ingredients: [RecipeIngredientDraft], title: String = "Ingredients", hideWhenEmpty: Bool = false) -> some View {
+        if !hideWhenEmpty || !ingredients.isEmpty {
+            CocktailSectionCard(title: title) {
+                if !ingredients.isEmpty {
+                    VStack(spacing: 16) {
+                        ForEach(ingredients) { ingredientRow(for: $0) }
+                    }
+                } else {
+                    Text("No ingredients provided.")
+                        .foregroundStyle(.secondary)
                 }
             }
-            .padding(20)
-            .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
         }
     }
 
     @ViewBuilder
-    private var instructionsSectionShowing: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Notes")
-                .font(.title3.bold())
-                .fontDesign(.rounded)
-
-            Divider()
-
+    private var notesCard: some View {
+        CocktailSectionCard(title: "Notes") {
             if !draft.notes.isEmpty {
                 Text(draft.notes)
                     .lineSpacing(6)
@@ -199,40 +167,8 @@ struct CocktailDetailView: View {
                     .foregroundStyle(.secondary)
             }
         }
-        .padding(20)
-        .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
     
-    // MARK: - Background
-
-    @ViewBuilder
-    private var gradientBackground: some View {
-        ZStack {
-            Color(.systemBackground)
-
-            if let backgroundColor {
-                MeshGradient(
-                    width: 3,
-                    height: 3,
-                    points: [
-                        .init(0.0, 0.0), .init(0.5, 0.0), .init(1.0, 0.0),
-                        .init(0.0, 0.5), .init(0.7, 0.4), .init(1.0, 0.5),
-                        .init(0.0, 1.0), .init(0.5, 1.0), .init(1.0, 1.0)
-                    ],
-                    colors: [
-                        backgroundColor,                 backgroundColor.opacity(0.8), backgroundColor.opacity(0.5),
-                        backgroundColor.opacity(0.7),    backgroundColor.opacity(0.3), .clear,
-                        backgroundColor.opacity(0.2),    .clear,                       .clear
-                    ]
-                )
-                .saturation(1.9)
-                .blendMode(colorScheme == .dark ? .screen : .normal)
-            }
-        }
-        .ignoresSafeArea()
-        .animation(.easeInOut(duration: 0.5), value: backgroundColor)
-    }
-
     // MARK: - Toolbar
 
     @ToolbarContentBuilder
