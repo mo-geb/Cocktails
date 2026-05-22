@@ -163,6 +163,7 @@ struct RecipeLibrariesView: View {
                         .foregroundStyle(.tertiary)
                 }
             }
+            .contentShape(Rectangle())
             .padding(.horizontal, 16)
             .padding(.vertical, 14)
             .glassEffect()

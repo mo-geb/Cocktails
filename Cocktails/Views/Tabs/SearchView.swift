@@ -41,7 +41,7 @@ struct SearchView: View {
             VStack(spacing: 0) {
                 Picker("", selection: $selectedTab) {
                     ForEach(SearchTab.allCases, id: \.self) { tab in
-                        Text(tab.rawValue).tag(tab)
+                        Text(tab.localizedName).tag(tab)
                     }
                 }
                 .pickerStyle(.segmented)

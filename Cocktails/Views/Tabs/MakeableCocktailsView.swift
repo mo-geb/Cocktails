@@ -82,19 +82,24 @@ struct MakeableCocktailsView: View {
                 }
             }
             .sheet(item: $activeCocktailSheet) { sheet in
-                if case .view(let cocktail) = sheet {
+                switch sheet {
+                case .view(let cocktail):
                     NavigationStack {
                         CocktailDetailView(cocktail: cocktail)
                     }
                     .presentationDetents([.large])
                     .presentationDragIndicator(.visible)
+                case .edit(let cocktail):
+                    CocktailEditView(cocktail: cocktail)
+                case .new(let draft):
+                    CocktailEditView(draft: draft)
                 }
             }
         }
     }
 
     @ViewBuilder
-    private func section(title: String, @ViewBuilder content: () -> some View) -> some View {
+    private func section(title: LocalizedStringKey, @ViewBuilder content: () -> some View) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(title)
                 .font(.title3.bold())

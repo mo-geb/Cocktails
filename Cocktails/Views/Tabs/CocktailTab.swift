@@ -50,12 +50,13 @@ struct CocktailTab: View {
                     ForEach(groupedCocktails) { group in
                         VStack(alignment: .leading, spacing: 12) {
                             if appState.cocktailGrouping != .none {
-                                HStack(spacing: 4) {
+                                HStack(alignment: .firstTextBaseline, spacing: 4) {
                                     if let imageName = group.imageName {
                                         Image(imageName)
                                             .resizable()
                                             .scaledToFit()
                                             .frame(width: 28, height: 28)
+                                            .alignmentGuide(.firstTextBaseline) { $0[.bottom] }
                                     }
                                     Text(group.name)
                                 }
@@ -156,17 +157,12 @@ struct CocktailTab: View {
     private func groupKey(for cocktail: Cocktail) -> (name: String, imageName: String?) {
         switch appState.cocktailGrouping {
         case .none:      return ("", nil)
-        case .glass:     return (cocktail.glass.localizedName, cocktail.glass.imageNameEmpty)
         case .method:    return (cocktail.method.localizedName, cocktail.method.customImageName)
         case .source:    return (cocktail.source.localizedName, cocktail.source.imageName)
         case .favourite:
             return cocktail.isFavourite
                 ? (String(localized: "Favourites"), nil)
                 : (String(localized: "All Cocktails"), nil)
-        case .base:
-            let name = cocktail.baseGroup
-            let image = Cocktail.baseTypePriority.first { $0.localizedName == name }?.imageName
-            return (name, image)
         }
     }
 
@@ -175,12 +171,14 @@ struct CocktailTab: View {
         let groups = Dictionary(grouping: keyed) { $0.key.name }
         return groups
             .sorted { l, r in
-                if l.key == "No Base" { return false }
-                if r.key == "No Base" { return true }
+                if appState.cocktailGrouping == .favourite {
+                    if l.key == String(localized: "Favourites") { return true }
+                    if r.key == String(localized: "Favourites") { return false }
+                }
                 return l.key < r.key
             }
             .map { name, pairs in
-                CocktailGroup(name: name, imageName: pairs[0].key.imageName, items: pairs.map(\.cocktail))
+                CocktailGroup(name: name, imageName: pairs.first?.key.imageName, items: pairs.map(\.cocktail))
             }
     }
 }

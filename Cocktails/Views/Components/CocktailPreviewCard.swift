@@ -64,6 +64,7 @@ struct CocktailPreviewCard: View {
                     .foregroundStyle(isImported ? .secondary : (isSelected ? Color.accentColor : Color.primary.opacity(0.3)))
                     .padding(10)
             }
+            .contentShape(Rectangle())
             .frame(maxWidth: .infinity)
             .aspectRatio(0.85, contentMode: .fit)
             .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))

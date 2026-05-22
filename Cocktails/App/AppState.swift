@@ -16,8 +16,10 @@ final class AppState {
 
     var pendingImportURL: URL?
 
+    private static let cocktailGroupingKey = "cocktailGrouping"
+
     var cocktailGrouping: CocktailGrouping = .none {
-        didSet { UserDefaults.standard.set(cocktailGrouping.rawValue, forKey: "cocktailGrouping") }
+        didSet { UserDefaults.standard.set(cocktailGrouping.rawValue, forKey: Self.cocktailGroupingKey) }
     }
 
     var preferredSearchTab: SearchTab {
@@ -25,9 +27,12 @@ final class AppState {
     }
 
     init() {
-        if let raw = UserDefaults.standard.string(forKey: "cocktailGrouping"),
-           let stored = CocktailGrouping(rawValue: raw) {
-            _cocktailGrouping = stored
+        if let raw = UserDefaults.standard.string(forKey: Self.cocktailGroupingKey) {
+            if let stored = CocktailGrouping(rawValue: raw) {
+                _cocktailGrouping = stored
+            } else {
+                UserDefaults.standard.removeObject(forKey: Self.cocktailGroupingKey)
+            }
         }
     }
 }

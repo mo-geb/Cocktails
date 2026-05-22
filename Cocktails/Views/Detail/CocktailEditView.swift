@@ -201,7 +201,7 @@ struct CocktailEditView: View {
     }
 
     @ViewBuilder
-    private func ingredientListCard(title: String, role: IngredientRole) -> some View {
+    private func ingredientListCard(title: LocalizedStringKey, role: IngredientRole) -> some View {
         let roleIngredients = draft.ingredients.filter { $0.role == role }
 
         CocktailSectionCard {
@@ -305,7 +305,7 @@ struct CocktailEditView: View {
 
                     Picker("Unit", selection: item.unit) {
                         ForEach(MeasurementUnit.allCases) { unit in
-                            Text(unit.rawValue).tag(unit)
+                            Text(unit.localizedName).tag(unit)
                         }
                     }
                     .labelsHidden()

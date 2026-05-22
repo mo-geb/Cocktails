@@ -93,9 +93,11 @@ struct CocktailGridCell: View {
 
                 if cocktail.isFavourite {
                     Image(systemName: "star.fill")
-                        .font(.title)
+                        .font(.caption.bold())
                         .foregroundStyle(.yellow)
-                        .padding(12)
+                        .padding(7)
+                        .glassEffect(in: Circle())
+                        .padding(10)
                 }
 
                 if isSelecting {
@@ -167,6 +169,7 @@ func cocktailAddCard(name: String, action: @escaping () -> Void) -> some View {
             .padding(.horizontal, 10)
             .padding(.bottom, 14)
         }
+        .contentShape(Rectangle())
         .frame(maxWidth: .infinity)
         .aspectRatio(0.85, contentMode: .fit)
         .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))

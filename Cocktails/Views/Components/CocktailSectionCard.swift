@@ -16,7 +16,7 @@ struct CocktailSectionCard<Header: View, Content: View>: View {
 }
 
 extension CocktailSectionCard where Header == Text {
-    init(title: String, @ViewBuilder content: @escaping () -> Content) {
+    init(title: LocalizedStringKey, @ViewBuilder content: @escaping () -> Content) {
         self.header = { Text(title).font(.title3.bold()).fontDesign(.rounded) }
         self.content = content
     }

@@ -122,6 +122,7 @@ struct IngredientTab: View {
                     .font(.caption.bold())
                     .foregroundStyle(.tertiary)
             }
+            .contentShape(Rectangle())
             .padding(.horizontal, 16)
             .padding(.vertical, 14)
             .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))

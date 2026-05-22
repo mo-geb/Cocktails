@@ -81,16 +81,3 @@ extension Cocktail {
     }
 }
 
-extension Cocktail {
-    static let baseTypePriority: [IngredientType] = [.spirit, .liqueur, .fortifiedWine]
-
-    var baseGroup: String {
-        let coreTypes = (ingredients ?? [])
-            .filter { $0.role == .core }
-            .compactMap { $0.ingredient?.type }
-        for type in Self.baseTypePriority {
-            if coreTypes.contains(type) { return type.localizedName }
-        }
-        return "No Base"
-    }
-}

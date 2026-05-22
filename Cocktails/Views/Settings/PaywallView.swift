@@ -129,14 +129,14 @@ struct PaywallView: View {
 
     private var purchaseLabel: String {
         if let price = store.product?.displayPrice {
-            return "Unlock Unlimited · \(price)"
+            return String(localized: "Unlock Unlimited · \(price)", comment: "Paywall purchase button — price inserted by the OS")
         }
-        return "Unlock Unlimited"
+        return String(localized: "Unlock Unlimited", comment: "Paywall purchase button — no price available")
     }
 
     // MARK: - Helpers
 
-    private func featureRow(icon: String, color: Color, title: String, subtitle: String) -> some View {
+    private func featureRow(icon: String, color: Color, title: LocalizedStringKey, subtitle: LocalizedStringKey) -> some View {
         HStack(spacing: 16) {
             Image(systemName: icon)
                 .font(.system(size: 15, weight: .semibold))

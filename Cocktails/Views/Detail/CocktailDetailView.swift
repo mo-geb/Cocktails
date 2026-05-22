@@ -141,7 +141,7 @@ struct CocktailDetailView: View {
     }
 
     @ViewBuilder
-    private func ingredientListCard(_ ingredients: [RecipeIngredientDraft], title: String = "Ingredients", hideWhenEmpty: Bool = false) -> some View {
+    private func ingredientListCard(_ ingredients: [RecipeIngredientDraft], title: LocalizedStringKey = "Ingredients", hideWhenEmpty: Bool = false) -> some View {
         if !hideWhenEmpty || !ingredients.isEmpty {
             CocktailSectionCard(title: title) {
                 if !ingredients.isEmpty {
@@ -196,13 +196,13 @@ struct CocktailDetailView: View {
                 .frame(width: 30, height: 30)
 
             HStack(alignment: .center, spacing: 6) {
-                if let amount = ingredient.amount, amount > 0 {
-                    let text = ingredient.unit.displayText(for: amount)
-                    if !text.isEmpty {
-                        Text(text)
-                            .bold()
-                            .fontDesign(.rounded)
-                    }
+                let amountText = ingredient.unit == .fill
+                    ? ingredient.unit.displayText(for: 0)
+                    : ((ingredient.amount ?? 0) > 0 ? ingredient.unit.displayText(for: ingredient.amount ?? 0) : "")
+                if !amountText.isEmpty {
+                    Text(amountText)
+                        .bold()
+                        .fontDesign(.rounded)
                 }
                 VStack(alignment: .leading, spacing: 2) {
                     Text(ingredient.ingredient.localizedName)
