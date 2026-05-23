@@ -42,7 +42,7 @@ Cocktails/                      # Xcode project root
 │   ├── Models/                 # SwiftData @Model entities & temporary schemas
 │   ├── Enums/                  # Domain-specific enums (IngredientType, Glass, etc.)
 │   ├── Views/                  # SwiftUI user interface (tabs, components, details, settings)
-│   ├── Services/               # Core services (Importer, Transferable support, Extensions)
+│   ├── Services/               # Core services (Importer, Transferable, StoreManager, Extensions)
 │   ├── PreviewContent/         # Assets & test data utilized for Xcode Canvas Previews
 │   └── Resources/              # Localizations (.xcstrings), assets, StoreKit configuration, JSON recipes
 ├── Docs/                       # Project documentation and specifications
@@ -58,4 +58,4 @@ Cocktails/                      # Xcode project root
 
 ## Status
 
-Under active development. The paywall UI is in place but the StoreKit purchase flow and the 10-cocktail free-tier enforcement are not yet wired — this is the only remaining blocker before App Store submission. See `Docs/ARCHITECTURE.md` → "Known gaps" and the checklist in `Docs/AppStore/REVIEW_NOTES.md`.
+Under active development. The StoreKit purchase flow, free-tier enforcement, and paywall are fully wired. The remaining pre-submission item is filling in privacy nutrition labels in App Store Connect — see `Docs/ARCHITECTURE.md` → "Known gaps" and `Docs/AppStore/REVIEW_NOTES.md`.

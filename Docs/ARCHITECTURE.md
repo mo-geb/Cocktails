@@ -37,24 +37,32 @@ Helper extensions on `Cocktail` expose `coreIngredients`, `garnishIngredients`, 
 
 ## Domain enums
 
-Under `Cocktails/Enums/`. Each has a `localizedName` and, where relevant, an `imageName` mapping into the asset catalog.
+Under `Cocktails/Enums/`, grouped into subfolders:
 
+**`Cocktail/`**
 - `GlassType` — `rocks`, `highball`, `martini`, `flute`, `copperMug`, `hurricane`, `tiki`, `wine`, `shot`, `other`
 - `PreparationMethod` — `stir`, `shake`, `build`, `blend`, `roll`
 - `IceType` — `cubed`, `crushed`, `clearBlock`, `none`
 - `RecipeSource` — `custom`, `clutterfree`, `ebsInter2023`, `ibaUnforgettables`, `shared`
+
+**`Ingredient/`**
 - `IngredientRole` — `core`, `garnish`
 - `IngredientType` — `spirit`, `liqueur`, `fortifiedWine`, `syrup`, `juice`, `bitters`, `mixer`, `fruit`, `herb`, `spice`, `vegetable`, `other`
 - `MeasurementUnit` — `ml`, `oz`, `dash`, `bsp`, `piece`, `part`, `leaf`, `fill`, `none`
-- `CocktailGrouping` — `none`, `favourite`, `source`, `glass`, `method`, `base` (persisted to `UserDefaults`)
-- UI flow enums: `ActiveTab`, `SearchTab`, `ActiveCocktailSheet`, `ActiveIngredientSheet`, `DisplayImageSource`
+
+**`State/`** (UI flow enums)
+- `ActiveTab`, `SearchTab`, `ActiveCocktailSheet`, `ActiveIngredientSheet`, `CocktailGrouping` (persisted to `UserDefaults`)
+
+**Top-level**
+- `DisplayImageSource` — discriminated union used by the image-providing protocols
+- `GridColumns` — adaptive grid layout helper
 
 ## State management
 
 `AppState` is a single `@Observable` class living in `Cocktails/AppState.swift`. It holds:
 
 - `selectedTab` and a derived `preferredSearchTab` (remembers whether the user was on Cocktails or Ingredients before switching to Search)
-- sheet presentation state: `activeCocktailSheet`, `activeIngredientSheet`, `showSettings`
+- sheet presentation state: `activeCocktailSheet`, `activeIngredientSheet`, `showSettings`, `showPaywall`
 - deletion targets pending confirmation: `cocktailToDelete`, `ingredientToDelete`
 - `pendingImportURL` for inbound `.cocktail` files
 - `cocktailGrouping` persisted to `UserDefaults`
@@ -63,18 +71,20 @@ Views read it via `@Environment(AppState.self)` and `@Bindable`.
 
 ## Views
 
-Organized under `Cocktails/Views/` into four buckets:
+Organized under `Cocktails/Views/` into six buckets:
 
-- `Tabs/` — `CocktailTab`, `IngredientsTab`, `SearchView` (plus `MainTabView.swift` lives one level up)
-- `DetailedViews/` — `CocktailDetailView`, `CocktailEditView`, `IngredientEditView`, `IngredientPickerView`, `MakeableCocktailsView`
-- `Settings/` — `SettingsView`, `PaywallView`, `RecipeLibrariesView`, `LibraryCocktailsView`, `ReceivedRecipesView`
-- `Components/` — `CocktailGridCell`, `IngredientGridCell`, `CocktailPreviewCard`, `LibraryCard`, `CardPressStyle`, `IngredientImagePickerSheet`
+- `Main/` — `MainTabView`
+- `Tabs/` — `CocktailTab`, `IngredientTab`, `SearchView`, `MakeableCocktailsView`
+- `Detail/` — `CocktailDetailView`, `CocktailEditView`, `IngredientEditView`, `IngredientPickerView`
+- `Import/` — `RecipeLibrariesView`, `LibraryCocktailsView`, `ReceivedRecipesView`
+- `Settings/` — `SettingsView`, `PaywallView`
+- `Components/` — `CocktailGridCell`, `IngredientGridCell`, `CocktailPreviewCard`, `CocktailSectionCard`, `CocktailGradientBackground`, `LibraryCard`, `CardPressStyle`, `IngredientImagePickerSheet`, `ConfettiView`
 
 `#Preview(traits: .sampleData)` is used throughout; the trait pulls from `Helper/PreviewSampleData.swift`.
 
 ## Recipe import & sharing
 
-Both flows live in `Cocktails/Helper/`.
+Both flows live in `Cocktails/Services/`.
 
 **`CocktailImporter.swift`** decodes the bundled JSON files in `Resources/Recipes/` (`ingredients.json`, `ebsInter2023_cocktails.json`, `ibaUnforgettables_cocktails.json`, `clutterfree_cocktails.json`) into DTOs and merges them into the SwiftData store. Import is idempotent: existing cocktails and ingredients with matching identifiers are skipped, and unmapped ingredient references are returned in an `ImportResult` for surfacing in the UI.
 
@@ -86,13 +96,12 @@ The UTI is declared in `Info.plist` under `UTExportedTypeDeclarations` and `CFBu
 
 Two protocols (`CocktailImageProviding`, `IngredientImageProviding`) expose a `displayImage: DisplayImageSource`, returning either a user-supplied `UIImage`, a named asset from the catalog, or a placeholder. Custom user photos are stored as `Data` with `@Attribute(.externalStorage)` so they live outside the SQLite store. The detail view extracts a dominant color from the image for the gradient background.
 
-## Monetization (current state)
+## Monetization
 
 - `Product.storekit` defines a single non-consumable IAP, `com.mo.Cocktails.unlimited`, $3.99.
-- `PaywallView` renders the upgrade UI and references the 10-cocktail free-tier limit.
-- **Not yet wired**: there is no `StoreKit` purchase flow, no purchase-state listener, and no enforcement of the 10-cocktail cap anywhere in `CocktailEditView` or `CocktailImporter`. The paywall buttons are stubs.
-
-This is the single largest pre-submission gap.
+- `StoreManager` (`Cocktails/Services/StoreManager.swift`) is an `@Observable` service injected into the environment via `CocktailsApp`. It handles product loading, purchase, restore, and a `Transaction.updates` listener that keeps `isUnlimited` in sync.
+- `CocktailTab` enforces the 10-cocktail free cap via `store.canAddMore(currentCount:)` before presenting the new-cocktail sheet — hitting the limit redirects to `PaywallView` instead.
+- `PaywallView` is fully wired to `StoreManager`: it shows live pricing, drives the purchase call, and dismisses itself on successful unlock.
 
 ## Localization
 
@@ -102,7 +111,6 @@ Ingredient names are localized by a separate convention: `Ingredient.localizedNa
 
 ## Known gaps before submission
 
-1. **StoreKit purchase + restore wiring and free-tier enforcement** (see `PaywallView`). This is the only remaining blocker.
-2. Privacy nutrition labels need to be filled out in App Store Connect (see `Docs/AppStore/REVIEW_NOTES.md`).
+1. Privacy nutrition labels need to be filled out in App Store Connect (see `Docs/AppStore/REVIEW_NOTES.md`).
 
-Other items previously listed here (stray binary, unused entitlements, `.DS_Store` cruft) were resolved by the cleanup pass — see `Docs/PROJECT_STRUCTURE_REVIEW.md` for what was done. The `IPHONEOS_DEPLOYMENT_TARGET = 26.0` is intentional (matches the Xcode 26 / iOS 26 SDK the project was created against), not a blocker.
+The `IPHONEOS_DEPLOYMENT_TARGET = 26.0` is intentional (matches the Xcode 26 / iOS 26 SDK the project was created against), not a blocker.
