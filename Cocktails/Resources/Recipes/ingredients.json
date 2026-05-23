@@ -180,6 +180,11 @@
     "type": "mixer"
   },
   {
+    "id": "ginger_ale",
+    "name": "Ginger Ale",
+    "type": "mixer"
+  },
+  {
     "id": "brandy",
     "name": "Brandy",
     "type": "spirit"

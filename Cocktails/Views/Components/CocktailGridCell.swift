@@ -91,7 +91,7 @@ struct CocktailGridCell: View {
                     .padding(.bottom, 14)
                 }
 
-                if cocktail.isFavourite {
+                if cocktail.isFavourite && !isSelecting {
                     Image(systemName: "star.fill")
                         .font(.caption.bold())
                         .foregroundStyle(.yellow)

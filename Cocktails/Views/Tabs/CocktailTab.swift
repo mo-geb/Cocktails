@@ -49,21 +49,19 @@ struct CocktailTab: View {
                 VStack(alignment: .leading, spacing: 28) {
                     ForEach(groupedCocktails) { group in
                         VStack(alignment: .leading, spacing: 12) {
-                            if appState.cocktailGrouping != .none {
-                                HStack(alignment: .firstTextBaseline, spacing: 4) {
-                                    if let imageName = group.imageName {
-                                        Image(imageName)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 28, height: 28)
-                                            .alignmentGuide(.firstTextBaseline) { $0[.bottom] }
-                                    }
-                                    Text(group.name)
+                            HStack(alignment: .center, spacing: 4) {
+                                if let imageName = group.imageName {
+                                    Image(imageName)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 28, height: 28)
                                 }
-                                .font(.title3.bold())
-                                .fontDesign(.rounded)
-                                .padding(.horizontal)
+                                Text(group.name)
                             }
+                            .font(appState.cocktailGrouping == .none ? .subheadline.bold() : .title3.bold())
+                            .foregroundStyle(appState.cocktailGrouping == .none ? .secondary : .primary)
+                            .fontDesign(.rounded)
+                            .padding(.horizontal)
 
                             LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
                                 ForEach(group.items) { cocktail in
@@ -156,7 +154,7 @@ struct CocktailTab: View {
 
     private func groupKey(for cocktail: Cocktail) -> (name: String, imageName: String?) {
         switch appState.cocktailGrouping {
-        case .none:      return ("", nil)
+        case .none:      return (String(localized: "All Cocktails"), nil)
         case .method:    return (cocktail.method.localizedName, cocktail.method.customImageName)
         case .source:    return (cocktail.source.localizedName, cocktail.source.imageName)
         case .favourite:

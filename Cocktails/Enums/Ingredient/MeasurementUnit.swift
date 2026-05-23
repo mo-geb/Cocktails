@@ -20,7 +20,7 @@ enum MeasurementUnit: String, Codable, CaseIterable, Identifiable {
     }
 
     func displayText(for value: Double) -> String {
-        if self == .fill { return localizedName.lowercased() }
+        if self == .fill { return localizedName }
         if self == .none { return value == 0 ? "" : formatAmount(value) }
 
         let number = value.truncatingRemainder(dividingBy: 1) == 0 ? "\(Int(value))" : formatAmount(value)

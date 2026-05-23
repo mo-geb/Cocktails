@@ -176,14 +176,28 @@ struct CocktailDetailView: View {
         ToolbarItem(placement: .cancellationAction) {
             Button("Close", systemImage: "chevron.down") { dismiss() }
         }
+        
+        ToolbarItem(placement: .automatic) {
+            Button {
+                cocktail.isFavourite.toggle()
+            } label: {
+                Label(
+                    cocktail.isFavourite ? "Remove from Favourites" : "Add to Favourites",
+                    systemImage: cocktail.isFavourite ? "star.fill" : "star"
+                )
+            }
+            .foregroundStyle(cocktail.isFavourite ? .yellow : .primary)
+            .sensoryFeedback(.impact(weight: .light), trigger: cocktail.isFavourite)
+        }
+        
         ToolbarItem(placement: .automatic) {
             if let shareItem = CocktailTransferable(cocktail: cocktail) {
                 ShareLink(item: shareItem, preview: SharePreview(cocktail.name, image: Image(cocktail.glass.imageNameEmpty)))
             }
         }
-        
+
         ToolbarSpacer()
-        
+
         ToolbarItem(placement: .confirmationAction) {
             Button("Edit", systemImage: "pencil") { showEdit = true }
         }
