@@ -804,9 +804,6 @@
     "0" : {
       "shouldTranslate" : false
     },
-    "A curated selection of approachable cocktails using a minimal pantry of ingredients." : {
-      "comment" : "Recipe source description — ClutterFree"
-    },
     "Add all available ingredients" : {
       "localizations" : {
         "ar" : {
@@ -4762,6 +4759,89 @@
         }
       }
     },
+    "Favourite recipes and personal variations. Where a recipe comes from the web, the source is linked in the notes." : {
+      "comment" : "Recipe source description — ClutterFree",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الوصفات المفضلة والتعديلات الشخصية. إذا كانت الوصفة من الإنترنت، يتم ربط المصدر في الملاحظات."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lieblingsrezepte und persönliche Variationen. Wenn ein Rezept aus dem Web stammt, ist die Quelle in den Notizen verlinkt."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recetas favoritas y variaciones personales. Si una receta viene de la web, la fuente está enlazada en las notas."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recettes préférées et variations personnelles. Si une recette vient du web, la source est indiquée dans les notes."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ricette preferite e variazioni personali. Se una ricetta proviene dal web, la fonte è collegata nelle note."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お気に入りのレシピと個人的なバリエーション。レシピがウェブからのものであれば、ノートにソースがリンクされています。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "즐겨찾는 레시피와 개인 변형. 웹에서 가져온 레시피는 노트에 출처가 링크되어 있어."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favoriete recepten en persoonlijke variaties. Als een recept van het web komt, is de bron in de notities gelinkt."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Receitas favoritas e variações pessoais. Quando uma receita vem da web, a fonte está vinculada nas notas."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obľúbené recepty a osobné variácie. Ak recept pochádza z webu, zdroj je uvedený v poznámkach."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favoritrecept och personliga variationer. Om ett recept kommer från webben, är källan länkad i noterna."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Улюблені рецепти та особисті варіації. Якщо рецепт з вебу, джерело вказано в нотатках."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最爱的食谱和个人变体。如果食谱来自网络，来源会在备注中链接。"
+          }
+        }
+      }
+    },
     "Favourites" : {
       "localizations" : {
         "ar" : {
@@ -5673,7 +5753,87 @@
       "shouldTranslate" : false
     },
     "IBA Unforgettables are a curated list of timeless, classic cocktail recipes established by the International Bartenders Association." : {
-      "comment" : "Recipe source description — IBA Unforgettables"
+      "comment" : "Recipe source description — IBA Unforgettables",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IBA Unforgettables هي قائمة مختارة من وصفات الكوكتيل الكلاسيكية الخالدة التي أنشأتها جمعية السقاة الدولية."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IBA Unforgettables sind eine kuratierte Liste zeitloser, klassischer Cocktailrezepte, erstellt von der International Bartenders Association."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IBA Unforgettables son una lista seleccionada de recetas de cócteles clásicos y atemporales establecida por la Asociación Internacional de Bartenders."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les IBA Unforgettables sont une liste de recettes de cocktails classiques et intemporelles établie par l'International Bartenders Association."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gli IBA Unforgettables sono una lista curata di ricette di cocktail classici e senza tempo stabilita dall'International Bartenders Association."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IBA Unforgettablesは、国際バーテンダー協会によって確立された、時代を超えたクラシックなカクテルレシピの厳選リストです。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IBA Unforgettables는 국제 바텐더 협회가 선정한 시대를 초월한 클래식 칵테일 레시피 목록이야."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IBA Unforgettables zijn een samengestelde lijst van tijdloze, klassieke cocktailrecepten opgesteld door de International Bartenders Association."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IBA Unforgettables são uma lista selecionada de receitas de coquetéis clássicos e atemporais estabelecida pela International Bartenders Association."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IBA Unforgettables sú vybraný zoznam nadčasových, klasických koktailových receptov vytvorený Medzinárodnou asociáciou barmanov."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IBA Unforgettables är en utvald lista över tidlösa, klassiska cocktailrecept etablerade av International Bartenders Association."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IBA Unforgettables — це добірка вічних класичних коктейлів, встановлена Міжнародною асоціацією барменів."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IBA Unforgettables 是国际调酒师协会精选的永恒经典鸡尾酒配方列表。"
+          }
+        }
+      }
     },
     "Import" : {
       "localizations" : {
@@ -5835,88 +5995,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "导入 %@"
-          }
-        }
-      }
-    },
-    "Import All" : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "استيراد الكل"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alles importieren"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Importar Todo"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tout importer"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Importa Tutto"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "すべてをインポート"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "모두 가져오기"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alles importeren"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Importar Tudo"
-          }
-        },
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Importovať všetko"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Importera alla"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Імпортувати все"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "导入全部"
           }
         }
       }
@@ -22264,7 +22342,87 @@
       }
     },
     "The European Bartender School is globally recognised for providing top-quality bartender courses designed by the world-leading experts. Their International Bartender Course includes learning these 66 cocktails by heart." : {
-      "comment" : "Recipe source description — EBS"
+      "comment" : "Recipe source description — EBS",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مدرسة السقاة الأوروبية معترف بها عالميًا لتقديم دورات سقاة عالية الجودة صممها خبراء عالميون. تشمل دورتهم الدولية تعلم هذه الكوكتيلات الـ66 عن ظهر قلب."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die European Bartender School ist weltweit anerkannt für erstklassige Barkeeper-Kurse, entworfen von führenden Experten. Ihr International Bartender Course umfasst das Auswendiglernen dieser 66 Cocktails."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La European Bartender School es reconocida globalmente por ofrecer cursos de bartender de alta calidad diseñados por expertos líderes mundiales. Su Curso Internacional de Bartender incluye aprender estos 66 cócteles de memoria."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'École Européenne de Barman est reconnue mondialement pour ses cours de barman de haute qualité conçus par des experts de renommée mondiale. Leur Cours International de Barman inclut l'apprentissage par cœur de ces 66 cocktails."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La European Bartender School è riconosciuta a livello globale per offrire corsi di bartender di alta qualità progettati dai migliori esperti del mondo. Il loro Corso Internazionale di Bartender include l'apprendimento a memoria di questi 66 cocktail."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ヨーロピアンバーテンダースクールは、世界トップクラスの専門家によって設計された高品質なバーテンダーコースを提供することで世界的に認められています。彼らの国際バーテンダーコースでは、これら66のカクテルを暗記することが含まれています。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "유럽 바텐더 학교는 세계 최고의 전문가들이 설계한 최고 품질의 바텐더 과정을 제공하는 것으로 전 세계적으로 인정받고 있어. 그들의 국제 바텐더 과정에는 이 66가지 칵테일을 암기하는 것이 포함돼."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De European Bartender School is wereldwijd erkend voor het aanbieden van topkwaliteit bartendercursussen ontworpen door wereldleidende experts. Hun International Bartender Course omvat het uit het hoofd leren van deze 66 cocktails."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A European Bartender School é reconhecida globalmente por oferecer cursos de bartender de alta qualidade, projetados pelos principais especialistas do mundo. O curso de Bartender Internacional inclui aprender de cor esses 66 coquetéis."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Európska škola barmanov je celosvetovo uznávaná pre poskytovanie špičkových kurzov pre barmanov navrhnutých poprednými odborníkmi. Ich Medzinárodný kurz barmanov zahŕňa naučenie sa týchto 66 koktailov naspamäť."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "European Bartender School är globalt erkänd för att erbjuda bartenderkurser av högsta kvalitet designade av världsledande experter. Deras International Bartender Course inkluderar att lära sig dessa 66 cocktails utantill."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Європейська школа барменів відома у світі завдяки якісним курсам барменів, розробленим провідними експертами. Їхній Міжнародний курс барменів включає вивчення цих 66 коктейлів напам'ять."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "欧洲调酒师学校因提供由世界顶级专家设计的高质量调酒师课程而享誉全球。他们的国际调酒师课程包括熟记这66种鸡尾酒。"
+          }
+        }
+      }
     },
     "Tiki" : {
       "comment" : "Glass type",

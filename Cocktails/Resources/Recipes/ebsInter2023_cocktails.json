@@ -961,11 +961,8 @@
     "garnishes": [
       {
         "ingredientId": "lemon_zest",
-        "amount": 1.0
-      },
-      {
-        "ingredientId": "olive",
-        "amount": 1.0
+        "amount": 1.0,
+        "note": "Or Olive"
       }
     ],
     "notes": "Method: Stir & Julep Strain\nGlass: Chilled Martini / Coupe\n\nVariations:\n• Naked — Only Gin\n• Dirty — 2 Bar Spoons of Olive Brine\n• Wet — More Dry Vermouth\n• Gibson — Garnish with Pearl Onions"
@@ -991,11 +988,8 @@
     "garnishes": [
       {
         "ingredientId": "lemon_wedge",
-        "amount": 1.0
-      },
-      {
-        "ingredientId": "lime_wedge",
-        "amount": 1.0
+        "amount": 1.0,
+        "note": "Or Lime Wedge, or none"
       }
     ],
     "notes": ""
@@ -1898,33 +1892,35 @@
       {
         "ingredientId": "bloody_mary_pre_batch",
         "amount": 120.0,
-        "unit": "ml",
-        "note": "Bloody Mary Pre-Batch"
+        "unit": "ml"
       },
       {
         "ingredientId": "worcestershire_sauce",
         "amount": 30.0,
-        "unit": "ml"
+        "unit": "ml",
+        "note": "For 700 ml Pre-Batch"
       },
       {
         "ingredientId": "tabasco",
         "amount": 10.0,
-        "unit": "ml"
+        "unit": "ml",
+        "note": "For 700 ml Pre-Batch"
       },
       {
         "ingredientId": "black_pepper",
         "amount": 2.0,
-        "unit": "ml"
+        "note": "grams for 700 ml Pre-Batch"
       },
       {
         "ingredientId": "celery_salt",
         "amount": 4.0,
-        "unit": "ml"
+        "note": "grams for 700 ml Pre-Batch"
       },
       {
         "ingredientId": "tomato_juice",
         "amount": 0.0,
-        "unit": "fill"
+        "unit": "fill",
+        "note": "For 700 ml Pre-Batch"
       }
     ],
     "garnishes": [

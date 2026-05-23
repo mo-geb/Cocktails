@@ -40,7 +40,7 @@
         "amount": 0.5
       }
     ],
-    "notes": "Method: Shake & Strain"
+    "notes": "Method: Shake & Strain\n\nCredits to auslauraskueche.de for this recipe!"
   },
   {
     "name": "Blue Hawaii",
@@ -88,6 +88,98 @@
         "amount": 1.0
       }
     ],
-    "notes": "Method: Shake & Strain"
+    "notes": "Method: Shake & Strain\n\nCredits to liquor.com for this recipe!"
+  },
+  {
+    "name": "Piña Colada",
+    "imageName": "pina_colada",
+    "glass": "hurricane",
+    "method": "shake",
+    "ice": "cubed",
+    "ingredients": [
+      {
+        "ingredientId": "rum",
+        "amount": 20.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "coconut_liqueur",
+        "amount": 20.0,
+        "unit": "ml",
+        "note": "Batida de Coco"
+      },
+      {
+        "ingredientId": "coconut_cream",
+        "amount": 20.0,
+        "unit": "ml",
+        "note": "Coco Lopez or Coco Real"
+      },
+      {
+        "ingredientId": "pineapple_juice",
+        "amount": 100.0,
+        "unit": "ml"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "pineapple_wedge",
+        "amount": 1.0
+      }
+    ],
+    "notes": "Method: Shake & Strain\n\nCredits to liquor.com for this recipe!"
+  },
+  {
+    "name": "Pornstar Martini",
+    "imageName": "pornstar_martini",
+    "glass": "martini",
+    "method": "shake",
+    "ice": "none",
+    "ingredients": [
+      {
+        "ingredientId": "passionfruit",
+        "amount": 0.5
+      },
+      {
+        "ingredientId": "vodka",
+        "amount": 50.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "triple_sec",
+        "amount": 15.0,
+        "unit": "ml",
+        "note": "Cointreau"
+      },
+      {
+        "ingredientId": "lime_juice",
+        "amount": 20.0,
+        "unit": "ml",
+        "note": "Fresh"
+      },
+      {
+        "ingredientId": "passionfruit_puree",
+        "amount": 15.0,
+        "unit": "ml"
+      },
+      {
+        "ingredientId": "vanilla_syrup",
+        "amount": 15.0,
+        "unit": "ml",
+        "note": "Vanilla bean simple syrup"
+      }
+    ],
+    "garnishes": [
+      {
+        "ingredientId": "passionfruit",
+        "amount": 0.5
+      },
+      {
+        "ingredientId": "champagne",
+        "amount": 0.0,
+        "unit": "none",
+        "note": "Shot on the side"
+      }
+    ],
+    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe"
   }
 ]

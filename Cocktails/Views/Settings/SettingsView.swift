@@ -45,9 +45,6 @@ struct SettingsView: View {
             }
             .sheet(isPresented: $showPaywall) { PaywallView() }
             .overlay { if celebrate { ConfettiView() } }
-            .onChange(of: store.isUnlimited) { _, unlimited in
-                if unlimited { celebrate = true }
-            }
             .navigationTitle("Settings")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
@@ -88,7 +85,15 @@ struct SettingsView: View {
                     Divider().padding(.leading, 62)
                     
                     Button {
-                        Task { await store.restore() }
+                        Task {
+                            let wasUnlimited = store.isUnlimited
+                            await store.restore()
+                            if !wasUnlimited && store.isUnlimited {
+                                celebrate = true
+                                try? await Task.sleep(for: .seconds(3.5))
+                                celebrate = false
+                            }
+                        }
                     } label: {
                         row(icon: "arrow.clockwise", color: .gray,
                             title: "Restore Purchases",

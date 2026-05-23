@@ -35,7 +35,7 @@ struct MakeableCocktailsView: View {
                     )
                 } else {
                     ScrollView {
-                        VStack(alignment: .leading, spacing: 28) {
+                        LazyVStack(alignment: .leading, spacing: 28) {
                             if !makeableCocktails.isEmpty {
                                 section(title: "Ready to make") {
                                     LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {

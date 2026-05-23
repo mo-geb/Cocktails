@@ -46,7 +46,7 @@ struct CocktailTab: View {
             )
         } else {
             ScrollView {
-                VStack(alignment: .leading, spacing: 28) {
+                LazyVStack(alignment: .leading, spacing: 28) {
                     ForEach(groupedCocktails) { group in
                         VStack(alignment: .leading, spacing: 12) {
                             HStack(alignment: .center, spacing: 4) {

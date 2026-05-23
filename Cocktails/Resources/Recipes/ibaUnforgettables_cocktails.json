@@ -384,12 +384,7 @@
       {
         "ingredientId": "lemon_zest",
         "amount": 1.0,
-        "note": "Or green olive"
-      },
-      {
-        "ingredientId": "olive",
-        "amount": 1.0,
-        "note": "Optional"
+        "note": "Or Olive"
       }
     ],
     "notes": "Method: Stir & Strain\nGlass: Chilled Martini"
@@ -506,7 +501,7 @@
         "note": "Maraschino"
       }
     ],
-    "notes": "Method: Build & Stir\nGlass: Highball"
+    "notes": "Method: Build & Stir"
   },
   {
     "name": "Last Word",
@@ -805,7 +800,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Method: Build\nGlass: Small Tumbler or Terracotta"
+    "notes": "Glass: Small Tumbler or Terracotta"
   },
   {
     "name": "Porto Flip",
@@ -895,7 +890,7 @@
         "unit": "fill"
       }
     ],
-    "notes": "Method: Shake hard (2 min with ice, 1 min dry), top with soda\nGlass: Highball"
+    "notes": "Method: Shake hard (2 min with ice, 1 min dry), top with soda"
   },
   {
     "name": "Remember the Maine",

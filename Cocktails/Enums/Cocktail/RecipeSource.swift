@@ -37,7 +37,7 @@ enum RecipeSource: String, Codable, CaseIterable, Identifiable {
         case .ebsInter2023:
             return String(localized: "The European Bartender School is globally recognised for providing top-quality bartender courses designed by the world-leading experts. Their International Bartender Course includes learning these 66 cocktails by heart.", comment: "Recipe source description — EBS")
         case .clutterfree:
-            return String(localized: "A curated selection of approachable cocktails using a minimal pantry of ingredients.", comment: "Recipe source description — ClutterFree")
+            return String(localized: "Favourite recipes and personal variations. Where a recipe comes from the web, the source is linked in the notes.", comment: "Recipe source description — ClutterFree")
         case .ibaUnforgettables:
             return String(localized: "IBA Unforgettables are a curated list of timeless, classic cocktail recipes established by the International Bartenders Association.", comment: "Recipe source description — IBA Unforgettables")
         case .custom, .shared:
