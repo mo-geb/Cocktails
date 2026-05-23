@@ -90,7 +90,7 @@ struct IngredientPickerView: View {
             pendingName = searchText.trimmingCharacters(in: .whitespaces)
             showIngredientEdit = true
         } label: {
-            ingredientAddCellLabel(name: searchText.trimmingCharacters(in: .whitespaces))
+            addIngredientCell(name: searchText.trimmingCharacters(in: .whitespaces))
         }
         .buttonStyle(.plain)
     }

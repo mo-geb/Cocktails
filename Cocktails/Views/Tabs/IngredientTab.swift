@@ -7,6 +7,7 @@ struct IngredientTab: View {
     @Query(sort: \Ingredient.name) private var ingredients: [Ingredient]
     @Query private var cocktails: [Cocktail]
     @State private var showMakeableCocktails = false
+    @State private var selectAllHapticTrigger = false
     
     private var groupedIngredients: [(IngredientType, [Ingredient])] {
         ingredients
@@ -28,6 +29,7 @@ struct IngredientTab: View {
                 .navigationTitle("Ingredients")
                 .toolbar { toolbarContent }
                 .sheet(isPresented: $showMakeableCocktails) { MakeableCocktailsView() }
+                .sensoryFeedback(.impact(weight: .medium), trigger: selectAllHapticTrigger)
         }
     }
     
@@ -82,7 +84,7 @@ struct IngredientTab: View {
                 Button {
                     let newValue = !allStocked
                     for ingredient in ingredients { ingredient.isStocked = newValue }
-                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                    selectAllHapticTrigger.toggle()
                 } label: {
                     Label(allStocked ? "Deselect All" : "Select All",
                           systemImage: allStocked ? "minus.circle" : "checkmark.circle")

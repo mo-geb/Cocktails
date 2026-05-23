@@ -9,7 +9,7 @@ struct CocktailEditView: View {
     @State private var draft: CocktailDraft
     @State private var backgroundColor: Color?
     @State private var photoItem: PhotosPickerItem?
-    @State private var ingredientPickerTarget: IngredientPickerTarget?
+    @State private var ingredientPickerIndex: Int?
     @State private var showDeleteConfirmation = false
     @State private var saveHapticTrigger = false
 
@@ -54,13 +54,18 @@ struct CocktailEditView: View {
         .onChange(of: draft.imageData) { updateBackground() }
         .onChange(of: photoItem) { loadPhoto() }
         .onAppear { updateBackground() }
-        .sheet(item: $ingredientPickerTarget) { target in
-            IngredientPickerView(
-                selection: Binding(
-                    get: { draft.ingredients[target.index].ingredient },
-                    set: { draft.ingredients[target.index].ingredient = $0 }
+        .sheet(isPresented: Binding(
+            get: { ingredientPickerIndex != nil },
+            set: { if !$0 { ingredientPickerIndex = nil } }
+        )) {
+            if let index = ingredientPickerIndex {
+                IngredientPickerView(
+                    selection: Binding(
+                        get: { draft.ingredients[index].ingredient },
+                        set: { draft.ingredients[index].ingredient = $0 }
+                    )
                 )
-            )
+            }
         }
     }
 
@@ -245,7 +250,7 @@ struct CocktailEditView: View {
             let isEmpty = ingredient.ingredient.name.isEmpty
             Button {
                 if let index = draft.ingredients.firstIndex(where: { $0.id == ingredient.id }) {
-                    ingredientPickerTarget = IngredientPickerTarget(index: index)
+                    ingredientPickerIndex = index
                 }
             } label: {
                 if isEmpty {
@@ -271,7 +276,7 @@ struct CocktailEditView: View {
                 HStack {
                     Button {
                         if let index = draft.ingredients.firstIndex(where: { $0.id == ingredient.id }) {
-                            ingredientPickerTarget = IngredientPickerTarget(index: index)
+                            ingredientPickerIndex = index
                         }
                     } label: {
                         Text(isEmpty ? "Select ingredient…" : ingredient.ingredient.localizedName)
@@ -466,13 +471,6 @@ struct CocktailEditView: View {
         modelContext.insert(ingredient)
         return ingredient
     }
-}
-
-// MARK: - Supporting Types
-
-private struct IngredientPickerTarget: Identifiable {
-    let id = UUID()
-    let index: Int
 }
 
 #Preview(traits: .sampleData) {

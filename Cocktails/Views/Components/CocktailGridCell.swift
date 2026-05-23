@@ -146,7 +146,7 @@ struct CocktailGridCell: View {
     }
 }
 
-func cocktailAddCard(name: String, action: @escaping () -> Void) -> some View {
+func addCocktailCell(name: String, action: @escaping () -> Void) -> some View {
     Button(action: action) {
         VStack(spacing: 0) {
             Spacer()
@@ -192,7 +192,7 @@ func cocktailAddCard(name: String, action: @escaping () -> Void) -> some View {
                 footerLabel: "Missing: Kahlúa",
                 onDelete: {}
             ) {}
-            cocktailAddCard(name: "New Cocktail") {}
+            addCocktailCell(name: "New Cocktail") {}
         }
         .padding()
     }

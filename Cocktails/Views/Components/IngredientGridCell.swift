@@ -56,7 +56,7 @@ struct IngredientGridCell: View {
     }
 }
 
-func ingredientAddCellLabel(name: String) -> some View {
+func addIngredientCell(name: String) -> some View {
     VStack(spacing: 0) {
         Image(systemName: "plus.circle.fill")
             .resizable()
@@ -91,7 +91,7 @@ func ingredientAddCellLabel(name: String) -> some View {
             ForEach(ingredients) { ingredient in
                 IngredientGridCell(ingredient: ingredient)
             }
-            ingredientAddCellLabel(name: "New")
+            addIngredientCell(name: "New")
         }
         .padding()
     }

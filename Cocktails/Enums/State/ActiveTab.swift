@@ -1,4 +1,4 @@
 enum ActiveTab {
-    case cocktails, ingredients, search, settings, debug
+    case cocktails, ingredients, search
 }
 

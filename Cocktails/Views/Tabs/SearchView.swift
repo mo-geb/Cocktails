@@ -91,7 +91,7 @@ struct SearchView: View {
                     }
                 }
                 if showCocktailSuggestion {
-                    cocktailAddCard(name: query) {
+                    addCocktailCell(name: query) {
                         guard store.canAddMore(currentCount: cocktails.count) else {
                             appState.showPaywall = true
                             return
@@ -155,7 +155,7 @@ struct SearchView: View {
                     Button {
                         appState.activeIngredientSheet = .addWithName(query)
                     } label: {
-                        ingredientAddCellLabel(name: query)
+                        addIngredientCell(name: query)
                     }
                     .buttonStyle(.plain)
                 }
