@@ -58,8 +58,7 @@ struct CocktailTab: View {
                                 }
                                 Text(group.name)
                             }
-                            .font(appState.cocktailGrouping == .none ? .subheadline.bold() : .title3.bold())
-                            .foregroundStyle(appState.cocktailGrouping == .none ? .secondary : .primary)
+                            .font(.title3.bold())
                             .fontDesign(.rounded)
                             .padding(.horizontal)
 
@@ -154,13 +153,13 @@ struct CocktailTab: View {
 
     private func groupKey(for cocktail: Cocktail) -> (name: String, imageName: String?) {
         switch appState.cocktailGrouping {
-        case .none:      return (String(localized: "All Cocktails"), nil)
+        case .none:      return (String(localized: "All Cocktails"), "Glass/Empty/martini")
         case .method:    return (cocktail.method.localizedName, cocktail.method.customImageName)
         case .source:    return (cocktail.source.localizedName, cocktail.source.imageName)
         case .favourite:
             return cocktail.isFavourite
-                ? (String(localized: "Favourites"), nil)
-                : (String(localized: "All Cocktails"), nil)
+                ? (String(localized: "Favourites"), "Other/Favourite")
+                : (String(localized: "All Cocktails"), "Glass/Empty/martini")
         }
     }
 

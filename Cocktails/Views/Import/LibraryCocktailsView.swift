@@ -25,6 +25,8 @@ struct LibraryCocktailsView: View {
 
     var body: some View {
         ScrollView {
+            libraryHeader
+
             LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
                 ForEach(cocktails, id: \.name) { cocktail in
                     CocktailPreviewCard(
@@ -80,32 +82,64 @@ struct LibraryCocktailsView: View {
         }
     }
 
+    // MARK: - Header
+
+    @ViewBuilder
+    private var libraryHeader: some View {
+        let description = source.localizedDescription
+        if !description.isEmpty || source.sourceURL != nil {
+            HStack(alignment: .center, spacing: 14) {
+                Image(systemName: "info.circle.fill")
+                    .font(.title2)
+                    .foregroundStyle(.white)
+                    .frame(width: 44, height: 44)
+                    .background(Color.accentColor.gradient)
+                    .clipShape(Circle())
+
+                VStack(alignment: .leading, spacing: 4) {
+                    if !description.isEmpty {
+                        Text(description)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    if let url = source.sourceURL {
+                        Link(destination: url) {
+                            HStack(spacing: 4) {
+                                Image(systemName: "link")
+                                Text(url.host ?? String(localized: "Source"))
+                            }
+                            .font(.caption.bold())
+                            .fontDesign(.rounded)
+                        }
+                    }
+                }
+
+                Spacer(minLength: 0)
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 14)
+            .glassEffect()
+            .padding(.horizontal)
+            .padding(.top, 12)
+            .padding(.bottom, 4)
+        }
+    }
+
     // MARK: - Bottom bar
 
     private var bottomBar: some View {
-        HStack(spacing: 12) {
-            Button {
-                performImport(names: Array(selected))
-            } label: {
-                Text(selected.isEmpty ? "Import Selected" : "Import Selected (\(selected.count))")
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.8)
-                    .frame(maxWidth: .infinity)
-            }
-            .buttonStyle(.bordered)
-            .controlSize(.large)
-            .disabled(selected.isEmpty || isImporting)
-
-            Button {
-                performImport(names: importable.map(\.name))
-            } label: {
-                Text("Import All")
-                    .frame(maxWidth: .infinity)
-            }
-            .buttonStyle(.borderedProminent)
-            .controlSize(.large)
-            .disabled(importable.isEmpty || isImporting)
+        Button {
+            performImport(names: Array(selected))
+        } label: {
+            Text(selected.isEmpty ? "Import Selected" : "Import Selected (\(selected.count))")
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+                .frame(maxWidth: .infinity)
         }
+        .buttonStyle(.borderedProminent)
+        .controlSize(.large)
+        .disabled(selected.isEmpty || isImporting)
         .padding(.horizontal)
         .padding(.vertical, 12)
         .background(.bar)
@@ -146,9 +180,16 @@ struct LibraryCocktailsView: View {
     }
 }
 
-#Preview(traits: .sampleData) {
+#Preview("EBS", traits: .sampleData) {
     NavigationStack {
         LibraryCocktailsView(source: .ebsInter2023)
+            .environment(StoreManager())
+    }
+}
+
+#Preview("ClutterFree", traits: .sampleData) {
+    NavigationStack {
+        LibraryCocktailsView(source: .clutterfree)
             .environment(StoreManager())
     }
 }

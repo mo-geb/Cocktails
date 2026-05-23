@@ -169,7 +169,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nPink Lady\nAdd 1 dash of Grenadine"
+    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nVariations:\n• Pink Lady — Add 1 dash of Grenadine"
   },
   {
     "name": "Dark & Stormy",
@@ -202,7 +202,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Method: Build & Float\n\nUse Goslings Black Rum for original recipe\n\nFidel Castro\nBuild and fill with Ginger Ale"
+    "notes": "Method: Build & Float\n\nVariations:\n• Use Goslings Black Rum for original recipe\n• Fidel Castro — Build and fill with Ginger Ale"
   },
   {
     "name": "Last Word",
@@ -278,7 +278,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nOn The Rocks\nServed in a rocks glass with cubed ice"
+    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nVariations:\n• On The Rocks — Served in a rocks glass with cubed ice"
   },
   {
     "name": "Lynchburg Lemonade",
@@ -357,7 +357,7 @@
         "unit": "ml"
       }
     ],
-    "notes": "Method: Shake & Strain\n\nReplace Milk with Cream or Half & Half\n\nOrgasm\nNo Vodka"
+    "notes": "Method: Shake & Strain\n\nVariations:\n• Replace Milk with Cream or Half & Half\n• Orgasm — No Vodka"
   },
   {
     "name": "Black Russian",
@@ -479,7 +479,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Method: Shake & Strain\nGlass: Highball, Tiki Mug\n\nAdd falernum and garnish with a cinnamon stick"
+    "notes": "Method: Shake & Strain\nGlass: Highball, Tiki Mug\n\nVariations:\n• Add falernum and garnish with a cinnamon stick"
   },
   {
     "name": "French 75",
@@ -541,7 +541,7 @@
         "unit": "fill"
       }
     ],
-    "notes": "Replace Milk with Cream or Half and Half\n\nColorado Bulldog\nTop with Coca Cola"
+    "notes": "Variations:\n• Replace Milk with Cream or Half and Half\n• Colorado Bulldog — Top with Coca Cola"
   },
   {
     "name": "French Martini",
@@ -572,7 +572,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nMuddle fresh pineapple, pineapple leaf garnish"
+    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nVariations:\n• Muddle fresh pineapple, pineapple leaf garnish"
   },
   {
     "name": "Clover Club",
@@ -775,7 +775,7 @@
         "unit": "fill"
       }
     ],
-    "notes": "Method: Build & Stir Gently\nGlass: Champagne Flute\n\nRossini\nReplace puree & liqueur with strawberry puree and liqueur"
+    "notes": "Method: Build & Stir Gently\nGlass: Champagne Flute\n\nVariations:\n• Rossini — Replace puree & liqueur with strawberry puree and liqueur"
   },
   {
     "name": "Cosmopolitan",
@@ -814,7 +814,7 @@
         "note": "Flamed"
       }
     ],
-    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nFlamed orange zest"
+    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nVariations:\n• Flamed orange zest"
   },
   {
     "name": "Long Island Iced Tea",
@@ -873,7 +873,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Method: Shake & Strain\n\nLong Beach Iced Tea\nReplace Coca Cola with Cranberry Juice\n\nBeverly Hills Iced Tea\nReplace Coca Cola with Champagne"
+    "notes": "Method: Shake & Strain\n\nVariations:\n• Long Beach Iced Tea — Replace Coca Cola with Cranberry Juice\n• Beverly Hills Iced Tea — Replace Coca Cola with Champagne"
   },
   {
     "name": "Singapore Sling",
@@ -968,7 +968,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Method: Stir & Julep Strain\nGlass: Chilled Martini / Coupe\n\nNaked\nOnly Gin\n\nDirty\n2 Bar Spoons of Olive Brine\n\nWet\nMore Dry Vermouth\n\nGibson\nGarnish with Pearl Onions"
+    "notes": "Method: Stir & Julep Strain\nGlass: Chilled Martini / Coupe\n\nVariations:\n• Naked — Only Gin\n• Dirty — 2 Bar Spoons of Olive Brine\n• Wet — More Dry Vermouth\n• Gibson — Garnish with Pearl Onions"
   },
   {
     "name": "Spirit & Mixer",
@@ -1018,7 +1018,7 @@
         "unit": "fill"
       }
     ],
-    "notes": "Glass: Champagne Flute\n\nKir\nReplace Champagne with White Wine"
+    "notes": "Glass: Champagne Flute\n\nVariations:\n• Kir — Replace Champagne with White Wine"
   },
   {
     "name": "Brandy Alexander",
@@ -1049,7 +1049,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nAlexander\nReplace Cognac with Gin\n\nReplace Milk with Half & Half"
+    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nVariations:\n• Alexander — Replace Cognac with Gin\n• Replace Milk with Half & Half"
   },
   {
     "name": "Tom Collins",
@@ -1086,7 +1086,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Method: Shake & Strain\n\nJohn Collins\nReplace Gin with Bourbon"
+    "notes": "Method: Shake & Strain\n\nVariations:\n• John Collins — Replace Gin with Bourbon"
   },
   {
     "name": "Paloma",
@@ -1199,7 +1199,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Method: Dry Shake, Shake & Strain\n\nMidori Sour\nReplace Amaretto with Midori"
+    "notes": "Method: Dry Shake, Shake & Strain\n\nVariations:\n• Midori Sour — Replace Amaretto with Midori"
   },
   {
     "name": "Grasshopper",
@@ -1224,7 +1224,7 @@
         "unit": "ml"
       }
     ],
-    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nReplace Milk with Cream or Half & Half"
+    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nVariations:\n• Replace Milk with Cream or Half & Half"
   },
   {
     "name": "Whiskey Sour",
@@ -1270,7 +1270,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Method: Dry Shake, Shake & Fine Strain / Strain\nGlass: Sour Glass / Rocks\n\nNew York Sour\nTop with red wine"
+    "notes": "Method: Dry Shake, Shake & Fine Strain / Strain\nGlass: Sour Glass / Rocks\n\nVariations:\n• New York Sour — Top with red wine"
   },
   {
     "name": "Side Car",
@@ -1342,7 +1342,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Cubata\nReplace Light Rum with Dark Rum"
+    "notes": "Variations:\n• Cubata — Replace Light Rum with Dark Rum"
   },
   {
     "name": "Sex on the Beach",
@@ -1401,7 +1401,7 @@
         "unit": "ml"
       }
     ],
-    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nFresh Fruit Daiquiri\nAdd fruit and fruit liqueur"
+    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nVariations:\n• Fresh Fruit Daiquiri — Add fruit and fruit liqueur"
   },
   {
     "name": "Moscow Mule",
@@ -1433,7 +1433,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Glass: Copper Mug, Highball\n\nMissouri Mule\nReplace Vodka with Southern Comfort\n\nJamaican Mule\nReplace Vodka with Spiced Rum"
+    "notes": "Glass: Copper Mug, Highball\n\nVariations:\n• Missouri Mule — Replace Vodka with Southern Comfort\n• Jamaican Mule — Replace Vodka with Spiced Rum"
   },
   {
     "name": "Piña Colada",
@@ -1506,7 +1506,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Method: Stir & Julep Strain\nGlass: Chilled Martini / Coupe\n\nPink Gin\nReplace Lime Cordial with a few dashes of Angostura Bitters and garnish with a Lemon Zest"
+    "notes": "Method: Stir & Julep Strain\nGlass: Chilled Martini / Coupe\n\nVariations:\n• Pink Gin — Replace Lime Cordial with a few dashes of Angostura Bitters and garnish with a Lemon Zest"
   },
   {
     "name": "Espresso Martini",
@@ -1542,7 +1542,7 @@
         "amount": 3.0
       }
     ],
-    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nSugar Syrup depends on the guest & the bitterness of the coffee"
+    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nVariations:\n• Sugar Syrup depends on the guest & the bitterness of the coffee"
   },
   {
     "name": "Manhattan (Sweet)",
@@ -1574,7 +1574,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Method: Stir & Julep Strain\nGlass: Chilled Martini / Coupe\n\nDry\nDry Vermouth, replace cherry with Lemon Zest\n\nPerfect\nBoth Vermouths and both garnishes"
+    "notes": "Method: Stir & Julep Strain\nGlass: Chilled Martini / Coupe\n\nVariations:\n• Dry — Dry Vermouth, replace cherry with Lemon Zest\n• Perfect — Both Vermouths and both garnishes"
   },
   {
     "name": "Bramble",
@@ -1647,7 +1647,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Method: Stir & Julep Strain\n\nReplace Bourbon with any aged spirit"
+    "notes": "Method: Stir & Julep Strain\n\nVariations:\n• Replace Bourbon with any aged spirit"
   },
   {
     "name": "Apple Martini",
@@ -1684,7 +1684,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nApple Leaf garnish"
+    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nVariations:\n• Apple Leaf garnish"
   },
   {
     "name": "Woo Woo",
@@ -1715,7 +1715,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Cape Codder\nReplace Peach Liqueur with Vodka"
+    "notes": "Variations:\n• Cape Codder — Replace Peach Liqueur with Vodka"
   },
   {
     "name": "Sazerac",
@@ -1753,7 +1753,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Method: Rinse, Stir & Julep Strain\nGlass: Old Fashioned, Rocks\n\nUse Peychaud’s and Angostura Bitters"
+    "notes": "Method: Rinse, Stir & Julep Strain\nGlass: Old Fashioned, Rocks\n\nVariations:\n• Use Peychaud’s and Angostura Bitters"
   },
   {
     "name": "Aperol Spritz",
@@ -1809,7 +1809,7 @@
         "unit": "ml"
       }
     ],
-    "notes": "Method: Layer in Order\nGlass: Shooter\n\nReplace Triple Sec with Cointreau"
+    "notes": "Method: Layer in Order\nGlass: Shooter\n\nVariations:\n• Replace Triple Sec with Cointreau"
   },
   {
     "name": "Negroni",
@@ -1845,7 +1845,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Method: Stir & Julep Strain\n\nNegroni Sbagliato\nReplace Gin with Prosecco"
+    "notes": "Method: Stir & Julep Strain\n\nVariations:\n• Negroni Sbagliato — Replace Gin with Prosecco"
   },
   {
     "name": "Caipirinha",
@@ -1875,7 +1875,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Method: Muddle, Build & Churn\n\nFruit Caipirinha\nAdd fruit and fruit liqueur\n\nCaipiroska\nReplace Cachaca with Vodka"
+    "notes": "Method: Muddle, Build & Churn\n\nVariations:\n• Fruit Caipirinha — Add fruit and fruit liqueur\n• Caipiroska — Replace Cachaca with Vodka"
   },
   {
     "name": "Bloody Mary",
@@ -1933,7 +1933,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Red Snapper\nReplace Vodka with Gin"
+    "notes": "Variations:\n• Red Snapper — Replace Vodka with Gin"
   },
   {
     "name": "Godfather",
@@ -1954,7 +1954,7 @@
         "unit": "ml"
       }
     ],
-    "notes": "Godmother\nReplace Scotch Whisky with Vodka"
+    "notes": "Variations:\n• Godmother — Replace Scotch Whisky with Vodka"
   },
   {
     "name": "Margarita",
@@ -1992,7 +1992,7 @@
         "note": "Full, half or none"
       }
     ],
-    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nTommy’s Margarita\nReplace Triple Sec and sugar with Agave Syrup\n\nFrozen Margarita\nAdd 1 scoop of crushed ice and double the sugar syrup"
+    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nVariations:\n• Tommy’s Margarita — Replace Triple Sec and sugar with Agave Syrup\n• Frozen Margarita — Add 1 scoop of crushed ice and double the sugar syrup"
   },
   {
     "name": "Classic Champagne Cocktail",
@@ -2065,7 +2065,7 @@
         "note": "Brut Champagne, shot on the side"
       }
     ],
-    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nUpgrade with Vanilla Vodka and Fresh Passionfruit"
+    "notes": "Method: Shake & Fine Strain\nGlass: Chilled Martini / Coupe\n\nVariations:\n• Upgrade with Vanilla Vodka and Fresh Passionfruit"
   },
   {
     "name": "Gin & Tonic",
@@ -2091,7 +2091,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Vodka & Tonic\nReplace Gin with Vodka"
+    "notes": "Variations:\n• Vodka & Tonic — Replace Gin with Vodka"
   },
   {
     "name": "Rob Roy",
@@ -2187,7 +2187,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Replace Bourbon with Brandy"
+    "notes": "Variations:\n• Replace Bourbon with Brandy"
   },
   {
     "name": "Mojito",
@@ -2228,7 +2228,7 @@
         "amount": 1.0
       }
     ],
-    "notes": "Method: Muddle, Bash, Build & Churn\n\nFruit Mojito\nAdd fruit and fruit liqueur"
+    "notes": "Method: Muddle, Bash, Build & Churn\n\nVariations:\n• Fruit Mojito — Add fruit and fruit liqueur"
   },
   {
     "name": "Tequila Sunrise",
