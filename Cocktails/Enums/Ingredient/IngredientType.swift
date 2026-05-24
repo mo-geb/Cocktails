@@ -10,13 +10,13 @@ enum IngredientType: String, Codable, CaseIterable, Identifiable {
         case .fortifiedWine:    return "Ingredient/vermouth"
         case .syrup:            return "Ingredient/sugar_syrup"
         case .juice:            return "Ingredient/orange_juice"
-        case .bitters:          return "Ingredient/bitters"
+        case .bitters:          return "Ingredient/angostura_bitters"
         case .mixer:            return "Ingredient/mixer"
-        case .fruit:            return "Ingredient/lime_wedge"
-        case .herb:             return "Ingredient/mint_leaf"
-        case .spice:            return "Ingredient/black_pepper"
-        case .vegetable:        return "Ingredient/celery_stick"
-        default:                return "Ingredient/fluid"
+        case .fruit:            return "Ingredient/Type/fruit"
+        case .herb:             return "Ingredient/Type/herb"
+        case .spice:            return "Ingredient/Type/spice"
+        case .vegetable:        return "Ingredient/Type/vegetable"
+        case .other:            return "Ingredient/Type/fluid"
         }
     }
 

@@ -26,7 +26,7 @@ struct CocktailDetailView: View {
                 propertiesPill
                 ingredientListCard(regularIngredients)
                 ingredientListCard(garnishIngredients, title: "Garnish", hideWhenEmpty: true)
-                notesCard
+                if !draft.notes.isEmpty { notesCard }
             }
             .padding(.horizontal)
             .padding(.bottom, 40)
@@ -135,7 +135,7 @@ struct CocktailDetailView: View {
             .frame(maxWidth: .infinity)
         }
         .font(.subheadline)
-        .foregroundColor(.primary)
+        .foregroundStyle(.primary)
         .padding(.vertical, 16)
         .glassEffect()
     }
@@ -159,13 +159,8 @@ struct CocktailDetailView: View {
     @ViewBuilder
     private var notesCard: some View {
         CocktailSectionCard(title: "Notes") {
-            if !draft.notes.isEmpty {
-                Text(draft.notes)
-                    .lineSpacing(6)
-            } else {
-                Text("No instructions provided.")
-                    .foregroundStyle(.secondary)
-            }
+            Text(draft.notes)
+                .lineSpacing(6)
         }
     }
     

@@ -1532,7 +1532,7 @@
     ],
     "garnishes": [
       {
-        "ingredientId": "coffee_beans",
+        "ingredientId": "coffee_bean",
         "amount": 3.0
       }
     ],

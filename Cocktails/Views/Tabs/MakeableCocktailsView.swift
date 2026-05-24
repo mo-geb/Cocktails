@@ -52,7 +52,7 @@ struct MakeableCocktailsView: View {
                                 section(title: "Almost there") {
                                     LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
                                         ForEach(almostMakeableCocktails, id: \.cocktail.id) { item in
-                                            CocktailGridCell(cocktail: item.cocktail, footerLabel: "Missing: \(item.missing)", onEdit: { activeCocktailSheet = .edit(item.cocktail) }, onDelete: { cocktailToDelete = item.cocktail }) {
+                                            CocktailGridCell(cocktail: item.cocktail, footerLabel: String(localized: "Missing: \(item.missing)"), onEdit: { activeCocktailSheet = .edit(item.cocktail) }, onDelete: { cocktailToDelete = item.cocktail }) {
                                                 activeCocktailSheet = .view(item.cocktail)
                                             }
                                         }

@@ -416,7 +416,7 @@
   },
   {
     "id": "blackberry",
-    "name": "Blackberries",
+    "name": "Blackberry",
     "type": "fruit"
   },
   {
@@ -430,8 +430,8 @@
     "type": "fruit"
   },
   {
-    "id": "coffee_beans",
-    "name": "Coffee Beans",
+    "id": "coffee_bean",
+    "name": "Coffee Bean",
     "type": "other"
   },
   {
@@ -476,7 +476,7 @@
   },
   {
     "id": "olive",
-    "name": "Olives",
+    "name": "Olive",
     "type": "fruit"
   },
   {
