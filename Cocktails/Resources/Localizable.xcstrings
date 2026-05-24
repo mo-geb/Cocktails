@@ -7492,25 +7492,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Blackberries"
+            "value" : "Blackberry"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Moras"
+            "value" : "Mora"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mûres"
+            "value" : "Mûre"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "More"
+            "value" : "Mora"
           }
         },
         "ja" : {
@@ -7528,19 +7528,19 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bramen"
+            "value" : "Braam"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Amoras"
+            "value" : "Amora"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Černice"
+            "value" : "Černica"
           }
         },
         "sv" : {
