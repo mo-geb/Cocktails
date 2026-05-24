@@ -14,12 +14,12 @@ struct SearchView: View {
 
     private var filteredCocktails: [Cocktail] {
         guard !query.isEmpty else { return cocktails }
-        return cocktails.filter { $0.name.localizedCaseInsensitiveContains(query) }
+        return cocktails.filter { $0.name.localizedStandardContains(query) }
     }
 
     private var filteredIngredients: [Ingredient] {
         guard !query.isEmpty else { return ingredients }
-        return ingredients.filter { $0.name.localizedCaseInsensitiveContains(query) }
+        return ingredients.filter { $0.name.localizedStandardContains(query) }
     }
 
     private var showCocktailSuggestion: Bool {

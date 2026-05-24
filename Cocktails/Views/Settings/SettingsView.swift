@@ -51,13 +51,6 @@ struct SettingsView: View {
                     Button("Done") { dismiss() }
                 }
             }
-            .confirmationDialog("Clear Data", isPresented: $showClearConfirmation, titleVisibility: .visible) {
-                Button("Clear Unused Ingredients", role: .destructive) { clearUnusedIngredients() }
-                Button("Delete Imported Cocktails", role: .destructive) { deleteImportedCocktails() }
-                Button("Delete Everything", role: .destructive) { deleteEverything() }
-            } message: {
-                Text("Choose what to delete. This cannot be undone.")
-            }
         }
     }
 
@@ -177,6 +170,13 @@ struct SettingsView: View {
             }
             .buttonStyle(.plain)
             .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .confirmationDialog("Clear Data", isPresented: $showClearConfirmation, titleVisibility: .visible) {
+                Button("Clear Unused Ingredients", role: .destructive) { clearUnusedIngredients() }
+                Button("Delete Imported Cocktails", role: .destructive) { deleteImportedCocktails() }
+                Button("Delete Everything", role: .destructive) { deleteEverything() }
+            } message: {
+                Text("Choose what to delete. This cannot be undone.")
+            }
         }
     }
 

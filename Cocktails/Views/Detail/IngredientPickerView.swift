@@ -12,7 +12,7 @@ struct IngredientPickerView: View {
 
     private var filtered: [Ingredient] {
         guard !searchText.isEmpty else { return allIngredients }
-        return allIngredients.filter { $0.localizedName.localizedCaseInsensitiveContains(searchText) }
+        return allIngredients.filter { $0.localizedName.localizedStandardContains(searchText) }
     }
 
     private var groupedIngredients: [(IngredientType, [Ingredient])] {
