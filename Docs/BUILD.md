@@ -32,13 +32,12 @@ Automatic signing is enabled. To build locally:
 
 1. Xcode → target → Signing & Capabilities → set Team to yours.
 2. Change `PRODUCT_BUNDLE_IDENTIFIER` from `com.mo.Cocktails` to one in your namespace if you intend to install on a device.
-3. The entitlements file references an iCloud container `iCloud.com.mo.Cocktails`; update that too, or remove the iCloud capability until CloudKit sync is actually implemented.
+3. The entitlements file references the iCloud container `iCloud.com.mo.Cocktails`; update that to match your bundle identifier.
 
 ### Capabilities currently declared
 
-- App Sandbox and Hardened Runtime (via project build settings)
-
-`Cocktails.entitlements` is empty. Push and CloudKit entitlements were removed during cleanup since they weren't being used by code; re-add them only when the corresponding features land.
+- iCloud (CloudKit) — container `iCloud.com.mo.Cocktails` is declared in `Cocktails.entitlements`. The entitlement is present but sync is not yet active: `ModelContainer` is configured with a plain `ModelConfiguration` (no `cloudKitContainerIdentifier`), so SwiftData is storing data locally only. To wire up sync, pass the container identifier to `ModelConfiguration`.
+- Push Notifications (APS environment: development) — declared alongside CloudKit; not otherwise used by app code yet.
 
 ## StoreKit testing
 

@@ -17,14 +17,11 @@ Usage:
 
   # Use a specific backend (default: openai):
   python3 scripts/translate_strings.py --lang de --backend openai
-  python3 scripts/translate_strings.py --lang de --backend deepl
   python3 scripts/translate_strings.py --lang de --backend google
 
 Backends:
   - openai  : Uses GPT-4o. Set OPENAI_API_KEY env var.
               Best quality, understands context and doesn't mangle format strings.
-  - deepl   : Uses DeepL API. Set DEEPL_API_KEY env var.
-              High quality, good for European languages.
   - google  : Uses deep-translator (free, no key needed).
               Install: pip install deep-translator
               Decent quality, may need review for complex strings.
@@ -70,12 +67,26 @@ PLURAL_CATEGORIES: dict[str, list[str]] = {
     "uk": ["one", "few", "many", "other"],
     "ja": ["other"],
     "zh-Hans": ["other"],
+    "zh-Hant": ["other"],
     "pt-BR": ["one", "many", "other"],
     "pl": ["one", "few", "many", "other"],
     "ru": ["one", "few", "many", "other"],
     "tr": ["one", "other"],
     "ko": ["other"],
     "ar": ["zero", "one", "two", "few", "many", "other"],
+    "da": ["one", "other"],
+    "fi": ["one", "other"],
+    "nb": ["one", "other"],
+    "cs": ["one", "few", "many", "other"],
+    "hu": ["one", "other"],
+    "ro": ["one", "few", "other"],
+    "el": ["one", "other"],
+    "he": ["one", "two", "many", "other"],
+    "hi": ["one", "other"],
+    "id": ["other"],
+    "vi": ["other"],
+    "th": ["other"],
+    "ms": ["other"],
 }
 
 LANG_NAMES: dict[str, str] = {
@@ -90,12 +101,26 @@ LANG_NAMES: dict[str, str] = {
     "uk": "Ukrainian",
     "ja": "Japanese",
     "zh-Hans": "Simplified Chinese",
+    "zh-Hant": "Traditional Chinese",
     "pt-BR": "Brazilian Portuguese",
     "pl": "Polish",
     "ru": "Russian",
     "tr": "Turkish",
     "ko": "Korean",
     "ar": "Arabic",
+    "da": "Danish",
+    "fi": "Finnish",
+    "nb": "Norwegian Bokmål",
+    "cs": "Czech",
+    "hu": "Hungarian",
+    "ro": "Romanian",
+    "el": "Greek",
+    "he": "Hebrew",
+    "hi": "Hindi",
+    "id": "Indonesian",
+    "vi": "Vietnamese",
+    "th": "Thai",
+    "ms": "Malay",
 }
 
 NEEDS_TRANSLATION = {"new", "needs_review"}
@@ -277,34 +302,6 @@ class OpenAIBackend(TranslationBackend):
                 time.sleep(wait)
 
 
-class DeepLBackend(TranslationBackend):
-    LANG_MAP = {
-        "en": "EN", "de": "DE", "es": "ES", "fr": "FR", "it": "IT",
-        "nl": "NL", "sv": "SV", "uk": "UK", "pl": "PL", "pt-BR": "PT-BR",
-        "ru": "RU", "ja": "JA", "zh-Hans": "ZH", "tr": "TR", "ko": "KO",
-    }
-
-    def __init__(self):
-        try:
-            import deepl as deepl_pkg
-            self._deepl = deepl_pkg
-        except ImportError:
-            sys.exit("deepl package not found. Run: pip install deepl")
-        api_key = os.environ.get("DEEPL_API_KEY")
-        if not api_key:
-            sys.exit("DEEPL_API_KEY environment variable not set.")
-        self.translator = self._deepl.Translator(api_key)
-
-    def translate_batch(self, texts, target_lang, source_lang="en", context_hint=""):
-        tgt = self.LANG_MAP.get(target_lang, target_lang.upper())
-        src = self.LANG_MAP.get(source_lang, source_lang.upper())
-        results = self.translator.translate_text(
-            texts, source_lang=src, target_lang=tgt,
-            tag_handling="xml", ignore_tags=["PH"],
-        )
-        return [r.text for r in results]
-
-
 class GoogleBackend(TranslationBackend):
     def __init__(self):
         try:
@@ -326,7 +323,6 @@ class GoogleBackend(TranslationBackend):
 
 BACKENDS = {
     "openai": OpenAIBackend,
-    "deepl": DeepLBackend,
     "google": GoogleBackend,
 }
 

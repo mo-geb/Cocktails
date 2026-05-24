@@ -55,13 +55,15 @@ struct SettingsView: View {
     }
 
     // MARK: - Sections
+    
+    //  [Color.red, Color.orange, Color.yellow, Color.green, Color.mint, Color.teal, Color.cyan, Color.blue, Color.indigo, Color.purple]
 
     private var upgradeSection: some View {
         VStack(alignment: .leading, spacing: 10) {
             sectionHeader("Unlimited")
             VStack(spacing: 0) {
                 if store.isUnlimited {
-                    row(icon: "infinity", color: .purple,
+                    row(icon: "infinity", color: .green,
                         title: "Unlimited Cocktails",
                         subtitle: "Thanks for your support",
                         trailing: AnyView(
@@ -106,7 +108,7 @@ struct SettingsView: View {
             sectionHeader("Libraries")
 
             NavigationLink(destination: RecipeLibrariesView()) {
-                row(icon: "square.and.arrow.down.fill", color: .blue,
+                row(icon: "square.and.arrow.down.fill", color: .mint,
                     title: "Import Library",
                     subtitle: "Browse and add cocktail collections")
             }
@@ -121,7 +123,7 @@ struct SettingsView: View {
 
             VStack(spacing: 0) {
                 Link(destination: URL(string: "https://mo-geb.com")!) {
-                    row(icon: "globe", color: .cyan,
+                    row(icon: "globe", color: .teal,
                         title: "Website",
                         subtitle: "mo-geb.com",
                     )
@@ -130,7 +132,7 @@ struct SettingsView: View {
                 Divider().padding(.leading, 62)
 
                 Link(destination: URL(string: "https://mo-geb.com/projects/cocktails/terms")!) {
-                    row(icon: "doc.text", color: .blue,
+                    row(icon: "doc.text", color: .cyan,
                         title: "Terms of Service",
                         subtitle: "Read the terms of service",
                     )
@@ -139,15 +141,23 @@ struct SettingsView: View {
                 Divider().padding(.leading, 62)
 
                 Link(destination: URL(string: "https://mo-geb.com/projects/cocktails/privacy")!) {
-                    row(icon: "book", color: .indigo,
+                    row(icon: "book", color: .blue,
                         title: "Privacy Policy",
                         subtitle: "Read the privacy policy",
                     )
                 }
-                
+
                 Divider().padding(.leading, 62)
 
-                
+                Link(destination: URL(string: "https://mo-geb.com/projects/cocktails/guide")!) {
+                    row(icon: "questionmark.circle.fill", color: .indigo,
+                        title: "User Guide",
+                        subtitle: "Tips and how-tos",
+                    )
+                }
+
+                Divider().padding(.leading, 62)
+
                 Link(destination: URL(string: "mailto:support@mo-geb.com")!) {
                     row(icon: "envelope.fill", color: .purple,
                         title: "Contact Support",
