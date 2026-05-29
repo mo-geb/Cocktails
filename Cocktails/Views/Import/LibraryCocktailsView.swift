@@ -29,7 +29,7 @@ struct LibraryCocktailsView: View {
 
             LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
                 ForEach(cocktails, id: \.name) { cocktail in
-                    CocktailPreviewCard(
+                    CocktailPreviewCell(
                         dto: cocktail,
                         isSelected: selected.contains(cocktail.name),
                         isImported: alreadyImported.contains(cocktail.name)

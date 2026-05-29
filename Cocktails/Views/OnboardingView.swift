@@ -5,12 +5,10 @@ struct OnboardingView: View {
 
     var body: some View {
         ZStack {
-            // Ambient colorful background to showcase glass refraction
             backgroundGradient
                 .ignoresSafeArea()
-            
+
             ScrollView {
-                // Wrap sections in a GlassEffectContainer to allow fluid blending/morphing
                 GlassEffectContainer(spacing: 24) {
                     VStack(spacing: 24) {
                         heroSection
@@ -43,21 +41,22 @@ struct OnboardingView: View {
 
     private var heroSection: some View {
         VStack(spacing: 20) {
-            Image("Glass/Empty/martini")
+            Image("Cocktail/espresso_martini")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 72, height: 72)
+                .frame(width: 108, height: 108)
 
             VStack(spacing: 8) {
                 Text("Welcome to Cocktails")
                     .font(.title2.bold())
                     .fontDesign(.rounded)
 
-                Text("Your personal bar book. Here's what you can do to get started.")
+                Text("Your personal bar book, always in your pocket.")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
             }
+            .frame(maxWidth: .infinity)
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 24)
@@ -66,24 +65,9 @@ struct OnboardingView: View {
 
     private var featuresSection: some View {
         VStack(alignment: .leading, spacing: 28) {
-            featureRow(
-                icon: "leaf.fill",
-                color: .green,
-                title: "Stock your bar instantly",
-                subtitle: "Go to Settings → Import Library and import all preset ingredients to get started"
-            )
-            featureRow(
-                icon: "square.and.arrow.down.fill",
-                color: .mint,
-                title: "Get recipes or create your own",
-                subtitle: "Browse curated cocktail libraries or build your own recipes from scratch"
-            )
-            featureRow(
-                icon: "wineglass.fill",
-                color: .purple,
-                title: "See what you can make",
-                subtitle: "Select the ingredients you have and discover which cocktails you can mix right now"
-            )
+            FeatureRow(icon: "leaf.fill", color: .green, title: "Stock your bar instantly", subtitle: "Go to Settings → Import Library and import all preset ingredients to get started")
+            FeatureRow(icon: "square.and.arrow.down.fill", color: .mint, title: "Get recipes or create your own", subtitle: "Browse curated cocktail libraries or build your own recipes from scratch")
+            FeatureRow(icon: "wineglass.fill", color: .purple, title: "See what you can make", subtitle: "Select the ingredients you have and discover which cocktails you can mix right now")
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 24)
@@ -100,26 +84,6 @@ struct OnboardingView: View {
         }
         .buttonStyle(.glassProminent)
         .controlSize(.large)
-    }
-
-    // MARK: - Helpers
-
-    private func featureRow(icon: String, color: Color, title: LocalizedStringKey, subtitle: LocalizedStringKey) -> some View {
-        HStack(spacing: 16) {
-            Image(systemName: icon)
-                .font(.system(size: 15, weight: .semibold))
-                .foregroundStyle(.white)
-                .frame(width: 34, height: 34)
-                .background(color.gradient)
-                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-
-            VStack(alignment: .leading, spacing: 3) {
-                Text(title).font(.subheadline.bold())
-                Text(subtitle).font(.caption).foregroundStyle(.secondary)
-            }
-
-            Spacer()
-        }
     }
 }
 

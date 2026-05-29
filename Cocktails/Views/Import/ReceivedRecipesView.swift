@@ -80,7 +80,7 @@ struct ReceivedRecipesView: View {
         ScrollView {
             LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
                 ForEach(Array(package.cocktails.enumerated()), id: \.offset) { _, cocktail in
-                    CocktailPreviewCard(
+                    CocktailPreviewCell(
                         dto: cocktail,
                         isSelected: selected.contains(cocktail.name),
                         isImported: imported.contains(cocktail.name)

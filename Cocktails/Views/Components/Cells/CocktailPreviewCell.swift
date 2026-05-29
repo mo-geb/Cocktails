@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct CocktailPreviewCard: View {
+struct CocktailPreviewCell: View {
     let dto: CocktailDTO
     let isSelected: Bool
     let isImported: Bool
@@ -96,9 +96,9 @@ struct CocktailPreviewCard: View {
     )
     ScrollView {
         LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
-            CocktailPreviewCard(dto: dto, isSelected: false, isImported: false) {}
-            CocktailPreviewCard(dto: dto, isSelected: true, isImported: false) {}
-            CocktailPreviewCard(dto: dto, isSelected: false, isImported: true) {}
+            CocktailPreviewCell(dto: dto, isSelected: false, isImported: false) {}
+            CocktailPreviewCell(dto: dto, isSelected: true, isImported: false) {}
+            CocktailPreviewCell(dto: dto, isSelected: false, isImported: true) {}
         }
         .padding()
     }

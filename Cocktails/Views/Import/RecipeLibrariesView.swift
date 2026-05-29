@@ -26,7 +26,7 @@ struct RecipeLibrariesView: View {
                         NavigationLink {
                             LibraryCocktailsView(source: source)
                         } label: {
-                            LibraryCard(source: source, counts: counts[source.id] ?? LibraryCounts())
+                            LibraryCell(source: source, counts: counts[source.id] ?? LibraryCounts())
                         }
                         .buttonStyle(.plain)
                     }

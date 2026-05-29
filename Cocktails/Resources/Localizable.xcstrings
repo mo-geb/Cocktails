@@ -8218,6 +8218,124 @@
         }
       }
     },
+    "Go Unlimited": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اذهب بلا حدود"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gå ubegrænset"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unbegrenzt nutzen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ir ilimitado"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passe à l'illimité"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Korlátlan használat"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vai illimitato"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "無制限で使う"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "무제한으로 가기"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Onbeperkt gebruiken"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bez ograniczeń"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aproveite Ilimitado"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fără limite"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neobmedzene"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gå obegränsat"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sınırsız Ol"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Без обмежень"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无限畅享"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "無限使用"
+          }
+        }
+      }
+    },
     "Group By": {
       "localizations": {
         "ar": {
@@ -25423,6 +25541,124 @@
         }
       }
     },
+    "Made by one person who loves cocktails": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صنعه شخص واحد يحب الكوكتيلات"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lavet af én person der elsker cocktails"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gemacht von einer Person, die Cocktails liebt"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hecho por una persona que ama los cócteles"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fait par une personne qui adore les cocktails"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Egy koktélrajongó készítette"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Creato da una persona che ama i cocktail"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カクテルが大好きな一人の人が作りました"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "칵테일을 사랑하는 한 사람이 만듦"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gemaakt door iemand die van cocktails houdt"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stworzone przez osobę, która kocha koktajle"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Feito por uma pessoa que ama coquetéis"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Creat de o persoană care iubește cocktailurile"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vyrobené jednou osobou, ktorá miluje koktaily"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gjort av en person som älskar cocktails"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kokteylleri seven biri tarafından yapıldı"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Створено однією людиною, яка любить коктейлі"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "由热爱鸡尾酒的人制作"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "由熱愛雞尾酒的人製作"
+          }
+        }
+      }
+    },
     "Mark as Stocked": {
       "localizations": {
         "ar": {
@@ -27908,120 +28144,120 @@
         }
       }
     },
-    "One-time purchase": {
+    "One-time purchase · No subscription": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "شراء لمرة واحدة"
+            "value": "شراء لمرة واحدة · لا اشتراك"
           }
         },
         "da": {
           "stringUnit": {
             "state": "translated",
-            "value": "Engangskøb"
+            "value": "Engangskøb · Ingen abonnement"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Einmaliger Kauf"
+            "value": "Einmaliger Kauf · Kein Abo"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Compra única"
+            "value": "Compra única · Sin suscripción"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Achat unique"
+            "value": "Achat unique · Pas d'abonnement"
           }
         },
         "hu": {
           "stringUnit": {
             "state": "translated",
-            "value": "Egyszeri vásárlás"
+            "value": "Egyszeri vásárlás · Nincs előfizetés"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Acquisto una tantum"
+            "value": "Acquisto unico · Nessun abbonamento"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "一回限りの購入"
+            "value": "一回購入 · サブスクリプションなし"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "일회성 구매"
+            "value": "일회성 구매 · 구독 없음"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Eenmalige aankoop"
+            "value": "Eenmalige aankoop · Geen abonnement"
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Jednorazowy zakup"
+            "value": "Jednorazowy zakup · Bez subskrypcji"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Compra única"
+            "value": "Compra única · Sem assinatura"
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Achiziție unică"
+            "value": "Achiziție unică · Fără abonament"
           }
         },
         "sk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Jednorazový nákup"
+            "value": "Jednorazový nákup · Žiadne predplatné"
           }
         },
         "sv": {
           "stringUnit": {
             "state": "translated",
-            "value": "Engångsköp"
+            "value": "Engångsköp · Ingen prenumeration"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tek seferlik satın alma"
+            "value": "Tek seferlik satın alma · Abonelik yok"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Одноразова покупка"
+            "value": "Одноразова покупка · Без підписки"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "一次性购买"
+            "value": "一次性购买 · 无需订阅"
           }
         },
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "一次性購買"
+            "value": "一次性購買 · 無需訂閱"
           }
         }
       }
@@ -28260,124 +28496,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "部分"
-          }
-        }
-      }
-    },
-    "Pay once, yours forever — no subscription": {
-      "localizations": {
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ادفع مرة واحدة، لك للأبد — بدون اشتراك"
-          }
-        },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Betal én gang, din for evigt — ingen abonnement"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Einmal zahlen, für immer deins — kein Abo"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Paga una vez, tuyo para siempre — sin suscripción"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Paie une fois, à toi pour toujours — pas d'abonnement"
-          }
-        },
-        "hu": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Egyszer fizetsz, örökre a tiéd — nincs előfizetés"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Paga una volta, tuo per sempre — nessun abbonamento"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "一度購入すればずっと使える — サブスクリプションなし"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "한 번 결제, 영원히 내 것 — 구독 없음"
-          }
-        },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Betaal eenmaal, voor altijd van jou — geen abonnement"
-          }
-        },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zapłać raz, na zawsze — bez subskrypcji"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pague uma vez, é seu para sempre — sem assinatura"
-          }
-        },
-        "ro": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Plătești o dată, al tău pentru totdeauna — fără abonament"
-          }
-        },
-        "sk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zaplať raz, tvoje navždy — bez predplatného"
-          }
-        },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Betala en gång, din för alltid — ingen prenumeration"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bir kez öde, sonsuza kadar senin — abonelik yok"
-          }
-        },
-        "uk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Заплати раз, твоє назавжди — без підписки"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "一次付费，永久拥有——无订阅"
-          }
-        },
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "一次付款，永久擁有 — 無需訂閱"
           }
         }
       }
@@ -32284,6 +32402,124 @@
         }
       }
     },
+    "Support indie development": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ادعم التطوير المستقل"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Støt indie-udvikling"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unterstütze Indie-Entwicklung"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apoya el desarrollo independiente"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soutiens le développement indépendant"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Támogasd az indie fejlesztést"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Supporta lo sviluppo indipendente"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "インディー開発を応援"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "인디 개발 지원"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Steun indie-ontwikkeling"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wspieraj niezależnych twórców"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apoie o desenvolvimento indie"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Susține dezvoltarea independentă"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podpor indie vývoj"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stöd indieutveckling"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bağımsız geliştirmeyi destekle"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Підтримай незалежну розробку"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "支持独立开发"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "支持獨立開發"
+          }
+        }
+      }
+    },
     "support@mo-geb.com": {
       "shouldTranslate": false
     },
@@ -33943,124 +34179,6 @@
         }
       }
     },
-    "Upgrade": {
-      "localizations": {
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ترقية"
-          }
-        },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opgrader"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Upgrade"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mejorar"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Améliorer"
-          }
-        },
-        "hu": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Frissítés"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aggiorna"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "アップグレード"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "업그레이드"
-          }
-        },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Upgrade"
-          }
-        },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ulepsz"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Atualizar"
-          }
-        },
-        "ro": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Upgradează"
-          }
-        },
-        "sk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vylepšiť"
-          }
-        },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Uppgradera"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yükselt"
-          }
-        },
-        "uk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Оновити"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "升级"
-          }
-        },
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "升級"
-          }
-        }
-      }
-    },
     "Use Default": {
       "localizations": {
         "ar": {
@@ -34888,238 +35006,238 @@
         }
       }
     },
-    "You've reached the free limit of %lld cocktails. Upgrade once to save as many as you like.": {
+    "Your bar, no limits. Save as many cocktails as you like with a single purchase.": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "لقد وصلت إلى الحد المجاني من %lld كوكتيل. قم بالترقية مرة واحدة لحفظ ما تشاء."
+            "value": "بارك، بلا حدود. احفظ ما تشاء من الكوكتيلات بشراء واحد."
           }
         },
         "da": {
           "stringUnit": {
             "state": "translated",
-            "value": "Du har nået den gratis grænse på %lld cocktails. Opgrader én gang for at gemme så mange du vil."
+            "value": "Din bar, ingen grænser. Gem så mange cocktails du vil med et enkelt køb."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Du hast das kostenlose Limit von %lld Cocktails erreicht. Upgrade einmalig, um so viele zu speichern, wie du möchtest."
+            "value": "Deine Bar, ohne Grenzen. Speichere so viele Cocktails, wie du möchtest, mit einem einzigen Kauf."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Has alcanzado el límite gratuito de %lld cócteles. Mejora una vez para guardar tantos como quieras."
+            "value": "Tu bar, sin límites. Guarda tantos cócteles como quieras con una sola compra."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tu as atteint la limite gratuite de %lld cocktails. Améliore une fois pour en sauvegarder autant que tu veux."
+            "value": "Ton bar, sans limites. Sauvegarde autant de cocktails que tu veux avec un seul achat."
           }
         },
         "hu": {
           "stringUnit": {
             "state": "translated",
-            "value": "Elérted a %lld koktélok ingyenes limitjét. Frissíts egyszer, hogy annyit ments el, amennyit szeretnél."
+            "value": "A te bárpultod, korlátok nélkül. Ments el annyi koktélt, amennyit csak szeretnél egyetlen vásárlással."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hai raggiunto il limite gratuito di %lld cocktail. Aggiorna una volta per salvarne quanti ne vuoi."
+            "value": "Il tuo bar, senza limiti. Salva quanti cocktail vuoi con un solo acquisto."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "無料の%l種類のカクテルの制限に達しました。アップグレードして好きなだけ保存しよう。"
+            "value": "あなたのバー、制限なし。購入一回で好きなだけカクテルを保存。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "무료 한도 %l개 칵테일에 도달했습니다. 원하는 만큼 저장하려면 한 번 업그레이드하세요."
+            "value": "너의 바, 제한 없음. 단 한 번의 구매로 원하는 만큼 칵테일 저장."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Je hebt de gratis limiet van %lld cocktails bereikt. Upgrade eenmalig om zoveel op te slaan als je wilt."
+            "value": "Jouw bar, zonder grenzen. Sla zoveel cocktails op als je wilt met een eenmalige aankoop."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Osiągnąłeś darmowy limit %lld koktajli. Ulepsz raz, aby zapisać ile chcesz."
+            "value": "Twój bar, bez ograniczeń. Zapisz tyle koktajli, ile chcesz, jednym zakupem."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Você atingiu o limite gratuito de %lld coquetéis. Atualize uma vez para salvar quantos quiser."
+            "value": "Seu bar, sem limites. Salve quantos coquetéis quiser com uma única compra."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ai atins limita gratuită de %lld cocktailuri. Upgradează o dată pentru a salva câte vrei."
+            "value": "Barul tău, fără limite. Salvează câte cocktailuri vrei cu o singură achiziție."
           }
         },
         "sk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dosiahol si bezplatný limit %lld koktailov. Vylepši raz, aby si mohol uložiť koľko chceš."
+            "value": "Tvoj bar, bez obmedzení. Ulož si toľko koktailov, koľko chceš, s jedným nákupom."
           }
         },
         "sv": {
           "stringUnit": {
             "state": "translated",
-            "value": "Du har nått den fria gränsen på %lld cocktails. Uppgradera en gång för att spara så många du vill."
+            "value": "Din bar, inga gränser. Spara så många cocktails du vill med ett enda köp."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ücretsiz %l kokteyl limitine ulaştın. İstediğin kadar kaydetmek için yükselt."
+            "value": "Barın, sınırsız. Tek bir satın alma ile istediğin kadar kokteyl kaydet."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ти досягнув безкоштовного ліміту %lld коктейлів. Онови, щоб зберігати скільки завгодно."
+            "value": "Твій бар, без обмежень. Зберігай стільки коктейлів, скільки хочеш, з однією покупкою."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "你已达到%l种鸡尾酒的免费限制。升级一次即可保存任意数量。"
+            "value": "你的酒吧，无限制。一次购买即可保存任意多的鸡尾酒。"
           }
         },
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "你已達到免費限制%l杯雞尾酒。升級一次即可隨意保存。"
+            "value": "你的酒吧，無限制。一次購買即可儲存任意多的雞尾酒。"
           }
         }
       }
     },
-    "Your personal bar book. Here's what you can do to get started.": {
+    "Your personal bar book, always in your pocket.": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "كتاب البار الشخصي. إليك ما يمكنك فعله للبدء."
+            "value": "كتاب بارك الشخصي، دائمًا في جيبك."
           }
         },
         "da": {
           "stringUnit": {
             "state": "translated",
-            "value": "Din personlige barbog. Her er hvad du kan gøre for at komme i gang."
+            "value": "Din personlige barbog, altid i lommen."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dein persönliches Barbuch. So kannst du loslegen."
+            "value": "Dein persönliches Barbuch, immer in deiner Tasche."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tu libro de bar personal. Aquí tienes lo que puedes hacer para empezar."
+            "value": "Tu libro de bar personal, siempre en tu bolsillo."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ton livre de bar personnel. Voici ce que tu peux faire pour commencer."
+            "value": "Ton livre de bar personnel, toujours dans ta poche."
           }
         },
         "hu": {
           "stringUnit": {
             "state": "translated",
-            "value": "A te személyes bárkönyved. Íme, mit tehetsz a kezdéshez."
+            "value": "A te személyes bárkönyved, mindig a zsebedben."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Il tuo libro personale del bar. Ecco cosa puoi fare per iniziare."
+            "value": "Il tuo libro di cocktail personale, sempre in tasca."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "あなたの個人用バー本。始めるためにできることはこちら。"
+            "value": "あなたのポケットに常にある個人のバー本。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "개인 바 북입니다. 시작하기 위해 할 수 있는 일은 다음과 같습니다."
+            "value": "언제나 주머니 속에 있는 너만의 바 책."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Je persoonlijke barboek. Dit kun je doen om te beginnen."
+            "value": "Jouw persoonlijke barboek, altijd in je zak."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Twoja osobista książka barowa. Oto, co możesz zrobić, aby zacząć."
+            "value": "Twoja osobista książka barowa, zawsze w kieszeni."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Seu livro de bar pessoal. Aqui está o que você pode fazer para começar."
+            "value": "Seu livro de coquetéis pessoal, sempre no seu bolso."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cartea ta personală de bar. Iată ce poți face pentru a începe."
+            "value": "Cartea ta personală de bar, mereu la îndemână."
           }
         },
         "sk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tvoja osobná kniha koktailov. Tu je, čo môžeš urobiť, aby si začal."
+            "value": "Tvoja osobná barová kniha, vždy vo vrecku."
           }
         },
         "sv": {
           "stringUnit": {
             "state": "translated",
-            "value": "Din personliga barbok. Här är vad du kan göra för att komma igång."
+            "value": "Din personliga barbok, alltid i fickan."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kişisel bar kitabın. Başlamak için yapabileceklerin burada."
+            "value": "Kişisel bar kitabın, her zaman cebinde."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Твоя особиста книга бармена. Ось що ти можеш зробити, щоб почати."
+            "value": "Твоя особиста книга коктейлів, завжди в кишені."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "你的个人酒吧书。以下是你可以开始的步骤。"
+            "value": "你的个人酒吧书，随时在口袋里。"
           }
         },
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "你的個人酒吧書。以下是你可以開始的方式。"
+            "value": "你的個人酒吧書，隨時隨地在口袋裡。"
           }
         }
       }

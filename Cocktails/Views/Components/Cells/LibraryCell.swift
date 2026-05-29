@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct LibraryCard: View {
+struct LibraryCell: View {
     let source: RecipeSource
     let counts: LibraryCounts
 
@@ -65,8 +65,8 @@ struct LibraryCard: View {
 #Preview {
     ScrollView {
         LazyVGrid(columns: GridColumns.libraries, spacing: 16) {
-            LibraryCard(source: .ebsInter2023, counts: LibraryCounts(cocktails: 42))
-            LibraryCard(source: .custom, counts: LibraryCounts(cocktails: 7))
+            LibraryCell(source: .ebsInter2023, counts: LibraryCounts(cocktails: 42))
+            LibraryCell(source: .custom, counts: LibraryCounts(cocktails: 7))
         }
         .padding()
     }

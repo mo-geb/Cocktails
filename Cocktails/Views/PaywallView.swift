@@ -10,12 +10,10 @@ struct PaywallView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                // Ambient background gradient to showcase glass refraction
                 backgroundGradient
                     .ignoresSafeArea()
                 
                 ScrollView {
-                    // Wrap sections in a GlassEffectContainer to allow fluid blending/morphing
                     GlassEffectContainer(spacing: 24) {
                         VStack(spacing: 24) {
                             heroSection
@@ -29,7 +27,7 @@ struct PaywallView: View {
                 }
             }
             .overlay { if celebrate { ConfettiView() } }
-            .navigationTitle("Upgrade")
+            .navigationTitle("Go Unlimited")
             .navigationBarTitleDisplayMode(.inline)
             .onChange(of: store.isUnlimited) { _, unlimited in
                 guard unlimited else { return }
@@ -68,21 +66,22 @@ struct PaywallView: View {
 
     private var heroSection: some View {
         VStack(spacing: 20) {
-            Image("Glass/Empty/martini")
+            Image("Glass/Filled/martini")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 72, height: 72)
+                .frame(width: 108, height: 108)
 
             VStack(spacing: 8) {
-                Text("Unlimited Cocktails")
+                Text("Go Unlimited")
                     .font(.title2.bold())
                     .fontDesign(.rounded)
-                
-                Text("You've reached the free limit of \(StoreManager.freeCocktailLimit) cocktails. Upgrade once to save as many as you like.")
+
+                Text("Your bar, no limits. Save as many cocktails as you like with a single purchase.")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
             }
+            .frame(maxWidth: .infinity)
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 24)
@@ -90,10 +89,10 @@ struct PaywallView: View {
     }
 
     private var featuresSection: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            featureRow(icon: "infinity", color: .purple, title: "Unlimited cocktails", subtitle: "Add and import as many as you want")
-            featureRow(icon: "square.and.arrow.down.fill", color: .blue, title: "Full library access", subtitle: "Import complete cocktail collections")
-            featureRow(icon: "star.fill", color: .orange, title: "One-time purchase", subtitle: "Pay once, yours forever — no subscription")
+        VStack(alignment: .leading, spacing: 28) {
+            FeatureRow(icon: "infinity", color: .purple, title: "Unlimited cocktails", subtitle: "Add and import as many as you want")
+            FeatureRow(icon: "square.and.arrow.down.fill", color: .blue, title: "Full library access", subtitle: "Import complete cocktail collections")
+            FeatureRow(icon: "heart.fill", color: .pink, title: "Support indie development", subtitle: "Made by one person who loves cocktails")
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 24)
@@ -101,7 +100,7 @@ struct PaywallView: View {
     }
 
     private var actionSection: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: 16) {
             if store.product == nil {
                 if store.isLoadingProduct {
                     ProgressView("Loading purchase details...")
@@ -138,16 +137,22 @@ struct PaywallView: View {
                 .buttonStyle(.glassProminent)
                 .controlSize(.large)
                 .disabled(store.purchaseInFlight)
-            }
 
-            Button {
-                Task { await store.restore() }
-            } label: {
-                Text("Restore Purchases")
-                    .font(.subheadline)
+                Text("One-time purchase · No subscription")
+                    .font(.caption)
                     .foregroundStyle(.secondary)
             }
-            .disabled(store.purchaseInFlight)
+
+            if store.product != nil || !store.isLoadingProduct {
+                Button {
+                    Task { await store.restore() }
+                } label: {
+                    Text("Restore Purchases")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+                .disabled(store.purchaseInFlight)
+            }
         }
     }
 
@@ -158,25 +163,6 @@ struct PaywallView: View {
         return String(localized: "Unlock Unlimited", comment: "Paywall purchase button — no price available")
     }
 
-    // MARK: - Helpers
-
-    private func featureRow(icon: String, color: Color, title: LocalizedStringKey, subtitle: LocalizedStringKey) -> some View {
-        HStack(spacing: 16) {
-            Image(systemName: icon)
-                .font(.system(size: 15, weight: .semibold))
-                .foregroundStyle(.white)
-                .frame(width: 34, height: 34)
-                .background(color.gradient)
-                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-
-            VStack(alignment: .leading, spacing: 3) {
-                Text(title).font(.subheadline.bold())
-                Text(subtitle).font(.caption).foregroundStyle(.secondary)
-            }
-
-            Spacer()
-        }
-    }
 }
 
 #Preview {
