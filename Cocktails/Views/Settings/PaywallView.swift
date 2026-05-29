@@ -9,14 +9,24 @@ struct PaywallView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(spacing: 32) {
-                    heroSection
-                    featuresSection
-                    actionSection
+            ZStack {
+                // Ambient background gradient to showcase glass refraction
+                backgroundGradient
+                    .ignoresSafeArea()
+                
+                ScrollView {
+                    // Wrap sections in a GlassEffectContainer to allow fluid blending/morphing
+                    GlassEffectContainer(spacing: 24) {
+                        VStack(spacing: 24) {
+                            heroSection
+                            featuresSection
+                            actionSection
+                        }
+                        .padding(.horizontal, 24)
+                        .padding(.vertical, 32)
+                    }
+                    .containerRelativeFrame(.vertical, alignment: .center)
                 }
-                .padding(.horizontal, 24)
-                .padding(.vertical, 32)
             }
             .overlay { if celebrate { ConfettiView() } }
             .navigationTitle("Upgrade")
@@ -38,6 +48,20 @@ struct PaywallView: View {
                 await store.loadProductIfNeeded()
             }
         }
+    }
+
+    // MARK: - Background
+
+    private var backgroundGradient: some View {
+        LinearGradient(
+            colors: [
+                .purple.opacity(0.12),
+                .blue.opacity(0.08),
+                .orange.opacity(0.12)
+            ],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
     }
 
     // MARK: - Sections
@@ -62,7 +86,7 @@ struct PaywallView: View {
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 24)
-        .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .glassCard()
     }
 
     private var featuresSection: some View {
@@ -73,7 +97,7 @@ struct PaywallView: View {
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 24)
-        .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .glassCard()
     }
 
     private var actionSection: some View {
@@ -111,7 +135,7 @@ struct PaywallView: View {
                     }
                     .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.glassProminent)
                 .controlSize(.large)
                 .disabled(store.purchaseInFlight)
             }

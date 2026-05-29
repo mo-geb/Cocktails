@@ -17,30 +17,28 @@ struct SettingsView: View {
             ScrollView {
                 GlassEffectContainer {
                     VStack(spacing: 28) {
-                        Grid(horizontalSpacing: 16) {
-                            GridRow {
-                                statCard(title: "Cocktails", value: "\(cocktails.count)", icon: "wineglass.fill", color: .purple)
-                                statCard(title: "Ingredients", value: "\(ingredients.count)", icon: "leaf.fill", color: .green)
-                            }
+                    Grid(horizontalSpacing: 16) {
+                        GridRow {
+                            statCard(title: "Cocktails", value: "\(cocktails.count)", icon: "wineglass.fill", color: .purple)
+                            statCard(title: "Ingredients", value: "\(ingredients.count)", icon: "leaf.fill", color: .green)
                         }
-                        
-                        
-                        upgradeSection
-                        importSection
-                        aboutSection
-                        dataSection
-                        
-                        
-                        HStack {
-                            Spacer()
-                            Text(Bundle.main.fullVersionString)
-                                .font(.caption)
-                                .foregroundStyle(.tertiary)
-                            Spacer()
-                        }
-                        .padding(.top, 4)
                     }
-                    .padding()
+
+                    upgradeSection
+                    importSection
+                    aboutSection
+                    dataSection
+
+                    HStack {
+                        Spacer()
+                        Text(Bundle.main.fullVersionString)
+                            .font(.caption)
+                            .foregroundStyle(.tertiary)
+                        Spacer()
+                    }
+                    .padding(.top, 4)
+                }
+                .padding()
                 }
             }
             .sheet(isPresented: $showPaywall) { PaywallView() }
@@ -113,7 +111,7 @@ struct SettingsView: View {
                     subtitle: "Browse and add cocktail collections")
             }
             .buttonStyle(.plain)
-            .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .glassCell()
         }
     }
 
@@ -122,47 +120,32 @@ struct SettingsView: View {
             sectionHeader("More")
 
             VStack(spacing: 0) {
-                Link(destination: URL(string: "https://mo-geb.com")!) {
-                    row(icon: "globe", color: .teal,
-                        title: "Website",
-                        subtitle: "mo-geb.com",
-                    )
+                Link(destination: Links.website) {
+                    row(icon: "globe", color: .teal, title: "Website", subtitle: "mo-geb.com")
                 }
 
                 Divider().padding(.leading, 62)
 
-                Link(destination: URL(string: "https://mo-geb.com/projects/cocktails/terms")!) {
-                    row(icon: "doc.text", color: .cyan,
-                        title: "Terms of Service",
-                        subtitle: "Read the terms of service",
-                    )
-                }
-                
-                Divider().padding(.leading, 62)
-
-                Link(destination: URL(string: "https://mo-geb.com/projects/cocktails/privacy")!) {
-                    row(icon: "book", color: .blue,
-                        title: "Privacy Policy",
-                        subtitle: "Read the privacy policy",
-                    )
+                Link(destination: Links.terms) {
+                    row(icon: "doc.text", color: .cyan, title: "Terms of Service", subtitle: "Read the terms of service")
                 }
 
                 Divider().padding(.leading, 62)
 
-                Link(destination: URL(string: "https://mo-geb.com/projects/cocktails/guide")!) {
-                    row(icon: "questionmark.circle.fill", color: .indigo,
-                        title: "User Guide",
-                        subtitle: "Tips and how-tos",
-                    )
+                Link(destination: Links.privacy) {
+                    row(icon: "book", color: .blue, title: "Privacy Policy", subtitle: "Read the privacy policy")
                 }
 
                 Divider().padding(.leading, 62)
 
-                Link(destination: URL(string: "mailto:support@mo-geb.com")!) {
-                    row(icon: "envelope.fill", color: .purple,
-                        title: "Contact Support",
-                        subtitle: "support@mo-geb.com",
-                    )
+                Link(destination: Links.guide) {
+                    row(icon: "questionmark.circle.fill", color: .indigo, title: "User Guide", subtitle: "Tips and how-tos")
+                }
+
+                Divider().padding(.leading, 62)
+
+                Link(destination: Links.support) {
+                    row(icon: "envelope.fill", color: .purple, title: "Contact Support", subtitle: "support@mo-geb.com")
                 }
             }
             .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
@@ -179,7 +162,7 @@ struct SettingsView: View {
                     subtitle: "Remove cocktails or ingredients")
             }
             .buttonStyle(.plain)
-            .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .glassCell()
             .confirmationDialog("Clear Data", isPresented: $showClearConfirmation, titleVisibility: .visible) {
                 Button("Clear Unused Ingredients", role: .destructive) { clearUnusedIngredients() }
                 Button("Delete Imported Cocktails", role: .destructive) { deleteImportedCocktails() }
@@ -254,7 +237,7 @@ struct SettingsView: View {
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .glassEffect(in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .glassCard()
     }
 
     // MARK: - Data actions
@@ -277,6 +260,16 @@ struct SettingsView: View {
         cocktails.forEach { modelContext.delete($0) }
         ingredients.forEach { modelContext.delete($0) }
         try? modelContext.save()
+    }
+
+    // MARK: - URLs
+
+    private enum Links {
+        static let website    = URL(string: "https://mo-geb.com")!
+        static let terms      = URL(string: "https://mo-geb.com/projects/cocktails/terms")!
+        static let privacy    = URL(string: "https://mo-geb.com/projects/cocktails/privacy")!
+        static let guide      = URL(string: "https://mo-geb.com/projects/cocktails/guide")!
+        static let support    = URL(string: "mailto:support@mo-geb.com")!
     }
 }
 

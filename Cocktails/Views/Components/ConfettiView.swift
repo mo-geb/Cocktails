@@ -42,7 +42,7 @@ struct ConfettiView: View {
                 vy: .random(in: 40...160),
                 rotation0: .random(in: 0...360),
                 rotationSpeed: .random(in: -300...300),
-                color: colors.randomElement()!,
+                color: colors[Int.random(in: 0..<colors.count)],
                 w: .random(in: 8...14),
                 h: .random(in: 4...8),
                 delay: .random(in: 0...0.5)

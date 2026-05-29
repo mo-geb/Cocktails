@@ -23,8 +23,13 @@ struct MainTabView: View {
             }
         }
         .sensoryFeedback(.warning, trigger: deleteHapticTrigger)
+        .sheet(isPresented: $appState.showOnboarding) { OnboardingView().environment(appState).interactiveDismissDisabled() }
         .sheet(isPresented: $appState.showSettings) { SettingsView() }
         .sheet(isPresented: $appState.showPaywall) { PaywallView() }
+        .sheet(isPresented: $appState.showImportLibrary) {
+            NavigationStack { RecipeLibrariesView() }
+                .presentationDragIndicator(.visible)
+        }
         .sheet(item: $appState.activeIngredientSheet) { sheet in
             NavigationStack { sheet.contentView }
                 .presentationDetents([.medium])

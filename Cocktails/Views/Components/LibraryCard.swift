@@ -53,7 +53,7 @@ struct LibraryCard: View {
         }
         .frame(maxWidth: .infinity)
         .aspectRatio(0.8, contentMode: .fit)
-        .glassEffect(in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassEffect(.regular.interactive(), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
         .onAppear {
             if let uiImage = UIImage(named: source.imageName) {
                 accentColor = uiImage.dominantColor().map { Color($0) }

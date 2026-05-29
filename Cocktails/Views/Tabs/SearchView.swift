@@ -63,7 +63,7 @@ struct SearchView: View {
             .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: "Cocktails, Ingredients…")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button { appState.showSettings = true } label: {
+                    Button { appState.openSettings() } label: {
                         Label("Settings", systemImage: "gearshape")
                     }
                 }
@@ -86,19 +86,19 @@ struct SearchView: View {
         } else {
             LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
                 ForEach(filteredCocktails) { cocktail in
-                    CocktailGridCell(cocktail: cocktail, onEdit: { appState.activeCocktailSheet = .edit(cocktail) }, onDelete: { appState.cocktailToDelete = cocktail }) {
-                        appState.activeCocktailSheet = .view(cocktail)
+                    CocktailGridCell(cocktail: cocktail, onEdit: { appState.editCocktail(cocktail) }, onDelete: { appState.confirmDeleteCocktail(cocktail) }) {
+                        appState.viewCocktail(cocktail)
                     }
                 }
                 if showCocktailSuggestion {
                     addCocktailCell(name: query) {
                         guard store.canAddMore(currentCount: cocktails.count) else {
-                            appState.showPaywall = true
+                            appState.openPaywall()
                             return
                         }
                         var draft = CocktailDraft()
                         draft.name = query
-                        appState.activeCocktailSheet = .new(draft)
+                        appState.addCocktail(draft)
                     }
                 }
             }
@@ -132,8 +132,8 @@ struct SearchView: View {
                             ForEach(items) { ingredient in
                                 IngredientGridCell(
                                     ingredient: ingredient,
-                                    onEdit: { appState.activeIngredientSheet = .edit(ingredient) },
-                                    onDelete: { appState.ingredientToDelete = ingredient }
+                                    onEdit: { appState.editIngredient(ingredient) },
+                                    onDelete: { appState.confirmDeleteIngredient(ingredient) }
                                 )
                             }
                         }
@@ -147,13 +147,13 @@ struct SearchView: View {
                 ForEach(filteredIngredients) { ingredient in
                     IngredientGridCell(
                         ingredient: ingredient,
-                        onEdit: { appState.activeIngredientSheet = .edit(ingredient) },
-                        onDelete: { appState.ingredientToDelete = ingredient }
+                        onEdit: { appState.editIngredient(ingredient) },
+                        onDelete: { appState.confirmDeleteIngredient(ingredient) }
                     )
                 }
                 if showIngredientSuggestion {
                     Button {
-                        appState.activeIngredientSheet = .addWithName(query)
+                        appState.addIngredient(named: query)
                     } label: {
                         addIngredientCell(name: query)
                     }

@@ -36,29 +36,32 @@ struct IngredientTab: View {
     @ViewBuilder
     private var mainContent: some View {
         if ingredients.isEmpty {
-            ContentUnavailableView(
-                "No Ingredients",
-                systemImage: "leaf",
-                description: Text("Tap + to add ingredients to your bar.")
-            )
+            ContentUnavailableView {
+                Label("No Ingredients", systemImage: "leaf")
+            } description: {
+                Text("Import the ingredient library or tap + to add ingredients manually.")
+            } actions: {
+                Button("Import Library") { appState.openImportLibrary() }
+                    .buttonStyle(.glassProminent)
+            }
         } else {
             ScrollView {
                 VStack(alignment: .leading, spacing: 28) {
                     makeableCocktailsCard
-                    
+
                     ForEach(groupedIngredients, id: \.0) { type, items in
                         VStack(alignment: .leading, spacing: 10) {
                             Text(type.localizedName)
                                 .font(.title3.bold())
                                 .fontDesign(.rounded)
                                 .padding(.horizontal)
-                            
+
                             LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
                                 ForEach(items) { ingredient in
                                     IngredientGridCell(
                                         ingredient: ingredient,
-                                        onEdit: { appState.activeIngredientSheet = .edit(ingredient) },
-                                        onDelete: { appState.ingredientToDelete = ingredient }
+                                        onEdit: { appState.editIngredient(ingredient) },
+                                        onDelete: { appState.confirmDeleteIngredient(ingredient) }
                                     )
                                 }
                             }
@@ -74,7 +77,7 @@ struct IngredientTab: View {
     @ToolbarContentBuilder
     private var toolbarContent: some ToolbarContent {
         ToolbarItem(placement: .topBarLeading) {
-            Button { appState.showSettings = true } label: {
+            Button { appState.openSettings() } label: {
                 Label("Settings", systemImage: "gearshape")
             }
         }
@@ -95,7 +98,7 @@ struct IngredientTab: View {
         }
         
         ToolbarItem(placement: .primaryAction) {
-            Button { appState.activeIngredientSheet = .add } label: {
+            Button { appState.addIngredient() } label: {
                 Label("Add Ingredient", systemImage: "plus")
             }
         }
@@ -127,14 +130,20 @@ struct IngredientTab: View {
             .contentShape(Rectangle())
             .padding(.horizontal, 16)
             .padding(.vertical, 14)
-            .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .glassCell()
             .padding(.horizontal)
         }
-        .buttonStyle(CardPressStyle())
+        .buttonStyle(.plain)
     }
 }
 
 #Preview(traits: .sampleData) {
     IngredientTab()
         .environment(AppState())
+}
+
+#Preview("Empty") {
+    IngredientTab()
+        .environment(AppState())
+        .modelContainer(for: Ingredient.self, inMemory: true)
 }

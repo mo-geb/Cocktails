@@ -109,7 +109,7 @@ struct CocktailGridCell: View {
             }
             .frame(maxWidth: .infinity)
             .aspectRatio(0.85, contentMode: .fit)
-            .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+            .glassCard()
             .overlay {
                 if isSelecting && isSelected {
                     RoundedRectangle(cornerRadius: 24, style: .continuous)
@@ -120,8 +120,8 @@ struct CocktailGridCell: View {
         }
         .sensoryFeedback(.selection, trigger: isSelected)
         .sensoryFeedback(.impact(weight: .light), trigger: cocktail.isFavourite)
-        .buttonStyle(CardPressStyle(scale: 1.06))
-        .contextMenu(menuItems: {
+        .buttonStyle(.plain)
+        .contextMenu {
             if !isSelecting {
                 Button {
                     cocktail.isFavourite.toggle()
@@ -142,7 +142,7 @@ struct CocktailGridCell: View {
                     }
                 }
             }
-        })
+        }
     }
 }
 
@@ -172,13 +172,13 @@ func addCocktailCell(name: String, action: @escaping () -> Void) -> some View {
         .contentShape(Rectangle())
         .frame(maxWidth: .infinity)
         .aspectRatio(0.85, contentMode: .fit)
-        .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .glassCard()
         .overlay {
             RoundedRectangle(cornerRadius: 24, style: .continuous)
                 .strokeBorder(.tint.opacity(0.55), lineWidth: 1.5)
         }
     }
-    .buttonStyle(CardPressStyle(scale: 1.06))
+    .buttonStyle(.plain)
 }
 
 #Preview(traits: .sampleData) {

@@ -28,7 +28,7 @@ struct IngredientGridCell: View {
             .padding(.all, 4)
             .frame(maxWidth: .infinity)
             .aspectRatio(0.85, contentMode: .fit)
-            .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .glassCell()
             .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
             .grayscale(ingredient.isStocked ? 0 : 1)
             .opacity(ingredient.isStocked ? 1 : 0.4)
@@ -77,7 +77,7 @@ func addIngredientCell(name: String) -> some View {
     .padding(.all, 4)
     .frame(maxWidth: .infinity)
     .aspectRatio(0.85, contentMode: .fit)
-    .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+    .glassCell()
     .overlay {
         RoundedRectangle(cornerRadius: 18, style: .continuous)
             .strokeBorder(.tint.opacity(0.55), lineWidth: 1.5)

@@ -156,7 +156,7 @@ struct CocktailEditView: View {
                 }
             }
         }
-        .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .glassCard()
     }
 
     @ViewBuilder

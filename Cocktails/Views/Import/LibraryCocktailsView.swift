@@ -137,7 +137,7 @@ struct LibraryCocktailsView: View {
                 .minimumScaleFactor(0.8)
                 .frame(maxWidth: .infinity)
         }
-        .buttonStyle(.borderedProminent)
+        .buttonStyle(.glassProminent)
         .controlSize(.large)
         .disabled(selected.isEmpty || isImporting)
         .padding(.horizontal)

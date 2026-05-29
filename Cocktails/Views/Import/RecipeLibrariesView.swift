@@ -1,5 +1,4 @@
 import SwiftUI
-import UIKit
 
 struct LibraryCounts {
     var cocktails: Int = 0
@@ -11,12 +10,8 @@ struct RecipeLibrariesView: View {
     private let sources = RecipeSource.allCases.filter { !$0.filePrefix.isEmpty }
     @State private var counts: [String: LibraryCounts] = [:]
     @State private var isImportingIngredients = false
-    @State private var ingredientsResult: ImportResult?
-    @State private var ingredientsError: String?
-
     @State private var isReimportingCocktails = false
-    @State private var cocktailsResult: ImportResult?
-    @State private var cocktailsError: String?
+    @State private var alert: AlertItem?
 
     var body: some View {
         ScrollView {
@@ -33,7 +28,7 @@ struct RecipeLibrariesView: View {
                         } label: {
                             LibraryCard(source: source, counts: counts[source.id] ?? LibraryCounts())
                         }
-                        .buttonStyle(CardPressStyle())
+                        .buttonStyle(.plain)
                     }
                 }
             }
@@ -46,41 +41,21 @@ struct RecipeLibrariesView: View {
                 counts[source.id] = loadCounts(for: source)
             }
         }
-        .alert("Ingredients Imported", isPresented: .init(
-            get: { ingredientsResult != nil },
-            set: { if !$0 { ingredientsResult = nil } }
-        )) {
-            Button("OK") { ingredientsResult = nil }
-        } message: {
-            if let r = ingredientsResult {
-                Text("\(r.ingredientsInserted) added, \(r.ingredientsSkipped) already present.")
+        .alert(item: $alert) { item in
+            switch item {
+            case .ingredientsSuccess(let r):
+                Alert(title: Text("Ingredients Imported"),
+                      message: Text("\(r.ingredientsInserted) added, \(r.ingredientsSkipped) already present."),
+                      dismissButton: .default(Text("OK")))
+            case .ingredientsFailure(let e):
+                Alert(title: Text("Import Failed"), message: Text(e), dismissButton: .default(Text("OK")))
+            case .cocktailsSuccess(let r):
+                Alert(title: Text("Reimport Complete"),
+                      message: Text("\(r.cocktailsInserted) cocktails reimported. \(r.ingredientsInserted) ingredients added, \(r.ingredientsSkipped) updated."),
+                      dismissButton: .default(Text("OK")))
+            case .cocktailsFailure(let e):
+                Alert(title: Text("Reimport Failed"), message: Text(e), dismissButton: .default(Text("OK")))
             }
-        }
-        .alert("Import Failed", isPresented: .init(
-            get: { ingredientsError != nil },
-            set: { if !$0 { ingredientsError = nil } }
-        )) {
-            Button("OK") { ingredientsError = nil }
-        } message: {
-            if let e = ingredientsError { Text(e) }
-        }
-        .alert("Reimport Complete", isPresented: .init(
-            get: { cocktailsResult != nil },
-            set: { if !$0 { cocktailsResult = nil } }
-        )) {
-            Button("OK") { cocktailsResult = nil }
-        } message: {
-            if let r = cocktailsResult {
-                Text("\(r.cocktailsInserted) cocktails reimported. \(r.ingredientsInserted) ingredients added, \(r.ingredientsSkipped) updated.")
-            }
-        }
-        .alert("Reimport Failed", isPresented: .init(
-            get: { cocktailsError != nil },
-            set: { if !$0 { cocktailsError = nil } }
-        )) {
-            Button("OK") { cocktailsError = nil }
-        } message: {
-            if let e = cocktailsError { Text(e) }
         }
     }
 
@@ -97,9 +72,10 @@ struct RecipeLibrariesView: View {
                 defer { isImportingIngredients = false }
                 await Task.yield()
                 do {
-                    ingredientsResult = try CocktailImporter(context: modelContext).importIngredients()
+                    let result = try CocktailImporter(context: modelContext).importIngredients()
+                    alert = .ingredientsSuccess(result)
                 } catch {
-                    ingredientsError = error.localizedDescription
+                    alert = .ingredientsFailure(error.localizedDescription)
                 }
             }
         }
@@ -118,9 +94,10 @@ struct RecipeLibrariesView: View {
                 defer { isReimportingCocktails = false }
                 await Task.yield()
                 do {
-                    cocktailsResult = try CocktailImporter(context: modelContext).reimportEverything()
+                    let result = try CocktailImporter(context: modelContext).reimportEverything()
+                    alert = .cocktailsSuccess(result)
                 } catch {
-                    cocktailsError = error.localizedDescription
+                    alert = .cocktailsFailure(error.localizedDescription)
                 }
             }
         }
@@ -166,9 +143,9 @@ struct RecipeLibrariesView: View {
             .contentShape(Rectangle())
             .padding(.horizontal, 16)
             .padding(.vertical, 14)
-            .glassEffect()
+            .glassEffect(.regular.interactive())
         }
-        .buttonStyle(CardPressStyle())
+        .buttonStyle(.plain)
         .disabled(isLoading)
     }
 
@@ -181,6 +158,22 @@ struct RecipeLibrariesView: View {
             result.cocktails = arr.count
         }
         return result
+    }
+}
+
+private enum AlertItem: Identifiable {
+    case ingredientsSuccess(ImportResult)
+    case ingredientsFailure(String)
+    case cocktailsSuccess(ImportResult)
+    case cocktailsFailure(String)
+
+    var id: String {
+        switch self {
+        case .ingredientsSuccess: "ingredientsSuccess"
+        case .ingredientsFailure: "ingredientsFailure"
+        case .cocktailsSuccess: "cocktailsSuccess"
+        case .cocktailsFailure: "cocktailsFailure"
+        }
     }
 }
 

@@ -1,8 +1,10 @@
 import SwiftUI
 import SwiftData
+import StoreKit
 
 struct CocktailDetailView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.requestReview) private var requestReview
 
     private let cocktail: Cocktail
     @State private var draft: CocktailDraft
@@ -20,20 +22,28 @@ struct CocktailDetailView: View {
         let garnishIngredients = draft.ingredients.filter { $0.role == .garnish }.sorted { $0.sortOrder < $1.sortOrder }
 
         ScrollView {
-            VStack(spacing: 18) {
-                imageSection
-                titleSection
-                propertiesPill
-                ingredientListCard(regularIngredients)
-                ingredientListCard(garnishIngredients, title: "Garnish", hideWhenEmpty: true)
-                if !draft.notes.isEmpty { notesCard }
+            GlassEffectContainer(spacing: 18) {
+                VStack(spacing: 18) {
+                    imageSection
+                    titleSection
+                    propertiesPill
+                    ingredientListCard(regularIngredients)
+                    ingredientListCard(garnishIngredients, title: "Garnish", hideWhenEmpty: true)
+                    if !draft.notes.isEmpty { notesCard }
+                }
+                .padding(.horizontal)
+                .padding(.bottom, 40)
             }
-            .padding(.horizontal)
-            .padding(.bottom, 40)
         }
         .scrollContentBackground(.hidden)
         .onAppear {
             backgroundColor = draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled)
+        }
+        .task {
+            if ReviewManager.recordCocktailViewed() {
+                try? await Task.sleep(for: .seconds(1))
+                requestReview()
+            }
         }
         .sheet(isPresented: $showEdit, onDismiss: {
             if cocktailWasDeleted {

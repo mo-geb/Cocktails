@@ -39,11 +39,14 @@ struct CocktailTab: View {
     @ViewBuilder
     private var mainContent: some View {
         if cocktails.isEmpty {
-            ContentUnavailableView(
-                "No Cocktails",
-                systemImage: "wineglass",
-                description: Text("Tap + to add your first cocktail.")
-            )
+            ContentUnavailableView {
+                Label("No Cocktails", systemImage: "wineglass")
+            } description: {
+                Text("Import a library or tap + to add your first cocktail.")
+            } actions: {
+                Button("Import Library") { appState.openImportLibrary() }
+                    .buttonStyle(.glassProminent)
+            }
         } else {
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 28) {
@@ -68,13 +71,13 @@ struct CocktailTab: View {
                                         cocktail: cocktail,
                                         isSelected: selection.contains(cocktail.id),
                                         isSelecting: isSelecting,
-                                        onEdit: isSelecting ? nil : { appState.activeCocktailSheet = .edit(cocktail) },
-                                        onDelete: isSelecting ? nil : { appState.cocktailToDelete = cocktail }
+                                        onEdit: isSelecting ? nil : { appState.editCocktail(cocktail) },
+                                        onDelete: isSelecting ? nil : { appState.confirmDeleteCocktail(cocktail) }
                                     ) {
                                         if isSelecting {
                                             selection.toggle(cocktail.id)
                                         } else {
-                                            appState.activeCocktailSheet = .view(cocktail)
+                                            appState.viewCocktail(cocktail)
                                         }
                                     }
                                 }
@@ -103,7 +106,7 @@ struct CocktailTab: View {
             }
         } else {
             ToolbarItem(placement: .topBarLeading) {
-                Button { appState.showSettings = true } label: {
+                Button { appState.openSettings() } label: {
                     Label("Settings", systemImage: "gearshape")
                 }
             }
@@ -138,10 +141,10 @@ struct CocktailTab: View {
 
     private func addNewCocktail() {
         guard store.canAddMore(currentCount: cocktails.count) else {
-            appState.showPaywall = true
+            appState.openPaywall()
             return
         }
-        appState.activeCocktailSheet = .new(CocktailDraft())
+        appState.addCocktail()
     }
     
     private struct CocktailGroup: Identifiable {
@@ -184,4 +187,11 @@ struct CocktailTab: View {
     CocktailTab()
         .environment(AppState())
         .environment(StoreManager())
+}
+
+#Preview("Empty") {
+    CocktailTab()
+        .environment(AppState())
+        .environment(StoreManager())
+        .modelContainer(for: Cocktail.self, inMemory: true)
 }

@@ -9,7 +9,7 @@ private let logger = Logger(subsystem: "dev.mog.cocktails", category: "CocktailI
 @MainActor
 final class CocktailImporter {
 
-    enum ImportError: LocalizedError {
+    private enum ImportError: LocalizedError {
         case fileNotFound(String)
         case decodingError(String, Error)
 

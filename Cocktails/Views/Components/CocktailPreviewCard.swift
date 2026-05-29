@@ -67,7 +67,7 @@ struct CocktailPreviewCard: View {
             .contentShape(Rectangle())
             .frame(maxWidth: .infinity)
             .aspectRatio(0.85, contentMode: .fit)
-            .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+            .glassCard()
             .overlay {
                 if isImported {
                     RoundedRectangle(cornerRadius: 24, style: .continuous)
@@ -78,7 +78,7 @@ struct CocktailPreviewCard: View {
                 }
             }
         }
-        .buttonStyle(CardPressStyle(scale: 1.06))
+        .buttonStyle(.plain)
         .disabled(isImported)
     }
 }

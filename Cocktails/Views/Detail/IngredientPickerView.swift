@@ -122,7 +122,7 @@ struct IngredientPickerView: View {
             .padding(.all, 4)
             .frame(maxWidth: .infinity)
             .aspectRatio(0.85, contentMode: .fit)
-            .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .glassCell()
             .overlay {
                 if isSelected {
                     RoundedRectangle(cornerRadius: 18, style: .continuous)
