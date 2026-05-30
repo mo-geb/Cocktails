@@ -21,8 +21,8 @@ Change it via Xcode → project → `Cocktails` target → General → Minimum D
 
 ### Versioning
 
-- `MARKETING_VERSION` (CFBundleShortVersionString): `2026.1`
-- `CURRENT_PROJECT_VERSION` (CFBundleVersion): `3`
+- `MARKETING_VERSION` (CFBundleShortVersionString): `2026.2`
+- `CURRENT_PROJECT_VERSION` (CFBundleVersion): `7`
 
 Bump `CURRENT_PROJECT_VERSION` for every TestFlight upload; bump `MARKETING_VERSION` for public releases.
 
@@ -89,6 +89,8 @@ uv run translate_strings.py --lang de --dry-run
 ```
 
 Backends: OpenAI (default, `gpt-4o`), DeepL (`--backend deepl`), Google free (`--backend google`). DeepL needs `DEEPL_API_KEY`.
+
+`sync_ingredient_strings.py` keeps the `ingredient.<id>` entries in `Localizable.xcstrings` in sync with the ingredient ids defined in `Resources/Recipes/ingredients.json` (see "Localization" in `ARCHITECTURE.md` for how `Ingredient.localizedName` resolves them).
 
 ### Icon generation
 

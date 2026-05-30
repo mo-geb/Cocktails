@@ -1,6 +1,6 @@
 # Architecture
 
-A short tour of how the app is put together. Pair this with `Docs/PROJECT_STRUCTURE_REVIEW.md` for suggested layout changes.
+A short tour of how the app is put together.
 
 ## Stack
 
@@ -51,7 +51,7 @@ Under `Cocktails/Enums/`, grouped into subfolders:
 - `MeasurementUnit` — `ml`, `oz`, `dash`, `bsp`, `piece`, `part`, `leaf`, `fill`, `none`
 
 **`State/`** (UI flow enums)
-- `ActiveTab`, `SearchTab`, `ActiveCocktailSheet`, `ActiveIngredientSheet`, `CocktailGrouping` (persisted to `UserDefaults`)
+- `ActiveTab`, `SearchTab`, `AppSheet` (settings / import library / received recipes), `ActiveCocktailSheet`, `ActiveIngredientSheet`, `CocktailGrouping` (persisted to `UserDefaults`)
 
 **Top-level**
 - `DisplayImageSource` — discriminated union used by the image-providing protocols
@@ -59,28 +59,28 @@ Under `Cocktails/Enums/`, grouped into subfolders:
 
 ## State management
 
-`AppState` is a single `@Observable` class living in `Cocktails/AppState.swift`. It holds:
+`AppState` is a single `@Observable` class living in `Cocktails/App/AppState.swift`. It holds:
 
 - `selectedTab` and a derived `preferredSearchTab` (remembers whether the user was on Cocktails or Ingredients before switching to Search)
-- sheet presentation state: `activeCocktailSheet`, `activeIngredientSheet`, `showSettings`, `showPaywall`
+- sheet presentation state: `activeSheet` (`AppSheet`: settings / import library / received `.cocktail` URL), `activeCocktailSheet`, `activeIngredientSheet`, `showPaywall`, `showOnboarding` (gated on the `hasSeenOnboarding` `UserDefaults` flag)
 - deletion targets pending confirmation: `cocktailToDelete`, `ingredientToDelete`
-- `pendingImportURL` for inbound `.cocktail` files
 - `cocktailGrouping` persisted to `UserDefaults`
+
+It also exposes intent methods (`openSettings()`, `openImportLibrary()`, `openReceivedRecipes(_:)`, `dismissOnboarding()`, `addCocktail()`, etc.) that views call instead of mutating state directly.
 
 Views read it via `@Environment(AppState.self)` and `@Bindable`.
 
 ## Views
 
-Organized under `Cocktails/Views/` into six buckets:
+Organized under `Cocktails/Views/`:
 
-- `Main/` — `MainTabView`
+- top level — `MainTabView`, `SettingsView`, `PaywallView`, `OnboardingView`
 - `Tabs/` — `CocktailTab`, `IngredientTab`, `SearchView`, `MakeableCocktailsView`
 - `Detail/` — `CocktailDetailView`, `CocktailEditView`, `IngredientEditView`, `IngredientPickerView`
 - `Import/` — `RecipeLibrariesView`, `LibraryCocktailsView`, `ReceivedRecipesView`
-- `Settings/` — `SettingsView`, `PaywallView`
-- `Components/` — `CocktailGridCell`, `IngredientGridCell`, `CocktailPreviewCard`, `CocktailSectionCard`, `CocktailGradientBackground`, `LibraryCard`, `CardPressStyle`, `IngredientImagePickerSheet`, `ConfettiView`
+- `Components/` — `CocktailSectionCard`, `CocktailGradientBackground`, `ConfettiView`, `FeatureRow`, `IngredientImagePickerSheet`, and a `Cells/` subfolder (`CocktailGridCell`, `CocktailPreviewCell`, `IngredientGridCell`, `LibraryCell`)
 
-`#Preview(traits: .sampleData)` is used throughout; the trait pulls from `Helper/PreviewSampleData.swift`.
+`#Preview(traits: .sampleData)` is used throughout; the trait pulls from `PreviewContent/PreviewSampleData.swift`.
 
 ## Recipe import & sharing
 
@@ -103,6 +103,11 @@ Two protocols (`CocktailImageProviding`, `IngredientImageProviding`) expose a `d
 - `CocktailTab` enforces the 10-cocktail free cap via `store.canAddMore(currentCount:)` before presenting the new-cocktail sheet — hitting the limit redirects to `PaywallView` instead.
 - `PaywallView` is fully wired to `StoreManager`: it shows live pricing, drives the purchase call, and dismisses itself on successful unlock.
 
+## Onboarding & review prompts
+
+- `OnboardingView` is shown full-screen on first launch, gated by `AppState.showOnboarding` (backed by the `hasSeenOnboarding` `UserDefaults` flag); `dismissOnboarding()` flips it permanently.
+- `ReviewManager` (`Cocktails/Services/ReviewManager.swift`) is a stateless enum that tracks how many cocktail detail views have been opened and returns `true` at milestone counts (10, 50, 100) so the caller can trigger `requestReview`. State is persisted in `UserDefaults`.
+
 ## Localization
 
 `Localizable.xcstrings` is the canonical string catalog. The `Scripts/translate_strings.py` tool (see `Docs/BUILD.md`) reads it, finds strings marked `new` or `needs_review`, and fills in translations via OpenAI, DeepL, or Google. Format placeholders (`%@`, `%lld`, `%1$@`) and CLDR plural rules are preserved.
@@ -111,6 +116,6 @@ Ingredient names are localized by a separate convention: `Ingredient.localizedNa
 
 ## Known gaps before submission
 
-1. Privacy nutrition labels need to be filled out in App Store Connect (see `Docs/AppStore/REVIEW_NOTES.md`).
+1. Privacy nutrition labels need to be filled out in App Store Connect.
 
 The `IPHONEOS_DEPLOYMENT_TARGET = 26.0` is intentional (matches the Xcode 26 / iOS 26 SDK the project was created against), not a blocker.
