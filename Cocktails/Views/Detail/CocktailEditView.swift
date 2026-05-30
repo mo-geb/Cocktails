@@ -14,18 +14,24 @@ struct CocktailEditView: View {
     @State private var saveHapticTrigger = false
 
     private let originalCocktail: Cocktail?
-    private let onDelete: (() -> Void)?
+    private let onFinish: (() -> Void)?
 
-    init(cocktail: Cocktail, onDelete: (() -> Void)? = nil) {
+    init(cocktail: Cocktail, onFinish: (() -> Void)? = nil) {
         self.originalCocktail = cocktail
-        self.onDelete = onDelete
+        self.onFinish = onFinish
         self._draft = State(initialValue: CocktailDraft(from: cocktail))
     }
 
     init(draft: CocktailDraft = CocktailDraft()) {
         self.originalCocktail = nil
-        self.onDelete = nil
+        self.onFinish = nil
         self._draft = State(initialValue: draft)
+    }
+
+    /// Returns to the detail view when editing in place; otherwise (a brand-new
+    /// cocktail) dismisses the whole sheet.
+    private func finish() {
+        if let onFinish { onFinish() } else { dismiss() }
     }
 
     var body: some View {
@@ -42,7 +48,8 @@ struct CocktailEditView: View {
                 }
             }
             .padding(.horizontal)
-            .padding(.vertical, 20)
+            .padding(.top, 12)
+            .padding(.bottom, 20)
         }
         .scrollContentBackground(.hidden)
         .scrollDismissesKeyboard(.interactively)
@@ -119,7 +126,7 @@ struct CocktailEditView: View {
     @ViewBuilder
     private var nameField: some View {
         TextField("Cocktail Name", text: $draft.name)
-            .font(.system(size: 32, weight: .bold, design: .rounded))
+            .font(.system(.largeTitle, design: .rounded).bold())
             .multilineTextAlignment(.center)
             .padding(.horizontal)
             .submitLabel(.done)
@@ -156,7 +163,7 @@ struct CocktailEditView: View {
                 }
             }
         }
-        .glassCard()
+        .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 
     @ViewBuilder
@@ -345,7 +352,6 @@ struct CocktailEditView: View {
                 if let cocktail = originalCocktail {
                     modelContext.delete(cocktail)
                 }
-                onDelete?()
                 dismiss()
             }
         }
@@ -364,12 +370,11 @@ struct CocktailEditView: View {
     @ToolbarContentBuilder
     private var toolbarContent: some ToolbarContent {
         ToolbarItem(placement: .cancellationAction) {
-            Button("Cancel", systemImage: "xmark") { dismiss() }
+            Button("Cancel") { finish() }
         }
-        
+
         ToolbarItem(placement: .confirmationAction) {
-            Button("Save", systemImage: "checkmark") { save() }
-                .tint(.green)
+            Button("Save") { save() }
                 .disabled(draft.name.trimmingCharacters(in: .whitespaces).isEmpty || hasIncompleteIngredient)
         }
     }
@@ -404,7 +409,7 @@ struct CocktailEditView: View {
             createNew()
         }
         saveHapticTrigger.toggle()
-        dismiss()
+        finish()
     }
 
     private func createNew() {

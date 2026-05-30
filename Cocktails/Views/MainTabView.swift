@@ -23,32 +23,24 @@ struct MainTabView: View {
             }
         }
         .sensoryFeedback(.warning, trigger: deleteHapticTrigger)
-        .sheet(isPresented: $appState.showOnboarding) { OnboardingView().environment(appState).interactiveDismissDisabled() }
-        .sheet(isPresented: $appState.showSettings) { SettingsView() }
-        .sheet(isPresented: $appState.showPaywall) { PaywallView() }
-        .sheet(isPresented: $appState.showImportLibrary) {
-            NavigationStack { RecipeLibrariesView() }
+        .fullScreenCover(isPresented: $appState.showOnboarding) {
+            OnboardingView()
+        }
+        .fullScreenCover(isPresented: $appState.showPaywall) {
+            PaywallView()
+        }
+        .sheet(item: $appState.activeSheet) { sheet in
+            appSheetContent(sheet)
                 .presentationDragIndicator(.visible)
         }
         .sheet(item: $appState.activeIngredientSheet) { sheet in
             NavigationStack { sheet.contentView }
                 .presentationDetents([.medium])
-        }
-        .sheet(item: $appState.activeCocktailSheet) { sheet in
-            NavigationStack { sheet.contentView }
-                .presentationDetents([.large])
                 .presentationDragIndicator(.visible)
         }
+        .cocktailSheet($appState.activeCocktailSheet)
         .onOpenURL { url in
-            appState.pendingImportURL = url
-        }
-        .sheet(isPresented: Binding(
-            get: { appState.pendingImportURL != nil },
-            set: { if !$0 { appState.pendingImportURL = nil } }
-        )) {
-            if let url = appState.pendingImportURL {
-                ReceivedRecipesView(url: url, onDismiss: { appState.pendingImportURL = nil })
-            }
+            appState.openReceivedRecipes(url)
         }
         .confirmationDialog(
             "Delete \"\(appState.cocktailToDelete?.name ?? "")\"?",
@@ -79,6 +71,18 @@ struct MainTabView: View {
             }
         } message: {
             Text("It will be removed from any recipes that use it.")
+        }
+    }
+
+    @ViewBuilder
+    private func appSheetContent(_ sheet: AppSheet) -> some View {
+        switch sheet {
+        case .settings:
+            SettingsView()
+        case .importLibrary:
+            NavigationStack { RecipeLibrariesView() }
+        case .receivedRecipes(let url):
+            ReceivedRecipesView(url: url, onDismiss: { appState.activeSheet = nil })
         }
     }
 }

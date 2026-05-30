@@ -9,8 +9,7 @@ struct CocktailDetailView: View {
     private let cocktail: Cocktail
     @State private var draft: CocktailDraft
     @State private var backgroundColor: Color?
-    @State private var showEdit = false
-    @State private var cocktailWasDeleted = false
+    @State private var isEditing = false
 
     init(cocktail: Cocktail) {
         self.cocktail = cocktail
@@ -18,10 +17,31 @@ struct CocktailDetailView: View {
     }
 
     var body: some View {
+        Group {
+            if isEditing {
+                CocktailEditView(cocktail: cocktail, onFinish: finishEditing)
+                    .transition(.opacity)
+            } else {
+                detailView
+                    .transition(.opacity)
+            }
+        }
+        .animation(.easeInOut(duration: 0.2), value: isEditing)
+    }
+
+    /// Refreshes the cached draft from the (now-edited) model and returns to the
+    /// detail view — keeps everything inside the one presented sheet.
+    private func finishEditing() {
+        draft = CocktailDraft(from: cocktail)
+        backgroundColor = draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled)
+        isEditing = false
+    }
+
+    private var detailView: some View {
         let regularIngredients = draft.ingredients.filter { $0.role == .core }.sorted { $0.sortOrder < $1.sortOrder }
         let garnishIngredients = draft.ingredients.filter { $0.role == .garnish }.sorted { $0.sortOrder < $1.sortOrder }
 
-        ScrollView {
+        return ScrollView {
             GlassEffectContainer(spacing: 18) {
                 VStack(spacing: 18) {
                     imageSection
@@ -32,6 +52,7 @@ struct CocktailDetailView: View {
                     if !draft.notes.isEmpty { notesCard }
                 }
                 .padding(.horizontal)
+                .padding(.top, 12)
                 .padding(.bottom, 40)
             }
         }
@@ -44,20 +65,6 @@ struct CocktailDetailView: View {
                 try? await Task.sleep(for: .seconds(1))
                 requestReview()
             }
-        }
-        .sheet(isPresented: $showEdit, onDismiss: {
-            if cocktailWasDeleted {
-                dismiss()
-                return
-            }
-            draft = CocktailDraft(from: cocktail)
-            backgroundColor = draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled)
-        }) {
-            NavigationStack {
-                CocktailEditView(cocktail: cocktail, onDelete: { cocktailWasDeleted = true })
-            }
-            .presentationDetents([.large])
-            .presentationDragIndicator(.visible)
         }
         .background { CocktailGradientBackground(backgroundColor: backgroundColor) }
         .toolbar { toolbarContent }
@@ -74,8 +81,6 @@ struct CocktailDetailView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
                 .padding(8)
                 .glassEffect(in: RoundedRectangle(cornerRadius: 40, style: .continuous))
-                .padding(.top, 12)
-                .padding(.bottom, 8)
         } else {
             draft.displayImage.view(placeholder: draft.glass.imageNameFilled)
                 .scaledToFit()
@@ -88,7 +93,7 @@ struct CocktailDetailView: View {
     private var titleSection: some View {
         VStack(spacing: 8) {
             Text(draft.name.isEmpty ? "Unnamed Cocktail" : draft.name)
-                .font(.system(size: 32, weight: .bold, design: .rounded))
+                .font(.system(.largeTitle, design: .rounded).bold())
                 .multilineTextAlignment(.center)
                 .minimumScaleFactor(0.8)
                 .padding(.horizontal)
@@ -179,7 +184,7 @@ struct CocktailDetailView: View {
     @ToolbarContentBuilder
     private var toolbarContent: some ToolbarContent {
         ToolbarItem(placement: .cancellationAction) {
-            Button("Close", systemImage: "chevron.down") { dismiss() }
+            Button("Done") { dismiss() }
         }
         
         ToolbarItem(placement: .automatic) {
@@ -204,7 +209,7 @@ struct CocktailDetailView: View {
         ToolbarSpacer()
 
         ToolbarItem(placement: .confirmationAction) {
-            Button("Edit", systemImage: "pencil") { showEdit = true }
+            Button("Edit", systemImage: "pencil") { isEditing = true }
         }
     }
 

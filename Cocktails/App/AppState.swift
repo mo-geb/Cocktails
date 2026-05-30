@@ -16,17 +16,14 @@ final class AppState {
 
     // MARK: - Presentation State
 
-    var showSettings = false
     var showPaywall = false
-    var showImportLibrary = false
     var showOnboarding: Bool = !UserDefaults.standard.bool(forKey: Keys.hasSeenOnboarding)
 
+    var activeSheet: AppSheet?
     var activeCocktailSheet: ActiveCocktailSheet?
     var activeIngredientSheet: ActiveIngredientSheet?
     var cocktailToDelete: Cocktail?
     var ingredientToDelete: Ingredient?
-
-    var pendingImportURL: URL?
 
     var cocktailGrouping: CocktailGrouping = .none {
         didSet { UserDefaults.standard.set(cocktailGrouping.rawValue, forKey: Keys.cocktailGrouping) }
@@ -34,16 +31,16 @@ final class AppState {
 
     // MARK: - Actions
 
-    func openSettings() { showSettings = true }
+    func openSettings() { activeSheet = .settings }
     func openPaywall() { showPaywall = true }
-    func openImportLibrary() { showImportLibrary = true }
+    func openImportLibrary() { activeSheet = .importLibrary }
+    func openReceivedRecipes(_ url: URL) { activeSheet = .receivedRecipes(url) }
     func dismissOnboarding() {
         showOnboarding = false
         UserDefaults.standard.set(true, forKey: Keys.hasSeenOnboarding)
     }
 
     func viewCocktail(_ cocktail: Cocktail) { activeCocktailSheet = .view(cocktail) }
-    func editCocktail(_ cocktail: Cocktail) { activeCocktailSheet = .edit(cocktail) }
     func addCocktail(_ draft: CocktailDraft = CocktailDraft()) { activeCocktailSheet = .new(draft) }
     func confirmDeleteCocktail(_ cocktail: Cocktail) { cocktailToDelete = cocktail }
 

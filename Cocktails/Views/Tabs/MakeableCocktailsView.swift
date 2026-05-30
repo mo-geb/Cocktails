@@ -40,7 +40,7 @@ struct MakeableCocktailsView: View {
                                 section(title: "Ready to make") {
                                     LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
                                         ForEach(makeableCocktails) { cocktail in
-                                            CocktailGridCell(cocktail: cocktail, onEdit: { activeCocktailSheet = .edit(cocktail) }, onDelete: { cocktailToDelete = cocktail }) {
+                                            CocktailGridCell(cocktail: cocktail, onDelete: { cocktailToDelete = cocktail }) {
                                                 activeCocktailSheet = .view(cocktail)
                                             }
                                         }
@@ -52,7 +52,7 @@ struct MakeableCocktailsView: View {
                                 section(title: "Almost there") {
                                     LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
                                         ForEach(almostMakeableCocktails, id: \.cocktail.id) { item in
-                                            CocktailGridCell(cocktail: item.cocktail, footerLabel: String(localized: "Missing: \(item.missing)"), onEdit: { activeCocktailSheet = .edit(item.cocktail) }, onDelete: { cocktailToDelete = item.cocktail }) {
+                                            CocktailGridCell(cocktail: item.cocktail, footerLabel: String(localized: "Missing: \(item.missing)"), onDelete: { cocktailToDelete = item.cocktail }) {
                                                 activeCocktailSheet = .view(item.cocktail)
                                             }
                                         }
@@ -81,20 +81,7 @@ struct MakeableCocktailsView: View {
                     cocktailToDelete = nil
                 }
             }
-            .sheet(item: $activeCocktailSheet) { sheet in
-                switch sheet {
-                case .view(let cocktail):
-                    NavigationStack {
-                        CocktailDetailView(cocktail: cocktail)
-                    }
-                    .presentationDetents([.large])
-                    .presentationDragIndicator(.visible)
-                case .edit(let cocktail):
-                    CocktailEditView(cocktail: cocktail)
-                case .new(let draft):
-                    CocktailEditView(draft: draft)
-                }
-            }
+            .cocktailSheet($activeCocktailSheet)
         }
     }
 

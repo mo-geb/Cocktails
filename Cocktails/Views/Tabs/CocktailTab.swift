@@ -71,7 +71,6 @@ struct CocktailTab: View {
                                         cocktail: cocktail,
                                         isSelected: selection.contains(cocktail.id),
                                         isSelecting: isSelecting,
-                                        onEdit: isSelecting ? nil : { appState.editCocktail(cocktail) },
                                         onDelete: isSelecting ? nil : { appState.confirmDeleteCocktail(cocktail) }
                                     ) {
                                         if isSelecting {

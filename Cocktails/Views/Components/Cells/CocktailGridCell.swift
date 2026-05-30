@@ -6,7 +6,6 @@ struct CocktailGridCell: View {
     var footerLabel: String? = nil
     var isSelected: Bool = false
     var isSelecting: Bool = false
-    var onEdit: (() -> Void)? = nil
     var onDelete: (() -> Void)? = nil
     let onTap: () -> Void
 
@@ -130,11 +129,6 @@ struct CocktailGridCell: View {
                         cocktail.isFavourite ? "Remove from Favourites" : "Add to Favourites",
                         systemImage: cocktail.isFavourite ? "star.slash" : "star"
                     )
-                }
-                if let onEdit {
-                    Button(action: onEdit) {
-                        Label("Edit", systemImage: "pencil")
-                    }
                 }
                 if let onDelete {
                     Button(role: .destructive, action: onDelete) {

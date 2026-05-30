@@ -41,7 +41,7 @@ struct SettingsView: View {
                 .padding()
                 }
             }
-            .sheet(isPresented: $showPaywall) { PaywallView() }
+            .fullScreenCover(isPresented: $showPaywall) { PaywallView() }
             .overlay { if celebrate { ConfettiView() } }
             .navigationTitle("Settings")
             .toolbar {

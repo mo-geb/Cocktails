@@ -86,7 +86,7 @@ struct SearchView: View {
         } else {
             LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
                 ForEach(filteredCocktails) { cocktail in
-                    CocktailGridCell(cocktail: cocktail, onEdit: { appState.editCocktail(cocktail) }, onDelete: { appState.confirmDeleteCocktail(cocktail) }) {
+                    CocktailGridCell(cocktail: cocktail, onDelete: { appState.confirmDeleteCocktail(cocktail) }) {
                         appState.viewCocktail(cocktail)
                     }
                 }
