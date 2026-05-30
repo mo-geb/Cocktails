@@ -19,13 +19,16 @@ struct CocktailEditView: View {
     init(cocktail: Cocktail, onFinish: (() -> Void)? = nil) {
         self.originalCocktail = cocktail
         self.onFinish = onFinish
-        self._draft = State(initialValue: CocktailDraft(from: cocktail))
+        let draft = CocktailDraft(from: cocktail)
+        self._draft = State(initialValue: draft)
+        self._backgroundColor = State(initialValue: draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled))
     }
 
     init(draft: CocktailDraft = CocktailDraft()) {
         self.originalCocktail = nil
         self.onFinish = nil
         self._draft = State(initialValue: draft)
+        self._backgroundColor = State(initialValue: draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled))
     }
 
     /// Returns to the detail view when editing in place; otherwise (a brand-new

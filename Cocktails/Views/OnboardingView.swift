@@ -47,9 +47,10 @@ struct OnboardingView: View {
                 .frame(width: 108, height: 108)
 
             VStack(spacing: 8) {
-                Text("Welcome to Cocktails")
+                Text("Welcome to ClutterFree Cocktails")
                     .font(.title2.bold())
                     .fontDesign(.rounded)
+                    .multilineTextAlignment(.center)
 
                 Text("Your personal bar book, always in your pocket.")
                     .font(.subheadline)

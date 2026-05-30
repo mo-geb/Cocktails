@@ -92,7 +92,7 @@ struct PaywallView: View {
         VStack(alignment: .leading, spacing: 28) {
             FeatureRow(icon: "infinity", color: .purple, title: "Unlimited cocktails", subtitle: "Add and import as many as you want")
             FeatureRow(icon: "square.and.arrow.down.fill", color: .blue, title: "Full library access", subtitle: "Import complete cocktail collections")
-            FeatureRow(icon: "heart.fill", color: .pink, title: "Support indie development", subtitle: "Made by one person who loves cocktails")
+            FeatureRow(icon: "heart.fill", color: .pink, title: "Support independent development", subtitle: "Made by one person who loves cocktails")
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 24)
