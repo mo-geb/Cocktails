@@ -24,7 +24,6 @@ extension View {
                 }
             }
             .presentationDetents([.large])
-            .presentationDragIndicator(.visible)
         }
     }
 }

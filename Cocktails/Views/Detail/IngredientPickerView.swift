@@ -2,13 +2,13 @@ import SwiftUI
 import SwiftData
 
 struct IngredientPickerView: View {
-    @Environment(\.dismiss) private var dismiss
     @Query(sort: \Ingredient.name) private var allIngredients: [Ingredient]
     @Binding var selection: IngredientDraft
 
+    var onPicked: () -> Void = {}
+
     @State private var searchText = ""
-    @State private var showIngredientEdit = false
-    @State private var pendingName = ""
+    @State private var pendingName: String?
 
     private var filtered: [Ingredient] {
         guard !searchText.isEmpty else { return allIngredients }
@@ -32,53 +32,46 @@ struct IngredientPickerView: View {
     }
 
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 28) {
-                    if searchText.isEmpty {
-                        ForEach(groupedIngredients, id: \.0) { type, items in
-                            VStack(alignment: .leading, spacing: 10) {
-                                Text(type.localizedName)
-                                    .font(.title3.bold())
-                                    .fontDesign(.rounded)
-                                    .padding(.horizontal)
-
-                                LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
-                                    ForEach(items) { ingredient in
-                                        pickerCell(for: ingredient)
-                                    }
-                                }
+        ScrollView {
+            VStack(alignment: .leading, spacing: 28) {
+                if searchText.isEmpty {
+                    ForEach(groupedIngredients, id: \.0) { type, items in
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text(type.localizedName)
+                                .font(.title3.bold())
+                                .fontDesign(.rounded)
                                 .padding(.horizontal)
+
+                            LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
+                                ForEach(items) { ingredient in
+                                    pickerCell(for: ingredient)
+                                }
                             }
+                            .padding(.horizontal)
                         }
-                    } else {
-                        LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
-                            ForEach(filtered) { ingredient in
-                                pickerCell(for: ingredient)
-                            }
-                            if showAddSuggestion {
-                                addCell
-                            }
-                        }
-                        .padding(.horizontal)
                     }
+                } else {
+                    LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
+                        ForEach(filtered) { ingredient in
+                            pickerCell(for: ingredient)
+                        }
+                        if showAddSuggestion {
+                            addCell
+                        }
+                    }
+                    .padding(.horizontal)
                 }
-                .padding(.vertical)
             }
-            .background(Color(.systemGroupedBackground))
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search ingredients")
-            .navigationTitle("Select Ingredient")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") { dismiss() }
-                }
-            }
-            .sheet(isPresented: $showIngredientEdit, onDismiss: selectNewIngredient) {
-                NavigationStack {
-                    IngredientEditView(suggestedName: pendingName)
-                }
-                .presentationDetents([.medium])
+            .padding(.vertical)
+        }
+        .background(Color(.systemGroupedBackground))
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search ingredients")
+        .navigationTitle("Select Ingredient")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationDestination(item: $pendingName) { name in
+            IngredientEditView(suggestedName: name) { created in
+                selection = IngredientDraft(from: created)
+                onPicked()
             }
         }
     }
@@ -88,7 +81,6 @@ struct IngredientPickerView: View {
     private var addCell: some View {
         Button {
             pendingName = searchText.trimmingCharacters(in: .whitespaces)
-            showIngredientEdit = true
         } label: {
             addIngredientCell(name: searchText.trimmingCharacters(in: .whitespaces))
         }
@@ -102,7 +94,7 @@ struct IngredientPickerView: View {
 
         return Button {
             selection = IngredientDraft(from: ingredient)
-            dismiss()
+            onPicked()
         } label: {
             VStack(spacing: 0) {
                 ingredient.displayImage.view(placeholder: ingredient.type.imageName)
@@ -122,29 +114,21 @@ struct IngredientPickerView: View {
             .padding(.all, 4)
             .frame(maxWidth: .infinity)
             .aspectRatio(0.85, contentMode: .fit)
-            .glassCell()
             .overlay {
                 if isSelected {
                     RoundedRectangle(cornerRadius: 18, style: .continuous)
                         .strokeBorder(.tint, lineWidth: 2)
                 }
             }
+            .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
         }
         .buttonStyle(.plain)
-    }
-
-    // MARK: - Actions
-
-    private func selectNewIngredient() {
-        guard let created = allIngredients.first(where: {
-            $0.name.localizedCaseInsensitiveCompare(pendingName) == .orderedSame
-        }) else { return }
-        selection = IngredientDraft(from: created)
-        dismiss()
     }
 }
 
 #Preview(traits: .sampleData) {
     @Previewable @State var selection = IngredientDraft()
-    IngredientPickerView(selection: $selection)
+    NavigationStack {
+        IngredientPickerView(selection: $selection)
+    }
 }

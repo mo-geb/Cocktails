@@ -31,11 +31,10 @@ struct MainTabView: View {
         }
         .sheet(item: $appState.activeSheet) { sheet in
             appSheetContent(sheet)
-                .presentationDragIndicator(.visible)
         }
         .sheet(item: $appState.activeIngredientSheet) { sheet in
             NavigationStack { sheet.contentView }
-                .presentationDetents([.medium])
+                .presentationDetents([.medium, .large])
                 .presentationDragIndicator(.visible)
         }
         .cocktailSheet($appState.activeCocktailSheet)

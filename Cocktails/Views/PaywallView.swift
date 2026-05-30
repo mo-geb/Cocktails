@@ -75,6 +75,7 @@ struct PaywallView: View {
                 Text("Go Unlimited")
                     .font(.title2.bold())
                     .fontDesign(.rounded)
+                    .multilineTextAlignment(.center)
 
                 Text("Your bar, no limits. Save as many cocktails as you like with a single purchase.")
                     .font(.subheadline)

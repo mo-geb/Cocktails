@@ -64,18 +64,14 @@ struct CocktailEditView: View {
         .onChange(of: draft.imageData) { updateBackground() }
         .onChange(of: photoItem) { loadPhoto() }
         .onAppear { updateBackground() }
-        .sheet(isPresented: Binding(
-            get: { ingredientPickerIndex != nil },
-            set: { if !$0 { ingredientPickerIndex = nil } }
-        )) {
-            if let index = ingredientPickerIndex {
-                IngredientPickerView(
-                    selection: Binding(
-                        get: { draft.ingredients[index].ingredient },
-                        set: { draft.ingredients[index].ingredient = $0 }
-                    )
-                )
-            }
+        .navigationDestination(item: $ingredientPickerIndex) { index in
+            IngredientPickerView(
+                selection: Binding(
+                    get: { draft.ingredients[index].ingredient },
+                    set: { draft.ingredients[index].ingredient = $0 }
+                ),
+                onPicked: { ingredientPickerIndex = nil }
+            )
         }
     }
 
