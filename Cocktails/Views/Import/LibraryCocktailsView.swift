@@ -142,7 +142,6 @@ struct LibraryCocktailsView: View {
         .disabled(selected.isEmpty || isImporting)
         .padding(.horizontal)
         .padding(.vertical, 12)
-        .background(.bar)
     }
 
     // MARK: - Logic

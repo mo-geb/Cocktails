@@ -9,6 +9,7 @@ struct CocktailTab: View {
 
     @State private var isSelecting = false
     @State private var selection = Set<UUID>()
+    @State private var showDeleteConfirm = false
 
     private var selectedCocktails: [Cocktail] {
         cocktails.filter { selection.contains($0.id) }
@@ -19,6 +20,12 @@ struct CocktailTab: View {
             mainContent
                 .navigationTitle(isSelecting ? selectionTitle : "Cocktails")
                 .toolbar { toolbarContent }
+                .alert("Delete Cocktails", isPresented: $showDeleteConfirm) {
+                    Button("Delete", role: .destructive) { deleteSelected() }
+                    Button("Cancel", role: .cancel) {}
+                } message: {
+                    Text("Delete \(selection.count) cocktail\(selection.count == 1 ? "" : "s")? This cannot be undone.")
+                }
         }
     }
 
@@ -98,10 +105,26 @@ struct CocktailTab: View {
             ToolbarItem(placement: .cancellationAction) {
                 Button("Cancel") { stopSelecting() }
             }
-            ToolbarItem(placement: .primaryAction) {
+            
+            ToolbarItem(placement: .automatic) {
                 if let shareItem = CocktailTransferable(cocktails: selectedCocktails) {
                     ShareLink(item: shareItem, preview: SharePreview(shareItem.fileName))
+                } else {
+                    Button {} label: { Label("Share", systemImage: "square.and.arrow.up") }
+                        .disabled(true)
                 }
+            }
+            
+            ToolbarSpacer()
+
+            ToolbarItem(placement: .automatic) {
+                Button(role: .destructive) {
+                    showDeleteConfirm = true
+                } label: {
+                    Label("Delete", systemImage: "trash")
+                }
+                .tint(.red)
+                .disabled(selection.isEmpty)
             }
         } else {
             ToolbarItem(placement: .topBarLeading) {
@@ -136,6 +159,13 @@ struct CocktailTab: View {
                 }
             }
         }
+    }
+
+    private func deleteSelected() {
+        for cocktail in selectedCocktails {
+            modelContext.delete(cocktail)
+        }
+        stopSelecting()
     }
 
     private func addNewCocktail() {
