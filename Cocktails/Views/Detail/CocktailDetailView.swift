@@ -95,7 +95,6 @@ struct CocktailDetailView: View {
             Text(draft.name.isEmpty ? "Unnamed Cocktail" : draft.name)
                 .font(.system(.largeTitle, design: .rounded).bold())
                 .multilineTextAlignment(.center)
-                .minimumScaleFactor(0.8)
                 .padding(.horizontal)
 
             HStack(spacing: 5) {
@@ -103,6 +102,7 @@ struct CocktailDetailView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 20, height: 20)
+                    .accessibilityHidden(true)
                 Text(draft.source.localizedName)
                     .font(.callout)
                     .fontDesign(.rounded)
@@ -123,6 +123,7 @@ struct CocktailDetailView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 16, height: 16)
+                    .accessibilityHidden(true)
                 Text(draft.glass.localizedName)
             }
             .frame(maxWidth: .infinity)
@@ -134,6 +135,7 @@ struct CocktailDetailView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 16, height: 16)
+                    .accessibilityHidden(true)
                 Text(draft.ice.localizedName)
             }
             .frame(maxWidth: .infinity)
@@ -145,6 +147,7 @@ struct CocktailDetailView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 16, height: 16)
+                    .accessibilityHidden(true)
                 Text(draft.method.localizedName)
             }
             .frame(maxWidth: .infinity)
@@ -189,12 +192,16 @@ struct CocktailDetailView: View {
         
         ToolbarItem(placement: .automatic) {
             Button {
-                cocktail.isFavourite.toggle()
+                withAnimation {
+                    cocktail.isFavourite.toggle()
+                }
             } label: {
                 Label(
                     cocktail.isFavourite ? "Remove from Favourites" : "Add to Favourites",
                     systemImage: cocktail.isFavourite ? "star.fill" : "star"
                 )
+                .contentTransition(.symbolEffect(.replace))
+                .symbolEffect(.bounce, value: cocktail.isFavourite)
             }
             .foregroundStyle(cocktail.isFavourite ? .yellow : .primary)
             .sensoryFeedback(.impact(weight: .light), trigger: cocktail.isFavourite)

@@ -195,6 +195,7 @@ struct CocktailEditView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 22, height: 22)
+                    .accessibilityHidden(true)
                 Text(label)
                     .font(.caption2.weight(.medium))
                     .fontDesign(.rounded)

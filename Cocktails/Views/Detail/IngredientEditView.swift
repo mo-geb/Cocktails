@@ -94,6 +94,8 @@ struct IngredientEditView: View {
                 }
             }
         }
+        .scrollDismissesKeyboard(.interactively)
+        .dismissKeyboardOnTap()
         .navigationTitle(isNew ? "New Ingredient" : "Edit Ingredient")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {

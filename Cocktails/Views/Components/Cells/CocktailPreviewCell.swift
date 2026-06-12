@@ -26,7 +26,6 @@ struct CocktailPreviewCell: View {
                             .fontDesign(.rounded)
                             .multilineTextAlignment(.center)
                             .lineLimit(2)
-                            .minimumScaleFactor(0.85)
 
                         HStack(spacing: 0) {
                             HStack(spacing: 5) {
@@ -34,6 +33,7 @@ struct CocktailPreviewCell: View {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 12, height: 12)
+                                    .accessibilityHidden(true)
                                 Text(dto.ice.localizedName)
                             }
                             .frame(maxWidth: .infinity)
@@ -45,6 +45,7 @@ struct CocktailPreviewCell: View {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 12, height: 12)
+                                    .accessibilityHidden(true)
                                 Text(dto.method.localizedName)
                             }
                             .frame(maxWidth: .infinity)
@@ -62,6 +63,8 @@ struct CocktailPreviewCell: View {
                 Image(systemName: isImported || isSelected ? "checkmark.circle.fill" : "circle")
                     .font(.title2)
                     .foregroundStyle(isImported ? .secondary : (isSelected ? Color.accentColor : Color.primary.opacity(0.3)))
+                    .contentTransition(.symbolEffect(.replace))
+                    .animation(.default, value: isImported || isSelected)
                     .padding(10)
             }
             .contentShape(Rectangle())
@@ -71,7 +74,7 @@ struct CocktailPreviewCell: View {
             .overlay {
                 if isImported {
                     RoundedRectangle(cornerRadius: 24, style: .continuous)
-                        .fill(.ultraThinMaterial.opacity(0.6))
+                        .fill(.thinMaterial)
                 } else if isSelected {
                     RoundedRectangle(cornerRadius: 24, style: .continuous)
                         .strokeBorder(Color.accentColor, lineWidth: 2.5)

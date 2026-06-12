@@ -41,13 +41,13 @@ struct CocktailGridCell: View {
                             .fontDesign(.rounded)
                             .multilineTextAlignment(.center)
                             .lineLimit(2)
-                            .minimumScaleFactor(0.85)
 
                         HStack(spacing: 4) {
                             Image(cocktail.source.imageName)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 12, height: 12)
+                                .accessibilityHidden(true)
                             Text(cocktail.source.localizedName)
                                 .font(.caption2)
                         }
@@ -64,6 +64,7 @@ struct CocktailGridCell: View {
                                             .resizable()
                                             .scaledToFit()
                                             .frame(width: 12, height: 12)
+                                            .accessibilityHidden(true)
                                         Text(cocktail.ice.localizedName)
                                     }
                                     .frame(maxWidth: .infinity)
@@ -75,6 +76,7 @@ struct CocktailGridCell: View {
                                             .resizable()
                                             .scaledToFit()
                                             .frame(width: 12, height: 12)
+                                            .accessibilityHidden(true)
                                         Text(cocktail.method.localizedName)
                                     }
                                     .frame(maxWidth: .infinity)
@@ -95,6 +97,7 @@ struct CocktailGridCell: View {
                     Image(systemName: "star.fill")
                         .font(.caption.bold())
                         .foregroundStyle(.yellow)
+                        .transition(.symbolEffect)
                         .padding(7)
                         .glassEffect(in: Circle())
                         .padding(10)
@@ -104,6 +107,8 @@ struct CocktailGridCell: View {
                     Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                         .font(.title2)
                         .foregroundStyle(isSelected ? Color.accentColor : Color.primary.opacity(0.3))
+                        .contentTransition(.symbolEffect(.replace))
+                        .animation(.default, value: isSelected)
                         .padding(10)
                 }
             }
@@ -137,7 +142,9 @@ struct CocktailGridCell: View {
         .contextMenu {
             if !isSelecting {
                 Button {
-                    cocktail.isFavourite.toggle()
+                    withAnimation {
+                        cocktail.isFavourite.toggle()
+                    }
                 } label: {
                     Label(
                         cocktail.isFavourite ? "Remove from Favourites" : "Add to Favourites",
@@ -169,7 +176,6 @@ func addCocktailCell(name: String, action: @escaping () -> Void) -> some View {
                     .fontDesign(.rounded)
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
-                    .minimumScaleFactor(0.85)
                 Text("Add Cocktail")
                     .font(.caption2)
                     .foregroundStyle(.tint)
