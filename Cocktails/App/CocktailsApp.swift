@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftData
+import StoreKit
 
 @main
 struct CocktailsApp: App {
@@ -26,6 +27,11 @@ struct CocktailsApp: App {
             MainTabView()
                 .environment(appState)
                 .environment(store)
+                .currentEntitlementTask(for: StoreManager.unlimitedProductID) { state in
+                    if case .success(let entitlement) = state {
+                        store.updateEntitlement(from: entitlement)
+                    }
+                }
         }
         .modelContainer(sharedModelContainer)
     }

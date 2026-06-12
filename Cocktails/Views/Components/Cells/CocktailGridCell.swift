@@ -10,6 +10,7 @@ struct CocktailGridCell: View {
     let onTap: () -> Void
 
     @Environment(\.colorScheme) private var colorScheme
+    @State private var bgColor: Color? = nil
 
     var body: some View {
         Button(action: onTap) {
@@ -109,6 +110,19 @@ struct CocktailGridCell: View {
             .frame(maxWidth: .infinity)
             .aspectRatio(0.85, contentMode: .fit)
             .glassCard()
+            .background {
+                if let bgColor {
+                    RoundedRectangle(cornerRadius: 24, style: .continuous)
+                        .fill(bgColor.opacity(0.18))
+                }
+            }
+            .task(id: cocktail.id) {
+                let image = cocktail.displayImage
+                let placeholder = cocktail.glass.imageNameFilled
+                bgColor = await Task.detached(priority: .background) {
+                    await image.dominantColor(placeholderName: placeholder)
+                }.value
+            }
             .overlay {
                 if isSelecting && isSelected {
                     RoundedRectangle(cornerRadius: 24, style: .continuous)

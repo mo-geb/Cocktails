@@ -42,9 +42,6 @@ struct PaywallView: View {
                     Button("Not Now") { dismiss() }
                 }
             }
-            .task {
-                await store.loadProductIfNeeded()
-            }
         }
     }
 
@@ -102,68 +99,52 @@ struct PaywallView: View {
 
     private var actionSection: some View {
         VStack(spacing: 16) {
-            if store.product == nil {
-                if store.isLoadingProduct {
-                    ProgressView("Loading purchase details...")
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 8)
-                } else {
-                    VStack(spacing: 8) {
-                        Text("Could not load purchase details.")
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
-                        
-                        Button("Retry") {
-                            Task {
-                                await store.loadProduct()
-                            }
-                        }
-                        .buttonStyle(.bordered)
-                        .controlSize(.small)
-                    }
-                }
-            } else {
+            ProductView(id: StoreManager.unlimitedProductID)
+                .productViewStyle(GlassProductViewStyle())
+
+            Button {
+                Task { await store.restore() }
+            } label: {
+                Text("Restore Purchases")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+            .disabled(store.restoreInFlight)
+        }
+    }
+}
+
+private struct GlassProductViewStyle: ProductViewStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        switch configuration.state {
+        case .loading:
+            ProgressView("Loading purchase details...")
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 8)
+        case .success(let product):
+            VStack(spacing: 16) {
                 Button {
-                    Task { await store.purchase() }
+                    configuration.purchase()
                 } label: {
-                    Group {
-                        if store.purchaseInFlight {
-                            ProgressView()
-                        } else {
-                            Text(purchaseLabel).font(.body.bold())
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
+                    Text("Unlock Unlimited · \(product.displayPrice)", comment: "Paywall purchase button — price inserted by the OS")
+                        .font(.body.bold())
+                        .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.glassProminent)
                 .controlSize(.large)
-                .disabled(store.purchaseInFlight)
 
                 Text("One-time purchase · No subscription")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
-
-            if store.product != nil || !store.isLoadingProduct {
-                Button {
-                    Task { await store.restore() }
-                } label: {
-                    Text("Restore Purchases")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                }
-                .disabled(store.purchaseInFlight)
-            }
+        case .unavailable, .failure:
+            Text("Could not load purchase details.")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+        @unknown default:
+            EmptyView()
         }
     }
-
-    private var purchaseLabel: String {
-        if let price = store.product?.displayPrice {
-            return String(localized: "Unlock Unlimited · \(price)", comment: "Paywall purchase button — price inserted by the OS")
-        }
-        return String(localized: "Unlock Unlimited", comment: "Paywall purchase button — no price available")
-    }
-
 }
 
 #Preview {

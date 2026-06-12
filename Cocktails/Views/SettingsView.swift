@@ -91,10 +91,10 @@ struct SettingsView: View {
                         row(icon: "arrow.clockwise", color: .gray,
                             title: "Restore Purchases",
                             subtitle: "Already bought? Restore here",
-                            trailing: store.purchaseInFlight ? AnyView(ProgressView().scaleEffect(0.8)) : nil)
+                            trailing: store.restoreInFlight ? AnyView(ProgressView().scaleEffect(0.8)) : nil)
                     }
                     .buttonStyle(.plain)
-                    .disabled(store.purchaseInFlight)
+                    .disabled(store.restoreInFlight)
                 }
             }
             .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))

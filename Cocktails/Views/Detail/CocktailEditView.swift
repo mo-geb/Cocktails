@@ -9,6 +9,7 @@ struct CocktailEditView: View {
     @State private var draft: CocktailDraft
     @State private var backgroundColor: Color?
     @State private var photoItem: PhotosPickerItem?
+    @State private var showPhotoPicker = false
     @State private var ingredientPickerIndex: Int?
     @State private var showDeleteConfirmation = false
     @State private var saveHapticTrigger = false
@@ -80,7 +81,9 @@ struct CocktailEditView: View {
     @ViewBuilder
     private var imageSection: some View {
         ZStack(alignment: .topTrailing) {
-            PhotosPicker(selection: $photoItem, matching: .images) {
+            Button {
+                showPhotoPicker = true
+            } label: {
                 ZStack(alignment: .bottomTrailing) {
                     if draft.displayImage.isCustom {
                         draft.displayImage.view(placeholder: draft.glass.imageNameFilled)
@@ -105,6 +108,7 @@ struct CocktailEditView: View {
                 }
             }
             .buttonStyle(.plain)
+            .photosPicker(isPresented: $showPhotoPicker, selection: $photoItem, matching: .images)
 
             if draft.displayImage.isCustom {
                 Button {
