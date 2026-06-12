@@ -10,6 +10,8 @@ struct SearchView: View {
 
     @State private var query = ""
     @State private var selectedTab: SearchTab = .cocktails
+    @State private var viewedCocktail: Cocktail?
+    @Namespace private var zoomNamespace
 
 
     private var filteredCocktails: [Cocktail] {
@@ -54,6 +56,10 @@ struct SearchView: View {
             }
             .background(Color(.systemGroupedBackground))
             .navigationTitle("Search")
+            .navigationDestination(item: $viewedCocktail) { cocktail in
+                CocktailDetailView(cocktail: cocktail)
+                    .navigationTransition(.zoom(sourceID: cocktail.id, in: zoomNamespace))
+            }
             .onAppear { selectedTab = appState.preferredSearchTab }
             .onChange(of: appState.preferredSearchTab) { _, newTab in selectedTab = newTab }
             .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: "Cocktails, Ingredients…")
@@ -83,8 +89,9 @@ struct SearchView: View {
             LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
                 ForEach(filteredCocktails) { cocktail in
                     CocktailGridCell(cocktail: cocktail, onDelete: { appState.confirmDeleteCocktail(cocktail) }) {
-                        appState.viewCocktail(cocktail)
+                        viewedCocktail = cocktail
                     }
+                    .matchedTransitionSource(id: cocktail.id, in: zoomNamespace)
                 }
                 if showCocktailSuggestion {
                     addCocktailCell(name: query) {

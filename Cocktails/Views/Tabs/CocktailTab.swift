@@ -10,6 +10,8 @@ struct CocktailTab: View {
     @State private var isSelecting = false
     @State private var selection = Set<UUID>()
     @State private var showDeleteConfirm = false
+    @State private var viewedCocktail: Cocktail?
+    @Namespace private var zoomNamespace
 
     private var selectedCocktails: [Cocktail] {
         cocktails.filter { selection.contains($0.id) }
@@ -20,6 +22,10 @@ struct CocktailTab: View {
             mainContent
                 .navigationTitle(isSelecting ? selectionTitle : "Cocktails")
                 .toolbar { toolbarContent }
+                .navigationDestination(item: $viewedCocktail) { cocktail in
+                    CocktailDetailView(cocktail: cocktail)
+                        .navigationTransition(.zoom(sourceID: cocktail.id, in: zoomNamespace))
+                }
                 .alert("Delete Cocktails", isPresented: $showDeleteConfirm) {
                     Button("Delete", role: .destructive) { deleteSelected() }
                     Button("Cancel", role: .cancel) {}
@@ -82,9 +88,10 @@ struct CocktailTab: View {
                                         if isSelecting {
                                             selection.toggle(cocktail.id)
                                         } else {
-                                            appState.viewCocktail(cocktail)
+                                            viewedCocktail = cocktail
                                         }
                                     }
+                                    .matchedTransitionSource(id: cocktail.id, in: zoomNamespace)
                                 }
                             }
                             .padding(.horizontal)

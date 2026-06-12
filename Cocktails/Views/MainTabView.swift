@@ -37,7 +37,12 @@ struct MainTabView: View {
                 .presentationDetents([.medium, .large])
                 .presentationDragIndicator(.visible)
         }
-        .cocktailSheet($appState.activeCocktailSheet)
+        .sheet(isPresented: .init(presence: $appState.newCocktailDraft)) {
+            if let draft = appState.newCocktailDraft {
+                NavigationStack { CocktailEditView(draft: draft) }
+                    .presentationDetents([.large])
+            }
+        }
         .onOpenURL { url in
             appState.openReceivedRecipes(url)
         }

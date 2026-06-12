@@ -3,7 +3,6 @@ import SwiftData
 import StoreKit
 
 struct CocktailDetailView: View {
-    @Environment(\.dismiss) private var dismiss
     @Environment(\.requestReview) private var requestReview
 
     private let cocktail: Cocktail
@@ -19,7 +18,7 @@ struct CocktailDetailView: View {
     var body: some View {
         Group {
             if isEditing {
-                CocktailEditView(cocktail: cocktail, onFinish: finishEditing)
+                CocktailEditView(cocktail: cocktail, backgroundColor: $backgroundColor, onFinish: finishEditing)
                     .transition(.opacity)
             } else {
                 detailView
@@ -27,6 +26,7 @@ struct CocktailDetailView: View {
             }
         }
         .animation(.easeInOut(duration: 0.2), value: isEditing)
+        .background { CocktailGradientBackground(backgroundColor: backgroundColor) }
     }
 
     /// Refreshes the cached draft from the (now-edited) model and returns to the
@@ -66,7 +66,6 @@ struct CocktailDetailView: View {
                 requestReview()
             }
         }
-        .background { CocktailGradientBackground(backgroundColor: backgroundColor) }
         .toolbar { toolbarContent }
     }
 
@@ -186,10 +185,6 @@ struct CocktailDetailView: View {
 
     @ToolbarContentBuilder
     private var toolbarContent: some ToolbarContent {
-        ToolbarItem(placement: .cancellationAction) {
-            Button("Done") { dismiss() }
-        }
-        
         ToolbarItem(placement: .automatic) {
             Button {
                 withAnimation {

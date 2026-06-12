@@ -16,10 +16,18 @@ struct CocktailEditView: View {
 
     private let originalCocktail: Cocktail?
     private let onFinish: (() -> Void)?
+    /// When embedded in CocktailDetailView, the detail view owns the gradient
+    /// background; colour updates are written there instead of rendering our own.
+    private let externalBackground: Binding<Color?>?
 
-    init(cocktail: Cocktail, onFinish: (() -> Void)? = nil) {
+    private var background: Binding<Color?> {
+        externalBackground ?? $backgroundColor
+    }
+
+    init(cocktail: Cocktail, backgroundColor: Binding<Color?>? = nil, onFinish: (() -> Void)? = nil) {
         self.originalCocktail = cocktail
         self.onFinish = onFinish
+        self.externalBackground = backgroundColor
         let draft = CocktailDraft(from: cocktail)
         self._draft = State(initialValue: draft)
         self._backgroundColor = State(initialValue: draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled))
@@ -28,6 +36,7 @@ struct CocktailEditView: View {
     init(draft: CocktailDraft = CocktailDraft()) {
         self.originalCocktail = nil
         self.onFinish = nil
+        self.externalBackground = nil
         self._draft = State(initialValue: draft)
         self._backgroundColor = State(initialValue: draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled))
     }
@@ -58,7 +67,11 @@ struct CocktailEditView: View {
         .scrollContentBackground(.hidden)
         .scrollDismissesKeyboard(.interactively)
         .dismissKeyboardOnTap()
-        .background { CocktailGradientBackground(backgroundColor: backgroundColor) }
+        .background {
+            if externalBackground == nil {
+                CocktailGradientBackground(backgroundColor: background.wrappedValue)
+            }
+        }
         .toolbar { toolbarContent }
         .sensoryFeedback(.success, trigger: saveHapticTrigger)
         .onChange(of: draft.glass) { updateBackground() }
@@ -389,7 +402,7 @@ struct CocktailEditView: View {
     // MARK: - Actions
 
     private func updateBackground() {
-        backgroundColor = draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled)
+        background.wrappedValue = draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled)
     }
 
     private func loadPhoto() {

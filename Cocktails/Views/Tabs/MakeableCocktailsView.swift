@@ -5,8 +5,9 @@ struct MakeableCocktailsView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @Query private var cocktails: [Cocktail]
-    @State private var activeCocktailSheet: ActiveCocktailSheet?
+    @State private var viewedCocktail: Cocktail?
     @State private var cocktailToDelete: Cocktail?
+    @Namespace private var zoomNamespace
 
     private var makeableCocktails: [Cocktail] {
         cocktails
@@ -41,8 +42,9 @@ struct MakeableCocktailsView: View {
                                     LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
                                         ForEach(makeableCocktails) { cocktail in
                                             CocktailGridCell(cocktail: cocktail, onDelete: { cocktailToDelete = cocktail }) {
-                                                activeCocktailSheet = .view(cocktail)
+                                                viewedCocktail = cocktail
                                             }
+                                            .matchedTransitionSource(id: cocktail.id, in: zoomNamespace)
                                         }
                                     }
                                 }
@@ -53,8 +55,9 @@ struct MakeableCocktailsView: View {
                                     LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
                                         ForEach(almostMakeableCocktails, id: \.cocktail.id) { item in
                                             CocktailGridCell(cocktail: item.cocktail, footerLabel: String(localized: "Missing: \(item.missing)"), onDelete: { cocktailToDelete = item.cocktail }) {
-                                                activeCocktailSheet = .view(item.cocktail)
+                                                viewedCocktail = item.cocktail
                                             }
+                                            .matchedTransitionSource(id: item.cocktail.id, in: zoomNamespace)
                                         }
                                     }
                                 }
@@ -81,7 +84,10 @@ struct MakeableCocktailsView: View {
                     cocktailToDelete = nil
                 }
             }
-            .cocktailSheet($activeCocktailSheet)
+            .navigationDestination(item: $viewedCocktail) { cocktail in
+                CocktailDetailView(cocktail: cocktail)
+                    .navigationTransition(.zoom(sourceID: cocktail.id, in: zoomNamespace))
+            }
         }
     }
 

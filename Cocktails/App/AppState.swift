@@ -20,7 +20,7 @@ final class AppState {
     var showOnboarding: Bool = !UserDefaults.standard.bool(forKey: Keys.hasSeenOnboarding)
 
     var activeSheet: AppSheet?
-    var activeCocktailSheet: ActiveCocktailSheet?
+    var newCocktailDraft: CocktailDraft?
     var activeIngredientSheet: ActiveIngredientSheet?
     var cocktailToDelete: Cocktail?
     var ingredientToDelete: Ingredient?
@@ -40,8 +40,7 @@ final class AppState {
         UserDefaults.standard.set(true, forKey: Keys.hasSeenOnboarding)
     }
 
-    func viewCocktail(_ cocktail: Cocktail) { activeCocktailSheet = .view(cocktail) }
-    func addCocktail(_ draft: CocktailDraft = CocktailDraft()) { activeCocktailSheet = .new(draft) }
+    func addCocktail(_ draft: CocktailDraft = CocktailDraft()) { newCocktailDraft = draft }
     func confirmDeleteCocktail(_ cocktail: Cocktail) { cocktailToDelete = cocktail }
 
     func editIngredient(_ ingredient: Ingredient) { activeIngredientSheet = .edit(ingredient) }
