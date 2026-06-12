@@ -16,11 +16,7 @@ struct IngredientPickerView: View {
     }
 
     private var groupedIngredients: [(IngredientType, [Ingredient])] {
-        let groups = Dictionary(grouping: filtered) { $0.type }
-        return IngredientType.allCases.compactMap { type in
-            guard let items = groups[type], !items.isEmpty else { return nil }
-            return (type, items)
-        }
+        filtered.groupedByType()
     }
 
     private var showAddSuggestion: Bool {
@@ -38,8 +34,7 @@ struct IngredientPickerView: View {
                     ForEach(groupedIngredients, id: \.0) { type, items in
                         VStack(alignment: .leading, spacing: 10) {
                             Text(type.localizedName)
-                                .font(.title3.bold())
-                                .fontDesign(.rounded)
+                                .sectionTitleStyle()
                                 .padding(.horizontal)
 
                             LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {

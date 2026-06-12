@@ -18,9 +18,9 @@ struct CocktailGradientBackground: View {
                         .init(0.0, 1.0), .init(0.5, 1.0), .init(1.0, 1.0)
                     ],
                     colors: [
-                        backgroundColor,                 backgroundColor.opacity(0.8), backgroundColor.opacity(0.5),
-                        backgroundColor.opacity(0.7),    backgroundColor.opacity(0.3), .clear,
-                        backgroundColor.opacity(0.2),    .clear,                       .clear
+                        backgroundColor.opacity(0.3),    backgroundColor.opacity(0.25), backgroundColor.opacity(0.15),
+                        backgroundColor.opacity(0.2),    backgroundColor.opacity(0.1),  .clear,
+                        backgroundColor.opacity(0.07),   .clear,                        .clear
                     ]
                 )
                 .saturation(1.9)

@@ -53,8 +53,6 @@ struct SettingsView: View {
     }
 
     // MARK: - Sections
-    
-    //  [Color.red, Color.orange, Color.yellow, Color.green, Color.mint, Color.teal, Color.cyan, Color.blue, Color.indigo, Color.purple]
 
     private var upgradeSection: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -63,10 +61,9 @@ struct SettingsView: View {
                 if store.isUnlimited {
                     row(icon: "infinity", color: .green,
                         title: "Unlimited Cocktails",
-                        subtitle: "Thanks for your support",
-                        trailing: AnyView(
-                            Image(systemName: "checkmark.seal.fill").foregroundStyle(.green)
-                        ))
+                        subtitle: "Thanks for your support") {
+                        Image(systemName: "checkmark.seal.fill").foregroundStyle(.green)
+                    }
                 } else {
                     Button { showPaywall = true } label: {
                         row(icon: "infinity", color: .purple,
@@ -90,8 +87,13 @@ struct SettingsView: View {
                     } label: {
                         row(icon: "arrow.clockwise", color: .gray,
                             title: "Restore Purchases",
-                            subtitle: "Already bought? Restore here",
-                            trailing: store.restoreInFlight ? AnyView(ProgressView().scaleEffect(0.8)) : nil)
+                            subtitle: "Already bought? Restore here") {
+                            if store.restoreInFlight {
+                                ProgressView().scaleEffect(0.8)
+                            } else {
+                                chevron
+                            }
+                        }
                     }
                     .buttonStyle(.plain)
                     .disabled(store.restoreInFlight)
@@ -184,8 +186,17 @@ struct SettingsView: View {
             .padding(.leading, 4)
     }
 
-    @ViewBuilder
-    private func row(icon: String, color: Color, title: LocalizedStringKey, subtitle: LocalizedStringKey, trailing: AnyView? = nil) -> some View {
+    private var chevron: some View {
+        Image(systemName: "chevron.right")
+            .font(.caption.bold())
+            .foregroundStyle(.tertiary)
+    }
+
+    private func row(icon: String, color: Color, title: LocalizedStringKey, subtitle: LocalizedStringKey) -> some View {
+        row(icon: icon, color: color, title: title, subtitle: subtitle) { chevron }
+    }
+
+    private func row(icon: String, color: Color, title: LocalizedStringKey, subtitle: LocalizedStringKey, @ViewBuilder trailing: () -> some View) -> some View {
         HStack(spacing: 14) {
             Image(systemName: icon)
                 .font(.system(size: 15, weight: .semibold))
@@ -205,13 +216,7 @@ struct SettingsView: View {
 
             Spacer()
 
-            if let trailing {
-                trailing
-            } else {
-                Image(systemName: "chevron.right")
-                    .font(.caption.bold())
-                    .foregroundStyle(.tertiary)
-            }
+            trailing()
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 12)
@@ -238,6 +243,7 @@ struct SettingsView: View {
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .glassCard()
+        .accessibilityElement(children: .combine)
     }
 
     // MARK: - Data actions

@@ -46,24 +46,7 @@ struct ReceivedRecipesView: View {
         .presentationDetents([.medium, .large])
         .sensoryFeedback(.success, trigger: imported)
         .sheet(isPresented: $showPaywall) { PaywallView() }
-        .alert("Import Complete", isPresented: .init(
-            get: { importResult != nil },
-            set: { if !$0 { importResult = nil } }
-        )) {
-            Button("OK") { importResult = nil }
-        } message: {
-            if let r = importResult {
-                Text("\(r.cocktailsInserted) cocktails imported.")
-            }
-        }
-        .alert("Import Failed", isPresented: .init(
-            get: { importError != nil },
-            set: { if !$0 { importError = nil } }
-        )) {
-            Button("OK") { importError = nil }
-        } message: {
-            if let e = importError { Text(e) }
-        }
+        .importResultAlerts(result: $importResult, error: $importError)
     }
 
     private var navigationTitle: String {

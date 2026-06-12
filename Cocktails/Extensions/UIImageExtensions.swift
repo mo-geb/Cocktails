@@ -5,7 +5,7 @@ import UIKit
 // Retrieved 2026-04-28, License - CC BY-SA 4.0
 
 extension UIImage {
-    func dominantColor() -> UIColor? {
+    nonisolated func dominantColor() -> UIColor? {
         guard let cgImage = self.cgImage else { return nil }
 
         // Sampling at full resolution allocates width*height*4 bytes and draws the
@@ -64,6 +64,6 @@ extension UIImage {
             }
         }
 
-        return bestColor.withAlphaComponent(0.2)
+        return bestColor
     }
 }

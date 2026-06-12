@@ -10,17 +10,43 @@ final class StoreManager {
 
     static let unlimitedProductID = "com.mo.Cocktails.unlimited"
 
-    private(set) var isUnlimited = false
+    private(set) var isUnlimited = UserDefaults.standard.bool(forKey: "isUnlimited") {
+        didSet { UserDefaults.standard.set(isUnlimited, forKey: "isUnlimited") }
+    }
     private(set) var restoreInFlight = false
 
-    /// Mirrors the App Store entitlement; kept current by the
-    /// `currentEntitlementTask` attached at the app root.
-    func updateEntitlement(from result: VerificationResult<Transaction>?) {
-        guard case .verified(let transaction) = result else {
-            isUnlimited = false
-            return
+    init() {
+        Task { [weak self] in
+            for await result in Transaction.updates {
+                guard case .verified(let transaction) = result else { continue }
+                await self?.process(transaction)
+            }
         }
-        isUnlimited = transaction.revocationDate == nil
+    }
+
+    private func process(_ transaction: Transaction) async {
+        if transaction.productID == Self.unlimitedProductID {
+            isUnlimited = transaction.revocationDate == nil
+        }
+        await transaction.finish()
+    }
+
+    func updateEntitlement(from result: VerificationResult<Transaction>?) async {
+        guard case .verified(let transaction) = result else { return }
+        await process(transaction)
+    }
+
+    func handlePurchaseResult(_ result: Result<Product.PurchaseResult, any Error>) async {
+        guard case .success(.success(let verification)) = result,
+              case .verified(let transaction) = verification else { return }
+        await process(transaction)
+    }
+
+    func processUnfinishedTransactions() async {
+        for await result in Transaction.unfinished {
+            guard case .verified(let transaction) = result else { continue }
+            await process(transaction)
+        }
     }
 
     func restore() async {
@@ -33,7 +59,7 @@ final class StoreManager {
         for await result in Transaction.currentEntitlements(for: Self.unlimitedProductID) {
             latest = result
         }
-        updateEntitlement(from: latest)
+        await updateEntitlement(from: latest)
     }
 
     // MARK: - Gating

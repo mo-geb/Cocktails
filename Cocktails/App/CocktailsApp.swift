@@ -29,8 +29,14 @@ struct CocktailsApp: App {
                 .environment(store)
                 .currentEntitlementTask(for: StoreManager.unlimitedProductID) { state in
                     if case .success(let entitlement) = state {
-                        store.updateEntitlement(from: entitlement)
+                        await store.updateEntitlement(from: entitlement)
                     }
+                }
+                .onInAppPurchaseCompletion { _, result in
+                    await store.handlePurchaseResult(result)
+                }
+                .task {
+                    await store.processUnfinishedTransactions()
                 }
         }
         .modelContainer(sharedModelContainer)

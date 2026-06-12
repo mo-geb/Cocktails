@@ -43,10 +43,7 @@ struct MainTabView: View {
         }
         .confirmationDialog(
             "Delete \"\(appState.cocktailToDelete?.name ?? "")\"?",
-            isPresented: Binding(
-                get: { appState.cocktailToDelete != nil },
-                set: { if !$0 { appState.cocktailToDelete = nil } }
-            ),
+            isPresented: .init(presence: $appState.cocktailToDelete),
             titleVisibility: .visible
         ) {
             Button("Delete", role: .destructive) {
@@ -57,10 +54,7 @@ struct MainTabView: View {
         }
         .confirmationDialog(
             "Delete \"\(appState.ingredientToDelete?.name ?? "")\"?",
-            isPresented: Binding(
-                get: { appState.ingredientToDelete != nil },
-                set: { if !$0 { appState.ingredientToDelete = nil } }
-            ),
+            isPresented: .init(presence: $appState.ingredientToDelete),
             titleVisibility: .visible
         ) {
             Button("Delete", role: .destructive) {

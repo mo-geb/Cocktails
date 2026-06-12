@@ -18,4 +18,34 @@ extension View {
             )
         }
     }
+
+    func sectionTitleStyle() -> some View {
+        font(.title3.bold())
+            .fontDesign(.rounded)
+    }
+
+    func importResultAlerts(result: Binding<ImportResult?>, error: Binding<String?>) -> some View {
+        alert("Import Complete", isPresented: .init(presence: result)) {
+            Button("OK") { result.wrappedValue = nil }
+        } message: {
+            if let r = result.wrappedValue {
+                Text("\(r.cocktailsInserted) cocktails imported.")
+            }
+        }
+        .alert("Import Failed", isPresented: .init(presence: error)) {
+            Button("OK") { error.wrappedValue = nil }
+        } message: {
+            if let e = error.wrappedValue { Text(e) }
+        }
+    }
+}
+
+extension Binding where Value == Bool {
+    /// True while `item` is non-nil; setting it to false (dismissal) resets the item.
+    init<T>(presence item: Binding<T?>) {
+        self.init(
+            get: { item.wrappedValue != nil },
+            set: { if !$0 { item.wrappedValue = nil } }
+        )
+    }
 }

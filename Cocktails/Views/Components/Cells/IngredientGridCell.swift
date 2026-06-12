@@ -32,6 +32,9 @@ struct IngredientGridCell: View {
             .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
             .grayscale(ingredient.isStocked ? 0 : 1)
             .opacity(ingredient.isStocked ? 1 : 0.4)
+            .accessibilityElement(children: .combine)
+            .accessibilityValue(ingredient.isStocked ? Text("Stocked") : Text("Not stocked"))
+            .accessibilityHint(Text("Toggles whether you have this ingredient."))
         }
         .sensoryFeedback(.impact(weight: .medium), trigger: ingredient.isStocked)
         .buttonStyle(.plain)

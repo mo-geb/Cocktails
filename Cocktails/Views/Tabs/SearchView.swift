@@ -32,10 +32,6 @@ struct SearchView: View {
         return !ingredients.contains { $0.name.localizedCaseInsensitiveCompare(query) == .orderedSame }
     }
 
-    private var groupedIngredients: [(IngredientType, [Ingredient])] {
-        filteredIngredients.groupedByType()
-    }
-
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
@@ -119,29 +115,6 @@ struct SearchView: View {
         } else if filteredIngredients.isEmpty && !showIngredientSuggestion {
             ContentUnavailableView.search(text: query)
                 .padding(.top, 60)
-        } else if query.isEmpty {
-            VStack(alignment: .leading, spacing: 28) {
-                ForEach(groupedIngredients, id: \.0) { type, items in
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text(type.localizedName)
-                            .font(.title3.bold())
-                            .fontDesign(.rounded)
-                            .padding(.horizontal)
-
-                        LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
-                            ForEach(items) { ingredient in
-                                IngredientGridCell(
-                                    ingredient: ingredient,
-                                    onEdit: { appState.editIngredient(ingredient) },
-                                    onDelete: { appState.confirmDeleteIngredient(ingredient) }
-                                )
-                            }
-                        }
-                        .padding(.horizontal)
-                    }
-                }
-            }
-            .padding(.vertical)
         } else {
             LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
                 ForEach(filteredIngredients) { ingredient in

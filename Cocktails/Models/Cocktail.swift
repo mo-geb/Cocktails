@@ -79,5 +79,13 @@ extension Cocktail {
     var garnishIngredients: [RecipeIngredient] {
         (ingredients ?? []).filter { $0.role == .garnish }
     }
+
+    var missingCoreIngredients: [RecipeIngredient] {
+        coreIngredients.filter { $0.ingredient?.isStocked != true }
+    }
+
+    var isMakeable: Bool {
+        !coreIngredients.isEmpty && missingCoreIngredients.isEmpty
+    }
 }
 

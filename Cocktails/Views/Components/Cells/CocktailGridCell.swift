@@ -97,6 +97,7 @@ struct CocktailGridCell: View {
                     Image(systemName: "star.fill")
                         .font(.caption.bold())
                         .foregroundStyle(.yellow)
+                        .accessibilityLabel(Text("Favourite"))
                         .transition(.symbolEffect)
                         .padding(7)
                         .glassEffect(in: Circle())
@@ -107,6 +108,7 @@ struct CocktailGridCell: View {
                     Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                         .font(.title2)
                         .foregroundStyle(isSelected ? Color.accentColor : Color.primary.opacity(0.3))
+                        .accessibilityLabel(isSelected ? Text("Selected") : Text("Not selected"))
                         .contentTransition(.symbolEffect(.replace))
                         .animation(.default, value: isSelected)
                         .padding(10)
@@ -118,14 +120,14 @@ struct CocktailGridCell: View {
             .background {
                 if let bgColor {
                     RoundedRectangle(cornerRadius: 24, style: .continuous)
-                        .fill(bgColor.opacity(0.18))
+                        .fill(bgColor.opacity(0.2))
                 }
             }
             .task(id: cocktail.id) {
                 let image = cocktail.displayImage
                 let placeholder = cocktail.glass.imageNameFilled
                 bgColor = await Task.detached(priority: .background) {
-                    await image.dominantColor(placeholderName: placeholder)
+                    image.dominantColor(placeholderName: placeholder)
                 }.value
             }
             .overlay {
@@ -135,6 +137,7 @@ struct CocktailGridCell: View {
                 }
             }
             .contentShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+            .accessibilityElement(children: .combine)
         }
         .sensoryFeedback(.selection, trigger: isSelected)
         .sensoryFeedback(.impact(weight: .light), trigger: cocktail.isFavourite)
@@ -191,6 +194,7 @@ func addCocktailCell(name: String, action: @escaping () -> Void) -> some View {
             RoundedRectangle(cornerRadius: 24, style: .continuous)
                 .strokeBorder(.tint.opacity(0.55), lineWidth: 1.5)
         }
+        .accessibilityElement(children: .combine)
     }
     .buttonStyle(.plain)
 }

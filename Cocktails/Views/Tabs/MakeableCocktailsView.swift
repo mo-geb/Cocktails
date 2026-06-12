@@ -10,7 +10,7 @@ struct MakeableCocktailsView: View {
 
     private var makeableCocktails: [Cocktail] {
         cocktails
-            .filter { !$0.coreIngredients.isEmpty && $0.coreIngredients.allSatisfy { $0.ingredient?.isStocked == true } }
+            .filter(\.isMakeable)
             .sorted { $0.name < $1.name }
     }
 
@@ -18,8 +18,8 @@ struct MakeableCocktailsView: View {
         cocktails
             .sorted { $0.name < $1.name }
             .compactMap { cocktail in
-                let unstocked = cocktail.coreIngredients.filter { $0.ingredient?.isStocked != true }
-                guard unstocked.count == 1, let missingName = unstocked.first?.ingredient?.localizedName else { return nil }
+                let missing = cocktail.missingCoreIngredients
+                guard missing.count == 1, let missingName = missing.first?.ingredient?.localizedName else { return nil }
                 return (cocktail: cocktail, missing: missingName)
             }
     }
@@ -73,7 +73,7 @@ struct MakeableCocktailsView: View {
             }
             .confirmationDialog(
                 "Delete \"\(cocktailToDelete?.name ?? "")\"?",
-                isPresented: Binding(get: { cocktailToDelete != nil }, set: { if !$0 { cocktailToDelete = nil } }),
+                isPresented: .init(presence: $cocktailToDelete),
                 titleVisibility: .visible
             ) {
                 Button("Delete", role: .destructive) {
@@ -89,8 +89,7 @@ struct MakeableCocktailsView: View {
     private func section(title: LocalizedStringKey, @ViewBuilder content: () -> some View) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(title)
-                .font(.title3.bold())
-                .fontDesign(.rounded)
+                .sectionTitleStyle()
             content()
         }
     }

@@ -68,8 +68,7 @@ struct CocktailTab: View {
                                 }
                                 Text(group.name)
                             }
-                            .font(.title3.bold())
-                            .fontDesign(.rounded)
+                            .sectionTitleStyle()
                             .padding(.horizontal)
 
                             LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
@@ -183,31 +182,12 @@ struct CocktailTab: View {
         var id: String { name }
     }
 
-    private func groupKey(for cocktail: Cocktail) -> (name: String, imageName: String?) {
-        switch appState.cocktailGrouping {
-        case .none:      return (String(localized: "All Cocktails"), "Glass/Empty/martini")
-        case .method:    return (cocktail.method.localizedName, cocktail.method.customImageName)
-        case .source:    return (cocktail.source.localizedName, cocktail.source.imageName)
-        case .favourite:
-            return cocktail.isFavourite
-                ? (String(localized: "Favourites"), "Other/Favourite")
-                : (String(localized: "All Cocktails"), "Glass/Empty/martini")
-        }
-    }
-
     private var groupedCocktails: [CocktailGroup] {
-        let keyed = cocktails.map { (key: groupKey(for: $0), cocktail: $0) }
-        let groups = Dictionary(grouping: keyed) { $0.key.name }
-        return groups
-            .sorted { l, r in
-                if appState.cocktailGrouping == .favourite {
-                    if l.key == String(localized: "Favourites") { return true }
-                    if r.key == String(localized: "Favourites") { return false }
-                }
-                return l.key < r.key
-            }
-            .map { name, pairs in
-                CocktailGroup(name: name, imageName: pairs.first?.key.imageName, items: pairs.map(\.cocktail))
+        let grouping = appState.cocktailGrouping
+        return Dictionary(grouping: cocktails) { grouping.key(for: $0) }
+            .sorted { ($0.key.sortRank, $0.key.name) < ($1.key.sortRank, $1.key.name) }
+            .map { key, items in
+                CocktailGroup(name: key.name, imageName: key.imageName, items: items)
             }
     }
 }

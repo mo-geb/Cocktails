@@ -11,7 +11,7 @@ struct LibraryCell: View {
         ZStack(alignment: .bottom) {
             if let accentColor {
                 LinearGradient(
-                    colors: [accentColor, accentColor.opacity(0.15)],
+                    colors: [accentColor.opacity(0.3), accentColor.opacity(0.05)],
                     startPoint: .top,
                     endPoint: .bottom
                 )

@@ -13,7 +13,7 @@ extension DisplayImageSource {
         return false
     }
 
-    func dominantColor(placeholderName: String) -> Color? {
+    nonisolated func dominantColor(placeholderName: String) -> Color? {
         let uiImage: UIImage? = switch self {
         case .custom(let img):  img
         case .system(let name): UIImage(named: name)

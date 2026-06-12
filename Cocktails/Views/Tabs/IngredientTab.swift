@@ -20,7 +20,7 @@ struct IngredientTab: View {
     }
     
     private var makeableCount: Int {
-        cocktails.filter { !$0.coreIngredients.isEmpty && $0.coreIngredients.allSatisfy { $0.ingredient?.isStocked == true } }.count
+        cocktails.count(where: \.isMakeable)
     }
     
     var body: some View {
@@ -52,8 +52,7 @@ struct IngredientTab: View {
                     ForEach(groupedIngredients, id: \.0) { type, items in
                         VStack(alignment: .leading, spacing: 10) {
                             Text(type.localizedName)
-                                .font(.title3.bold())
-                                .fontDesign(.rounded)
+                                .sectionTitleStyle()
                                 .padding(.horizontal)
 
                             LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {

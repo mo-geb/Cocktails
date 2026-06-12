@@ -201,7 +201,7 @@ struct CocktailEditView: View {
                     .fontDesign(.rounded)
                     .lineLimit(1)
             }
-            .foregroundStyle(isSelected ? AnyShapeStyle(.tint) : AnyShapeStyle(.primary))
+            .foregroundStyle(isSelected ? Color.accentColor : Color.primary)
             .padding(.horizontal, 12)
             .padding(.vertical, 10)
             .background {
@@ -223,8 +223,7 @@ struct CocktailEditView: View {
         CocktailSectionCard {
             HStack {
                 Text(title)
-                    .font(.title3.bold())
-                    .fontDesign(.rounded)
+                    .sectionTitleStyle()
                 Spacer()
                 Button { addIngredient(role: role) } label: {
                     Image(systemName: "plus.circle.fill")
@@ -293,7 +292,7 @@ struct CocktailEditView: View {
                         Text(isEmpty ? "Select ingredient…" : ingredient.ingredient.localizedName)
                             .fontDesign(.rounded)
                             .fontWeight(.medium)
-                            .foregroundStyle(isEmpty ? AnyShapeStyle(.tint) : AnyShapeStyle(.primary))
+                            .foregroundStyle(isEmpty ? Color.accentColor : Color.primary)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     .buttonStyle(.plain)

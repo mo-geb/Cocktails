@@ -28,6 +28,8 @@ struct ConfettiView: View {
             }
             .onAppear { spawn(in: geo.size) }
         }
+        .accessibilityHidden(true)
+        .allowsHitTesting(false)
         .allowsHitTesting(false)
         .ignoresSafeArea()
     }

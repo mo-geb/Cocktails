@@ -10473,6 +10473,9 @@
         }
       }
     },
+    "Imported" : {
+
+    },
     "ingredient.absinthe" : {
       "comment" : "Ingredient name",
       "extractionState" : "manual",
@@ -27796,6 +27799,12 @@
         }
       }
     },
+    "Not selected" : {
+
+    },
+    "Not stocked" : {
+
+    },
     "Note (e.g. Sweet Vermouth)" : {
       "localizations" : {
         "ar" : {
@@ -31460,6 +31469,9 @@
         }
       }
     },
+    "Selected" : {
+
+    },
     "Settings" : {
       "localizations" : {
         "ar" : {
@@ -32763,6 +32775,9 @@
         }
       }
     },
+    "Stocked" : {
+
+    },
     "Support independent development" : {
       "localizations" : {
         "ar" : {
@@ -33593,6 +33608,9 @@
           }
         }
       }
+    },
+    "Toggles whether you have this ingredient." : {
+
     },
     "Type" : {
       "localizations" : {

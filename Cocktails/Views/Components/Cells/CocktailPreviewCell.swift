@@ -63,6 +63,7 @@ struct CocktailPreviewCell: View {
                 Image(systemName: isImported || isSelected ? "checkmark.circle.fill" : "circle")
                     .font(.title2)
                     .foregroundStyle(isImported ? .secondary : (isSelected ? Color.accentColor : Color.primary.opacity(0.3)))
+                    .accessibilityLabel(accessibilityStateLabel)
                     .contentTransition(.symbolEffect(.replace))
                     .animation(.default, value: isImported || isSelected)
                     .padding(10)
@@ -70,6 +71,7 @@ struct CocktailPreviewCell: View {
             .contentShape(Rectangle())
             .frame(maxWidth: .infinity)
             .aspectRatio(0.85, contentMode: .fit)
+            .accessibilityElement(children: .combine)
             .glassCard()
             .overlay {
                 if isImported {
@@ -83,6 +85,12 @@ struct CocktailPreviewCell: View {
         }
         .buttonStyle(.plain)
         .disabled(isImported)
+    }
+
+    private var accessibilityStateLabel: Text {
+        if isImported { Text("Imported") }
+        else if isSelected { Text("Selected") }
+        else { Text("Not selected") }
     }
 }
 
