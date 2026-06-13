@@ -23,7 +23,6 @@ struct CocktailGradientBackground: View {
                         backgroundColor.opacity(0.07),   .clear,                        .clear
                     ]
                 )
-                .saturation(1.9)
                 .blendMode(colorScheme == .dark ? .screen : .normal)
             }
         }

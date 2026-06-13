@@ -73,12 +73,10 @@ struct IngredientEditView: View {
                 .listRowInsets(.init())
             }
 
-            Section("Name") {
-                TextField("e.g. Campari", text: $name)
+            Section {
+                TextField("Name", text: $name, prompt: Text("e.g. Campari"))
                     .autocorrectionDisabled()
-            }
 
-            Section("Type") {
                 Picker("Type", selection: $type) {
                     ForEach(IngredientType.allCases) { t in
                         Text(t.localizedName).tag(t)
@@ -95,7 +93,6 @@ struct IngredientEditView: View {
             }
         }
         .scrollDismissesKeyboard(.interactively)
-        .dismissKeyboardOnTap()
         .navigationTitle(isNew ? "New Ingredient" : "Edit Ingredient")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {

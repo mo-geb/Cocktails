@@ -12,7 +12,11 @@ struct CocktailDetailView: View {
 
     init(cocktail: Cocktail) {
         self.cocktail = cocktail
-        self._draft = State(initialValue: CocktailDraft(from: cocktail))
+        let draft = CocktailDraft(from: cocktail)
+        self._draft = State(initialValue: draft)
+        // Seed before the first frame so the mesh doesn't fade in from nil
+        // while the zoom transition is still settling.
+        self._backgroundColor = State(initialValue: draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled))
     }
 
     var body: some View {
@@ -57,9 +61,6 @@ struct CocktailDetailView: View {
             }
         }
         .scrollContentBackground(.hidden)
-        .onAppear {
-            backgroundColor = draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled)
-        }
         .task {
             if ReviewManager.recordCocktailViewed() {
                 try? await Task.sleep(for: .seconds(1))

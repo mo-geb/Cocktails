@@ -64,6 +64,10 @@ extension UIImage {
             }
         }
 
-        return bestColor
+        // Boost chroma once at extraction so every consumer (cell wash, detail
+        // mesh, library accent) renders the exact same hue and intensity.
+        var h: CGFloat = 0, s: CGFloat = 0, v: CGFloat = 0
+        bestColor.getHue(&h, saturation: &s, brightness: &v, alpha: nil)
+        return UIColor(hue: h, saturation: min(s * 1.9, 1), brightness: v, alpha: 1)
     }
 }
