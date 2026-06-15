@@ -1,26 +1,39 @@
 import SwiftUI
 import SwiftData
 import StoreKit
+import AppIntents
 
 @main
 struct CocktailsApp: App {
-    @State private var appState = AppState()
+    @State private var appState: AppState
     @State private var store = StoreManager()
 
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Cocktail.self,
-            RecipeIngredient.self,
-            Ingredient.self
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+    let sharedModelContainer: ModelContainer
 
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
+    init() {
+        let appState = AppState()
+        let container: ModelContainer = {
+            let schema = Schema([
+                Cocktail.self,
+                RecipeIngredient.self,
+                Ingredient.self
+            ])
+            let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+
+            do {
+                return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            } catch {
+                fatalError("Could not create ModelContainer: \(error)")
+            }
+        }()
+
+        _appState = State(initialValue: appState)
+        self.sharedModelContainer = container
+
+        // Resolve @Dependency in App Intents (CocktailAppIntents.swift).
+        AppDependencyManager.shared.add(dependency: appState)
+        AppDependencyManager.shared.add(dependency: container)
+    }
 
     var body: some Scene {
         WindowGroup {
