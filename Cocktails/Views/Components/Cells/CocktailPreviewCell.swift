@@ -27,34 +27,28 @@ struct CocktailPreviewCell: View {
                             .multilineTextAlignment(.center)
                             .lineLimit(2)
 
-                        HStack(spacing: 0) {
-                            HStack(spacing: 5) {
-                                Image(dto.ice.imageName)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 12, height: 12)
-                                    .accessibilityHidden(true)
-                                Text(dto.ice.localizedName)
-                            }
-                            .frame(maxWidth: .infinity)
-
-                            Divider().frame(height: 12)
-
-                            HStack(spacing: 5) {
-                                Image(dto.method.customImageName)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 12, height: 12)
-                                    .accessibilityHidden(true)
-                                Text(dto.method.localizedName)
-                            }
-                            .frame(maxWidth: .infinity)
+                        HStack(spacing: 5) {
+                            Image(dto.ice.imageName)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 11, height: 11)
+                                .accessibilityHidden(true)
+                            Text(dto.ice.localizedName)
+                            Text("·").foregroundStyle(.tertiary)
+                            Image(dto.method.customImageName)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 11, height: 11)
+                                .accessibilityHidden(true)
+                            Text(dto.method.localizedName)
                         }
                         .font(.caption2)
                         .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.8)
                         .padding(.horizontal, 10)
-                        .padding(.vertical, 7)
-                        .glassEffect()
+                        .padding(.vertical, 6)
+                        .background(Color(.tertiarySystemFill), in: Capsule())
                     }
                     .padding(.horizontal, 10)
                     .padding(.bottom, 14)
@@ -72,14 +66,15 @@ struct CocktailPreviewCell: View {
             .frame(maxWidth: .infinity)
             .aspectRatio(0.85, contentMode: .fit)
             .accessibilityElement(children: .combine)
-            .glassCard()
+            .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 24, style: .continuous))
             .overlay {
                 if isImported {
                     RoundedRectangle(cornerRadius: 24, style: .continuous)
                         .fill(.thinMaterial)
-                } else if isSelected {
+                } else {
                     RoundedRectangle(cornerRadius: 24, style: .continuous)
-                        .strokeBorder(Color.accentColor, lineWidth: 2.5)
+                        .strokeBorder(isSelected ? Color.accentColor : Color(.separator),
+                                      lineWidth: isSelected ? 2.5 : 1)
                 }
             }
         }

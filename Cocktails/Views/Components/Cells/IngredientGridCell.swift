@@ -3,6 +3,7 @@ import SwiftData
 
 struct IngredientGridCell: View {
     let ingredient: Ingredient
+    var onShowCocktails: (() -> Void)? = nil
     var onEdit: (() -> Void)? = nil
     var onDelete: (() -> Void)? = nil
 
@@ -28,7 +29,11 @@ struct IngredientGridCell: View {
             .padding(.all, 4)
             .frame(maxWidth: .infinity)
             .aspectRatio(0.85, contentMode: .fit)
-            .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .strokeBorder(Color(.separator), lineWidth: 1)
+            }
             .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
             .grayscale(ingredient.isStocked ? 0 : 1)
             .opacity(ingredient.isStocked ? 1 : 0.4)
@@ -39,11 +44,10 @@ struct IngredientGridCell: View {
         .sensoryFeedback(.impact(weight: .medium), trigger: ingredient.isStocked)
         .buttonStyle(.plain)
         .contextMenu {
-            Button {
-                ingredient.isStocked.toggle()
-            } label: {
-                Label(ingredient.isStocked ? "Mark as Unstocked" : "Mark as Stocked",
-                      systemImage: ingredient.isStocked ? "minus.circle" : "checkmark.circle")
+            if let onShowCocktails {
+                Button(action: onShowCocktails) {
+                    Label("View Cocktails", systemImage: "wineglass")
+                }
             }
             Button {
                 onEdit?()
@@ -80,10 +84,10 @@ func addIngredientCell(name: String) -> some View {
     .padding(.all, 4)
     .frame(maxWidth: .infinity)
     .aspectRatio(0.85, contentMode: .fit)
-    .glassCell()
+    .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
     .overlay {
         RoundedRectangle(cornerRadius: 18, style: .continuous)
-            .strokeBorder(.tint.opacity(0.55), lineWidth: 1.5)
+            .strokeBorder(Color.accentColor.opacity(0.55), lineWidth: 1.5)
     }
 }
 

@@ -15,9 +15,8 @@ struct LibraryCell: View {
                     startPoint: .top,
                     endPoint: .bottom
                 )
-                .saturation(1.9)
                 .blendMode(colorScheme == .dark ? .screen : .normal)
-                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
             }
 
             VStack(spacing: 0) {
@@ -44,7 +43,7 @@ struct LibraryCell: View {
                     .foregroundStyle(.secondary)
                     .padding(.horizontal, 10)
                     .padding(.vertical, 7)
-                    .glassEffect()
+                    .background(Color(.tertiarySystemFill), in: Capsule())
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal, 14)
@@ -53,7 +52,11 @@ struct LibraryCell: View {
         }
         .frame(maxWidth: .infinity)
         .aspectRatio(0.8, contentMode: .fit)
-        .glassEffect(.regular.interactive(), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .strokeBorder(Color(.separator), lineWidth: 1)
+        }
         .onAppear {
             if let uiImage = UIImage(named: source.imageName) {
                 accentColor = uiImage.dominantColor().map { Color($0) }

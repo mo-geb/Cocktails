@@ -37,6 +37,9 @@ struct MainTabView: View {
                 .presentationDetents([.medium, .large])
                 .presentationDragIndicator(.visible)
         }
+        .sheet(item: $appState.ingredientCocktails) { ingredient in
+            CocktailsWithIngredientView(ingredient: ingredient)
+        }
         .sheet(isPresented: .init(presence: $appState.newCocktailDraft)) {
             if let draft = appState.newCocktailDraft {
                 NavigationStack { CocktailEditView(draft: draft) }

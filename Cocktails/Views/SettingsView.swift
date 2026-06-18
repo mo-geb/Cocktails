@@ -11,36 +11,28 @@ struct SettingsView: View {
     @State private var showClearConfirmation = false
     @State private var showPaywall = false
     @State private var celebrate = false
+    @State private var linkButtonWidth: CGFloat = 100
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                GlassEffectContainer {
-                    VStack(spacing: 28) {
-                    Grid(horizontalSpacing: 16) {
+            List {
+                Section {
+                    Grid(horizontalSpacing: 12) {
                         GridRow {
-                            statCard(title: "Cocktails", value: "\(cocktails.count)", icon: "wineglass.fill", color: .purple)
-                            statCard(title: "Ingredients", value: "\(ingredients.count)", icon: "leaf.fill", color: .green)
+                            statCard(icon: "wineglass.fill", color: .purple, value: cocktails.count, title: "Cocktails")
+                            statCard(icon: "leaf.fill", color: .green, value: ingredients.count, title: "Ingredients")
                         }
                     }
-
-                    upgradeSection
-                    importSection
-                    aboutSection
-                    dataSection
-
-                    HStack {
-                        Spacer()
-                        Text(Bundle.main.fullVersionString)
-                            .font(.caption)
-                            .foregroundStyle(.tertiary)
-                        Spacer()
-                    }
-                    .padding(.top, 4)
+                    .listRowBackground(Color.clear)
+                    .listRowInsets(EdgeInsets(top: 4, leading: 0, bottom: 0, trailing: 0))
                 }
-                .padding()
-                }
+
+                upgradeSection
+                importSection
+                dataSection
+                aboutSection
             }
+            .listStyle(.insetGrouped)
             .fullScreenCover(isPresented: $showPaywall) { PaywallView() }
             .overlay { if celebrate { ConfettiView() } }
             .navigationTitle("Settings")
@@ -54,117 +46,119 @@ struct SettingsView: View {
 
     // MARK: - Sections
 
+    @ViewBuilder
     private var upgradeSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            sectionHeader("Unlimited")
-            VStack(spacing: 0) {
-                if store.isUnlimited {
-                    row(icon: "infinity", color: .green,
-                        title: "Unlimited Cocktails",
-                        subtitle: "Thanks for your support") {
-                        Image(systemName: "checkmark.seal.fill").foregroundStyle(.green)
-                    }
-                } else {
-                    Button { showPaywall = true } label: {
-                        row(icon: "infinity", color: .purple,
-                            title: "Unlimited Cocktails",
-                            subtitle: "Unlock more than \(StoreManager.freeCocktailLimit) cocktails")
-                    }
-                    .buttonStyle(.plain)
-                    
-                    Divider().padding(.leading, 62)
-                    
-                    Button {
-                        Task {
-                            let wasUnlimited = store.isUnlimited
-                            await store.restore()
-                            if !wasUnlimited && store.isUnlimited {
-                                celebrate = true
-                                try? await Task.sleep(for: .seconds(3.5))
-                                celebrate = false
-                            }
-                        }
-                    } label: {
-                        row(icon: "arrow.clockwise", color: .gray,
-                            title: "Restore Purchases",
-                            subtitle: "Already bought? Restore here") {
-                            if store.restoreInFlight {
-                                ProgressView().scaleEffect(0.8)
-                            } else {
-                                chevron
-                            }
-                        }
-                    }
-                    .buttonStyle(.plain)
-                    .disabled(store.restoreInFlight)
+        Section("Unlimited") {
+            if store.isUnlimited {
+                HStack {
+                    settingsLabel(icon: "infinity", color: .green,
+                                  title: "Unlimited Cocktails",
+                                  subtitle: "Thanks for your support")
+                    Spacer()
+                    Image(systemName: "checkmark.seal.fill").foregroundStyle(.green)
                 }
+            } else {
+                Button { showPaywall = true } label: {
+                    settingsLabel(icon: "infinity", color: .purple,
+                                  title: "Unlimited Cocktails",
+                                  subtitle: "Unlock more than \(StoreManager.freeCocktailLimit) cocktails")
+                }
+
+                Button {
+                    Task {
+                        let wasUnlimited = store.isUnlimited
+                        await store.restore()
+                        if !wasUnlimited && store.isUnlimited {
+                            celebrate = true
+                            try? await Task.sleep(for: .seconds(3.5))
+                            celebrate = false
+                        }
+                    }
+                } label: {
+                    HStack {
+                        settingsLabel(icon: "arrow.clockwise", color: .gray,
+                                      title: "Restore Purchases",
+                                      subtitle: "Already bought? Restore here")
+                        if store.restoreInFlight {
+                            Spacer()
+                            ProgressView()
+                        }
+                    }
+                }
+                .disabled(store.restoreInFlight)
             }
-            .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
         }
     }
 
     private var importSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            sectionHeader("Libraries")
-
+        Section("Libraries") {
             NavigationLink(destination: RecipeLibrariesView()) {
-                row(icon: "square.and.arrow.down.fill", color: .mint,
-                    title: "Import Library",
-                    subtitle: "Browse and add cocktail collections")
+                settingsLabel(icon: "square.and.arrow.down.fill", color: .mint,
+                              title: "Import Library",
+                              subtitle: "Browse and add cocktail collections")
             }
-            .buttonStyle(.plain)
-            .glassCell()
         }
     }
 
     private var aboutSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            sectionHeader("More")
-
-            VStack(spacing: 0) {
-                Link(destination: Links.website) {
-                    row(icon: "globe", color: .teal, title: "Website", subtitle: "mo-geb.com")
+        Section {
+            VStack(spacing: 12) {
+                HStack(spacing: 12) {
+                    linkButton(url: Links.website, icon: "globe", title: "Website")
+                    linkButton(url: Links.terms, icon: "doc.text", title: "Terms")
+                    linkButton(url: Links.privacy, icon: "book", title: "Privacy")
+                }
+                .background {
+                    GeometryReader { geo in
+                        Color.clear
+                            .onAppear { linkButtonWidth = (geo.size.width - 24) / 3 }
+                            .onChange(of: geo.size.width) { _, newWidth in
+                                linkButtonWidth = (newWidth - 24) / 3
+                            }
+                    }
                 }
 
-                Divider().padding(.leading, 62)
-
-                Link(destination: Links.terms) {
-                    row(icon: "doc.text", color: .cyan, title: "Terms of Service", subtitle: "Read the terms of service")
+                HStack(spacing: 12) {
+                    linkButton(url: Links.guide, icon: "questionmark.circle.fill", title: "Guide")
+                        .frame(width: linkButtonWidth)
+                    linkButton(url: Links.support, icon: "envelope.fill", title: "Support")
+                        .frame(width: linkButtonWidth)
                 }
-
-                Divider().padding(.leading, 62)
-
-                Link(destination: Links.privacy) {
-                    row(icon: "book", color: .blue, title: "Privacy Policy", subtitle: "Read the privacy policy")
-                }
-
-                Divider().padding(.leading, 62)
-
-                Link(destination: Links.guide) {
-                    row(icon: "questionmark.circle.fill", color: .indigo, title: "User Guide", subtitle: "Tips and how-tos")
-                }
-
-                Divider().padding(.leading, 62)
-
-                Link(destination: Links.support) {
-                    row(icon: "envelope.fill", color: .purple, title: "Contact Support", subtitle: "support@mo-geb.com")
-                }
+                .frame(maxWidth: .infinity)
             }
-            .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .listRowBackground(Color.clear)
+            .listRowInsets(EdgeInsets(top: 0, leading: 20, bottom: 8, trailing: 20))
+        } header: {
+            Text("More")
+        } footer: {
+            Text(Bundle.main.fullVersionString)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.top, 8)
+        }
+    }
+
+    private func linkButton(url: URL, icon: String, title: LocalizedStringKey) -> some View {
+        Link(destination: url) {
+            VStack(spacing: 8) {
+                Image(systemName: icon)
+                    .font(.title3)
+                Text(title)
+                    .font(.caption)
+            }
+            .foregroundStyle(.tint)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 16)
+            .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
         }
     }
 
     private var dataSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            sectionHeader("Data")
-
+        Section {
             Button { showClearConfirmation = true } label: {
-                row(icon: "trash.fill", color: .red,
-                    title: "Clear Data",
-                    subtitle: "Remove cocktails or ingredients")
+                settingsLabel(icon: "trash.fill", color: .red,
+                              title: "Clear Data",
+                              subtitle: "Remove cocktails or ingredients")
             }
-            .buttonStyle(.plain)
-            .glassCell()
             .confirmationDialog("Clear Data", isPresented: $showClearConfirmation, titleVisibility: .visible) {
                 Button("Clear Unused Ingredients", role: .destructive) { clearUnusedIngredients() }
                 Button("Delete Imported Cocktails", role: .destructive) { deleteImportedCocktails() }
@@ -172,69 +166,47 @@ struct SettingsView: View {
             } message: {
                 Text("Choose what to delete. This cannot be undone.")
             }
+        } header: {
+            Text("Data")
         }
     }
 
-    // MARK: - Helpers
+    // MARK: - Row helpers
 
-    @ViewBuilder
-    private func sectionHeader(_ title: LocalizedStringKey) -> some View {
-        Text(title)
-            .font(.subheadline.bold())
-            .fontDesign(.rounded)
-            .foregroundStyle(.secondary)
-            .padding(.leading, 4)
+    private func iconTile(_ icon: String, _ color: Color) -> some View {
+        Image(systemName: icon)
+            .font(.system(size: 15, weight: .semibold))
+            .foregroundStyle(.white)
+            .frame(width: 30, height: 30)
+            .background(color.gradient)
+            .clipShape(RoundedRectangle(cornerRadius: 7, style: .continuous))
     }
 
-    private var chevron: some View {
-        Image(systemName: "chevron.right")
-            .font(.caption.bold())
-            .foregroundStyle(.tertiary)
-    }
-
-    private func row(icon: String, color: Color, title: LocalizedStringKey, subtitle: LocalizedStringKey) -> some View {
-        row(icon: icon, color: color, title: title, subtitle: subtitle) { chevron }
-    }
-
-    private func row(icon: String, color: Color, title: LocalizedStringKey, subtitle: LocalizedStringKey, @ViewBuilder trailing: () -> some View) -> some View {
-        HStack(spacing: 14) {
-            Image(systemName: icon)
-                .font(.system(size: 15, weight: .semibold))
-                .foregroundStyle(.white)
-                .frame(width: 34, height: 34)
-                .background(color.gradient)
-                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-
-            VStack(alignment: .leading, spacing: 2) {
+    private func settingsLabel(icon: String, color: Color, title: LocalizedStringKey, subtitle: LocalizedStringKey) -> some View {
+        HStack(spacing: 12) {
+            iconTile(icon, color)
+            VStack(alignment: .leading, spacing: 1) {
                 Text(title)
-                    .font(.body)
-                    .fontWeight(.medium)
+                    .foregroundStyle(Color.primary)
                 Text(subtitle)
                     .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Color.secondary)
             }
-
-            Spacer()
-
-            trailing()
         }
-        .padding(.horizontal, 14)
-        .padding(.vertical, 12)
-        .contentShape(Rectangle())
     }
-    
-    @ViewBuilder
-    private func statCard(title: LocalizedStringKey, value: String, icon: String, color: Color) -> some View {
+
+    private func statCard(icon: String, color: Color, value: Int, title: LocalizedStringKey) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Image(systemName: icon)
                     .foregroundStyle(color)
                 Spacer()
             }
-            
+
             VStack(alignment: .leading, spacing: 0) {
-                Text(value)
+                Text("\(value)")
                     .font(.system(.title, design: .rounded).bold())
+                    .monospacedDigit()
                 Text(title)
                     .font(.caption)
                     .foregroundStyle(.secondary)
@@ -242,7 +214,7 @@ struct SettingsView: View {
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .glassCard()
+        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
         .accessibilityElement(children: .combine)
     }
 
@@ -280,8 +252,6 @@ struct SettingsView: View {
 }
 
 #Preview(traits: .sampleData) {
-    NavigationStack {
-        SettingsView()
-            .environment(StoreManager())
-    }
+    SettingsView()
+        .environment(StoreManager())
 }

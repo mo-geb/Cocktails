@@ -52,7 +52,7 @@ struct IngredientImagePickerSheet: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .strokeBorder(isSelected ? Color.accentColor : Color.clear, lineWidth: 2)
+                        .strokeBorder(isSelected ? Color.accentColor : Color.clear, lineWidth: 2.5)
                 )
         }
         .buttonStyle(.plain)

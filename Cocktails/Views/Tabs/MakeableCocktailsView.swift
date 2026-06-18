@@ -84,10 +84,7 @@ struct MakeableCocktailsView: View {
                     cocktailToDelete = nil
                 }
             }
-            .navigationDestination(item: $viewedCocktail) { cocktail in
-                CocktailDetailView(cocktail: cocktail)
-                    .navigationTransition(.zoom(sourceID: cocktail.id, in: zoomNamespace))
-            }
+            .cocktailZoomDestination($viewedCocktail, in: zoomNamespace)
         }
     }
 

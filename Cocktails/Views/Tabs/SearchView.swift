@@ -54,12 +54,8 @@ struct SearchView: View {
                     }
                 }
             }
-            .background(Color(.systemGroupedBackground))
             .navigationTitle("Search")
-            .navigationDestination(item: $viewedCocktail) { cocktail in
-                CocktailDetailView(cocktail: cocktail)
-                    .navigationTransition(.zoom(sourceID: cocktail.id, in: zoomNamespace))
-            }
+            .cocktailZoomDestination($viewedCocktail, in: zoomNamespace)
             .onAppear { selectedTab = appState.preferredSearchTab }
             .onChange(of: appState.preferredSearchTab) { _, newTab in selectedTab = newTab }
             .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: "Cocktails, Ingredients…")
@@ -127,6 +123,7 @@ struct SearchView: View {
                 ForEach(filteredIngredients) { ingredient in
                     IngredientGridCell(
                         ingredient: ingredient,
+                        onShowCocktails: { appState.showCocktails(for: ingredient) },
                         onEdit: { appState.editIngredient(ingredient) },
                         onDelete: { appState.confirmDeleteIngredient(ingredient) }
                     )

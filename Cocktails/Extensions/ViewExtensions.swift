@@ -6,10 +6,6 @@ extension View {
         glassEffect(.regular.interactive(), in: RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 
-    func glassCell() -> some View {
-        glassEffect(.regular.interactive(), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-    }
-
     func dismissKeyboardOnTap() -> some View {
         onTapGesture {
             UIApplication.shared.sendAction(
@@ -22,6 +18,15 @@ extension View {
     func sectionTitleStyle() -> some View {
         font(.title3.bold())
             .fontDesign(.rounded)
+    }
+
+    /// Pushes the cocktail detail screen with the shared zoom transition.
+    /// Pair with `.matchedTransitionSource(id:in:)` on the source cell.
+    func cocktailZoomDestination(_ item: Binding<Cocktail?>, in namespace: Namespace.ID) -> some View {
+        navigationDestination(item: item) { cocktail in
+            CocktailDetailView(cocktail: cocktail)
+                .navigationTransition(.zoom(sourceID: cocktail.id, in: namespace))
+        }
     }
 
     func importResultAlerts(result: Binding<ImportResult?>, error: Binding<String?>) -> some View {
@@ -37,6 +42,19 @@ extension View {
         } message: {
             if let e = error.wrappedValue { Text(e) }
         }
+    }
+}
+
+extension Color {
+    /// A consistent pill tint derived from a drink's dominant colour: keeps the
+    /// hue but normalizes saturation/brightness so no extracted colour reads
+    /// harsh or muddy. Near-greyscale colours stay neutral. Apply at low opacity
+    /// so it adapts to light/dark.
+    func normalizedTint() -> Color {
+        var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        UIColor(self).getHue(&h, saturation: &s, brightness: &b, alpha: &a)
+        guard s >= 0.1 else { return Color(hue: 0, saturation: 0, brightness: 0.7) }
+        return Color(hue: h, saturation: 0.5, brightness: 0.85)
     }
 }
 

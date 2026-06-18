@@ -24,6 +24,7 @@ final class AppState {
     var activeIngredientSheet: ActiveIngredientSheet?
     var cocktailToDelete: Cocktail?
     var ingredientToDelete: Ingredient?
+    var ingredientCocktails: Ingredient?
 
     var cocktailGrouping: CocktailGrouping = .none {
         didSet { UserDefaults.standard.set(cocktailGrouping.rawValue, forKey: Keys.cocktailGrouping) }
@@ -46,6 +47,7 @@ final class AppState {
     func editIngredient(_ ingredient: Ingredient) { activeIngredientSheet = .edit(ingredient) }
     func addIngredient(named name: String? = nil) { activeIngredientSheet = name.map { .addWithName($0) } ?? .add }
     func confirmDeleteIngredient(_ ingredient: Ingredient) { ingredientToDelete = ingredient }
+    func showCocktails(for ingredient: Ingredient) { ingredientCocktails = ingredient }
 
     // MARK: - Init
 

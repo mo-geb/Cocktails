@@ -24,7 +24,7 @@ struct CocktailGridCell: View {
                             .frame(width: 80, height: 80)
                             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                             .padding(6)
-                            .glassEffect(in: RoundedRectangle(cornerRadius: 26, style: .continuous))
+                            .background(.quaternary, in: RoundedRectangle(cornerRadius: 26, style: .continuous))
                             .padding(.top, 16)
                             .padding(.bottom, 8)
                     } else {
@@ -56,38 +56,31 @@ struct CocktailGridCell: View {
                         Group {
                             if let footerLabel {
                                 Text(footerLabel)
-                                    .frame(maxWidth: .infinity)
                             } else {
-                                HStack(spacing: 0) {
-                                    HStack(spacing: 5) {
-                                        Image(cocktail.ice.imageName)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 12, height: 12)
-                                            .accessibilityHidden(true)
-                                        Text(cocktail.ice.localizedName)
-                                    }
-                                    .frame(maxWidth: .infinity)
-
-                                    Divider().frame(height: 12)
-
-                                    HStack(spacing: 5) {
-                                        Image(cocktail.method.customImageName)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 12, height: 12)
-                                            .accessibilityHidden(true)
-                                        Text(cocktail.method.localizedName)
-                                    }
-                                    .frame(maxWidth: .infinity)
+                                HStack(spacing: 5) {
+                                    Image(cocktail.ice.imageName)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 11, height: 11)
+                                        .accessibilityHidden(true)
+                                    Text(cocktail.ice.localizedName)
+                                    Text("·").foregroundStyle(.tertiary)
+                                    Image(cocktail.method.customImageName)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 11, height: 11)
+                                        .accessibilityHidden(true)
+                                    Text(cocktail.method.localizedName)
                                 }
                             }
                         }
                         .font(.caption2)
                         .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.8)
                         .padding(.horizontal, 10)
-                        .padding(.vertical, 7)
-                        .glassEffect()
+                        .padding(.vertical, 6)
+                        .background((bgColor ?? .gray).normalizedTint().opacity(0.35), in: Capsule())
                     }
                     .padding(.horizontal, 10)
                     .padding(.bottom, 14)
@@ -116,8 +109,9 @@ struct CocktailGridCell: View {
             }
             .frame(maxWidth: .infinity)
             .aspectRatio(0.85, contentMode: .fit)
-            .glassCard()
             .background {
+                RoundedRectangle(cornerRadius: 24, style: .continuous)
+                    .fill(Color(.secondarySystemBackground))
                 if let bgColor {
                     RoundedRectangle(cornerRadius: 24, style: .continuous)
                         .fill(bgColor.opacity(0.2))
@@ -131,10 +125,10 @@ struct CocktailGridCell: View {
                 }.value
             }
             .overlay {
-                if isSelecting && isSelected {
-                    RoundedRectangle(cornerRadius: 24, style: .continuous)
-                        .strokeBorder(Color.accentColor, lineWidth: 2.5)
-                }
+                let selected = isSelecting && isSelected
+                RoundedRectangle(cornerRadius: 24, style: .continuous)
+                    .strokeBorder(selected ? Color.accentColor : Color(.separator),
+                                  lineWidth: selected ? 2.5 : 1)
             }
             .contentShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
             .accessibilityElement(children: .combine)
@@ -189,10 +183,10 @@ func addCocktailCell(name: String, action: @escaping () -> Void) -> some View {
         .contentShape(Rectangle())
         .frame(maxWidth: .infinity)
         .aspectRatio(0.85, contentMode: .fit)
-        .glassCard()
+        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 24, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .strokeBorder(.tint.opacity(0.55), lineWidth: 1.5)
+                .strokeBorder(Color.accentColor.opacity(0.55), lineWidth: 1.5)
         }
         .accessibilityElement(children: .combine)
     }

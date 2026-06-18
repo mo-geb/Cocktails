@@ -22,10 +22,7 @@ struct CocktailTab: View {
             mainContent
                 .navigationTitle(isSelecting ? selectionTitle : "Cocktails")
                 .toolbar { toolbarContent }
-                .navigationDestination(item: $viewedCocktail) { cocktail in
-                    CocktailDetailView(cocktail: cocktail)
-                        .navigationTransition(.zoom(sourceID: cocktail.id, in: zoomNamespace))
-                }
+                .cocktailZoomDestination($viewedCocktail, in: zoomNamespace)
                 .alert("Delete Cocktails", isPresented: $showDeleteConfirm) {
                     Button("Delete", role: .destructive) { deleteSelected() }
                     Button("Cancel", role: .cancel) {}
@@ -155,7 +152,7 @@ struct CocktailTab: View {
                         Label("Group By", systemImage: "rectangle.3.group")
                     }
                 } label: {
-                    Image(systemName: "ellipsis")
+                    Label("Options", systemImage: "ellipsis")
                         .symbolVariant(appState.cocktailGrouping == .none ? .none : .fill)
                 }
             }

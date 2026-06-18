@@ -59,7 +59,6 @@ struct IngredientPickerView: View {
             }
             .padding(.vertical)
         }
-        .background(Color(.systemGroupedBackground))
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search ingredients")
         .navigationTitle("Select Ingredient")
         .navigationBarTitleDisplayMode(.inline)
@@ -109,13 +108,12 @@ struct IngredientPickerView: View {
             .padding(.all, 4)
             .frame(maxWidth: .infinity)
             .aspectRatio(0.85, contentMode: .fit)
+            .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
             .overlay {
-                if isSelected {
-                    RoundedRectangle(cornerRadius: 18, style: .continuous)
-                        .strokeBorder(.tint, lineWidth: 2)
-                }
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .strokeBorder(isSelected ? Color.accentColor : Color(.separator),
+                                  lineWidth: isSelected ? 2.5 : 1)
             }
-            .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
         }
         .buttonStyle(.plain)
     }

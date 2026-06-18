@@ -73,11 +73,11 @@ struct LibraryCocktailsView: View {
         if !description.isEmpty || source.sourceURL != nil {
             HStack(alignment: .center, spacing: 14) {
                 Image(systemName: "info.circle.fill")
-                    .font(.title2)
+                    .font(.title3)
                     .foregroundStyle(.white)
-                    .frame(width: 44, height: 44)
+                    .frame(width: 40, height: 40)
                     .background(Color.accentColor.gradient)
-                    .clipShape(Circle())
+                    .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
 
                 VStack(alignment: .leading, spacing: 4) {
                     if !description.isEmpty {
@@ -102,7 +102,11 @@ struct LibraryCocktailsView: View {
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 14)
-            .glassEffect()
+            .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .strokeBorder(Color(.separator), lineWidth: 1)
+            }
             .padding(.horizontal)
             .padding(.top, 12)
             .padding(.bottom, 4)

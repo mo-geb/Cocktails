@@ -35,7 +35,6 @@ struct RecipeLibrariesView: View {
             .padding()
         }
         .navigationTitle("Import")
-        .background(Color(.systemGroupedBackground))
         .task {
             for source in sources {
                 counts[source.id] = loadCounts(for: source)
@@ -114,11 +113,11 @@ struct RecipeLibrariesView: View {
         Button(action: action) {
             HStack(spacing: 14) {
                 Image(systemName: icon)
-                    .font(.title2)
+                    .font(.title3)
                     .foregroundStyle(.white)
-                    .frame(width: 44, height: 44)
+                    .frame(width: 40, height: 40)
                     .background(color.gradient)
-                    .clipShape(Circle())
+                    .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(title)
@@ -143,7 +142,11 @@ struct RecipeLibrariesView: View {
             .contentShape(Rectangle())
             .padding(.horizontal, 16)
             .padding(.vertical, 14)
-            .glassEffect(.regular.interactive())
+            .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .strokeBorder(Color(.separator), lineWidth: 1)
+            }
         }
         .buttonStyle(.plain)
         .disabled(isLoading)

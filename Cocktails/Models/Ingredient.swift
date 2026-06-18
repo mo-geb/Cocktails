@@ -33,6 +33,17 @@ final class Ingredient: IngredientNaming {
     }
 }
 
+extension Ingredient {
+    /// Distinct cocktails that use this ingredient, sorted by name.
+    var cocktails: [Cocktail] {
+        var seen = Set<UUID>()
+        return (usages ?? [])
+            .compactMap(\.cocktail)
+            .filter { seen.insert($0.id).inserted }
+            .sorted { $0.name < $1.name }
+    }
+}
+
 struct IngredientDraft: Hashable, IngredientNaming {
     var id: String
     var name: String = ""

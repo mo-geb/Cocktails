@@ -59,6 +59,7 @@ struct IngredientTab: View {
                                 ForEach(items) { ingredient in
                                     IngredientGridCell(
                                         ingredient: ingredient,
+                                        onShowCocktails: { appState.showCocktails(for: ingredient) },
                                         onEdit: { appState.editIngredient(ingredient) },
                                         onDelete: { appState.confirmDeleteIngredient(ingredient) }
                                     )
@@ -107,8 +108,11 @@ struct IngredientTab: View {
         Button { showMakeableCocktails = true } label: {
             HStack(spacing: 16) {
                 Image(systemName: "wineglass")
-                    .font(.title2)
-                    .foregroundStyle(.secondary)
+                    .font(.title3)
+                    .foregroundStyle(.white)
+                    .frame(width: 40, height: 40)
+                    .background(Color.purple.gradient)
+                    .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(makeableCount == 0 ? "Nothing to make yet" : "\(makeableCount) cocktails ready to make")
@@ -129,7 +133,11 @@ struct IngredientTab: View {
             .contentShape(Rectangle())
             .padding(.horizontal, 16)
             .padding(.vertical, 14)
-            .glassCell()
+            .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .strokeBorder(Color(.separator), lineWidth: 1)
+            }
             .padding(.horizontal)
         }
         .buttonStyle(.plain)
