@@ -102,11 +102,7 @@ struct LibraryCocktailsView: View {
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 14)
-            .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-            .overlay {
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .strokeBorder(Color(.separator), lineWidth: 1)
-            }
+            .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
             .padding(.horizontal)
             .padding(.top, 12)
             .padding(.bottom, 4)
