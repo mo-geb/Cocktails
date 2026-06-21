@@ -32,20 +32,6 @@ struct MainTabView: View {
         .sheet(item: $appState.activeSheet) { sheet in
             appSheetContent(sheet)
         }
-        .sheet(item: $appState.activeIngredientSheet) { sheet in
-            NavigationStack { sheet.contentView }
-                .presentationDetents([.medium, .large])
-                .presentationDragIndicator(.visible)
-        }
-        .sheet(item: $appState.ingredientCocktails) { ingredient in
-            CocktailsWithIngredientView(ingredient: ingredient)
-        }
-        .sheet(isPresented: .init(presence: $appState.newCocktailDraft)) {
-            if let draft = appState.newCocktailDraft {
-                NavigationStack { CocktailEditView(draft: draft) }
-                    .presentationDetents([.large])
-            }
-        }
         .onOpenURL { url in
             appState.openReceivedRecipes(url)
         }
@@ -84,6 +70,15 @@ struct MainTabView: View {
             NavigationStack { RecipeLibrariesView() }
         case .receivedRecipes(let url):
             ReceivedRecipesView(url: url, onDismiss: { appState.activeSheet = nil })
+        case .ingredientSheet(let ingredientSheet):
+            NavigationStack { ingredientSheet.contentView }
+                .presentationDetents([.medium, .large])
+                .presentationDragIndicator(.visible)
+        case .cocktailsWithIngredient(let ingredient):
+            CocktailsWithIngredientView(ingredient: ingredient)
+        case .newCocktail(let draft):
+            NavigationStack { CocktailEditView(draft: draft) }
+                .presentationDetents([.large])
         }
     }
 }
