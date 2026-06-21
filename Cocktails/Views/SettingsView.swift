@@ -244,9 +244,9 @@ struct SettingsView: View {
 
     private enum Links {
         static let website    = URL(string: "https://mo-geb.com")!
-        static let terms      = URL(string: "https://mo-geb.com/projects/cocktails/terms")!
-        static let privacy    = URL(string: "https://mo-geb.com/projects/cocktails/privacy")!
-        static let guide      = URL(string: "https://mo-geb.com/projects/cocktails/guide")!
+        static let terms      = URL(string: "https://mo-geb.com/apps/cocktails/terms")!
+        static let privacy    = URL(string: "https://mo-geb.com/apps/cocktails/privacy")!
+        static let guide      = URL(string: "https://mo-geb.com/apps/cocktails/guide")!
         static let support    = URL(string: "mailto:support@mo-geb.com")!
     }
 }
