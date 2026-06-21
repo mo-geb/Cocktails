@@ -16,6 +16,7 @@ struct CocktailEditView: View {
 
     private let originalCocktail: Cocktail?
     private let onFinish: (() -> Void)?
+    private let onSave: ((Cocktail) -> Void)?
     /// When embedded in CocktailDetailView, the detail view owns the gradient
     /// background; colour updates are written there instead of rendering our own.
     private let externalBackground: Binding<Color?>?
@@ -27,22 +28,23 @@ struct CocktailEditView: View {
     init(cocktail: Cocktail, backgroundColor: Binding<Color?>? = nil, onFinish: (() -> Void)? = nil) {
         self.originalCocktail = cocktail
         self.onFinish = onFinish
+        self.onSave = nil
         self.externalBackground = backgroundColor
         let draft = CocktailDraft(from: cocktail)
         self._draft = State(initialValue: draft)
         self._backgroundColor = State(initialValue: draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled))
     }
 
-    init(draft: CocktailDraft = CocktailDraft()) {
+    init(draft: CocktailDraft = CocktailDraft(), onSave: ((Cocktail) -> Void)? = nil) {
         self.originalCocktail = nil
         self.onFinish = nil
+        self.onSave = onSave
         self.externalBackground = nil
         self._draft = State(initialValue: draft)
         self._backgroundColor = State(initialValue: draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled))
     }
 
-    /// Returns to the detail view when editing in place; otherwise (a brand-new
-    /// cocktail) dismisses the whole sheet.
+    /// Returns to the detail view when editing in place; otherwise dismisses the sheet.
     private func finish() {
         if let onFinish { onFinish() } else { dismiss() }
     }
@@ -419,16 +421,18 @@ struct CocktailEditView: View {
     }
 
     private func save() {
+        saveHapticTrigger.toggle()
         if let cocktail = originalCocktail {
             update(cocktail)
+            finish()
         } else {
-            createNew()
+            let cocktail = createNew()
+            if let onSave { onSave(cocktail) } else { finish() }
         }
-        saveHapticTrigger.toggle()
-        finish()
     }
 
-    private func createNew() {
+    @discardableResult
+    private func createNew() -> Cocktail {
         let cocktail = Cocktail(
             name: draft.name.trimmingCharacters(in: .whitespaces),
             notes: draft.notes,
@@ -442,6 +446,7 @@ struct CocktailEditView: View {
         cocktail.isFavourite = draft.isFavourite
         modelContext.insert(cocktail)
         insertIngredients(for: draft.ingredients, into: cocktail)
+        return cocktail
     }
 
     private func update(_ cocktail: Cocktail) {

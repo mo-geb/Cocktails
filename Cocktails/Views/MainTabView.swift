@@ -77,7 +77,7 @@ struct MainTabView: View {
         case .cocktailsWithIngredient(let ingredient):
             CocktailsWithIngredientView(ingredient: ingredient)
         case .newCocktail(let draft):
-            NavigationStack { CocktailEditView(draft: draft) }
+            NewCocktailSheetView(draft: draft)
                 .presentationDetents([.large])
         }
     }

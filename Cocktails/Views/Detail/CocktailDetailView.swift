@@ -6,12 +6,14 @@ struct CocktailDetailView: View {
     @Environment(\.requestReview) private var requestReview
 
     private let cocktail: Cocktail
+    private let onDone: (() -> Void)?
     @State private var draft: CocktailDraft
     @State private var backgroundColor: Color?
     @State private var isEditing = false
 
-    init(cocktail: Cocktail) {
+    init(cocktail: Cocktail, onDone: (() -> Void)? = nil) {
         self.cocktail = cocktail
+        self.onDone = onDone
         let draft = CocktailDraft(from: cocktail)
         self._draft = State(initialValue: draft)
         // Seed before the first frame so the mesh doesn't fade in from nil
@@ -206,6 +208,12 @@ struct CocktailDetailView: View {
         ToolbarItem(placement: .automatic) {
             if let shareItem = CocktailTransferable(cocktail: cocktail) {
                 ShareLink(item: shareItem, preview: SharePreview(cocktail.name, image: Image(cocktail.glass.imageNameEmpty)))
+            }
+        }
+
+        if let onDone, !isEditing {
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Done") { onDone() }
             }
         }
 
