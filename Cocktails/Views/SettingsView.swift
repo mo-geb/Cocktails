@@ -243,7 +243,7 @@ struct SettingsView: View {
     // MARK: - URLs
 
     private enum Links {
-        static let website    = URL(string: "https://mo-geb.com")!
+        static let website    = URL(string: "https://mo-geb.com/apps/cocktails")!
         static let terms      = URL(string: "https://mo-geb.com/apps/cocktails/terms")!
         static let privacy    = URL(string: "https://mo-geb.com/apps/cocktails/privacy")!
         static let guide      = URL(string: "https://mo-geb.com/apps/cocktails/guide")!
