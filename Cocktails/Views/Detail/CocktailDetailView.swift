@@ -120,44 +120,28 @@ struct CocktailDetailView: View {
     @ViewBuilder
     private var propertiesPill: some View {
         HStack(spacing: 0) {
-            HStack(spacing: 6) {
-                Image(draft.glass.imageNameEmpty)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 16, height: 16)
-                    .accessibilityHidden(true)
-                Text(draft.glass.localizedName)
-            }
-            .frame(maxWidth: .infinity)
-
+            propertyPill(imageName: draft.glass.imageNameEmpty, label: draft.glass.localizedName)
             Divider().frame(height: 16)
-
-            HStack(spacing: 6) {
-                Image(draft.ice.imageName)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 16, height: 16)
-                    .accessibilityHidden(true)
-                Text(draft.ice.localizedName)
-            }
-            .frame(maxWidth: .infinity)
-
+            propertyPill(imageName: draft.ice.imageName, label: draft.ice.localizedName)
             Divider().frame(height: 16)
-
-            HStack(spacing: 6) {
-                Image(draft.method.customImageName)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 16, height: 16)
-                    .accessibilityHidden(true)
-                Text(draft.method.localizedName)
-            }
-            .frame(maxWidth: .infinity)
+            propertyPill(imageName: draft.method.customImageName, label: draft.method.localizedName)
         }
         .font(.subheadline)
         .foregroundStyle(.primary)
         .padding(.vertical, 16)
         .glassEffect()
+    }
+
+    private func propertyPill(imageName: String, label: String) -> some View {
+        HStack(spacing: 6) {
+            Image(imageName)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 16, height: 16)
+                .accessibilityHidden(true)
+            Text(label)
+        }
+        .frame(maxWidth: .infinity)
     }
 
     @ViewBuilder

@@ -270,13 +270,12 @@ struct CocktailEditView: View {
     @ViewBuilder
     private func ingredientRow(item: Binding<RecipeIngredientDraft>, onDelete: @escaping () -> Void) -> some View {
         let ingredient = item.wrappedValue
+        let index = draft.ingredients.firstIndex(where: { $0.id == ingredient.id })
 
         HStack(alignment: .top, spacing: 12) {
             let isEmpty = ingredient.ingredient.name.isEmpty
             Button {
-                if let index = draft.ingredients.firstIndex(where: { $0.id == ingredient.id }) {
-                    ingredientPickerIndex = index
-                }
+                ingredientPickerIndex = index
             } label: {
                 if isEmpty {
                     Image(systemName: "questionmark.circle.fill")
@@ -300,9 +299,7 @@ struct CocktailEditView: View {
                 // Name + remove
                 HStack {
                     Button {
-                        if let index = draft.ingredients.firstIndex(where: { $0.id == ingredient.id }) {
-                            ingredientPickerIndex = index
-                        }
+                        ingredientPickerIndex = index
                     } label: {
                         Text(isEmpty ? "Select ingredient…" : ingredient.ingredient.localizedName)
                             .fontDesign(.rounded)
@@ -439,7 +436,7 @@ struct CocktailEditView: View {
             glass: draft.glass,
             method: draft.method,
             ice: draft.ice,
-            source: .custom,
+            source: draft.source,
             imageData: draft.imageData,
             imageName: draft.imageName
         )
@@ -456,7 +453,7 @@ struct CocktailEditView: View {
         cocktail.method = draft.method
         cocktail.ice = draft.ice
         cocktail.isFavourite = draft.isFavourite
-        cocktail.source = .custom
+        cocktail.source = draft.source
         cocktail.imageData = draft.imageData
         cocktail.imageName = draft.imageName
 
