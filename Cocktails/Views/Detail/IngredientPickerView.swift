@@ -29,24 +29,22 @@ struct IngredientPickerView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 28) {
+            LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
                 if searchText.isEmpty {
                     ForEach(groupedIngredients, id: \.0) { type, items in
-                        VStack(alignment: .leading, spacing: 10) {
+                        Section {
+                            ForEach(items) { ingredient in
+                                pickerCell(for: ingredient)
+                            }
+                        } header: {
                             Text(type.localizedName)
                                 .sectionTitleStyle()
-                                .padding(.horizontal)
-
-                            LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
-                                ForEach(items) { ingredient in
-                                    pickerCell(for: ingredient)
-                                }
-                            }
-                            .padding(.horizontal)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.top, 8)
                         }
                     }
                 } else {
-                    LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
+                    Section {
                         ForEach(filtered) { ingredient in
                             pickerCell(for: ingredient)
                         }
@@ -54,9 +52,9 @@ struct IngredientPickerView: View {
                             addCell
                         }
                     }
-                    .padding(.horizontal)
                 }
             }
+            .padding(.horizontal)
             .padding(.vertical)
         }
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search ingredients")

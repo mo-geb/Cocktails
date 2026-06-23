@@ -80,14 +80,13 @@ struct CocktailEditView: View {
         .onChange(of: draft.imageData) { updateBackground() }
         .onChange(of: photoItem) { loadPhoto() }
         .onAppear { updateBackground() }
-        .navigationDestination(item: $ingredientPickerIndex) { index in
-            IngredientPickerView(
-                selection: Binding(
-                    get: { draft.ingredients[index].ingredient },
-                    set: { draft.ingredients[index].ingredient = $0 }
-                ),
-                onPicked: { ingredientPickerIndex = nil }
-            )
+        .sheet(isPresented: Binding(
+            get: { ingredientPickerIndex != nil },
+            set: { if !$0 { ingredientPickerIndex = nil } }
+        )) {
+            if let index = ingredientPickerIndex, index < draft.ingredients.count {
+                IngredientRowEditSheet(draft: $draft.ingredients[index])
+            }
         }
     }
 
@@ -271,81 +270,69 @@ struct CocktailEditView: View {
     private func ingredientRow(item: Binding<RecipeIngredientDraft>, onDelete: @escaping () -> Void) -> some View {
         let ingredient = item.wrappedValue
         let index = draft.ingredients.firstIndex(where: { $0.id == ingredient.id })
+        let isEmpty = ingredient.ingredient.name.isEmpty
 
-        HStack(alignment: .top, spacing: 12) {
-            let isEmpty = ingredient.ingredient.name.isEmpty
+        HStack(spacing: 12) {
             Button {
                 ingredientPickerIndex = index
             } label: {
-                if isEmpty {
-                    Image(systemName: "questionmark.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 34, height: 34)
-                        .foregroundStyle(.tint)
-                        .padding(.top, 4)
-                        .padding(.leading, 3)
-                } else {
-                    ingredient.ingredient.displayImage
-                        .view(placeholder: ingredient.ingredient.type.imageName)
-                        .scaledToFit()
-                        .frame(width: 42, height: 42)
-                        .padding(.top, 2)
-                }
-            }
-            .buttonStyle(.plain)
+                HStack(spacing: 12) {
+                    if isEmpty {
+                        Image(systemName: "questionmark.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 38, height: 38)
+                            .foregroundStyle(.tint)
+                    } else {
+                        ingredient.ingredient.displayImage
+                            .view(placeholder: ingredient.ingredient.type.imageName)
+                            .scaledToFit()
+                            .frame(width: 42, height: 42)
+                    }
 
-            VStack(alignment: .leading, spacing: 6) {
-                // Name + remove
-                HStack {
-                    Button {
-                        ingredientPickerIndex = index
-                    } label: {
+                    VStack(alignment: .leading, spacing: 3) {
                         Text(isEmpty ? "Select ingredient…" : ingredient.ingredient.localizedName)
                             .fontDesign(.rounded)
                             .fontWeight(.medium)
                             .foregroundStyle(isEmpty ? Color.accentColor : Color.primary)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .buttonStyle(.plain)
 
-                    Button(role: .destructive, action: onDelete) {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundStyle(.secondary)
-                    }
-                    .buttonStyle(.plain)
-                }
-
-                // Amount + unit
-                HStack(spacing: 0) {
-                    TextField("0", value: Binding(
-                        get: { ingredient.amount ?? 0.0 },
-                        set: { item.wrappedValue.amount = $0 == 0 ? nil : $0 }
-                    ), format: .number)
-                    .keyboardType(.decimalPad)
-                    .fixedSize()
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 4)
-                    .glassEffect()
-
-                    Picker("Unit", selection: item.unit) {
-                        ForEach(MeasurementUnit.allCases) { unit in
-                            Text(unit.localizedName).tag(unit)
+                        if !isEmpty {
+                            ingredientSummary(for: ingredient)
                         }
                     }
-                    .labelsHidden()
-                    .fixedSize()
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                }
 
-                // Note
-                TextField("Note (e.g. Sweet Vermouth)", text: item.note)
-                    .font(.caption)
-                    .foregroundStyle(.tertiary)
+                    Spacer()
+                }
             }
+            .buttonStyle(.plain)
+
+            Button(role: .destructive, action: onDelete) {
+                Image(systemName: "xmark.circle.fill")
+                    .foregroundStyle(.secondary)
+            }
+            .buttonStyle(.plain)
+        }
+    }
+
+    @ViewBuilder
+    private func ingredientSummary(for ingredient: RecipeIngredientDraft) -> some View {
+        let hasAmount = ingredient.amount != nil
+        let hasNote = !ingredient.note.isEmpty
+
+        if hasAmount || hasNote {
+            HStack(spacing: 4) {
+                if let amount = ingredient.amount {
+                    Text(ingredient.unit.displayText(for: amount))
+                }
+                if hasAmount && hasNote {
+                    Text("·").foregroundStyle(.tertiary)
+                }
+                if hasNote {
+                    Text(ingredient.note)
+                }
+            }
+            .font(.caption)
+            .foregroundStyle(.secondary)
         }
     }
 
