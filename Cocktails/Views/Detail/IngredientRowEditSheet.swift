@@ -4,7 +4,6 @@ struct IngredientRowEditSheet: View {
     @Binding var draft: RecipeIngredientDraft
 
     @State private var showPicker = false
-    @State private var selectedDetent: PresentationDetent = .medium
     @Environment(\.dismiss) private var dismiss
 
     private var isEmpty: Bool { draft.ingredient.name.isEmpty }
@@ -31,18 +30,12 @@ struct IngredientRowEditSheet: View {
             .navigationDestination(isPresented: $showPicker) {
                 IngredientPickerView(
                     selection: $draft.ingredient,
-                    onPicked: {
-                        showPicker = false
-                        selectedDetent = .medium
-                    }
+                    onPicked: { showPicker = false }
                 )
             }
         }
-        .presentationDetents([.medium, .large], selection: $selectedDetent)
+        .presentationDetents([.medium, .large])
         .presentationDragIndicator(.visible)
-        .onChange(of: showPicker) { _, showing in
-            selectedDetent = showing ? .large : .medium
-        }
     }
 
     // MARK: - Hero
@@ -91,8 +84,8 @@ struct IngredientRowEditSheet: View {
                 set: { draft.amount = $0 == 0 ? nil : $0 }
             ), format: .number)
             .keyboardType(.decimalPad)
-            .multilineTextAlignment(.center)
-            .frame(minWidth: 44)
+            .multilineTextAlignment(.trailing)
+            .frame(width: 52)
             .padding(.horizontal, 8)
             .padding(.vertical, 4)
             .glassEffect()
