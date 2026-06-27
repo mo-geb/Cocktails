@@ -12,11 +12,6 @@ struct IngredientPickerView: View {
     @State private var searchText = ""
     @State private var pending: PendingIngredient?
 
-    private struct PendingIngredient: Identifiable {
-        let id = UUID()
-        let name: String
-    }
-
     private var filtered: [Ingredient] {
         guard !searchText.isEmpty else { return allIngredients }
         return allIngredients.filter { $0.localizedName.localizedStandardContains(searchText) }
@@ -126,6 +121,13 @@ struct IngredientPickerView: View {
             }
         }
         .buttonStyle(.plain)
+    }
+
+    // MARK: - PendingIngredient
+
+    private struct PendingIngredient: Identifiable {
+        let id = UUID()
+        let name: String
     }
 }
 

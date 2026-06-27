@@ -55,6 +55,9 @@ struct CocktailShortcuts: AppShortcutsProvider {
             phrases: [
                 "What can I make in \(.applicationName)",
                 "What can I make with \(.applicationName)",
+                "What cocktails can I make in \(.applicationName)",
+                "What cocktails can I make with \(.applicationName)",
+                "Which cocktails can I make in \(.applicationName)",
                 "Makeable cocktails in \(.applicationName)"
             ],
             shortTitle: "What Can I Make?",

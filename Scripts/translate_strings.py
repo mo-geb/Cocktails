@@ -52,7 +52,12 @@ from typing import Optional
 # Config
 # ---------------------------------------------------------------------------
 
-XCSTRINGS_PATH = Path(__file__).parent.parent / "Cocktails" / "Resources" / "Localizable.xcstrings"
+PROJECT_DIR = Path(__file__).parent.parent / "Cocktails"
+
+
+def discover_xcstrings() -> list[Path]:
+    """Every String Catalog in the app (Localizable, AppShortcuts, InfoPlist, …)."""
+    return sorted(PROJECT_DIR.rglob("*.xcstrings"))
 
 # CLDR plural categories required per language.
 PLURAL_CATEGORIES: dict[str, list[str]] = {
@@ -180,6 +185,25 @@ def is_plural_entry(entry: dict) -> bool:
     return any("variations" in lv for lv in locs.values())
 
 
+def is_set_entry(entry: dict) -> bool:
+    """App Shortcut phrases are stored as a stringSet (an array of values)."""
+    locs = entry.get("localizations", {})
+    return any("stringSet" in lv for lv in locs.values())
+
+
+def entry_kind(entry: dict) -> str:
+    if is_plural_entry(entry):
+        return "plural"
+    if is_set_entry(entry):
+        return "set"
+    return "unit"
+
+
+def get_en_set_values(entry: dict) -> list[str]:
+    en = entry.get("localizations", {}).get("en", {})
+    return list(en.get("stringSet", {}).get("values", []))
+
+
 def needs_translation_lang(entry: dict, lang: str) -> bool:
     if not entry.get("shouldTranslate", True):
         return False
@@ -189,6 +213,8 @@ def needs_translation_lang(entry: dict, lang: str) -> bool:
     lang_data = locs[lang]
     if "stringUnit" in lang_data:
         return lang_data["stringUnit"].get("state") in NEEDS_TRANSLATION
+    if "stringSet" in lang_data:
+        return lang_data["stringSet"].get("state") in NEEDS_TRANSLATION
     if "variations" in lang_data:
         plural = lang_data["variations"].get("plural", {})
         return any(
@@ -199,7 +225,9 @@ def needs_translation_lang(entry: dict, lang: str) -> bool:
 
 
 def protect_placeholders(s: str) -> tuple[str, dict[str, str]]:
-    placeholders = re.findall(r"%(?:\d+\$)?[@ldfuLq%]|%%", s)
+    # %-style format specifiers AND ${...} tokens (e.g. ${applicationName}
+    # in App Shortcut phrases) must survive translation untouched.
+    placeholders = re.findall(r"%(?:\d+\$)?[@ldfuLq%]|%%|\$\{[^}]+\}", s)
     mapping = {}
     protected = s
     for i, ph in enumerate(placeholders):
@@ -352,6 +380,17 @@ def build_context_hint(key: str, entry: dict) -> str:
     return " | ".join(parts)
 
 
+def source_text_for(key: str, entry: dict, kind: str, selector) -> str:
+    """The English source for a single work item (unit / plural cat / set index)."""
+    if kind == "plural":
+        en_plurals = get_en_plural_values(entry)
+        return en_plurals.get(selector) or en_plurals.get("other") or key
+    if kind == "set":
+        values = get_en_set_values(entry)
+        return values[selector] if selector < len(values) else key
+    return get_source_value(key, entry)
+
+
 def translate_entries(
     strings: dict,
     target_lang: str,
@@ -360,18 +399,26 @@ def translate_entries(
     dry_run: bool = False,
     batch_size: int = 30,
 ) -> tuple[int, int]:
-    work_items: list[tuple[str, dict, bool, Optional[str]]] = []
+    # Each work item is (key, entry, kind, selector):
+    #   kind="unit"   selector=None      → single stringUnit
+    #   kind="plural" selector=category  → one plural variation
+    #   kind="set"    selector=index     → one value of a stringSet (App Shortcut phrases)
+    work_items: list[tuple[str, dict, str, object]] = []
 
     for key, entry in strings.items():
         if not entry.get("shouldTranslate", True):
             continue
         if not force and not needs_translation_lang(entry, target_lang):
             continue
-        if is_plural_entry(entry):
+        kind = entry_kind(entry)
+        if kind == "plural":
             for cat in plural_categories_for(target_lang):
-                work_items.append((key, entry, True, cat))
+                work_items.append((key, entry, "plural", cat))
+        elif kind == "set":
+            for idx in range(len(get_en_set_values(entry))):
+                work_items.append((key, entry, "set", idx))
         else:
-            work_items.append((key, entry, False, None))
+            work_items.append((key, entry, "unit", None))
 
     if not work_items:
         print(f"  Nothing to translate for '{target_lang}' — all strings are complete.")
@@ -380,9 +427,10 @@ def translate_entries(
     print(f"  Found {len(work_items)} string(s) to translate into {lang_name(target_lang)}.")
 
     if dry_run:
-        for key, entry, is_plural, cat in work_items:
-            src = get_source_value(key, entry)
-            label = f"plural/{cat}: {repr(src)}" if is_plural else repr(src)
+        for key, entry, kind, selector in work_items:
+            src = source_text_for(key, entry, kind, selector)
+            tag = {"plural": f"plural/{selector}", "set": f"phrase[{selector}]"}.get(kind)
+            label = f"{tag}: {src!r}" if tag else repr(src)
             print(f"    [dry-run] {label}")
         return len(work_items), 0
 
@@ -390,13 +438,8 @@ def translate_entries(
     mappings: list[dict[str, str]] = []
     context_hints: list[str] = []
 
-    for key, entry, is_plural, cat in work_items:
-        if is_plural:
-            en_plurals = get_en_plural_values(entry)
-            src = en_plurals.get(cat) or en_plurals.get("other") or key
-        else:
-            src = get_source_value(key, entry)
-
+    for key, entry, kind, selector in work_items:
+        src = source_text_for(key, entry, kind, selector)
         protected, mapping = protect_placeholders(src)
         protected_texts.append(protected)
         mappings.append(mapping)
@@ -412,19 +455,27 @@ def translate_entries(
             raise ValueError(f"Backend returned {len(results)} results for {len(batch)} inputs.")
         translated_texts.extend(results)
 
-    for i, (key, entry, is_plural, cat) in enumerate(work_items):
+    for i, (key, entry, kind, selector) in enumerate(work_items):
         raw = restore_placeholders(translated_texts[i], mappings[i])
         locs = entry.setdefault("localizations", {})
 
-        if is_plural:
+        if kind == "plural":
             lang_data = locs.setdefault(target_lang, {"variations": {"plural": {}}})
             lang_data.setdefault("variations", {}).setdefault("plural", {})
-            lang_data["variations"]["plural"][cat] = {
-                "stringUnit": {"state": "needs_review", "value": raw}
+            lang_data["variations"]["plural"][selector] = {
+                "stringUnit": {"state": "translated", "value": raw}
             }
+        elif kind == "set":
+            lang_data = locs.setdefault(target_lang, {"stringSet": {"state": "translated", "values": []}})
+            sset = lang_data.setdefault("stringSet", {"state": "translated", "values": []})
+            sset["state"] = "translated"
+            values = sset.setdefault("values", [])
+            while len(values) <= selector:
+                values.append("")
+            values[selector] = raw
         else:
             locs[target_lang] = {
-                "stringUnit": {"state": "needs_review", "value": raw}
+                "stringUnit": {"state": "translated", "value": raw}
             }
 
     return len(work_items), 0
@@ -461,7 +512,8 @@ def build_parser() -> argparse.ArgumentParser:
     group.add_argument("--lang", metavar="LANG_CODE",
                        help="Target language code (e.g. de, fr, es).")
     group.add_argument("--all", action="store_true",
-                       help="Complete ALL languages that have missing strings.")
+                       help="Complete the union of all languages across every catalog, "
+                            "seeding any catalog that is missing a language (keeps them in sync).")
     p.add_argument("--add", action="store_true",
                    help="Allow adding a brand-new language (--lang only).")
     p.add_argument("--backend", choices=list(BACKENDS), default="openai",
@@ -472,56 +524,56 @@ def build_parser() -> argparse.ArgumentParser:
                    help="Show what would be translated without writing.")
     p.add_argument("--batch-size", type=int, default=30,
                    help="Strings per API call (default: 30).")
-    p.add_argument("--file", type=Path, default=XCSTRINGS_PATH,
-                   help="Path to the .xcstrings file.")
+    p.add_argument("--file", type=Path, default=None,
+                   help="Path to a single .xcstrings file. "
+                        "If omitted, every catalog in the app is processed.")
     return p
 
 
-def run(args: argparse.Namespace) -> None:
-    path: Path = args.file
+def file_languages(path: Path) -> set[str]:
+    """Non-source language codes already present in a catalog."""
     if not path.exists():
-        sys.exit(f"File not found: {path}")
-
-    print(f"📂 Loading {path} …")
+        return set()
     data = load_xcstrings(path)
-    strings = data["strings"]
+    langs: set[str] = set()
+    for entry in data.get("strings", {}).values():
+        langs.update(entry.get("localizations", {}).keys())
+    langs.discard(data.get("sourceLanguage", "en"))
+    return langs
 
-    if args.all:
-        all_langs: set[str] = set()
-        for entry in strings.values():
-            if "localizations" in entry:
-                all_langs.update(entry["localizations"].keys())
-        all_langs.discard("en")
-        target_langs = sorted(all_langs)
-    else:
-        target_langs = [args.lang]
 
-    if not args.all and args.lang:
-        existing_langs: set[str] = set()
-        for entry in strings.values():
-            if "localizations" in entry:
-                existing_langs.update(entry["localizations"].keys())
-        if args.lang not in existing_langs and not args.add:
-            sys.exit(
-                f"Language '{args.lang}' not found in the file. "
-                "Use --add to add a new language."
-            )
-        if args.lang not in PLURAL_CATEGORIES and args.add:
-            print(
-                f"  [warn] No CLDR plural categories defined for '{args.lang}'. "
-                "Defaulting to ['one', 'other']. Update PLURAL_CATEGORIES in the script."
-            )
+def collect_languages(files: list[Path]) -> list[str]:
+    """Union of every non-source language across all catalogs (keeps files in sync)."""
+    langs: set[str] = set()
+    for path in files:
+        langs |= file_languages(path)
+    return sorted(langs)
 
-    backend = None
-    if not args.dry_run:
-        print(f"🔧 Using backend: {args.backend}")
-        backend = BACKENDS[args.backend]()
-    else:
-        print(f"🔧 Backend: {args.backend} (dry-run — not initialized)")
 
-    total_translated = 0
+def process_file(
+    path: Path,
+    args: argparse.Namespace,
+    backend: Optional[TranslationBackend],
+    target_langs: list[str],
+    seed_missing: bool,
+) -> int:
+    """Translate one catalog; returns the number of strings translated."""
+    if not path.exists():
+        print(f"  [skip] File not found: {path}")
+        return 0
+
+    print(f"\n📂 Loading {os.path.relpath(path)} …")
+    data = load_xcstrings(path)
+    strings = data.get("strings", {})
+    existing = file_languages(path)
+
+    file_total = 0
     for lang in target_langs:
-        print(f"\n🌍 Processing language: {lang_name(lang)} ({lang})")
+        if lang not in existing and not seed_missing:
+            print(f"  [skip] {path.name}: '{lang}' not present (use --add to seed it).")
+            continue
+        seeding = " (seeding new)" if lang not in existing else ""
+        print(f"\n🌍 {path.name} → {lang_name(lang)} ({lang}){seeding}")
         count, _ = translate_entries(
             strings=strings,
             target_lang=lang,
@@ -530,12 +582,52 @@ def run(args: argparse.Namespace) -> None:
             dry_run=args.dry_run,
             batch_size=args.batch_size,
         )
-        total_translated += count
+        file_total += count
+
+    if not args.dry_run and file_total > 0:
+        save_xcstrings(data, path)
+    return file_total
+
+
+def run(args: argparse.Namespace) -> None:
+    if args.file is not None:
+        files = [args.file]
+    else:
+        files = discover_xcstrings()
+    if not files:
+        sys.exit(f"No .xcstrings files found under {PROJECT_DIR}.")
+
+    if args.lang and args.lang not in PLURAL_CATEGORIES and args.add:
+        print(
+            f"  [warn] No CLDR plural categories defined for '{args.lang}'. "
+            "Defaulting to ['one', 'other']. Update PLURAL_CATEGORIES in the script."
+        )
+
+    backend = None
+    if not args.dry_run:
+        print(f"🔧 Using backend: {args.backend}")
+        backend = BACKENDS[args.backend]()
+    else:
+        print(f"🔧 Backend: {args.backend} (dry-run — not initialized)")
+
+    print(f"🗂  Catalogs: {', '.join(f.name for f in files)}")
+
+    if args.all:
+        target_langs = collect_languages(files)
+        if not target_langs:
+            sys.exit("--all: no non-source languages found in any catalog.")
+        seed_missing = True
+        print(f"🌐 Languages ({len(target_langs)}): {', '.join(target_langs)}")
+    else:
+        target_langs = [args.lang]
+        seed_missing = args.add
+
+    total_translated = 0
+    for path in files:
+        total_translated += process_file(path, args, backend, target_langs, seed_missing)
 
     if not args.dry_run and total_translated > 0:
-        save_xcstrings(data, path)
-        print(f"\n✅ Done — {total_translated} string(s) translated and marked 'needs_review'.")
-        print("   Review them in Xcode's String Catalog editor and change state to 'Translated'.")
+        print(f"\n✅ Done — {total_translated} string(s) translated and marked 'translated'.")
     elif args.dry_run:
         print(f"\n[dry-run] Would have translated {total_translated} string(s).")
     else:

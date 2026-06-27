@@ -1,0 +1,456 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "Add a cocktail in ${applicationName}": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringSet": {
+            "state": "new",
+            "values": [
+              "Add a cocktail in ${applicationName}",
+              "Add a cocktail to ${applicationName}"
+            ]
+          }
+        },
+        "ar": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "أضف كوكتيل في ${applicationName}",
+              "أضف كوكتيل إلى ${applicationName}"
+            ]
+          }
+        },
+        "da": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Tilføj en cocktail i ${applicationName}",
+              "Tilføj en cocktail til ${applicationName}"
+            ]
+          }
+        },
+        "de": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Füge einen Cocktail in ${applicationName} hinzu",
+              "Füge einen Cocktail zu ${applicationName} hinzu"
+            ]
+          }
+        },
+        "es": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Añadir un cóctel en ${applicationName}",
+              "Añadir un cóctel a ${applicationName}"
+            ]
+          }
+        },
+        "fr": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Ajouter un cocktail dans ${applicationName}",
+              "Ajouter un cocktail à ${applicationName}"
+            ]
+          }
+        },
+        "hu": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Adj hozzá egy koktélt a ${applicationName}-hoz",
+              "Adj hozzá egy koktélt a ${applicationName}-hoz"
+            ]
+          }
+        },
+        "it": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Aggiungi un cocktail in ${applicationName}",
+              "Aggiungi un cocktail a ${applicationName}"
+            ]
+          }
+        },
+        "ja": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "${applicationName}にカクテルを追加",
+              "${applicationName}にカクテルを追加"
+            ]
+          }
+        },
+        "ko": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "${applicationName}에 칵테일 추가",
+              "${applicationName}에 칵테일 추가"
+            ]
+          }
+        },
+        "nl": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Voeg een cocktail toe in ${applicationName}",
+              "Voeg een cocktail toe aan ${applicationName}"
+            ]
+          }
+        },
+        "pl": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Dodaj koktajl w ${applicationName}",
+              "Dodaj koktajl do ${applicationName}"
+            ]
+          }
+        },
+        "pt-BR": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Adicionar um coquetel em ${applicationName}",
+              "Adicionar um coquetel a ${applicationName}"
+            ]
+          }
+        },
+        "ro": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Adaugă un cocktail în ${applicationName}",
+              "Adaugă un cocktail la ${applicationName}"
+            ]
+          }
+        },
+        "sk": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Pridaj koktail do ${applicationName}",
+              "Pridaj koktail do ${applicationName}"
+            ]
+          }
+        },
+        "sv": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Lägg till en cocktail i ${applicationName}",
+              "Lägg till en cocktail till ${applicationName}"
+            ]
+          }
+        },
+        "tr": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "${applicationName}'e bir kokteyl ekle",
+              "${applicationName}'e bir kokteyl ekle"
+            ]
+          }
+        },
+        "uk": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Додай коктейль у ${applicationName}",
+              "Додай коктейль до ${applicationName}"
+            ]
+          }
+        },
+        "zh-Hans": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "在${applicationName}中添加鸡尾酒",
+              "添加鸡尾酒到${applicationName}"
+            ]
+          }
+        },
+        "zh-Hant": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "在${applicationName}中添加雞尾酒",
+              "將雞尾酒添加到${applicationName}"
+            ]
+          }
+        }
+      }
+    },
+    "What can I make in ${applicationName}": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringSet": {
+            "state": "new",
+            "values": [
+              "What can I make in ${applicationName}",
+              "What can I make with ${applicationName}",
+              "What cocktails can I make in ${applicationName}",
+              "What cocktails can I make with ${applicationName}",
+              "Which cocktails can I make in ${applicationName}",
+              "Makeable cocktails in ${applicationName}"
+            ]
+          }
+        },
+        "ar": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "ماذا يمكنني أن أصنع في ${applicationName}",
+              "ماذا يمكنني أن أصنع مع ${applicationName}",
+              "ما الكوكتيلات التي يمكنني صنعها في ${applicationName}",
+              "ما الكوكتيلات التي يمكنني صنعها مع ${applicationName}",
+              "أي الكوكتيلات يمكنني صنعها في ${applicationName}",
+              "الكوكتيلات الممكن صنعها في ${applicationName}"
+            ]
+          }
+        },
+        "da": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Hvad kan jeg lave i ${applicationName}",
+              "Hvad kan jeg lave med ${applicationName}",
+              "Hvilke cocktails kan jeg lave i ${applicationName}",
+              "Hvilke cocktails kan jeg lave med ${applicationName}",
+              "Hvilke cocktails kan jeg lave i ${applicationName}",
+              "Lavbare cocktails i ${applicationName}"
+            ]
+          }
+        },
+        "de": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Was kann ich in ${applicationName} machen",
+              "Was kann ich mit ${applicationName} machen",
+              "Welche Cocktails kann ich in ${applicationName} machen",
+              "Welche Cocktails kann ich mit ${applicationName} machen",
+              "Welche Cocktails kann ich in ${applicationName} machen",
+              "Machbare Cocktails in ${applicationName}"
+            ]
+          }
+        },
+        "es": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "¿Qué puedo hacer en ${applicationName}",
+              "¿Qué puedo hacer con ${applicationName}",
+              "¿Qué cócteles puedo hacer en ${applicationName}",
+              "¿Qué cócteles puedo hacer con ${applicationName}",
+              "¿Qué cócteles puedo hacer en ${applicationName}",
+              "Cócteles que puedo hacer en ${applicationName}"
+            ]
+          }
+        },
+        "fr": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Que puis-je faire dans ${applicationName}",
+              "Que puis-je faire avec ${applicationName}",
+              "Quels cocktails puis-je faire dans ${applicationName}",
+              "Quels cocktails puis-je faire avec ${applicationName}",
+              "Quels cocktails puis-je faire dans ${applicationName}",
+              "Cocktails réalisables dans ${applicationName}"
+            ]
+          }
+        },
+        "hu": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Mit készíthetek a ${applicationName}-ban",
+              "Mit készíthetek a ${applicationName}-val",
+              "Milyen koktélokat készíthetek a ${applicationName}-ban",
+              "Milyen koktélokat készíthetek a ${applicationName}-val",
+              "Melyik koktélokat készíthetem el a ${applicationName}-ban",
+              "Elkészíthető koktélok a ${applicationName}-ban"
+            ]
+          }
+        },
+        "it": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Cosa posso fare in ${applicationName}",
+              "Cosa posso fare con ${applicationName}",
+              "Quali cocktail posso fare in ${applicationName}",
+              "Quali cocktail posso fare con ${applicationName}",
+              "Quali cocktail posso fare in ${applicationName}",
+              "Cocktail realizzabili in ${applicationName}"
+            ]
+          }
+        },
+        "ja": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "${applicationName}で何が作れる？",
+              "${applicationName}で何が作れる？",
+              "${applicationName}で作れるカクテルは？",
+              "${applicationName}で作れるカクテルは？",
+              "${applicationName}で作れるカクテルは？",
+              "${applicationName}で作れるカクテル"
+            ]
+          }
+        },
+        "ko": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "${applicationName}에서 만들 수 있는 것",
+              "${applicationName}로 만들 수 있는 것",
+              "${applicationName}에서 만들 수 있는 칵테일",
+              "${applicationName}로 만들 수 있는 칵테일",
+              "${applicationName}에서 만들 수 있는 칵테일",
+              "${applicationName}에서 만들 수 있는 칵테일"
+            ]
+          }
+        },
+        "nl": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Wat kan ik maken in ${applicationName}",
+              "Wat kan ik maken met ${applicationName}",
+              "Welke cocktails kan ik maken in ${applicationName}",
+              "Welke cocktails kan ik maken met ${applicationName}",
+              "Welke cocktails kan ik maken in ${applicationName}",
+              "Maakbare cocktails in ${applicationName}"
+            ]
+          }
+        },
+        "pl": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Co mogę zrobić w ${applicationName}",
+              "Co mogę zrobić z ${applicationName}",
+              "Jakie koktajle mogę zrobić w ${applicationName}",
+              "Jakie koktajle mogę zrobić z ${applicationName}",
+              "Które koktajle mogę zrobić w ${applicationName}",
+              "Koktajle do zrobienia w ${applicationName}"
+            ]
+          }
+        },
+        "pt-BR": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "O que posso fazer em ${applicationName}",
+              "O que posso fazer com ${applicationName}",
+              "Quais coquetéis posso fazer em ${applicationName}",
+              "Quais coquetéis posso fazer com ${applicationName}",
+              "Quais coquetéis posso fazer em ${applicationName}",
+              "Coquetéis possíveis em ${applicationName}"
+            ]
+          }
+        },
+        "ro": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Ce pot să fac în ${applicationName}",
+              "Ce pot să fac cu ${applicationName}",
+              "Ce cocktailuri pot să fac în ${applicationName}",
+              "Ce cocktailuri pot să fac cu ${applicationName}",
+              "Care cocktailuri pot să fac în ${applicationName}",
+              "Cocktailuri realizabile în ${applicationName}"
+            ]
+          }
+        },
+        "sk": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Čo môžem pripraviť v ${applicationName}",
+              "Čo môžem pripraviť s ${applicationName}",
+              "Aké koktaily môžem pripraviť v ${applicationName}",
+              "Aké koktaily môžem pripraviť s ${applicationName}",
+              "Ktoré koktaily môžem pripraviť v ${applicationName}",
+              "Koktaily na prípravu v ${applicationName}"
+            ]
+          }
+        },
+        "sv": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Vad kan jag göra i ${applicationName}",
+              "Vad kan jag göra med ${applicationName}",
+              "Vilka cocktails kan jag göra i ${applicationName}",
+              "Vilka cocktails kan jag göra med ${applicationName}",
+              "Vilka cocktails kan jag göra i ${applicationName}",
+              "Görbara cocktails i ${applicationName}"
+            ]
+          }
+        },
+        "tr": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "${applicationName}'de ne yapabilirim",
+              "${applicationName} ile ne yapabilirim",
+              "${applicationName}'de hangi kokteylleri yapabilirim",
+              "${applicationName} ile hangi kokteylleri yapabilirim",
+              "${applicationName}'de hangi kokteylleri yapabilirim",
+              "${applicationName}'de yapılabilir kokteyller"
+            ]
+          }
+        },
+        "uk": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Що я можу зробити у ${applicationName}",
+              "Що я можу зробити з ${applicationName}",
+              "Які коктейлі я можу зробити у ${applicationName}",
+              "Які коктейлі я можу зробити з ${applicationName}",
+              "Які коктейлі я можу зробити у ${applicationName}",
+              "Коктейлі, які можна зробити у ${applicationName}"
+            ]
+          }
+        },
+        "zh-Hans": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "我能在${applicationName}中做什么",
+              "我能用${applicationName}做什么",
+              "我能在${applicationName}中做哪些鸡尾酒",
+              "我能用${applicationName}做哪些鸡尾酒",
+              "我能在${applicationName}中做哪些鸡尾酒",
+              "在${applicationName}中可做的鸡尾酒"
+            ]
+          }
+        },
+        "zh-Hant": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "我可以在${applicationName}中做什麼",
+              "我可以用${applicationName}做什麼",
+              "我可以在${applicationName}中做什麼雞尾酒",
+              "我可以用${applicationName}做什麼雞尾酒",
+              "我可以在${applicationName}中做哪些雞尾酒",
+              "在${applicationName}中可以做的雞尾酒"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "version": "1.1"
+}

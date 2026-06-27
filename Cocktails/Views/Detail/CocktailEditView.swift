@@ -253,7 +253,7 @@ struct CocktailEditView: View {
                 VStack(spacing: 14) {
                     ForEach(Array(roleIngredients.enumerated()), id: \.element.id) { position, item in
                         if let index = draft.ingredients.firstIndex(where: { $0.id == item.id }) {
-                            ingredientRow(item: $draft.ingredients[index]) {
+                            ingredientRow(item: $draft.ingredients[index], index: index) {
                                 draft.ingredients.removeAll { $0.id == item.id }
                             }
                             if position != roleIngredients.count - 1 {
@@ -267,9 +267,8 @@ struct CocktailEditView: View {
     }
 
     @ViewBuilder
-    private func ingredientRow(item: Binding<RecipeIngredientDraft>, onDelete: @escaping () -> Void) -> some View {
+    private func ingredientRow(item: Binding<RecipeIngredientDraft>, index: Int, onDelete: @escaping () -> Void) -> some View {
         let ingredient = item.wrappedValue
-        let index = draft.ingredients.firstIndex(where: { $0.id == ingredient.id })
         let isEmpty = ingredient.ingredient.name.isEmpty
 
         HStack(spacing: 12) {

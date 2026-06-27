@@ -119,7 +119,7 @@ final class CocktailImporter {
         return ImportResult(ingredientsInserted: ingredientsInserted, ingredientsSkipped: ingredientsUpdated, cocktailsInserted: totalCocktails, unmappedIngredientRefs: [])
     }
 
-    /// 4. Import cocktails from a shared .cocktail file
+    /// Import cocktails from a shared .cocktail file
     @discardableResult
     func importSharedCocktail(from data: Data) throws -> ImportResult {
         let package: SharedCocktailPackage
@@ -137,7 +137,7 @@ final class CocktailImporter {
         return try processImport(cocktailDTOs: package.cocktails, ingredientDTOs: package.ingredients, source: .shared)
     }
 
-    /// 3. Import selected cocktails, pulling in only the ingredients they need that are not already in the store
+    /// Import selected cocktails, pulling in only the ingredients they need that are not already in the store
     @discardableResult
     func importSelectedCocktails(names: [String], from source: RecipeSource) throws -> ImportResult {
         let ingredientsURL = try getIngredientsURL()
@@ -163,13 +163,13 @@ final class CocktailImporter {
         let allExisting = (try? context.fetch(FetchDescriptor<Cocktail>())) ?? []
         let existingNamesForSource = Set(allExisting.filter { $0.source == source }.map { $0.name })
         let originalCount = cocktailDTOs.count
-        let cocktailDTOs = cocktailDTOs.filter { !existingNamesForSource.contains($0.name) }
-        let skippedDuplicates = originalCount - cocktailDTOs.count
+        let newCocktailDTOs = cocktailDTOs.filter { !existingNamesForSource.contains($0.name) }
+        let skippedDuplicates = originalCount - newCocktailDTOs.count
         if skippedDuplicates > 0 {
             logger.info("Skipping \(skippedDuplicates) already-imported cocktails for source '\(source.filePrefix)'")
         }
 
-        let neededIngredientIDs = Set(cocktailDTOs.flatMap { dto in
+        let neededIngredientIDs = Set(newCocktailDTOs.flatMap { dto in
             dto.ingredients.map { $0.ingredientId } + (dto.garnishes ?? []).map { $0.ingredientId }
         })
         logger.info("Need \(neededIngredientIDs.count) ingredient IDs for this import")
@@ -200,7 +200,7 @@ final class CocktailImporter {
 
         // 2. Insert Cocktails
         var unmappedRefs: [(cocktail: String, ingredientName: String)] = []
-        for dto in cocktailDTOs {
+        for dto in newCocktailDTOs {
             logger.debug("Processing cocktail: \(dto.name)")
             var recipeIngredients: [RecipeIngredient] = []
 
@@ -225,13 +225,13 @@ final class CocktailImporter {
             context.insert(cocktail)
         }
 
-        logger.info("Saving \(cocktailDTOs.count) cocktails…")
+        logger.info("Saving \(newCocktailDTOs.count) cocktails…")
         try context.save()
 
         let result = ImportResult(
             ingredientsInserted: ingredientsInserted,
             ingredientsSkipped: ingredientsSkipped,
-            cocktailsInserted: cocktailDTOs.count,
+            cocktailsInserted: newCocktailDTOs.count,
             unmappedIngredientRefs: unmappedRefs
         )
         logger.info("Import complete:\n\(result.summary)")
