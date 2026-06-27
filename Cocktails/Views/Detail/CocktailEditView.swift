@@ -303,6 +303,7 @@ struct CocktailEditView: View {
 
                     Spacer()
                 }
+                .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
 

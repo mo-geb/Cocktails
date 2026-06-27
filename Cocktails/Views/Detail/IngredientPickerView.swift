@@ -7,8 +7,15 @@ struct IngredientPickerView: View {
 
     var onPicked: () -> Void = {}
 
+    var detent: Binding<PresentationDetent> = .constant(.medium)
+
     @State private var searchText = ""
-    @State private var pendingName: String?
+    @State private var pending: PendingIngredient?
+
+    private struct PendingIngredient: Identifiable {
+        let id = UUID()
+        let name: String
+    }
 
     private var filtered: [Ingredient] {
         guard !searchText.isEmpty else { return allIngredients }
@@ -60,11 +67,16 @@ struct IngredientPickerView: View {
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search ingredients")
         .navigationTitle("Select Ingredient")
         .navigationBarTitleDisplayMode(.inline)
-        .navigationDestination(item: $pendingName) { name in
-            IngredientEditView(suggestedName: name) { created in
-                selection = IngredientDraft(from: created)
-                onPicked()
+        .sheet(item: $pending) { item in
+            NavigationStack {
+                IngredientEditView(suggestedName: item.name) { created in
+                    selection = IngredientDraft(from: created)
+                    pending = nil
+                    onPicked()
+                }
             }
+            .presentationDetents([.medium, .large], selection: detent)
+            .presentationDragIndicator(.visible)
         }
     }
 
@@ -72,7 +84,7 @@ struct IngredientPickerView: View {
 
     private var addCell: some View {
         Button {
-            pendingName = searchText.trimmingCharacters(in: .whitespaces)
+            pending = PendingIngredient(name: searchText.trimmingCharacters(in: .whitespaces))
         } label: {
             addIngredientCell(name: searchText.trimmingCharacters(in: .whitespaces))
         }

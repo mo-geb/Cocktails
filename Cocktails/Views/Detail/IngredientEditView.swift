@@ -34,11 +34,6 @@ struct IngredientEditView: View {
 
     private var isNew: Bool { originalIngredient == nil }
 
-    /// True when the view was pushed onto a navigation stack (the picker's
-    /// create-new flow, which passes `onSave`). When pushed, the system back
-    /// chevron handles dismissal so the explicit Cancel button is omitted.
-    private var isPushed: Bool { onSave != nil }
-
     private var previewImage: DisplayImageSource {
         let assetName = "Ingredient/" + (imageName ?? (originalIngredient?.id ?? ""))
         if UIImage(named: assetName) != nil { return .system(assetName) }
@@ -96,10 +91,8 @@ struct IngredientEditView: View {
         .navigationTitle(isNew ? "New Ingredient" : "Edit Ingredient")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if !isPushed {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") { dismiss() }
-                }
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Cancel") { dismiss() }
             }
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save") { save() }
