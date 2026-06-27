@@ -81,16 +81,18 @@ struct IngredientRowEditSheet: View {
         HStack {
             Text("Amount")
             Spacer()
-            TextField("0", value: Binding(
-                get: { draft.amount ?? 0.0 },
-                set: { draft.amount = $0 == 0 ? nil : $0 }
-            ), format: .number)
-            .keyboardType(.decimalPad)
-            .multilineTextAlignment(.trailing)
-            .fixedSize()
-            .padding(.horizontal, 10)
-            .padding(.vertical, 3)
-            .glassEffect()
+            if draft.unit.takesAmount {
+                TextField("0", value: Binding(
+                    get: { draft.amount ?? 0.0 },
+                    set: { draft.amount = $0 == 0 ? nil : $0 }
+                ), format: .number)
+                .keyboardType(.decimalPad)
+                .multilineTextAlignment(.trailing)
+                .fixedSize()
+                .padding(.horizontal, 10)
+                .padding(.vertical, 3)
+                .glassEffect()
+            }
 
             Picker("", selection: $draft.unit) {
                 ForEach(MeasurementUnit.allCases) { unit in
@@ -103,6 +105,9 @@ struct IngredientRowEditSheet: View {
         .padding(.horizontal, 16)
         .padding(.vertical, 13)
         .glassEffect(in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .onChange(of: draft.unit) {
+            if !draft.unit.takesAmount { draft.amount = nil }
+        }
     }
 
     // MARK: - Note

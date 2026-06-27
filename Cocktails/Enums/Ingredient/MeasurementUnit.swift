@@ -5,6 +5,8 @@ enum MeasurementUnit: String, Codable, CaseIterable, Identifiable {
 
     var id: String { rawValue }
 
+    var takesAmount: Bool { self != .fill }
+
     var localizedName: String {
         switch self {
         case .ml:    return "ml"
