@@ -113,7 +113,7 @@ struct CocktailGridCell: View {
                     .fill(Color(.secondarySystemBackground))
                 if let bgColor {
                     RoundedRectangle(cornerRadius: 24, style: .continuous)
-                        .fill(bgColor.opacity(0.2))
+                        .fill(bgColor.normalizedTint().opacity(0.35))
                 }
             }
             .task(id: cocktail.id) {
