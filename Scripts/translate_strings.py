@@ -493,7 +493,7 @@ def load_xcstrings(path: Path) -> dict:
 def save_xcstrings(data: dict, path: Path) -> None:
     tmp = path.with_suffix(".xcstrings.tmp")
     with open(tmp, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+        json.dump(data, f, ensure_ascii=False, indent=2, separators=(",", " : "))
         f.write("\n")
     tmp.replace(path)
     print(f"  ✅ Saved to {path}")
