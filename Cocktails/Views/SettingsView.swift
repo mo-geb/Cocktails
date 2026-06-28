@@ -106,7 +106,7 @@ struct SettingsView: View {
                 HStack(spacing: 12) {
                     linkButton(url: Links.website, icon: "globe", title: "Website")
                     linkButton(url: Links.terms, icon: "doc.text", title: "Terms")
-                    linkButton(url: Links.privacy, icon: "book", title: "Privacy")
+                    linkButton(url: Links.privacy, icon: "hand.raised", title: "Privacy")
                 }
                 .background {
                     GeometryReader { geo in
@@ -119,9 +119,9 @@ struct SettingsView: View {
                 }
 
                 HStack(spacing: 12) {
-                    linkButton(url: Links.guide, icon: "questionmark.circle.fill", title: "Guide")
+                    linkButton(url: Links.guide, icon: "book", title: "Guide")
                         .frame(width: linkButtonWidth)
-                    linkButton(url: Links.support, icon: "envelope.fill", title: "Support")
+                    linkButton(url: Links.support, icon: "envelope", title: "Support")
                         .frame(width: linkButtonWidth)
                 }
                 .frame(maxWidth: .infinity)

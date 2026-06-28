@@ -9,7 +9,6 @@ struct CocktailGridCell: View {
     var onDelete: (() -> Void)? = nil
     let onTap: () -> Void
 
-    @Environment(\.colorScheme) private var colorScheme
     @State private var bgColor: Color? = nil
 
     var body: some View {
@@ -94,7 +93,7 @@ struct CocktailGridCell: View {
                         .transition(.symbolEffect)
                         .padding(7)
                         .glassEffect(in: Circle())
-                        .padding(10)
+                        .padding(6)
                 }
 
                 if isSelecting {
@@ -104,7 +103,7 @@ struct CocktailGridCell: View {
                         .accessibilityLabel(isSelected ? Text("Selected") : Text("Not selected"))
                         .contentTransition(.symbolEffect(.replace))
                         .animation(.default, value: isSelected)
-                        .padding(10)
+                        .padding(6)
                 }
             }
             .frame(maxWidth: .infinity)

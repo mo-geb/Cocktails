@@ -6,8 +6,6 @@ struct CocktailPreviewCell: View {
     let isImported: Bool
     let onTap: () -> Void
 
-    @Environment(\.colorScheme) private var colorScheme
-
     var body: some View {
         Button(action: onTap) {
             ZStack(alignment: .topTrailing) {
@@ -60,7 +58,7 @@ struct CocktailPreviewCell: View {
                     .accessibilityLabel(accessibilityStateLabel)
                     .contentTransition(.symbolEffect(.replace))
                     .animation(.default, value: isImported || isSelected)
-                    .padding(10)
+                    .padding(6)
             }
             .contentShape(Rectangle())
             .frame(maxWidth: .infinity)
