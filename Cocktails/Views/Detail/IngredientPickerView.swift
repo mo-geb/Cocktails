@@ -78,10 +78,11 @@ struct IngredientPickerView: View {
     // MARK: - Add Cell
 
     private var addCell: some View {
-        Button {
-            pending = PendingIngredient(name: searchText.trimmingCharacters(in: .whitespaces))
+        let trimmed = searchText.trimmingCharacters(in: .whitespaces)
+        return Button {
+            pending = PendingIngredient(name: trimmed)
         } label: {
-            addIngredientCell(name: searchText.trimmingCharacters(in: .whitespaces))
+            addIngredientCell(name: trimmed)
         }
         .buttonStyle(.plain)
     }

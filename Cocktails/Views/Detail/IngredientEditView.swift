@@ -119,16 +119,15 @@ struct IngredientEditView: View {
 
     private func save() {
         let trimmed = name.trimmingCharacters(in: .whitespaces)
+        saveHapticTrigger.toggle()
         if let ingredient = originalIngredient {
             ingredient.name = trimmed
             ingredient.type = type
             ingredient.imageName = imageName
-            saveHapticTrigger.toggle()
             dismiss()
         } else {
             let ingredient = Ingredient(name: trimmed, type: type, imageName: imageName)
             modelContext.insert(ingredient)
-            saveHapticTrigger.toggle()
             // Let the presenter (the picker) select it and unwind; otherwise dismiss.
             if let onSave { onSave(ingredient) } else { dismiss() }
         }

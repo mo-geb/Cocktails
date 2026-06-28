@@ -35,7 +35,7 @@ enum MeasurementUnit: String, Codable, CaseIterable, Identifiable {
         case .piece: return "\(number) piece"
         case .part:  return "\(number) part"
         case .leaf:  return "\(number) leaf"
-        case .fill, .none: return number
+        default:     return ""
         }
     }
 

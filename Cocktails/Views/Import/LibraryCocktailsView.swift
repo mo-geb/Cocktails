@@ -34,11 +34,7 @@ struct LibraryCocktailsView: View {
                         isSelected: selected.contains(cocktail.name),
                         isImported: alreadyImported.contains(cocktail.name)
                     ) {
-                        if selected.contains(cocktail.name) {
-                            selected.remove(cocktail.name)
-                        } else {
-                            selected.insert(cocktail.name)
-                        }
+                        selected.toggle(cocktail.name)
                     }
                 }
             }

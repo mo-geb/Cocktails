@@ -3,7 +3,7 @@ import Foundation
 enum CocktailGrouping: String, CaseIterable, Identifiable {
     case none, favourite, source, method
 
-    var id: String { self.rawValue }
+    var id: String { rawValue }
 
     var localizedName: String {
         switch self {

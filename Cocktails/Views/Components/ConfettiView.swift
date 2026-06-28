@@ -30,7 +30,6 @@ struct ConfettiView: View {
         }
         .accessibilityHidden(true)
         .allowsHitTesting(false)
-        .allowsHitTesting(false)
         .ignoresSafeArea()
     }
 

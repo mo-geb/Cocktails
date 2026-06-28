@@ -17,12 +17,12 @@ struct MakeableCocktailsView: View {
 
     private var almostMakeableCocktails: [(cocktail: Cocktail, missing: String)] {
         cocktails
-            .sorted { $0.name < $1.name }
             .compactMap { cocktail in
                 let missing = cocktail.missingCoreIngredients
                 guard missing.count == 1, let missingName = missing.first?.ingredient?.localizedName else { return nil }
                 return (cocktail: cocktail, missing: missingName)
             }
+            .sorted { $0.cocktail.name < $1.cocktail.name }
     }
 
     var body: some View {
