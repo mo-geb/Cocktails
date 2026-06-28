@@ -58,7 +58,7 @@ struct CocktailPreviewCell: View {
                     .accessibilityLabel(accessibilityStateLabel)
                     .contentTransition(.symbolEffect(.replace))
                     .animation(.default, value: isImported || isSelected)
-                    .padding(6)
+                    .padding(10)
             }
             .contentShape(Rectangle())
             .frame(maxWidth: .infinity)

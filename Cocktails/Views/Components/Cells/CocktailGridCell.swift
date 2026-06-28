@@ -91,9 +91,9 @@ struct CocktailGridCell: View {
                         .foregroundStyle(.yellow)
                         .accessibilityLabel(Text("Favourite"))
                         .transition(.symbolEffect)
-                        .padding(7)
-                        .glassEffect(in: Circle())
                         .padding(6)
+                        .glassEffect(in: Circle())
+                        .padding(10)
                 }
 
                 if isSelecting {
@@ -103,7 +103,7 @@ struct CocktailGridCell: View {
                         .accessibilityLabel(isSelected ? Text("Selected") : Text("Not selected"))
                         .contentTransition(.symbolEffect(.replace))
                         .animation(.default, value: isSelected)
-                        .padding(6)
+                        .padding(10)
                 }
             }
             .frame(maxWidth: .infinity)
