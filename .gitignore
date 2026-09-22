@@ -29,3 +29,6 @@ Scripts/.venv/
 
 # Stray binaries (must never live in the source tree)
 Cocktails/test
+
+# Python
+__pycache__/
