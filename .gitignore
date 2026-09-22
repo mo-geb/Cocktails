@@ -32,3 +32,6 @@ Cocktails/test
 
 # Python
 __pycache__/
+
+# Build logs
+*.log
