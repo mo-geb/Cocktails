@@ -60,3 +60,9 @@ Cocktails/                      # Xcode project root
 ## Status
 
 Under active development. The StoreKit purchase flow, free-tier enforcement, paywall, first-launch onboarding, and review prompt are fully wired. The remaining pre-submission item is filling in privacy nutrition labels in App Store Connect — see `Docs/ARCHITECTURE.md` → "Known gaps".
+
+## License
+
+The source code is licensed under the [MIT License](LICENSE).
+
+Images, the app icon, design files, App Store screenshots and the app's name/branding are **not** covered by the MIT License and remain all rights reserved. They're included so the project builds and runs, but may not be reused or redistributed. See [LICENSE](LICENSE) for details. If you fork the project to publish your own app, please replace them with your own.
