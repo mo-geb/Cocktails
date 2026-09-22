@@ -5,8 +5,6 @@ struct PaywallView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(StoreManager.self) private var store
 
-    @State private var celebrate = false
-
     var body: some View {
         NavigationStack {
             ZStack {
@@ -26,17 +24,13 @@ struct PaywallView: View {
                     .containerRelativeFrame(.vertical, alignment: .center)
                 }
             }
-            .overlay { if celebrate { ConfettiView() } }
             .navigationTitle("Go Unlimited")
             .navigationBarTitleDisplayMode(.inline)
             .onChange(of: store.isUnlimited) { _, unlimited in
                 guard unlimited else { return }
-                celebrate = true
-                Task {
-                    try? await Task.sleep(for: .seconds(1.8))
-                    dismiss()
-                }
+                dismiss()
             }
+            .restoreOutcomeAlert(store)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Not Now") { dismiss() }

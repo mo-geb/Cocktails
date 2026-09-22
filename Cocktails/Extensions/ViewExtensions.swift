@@ -29,6 +29,20 @@ extension View {
         }
     }
 
+    /// Reports a `restore()` outcome that needs acknowledgement. Success is
+    /// silent — the entitlement change is its own feedback.
+    func restoreOutcomeAlert(_ store: StoreManager) -> some View {
+        let outcome = Binding(get: { store.restoreOutcome },
+                              set: { store.restoreOutcome = $0 })
+        return alert("Restore Purchases", isPresented: .init(presence: outcome)) {
+            Button("OK") {}
+        } message: {
+            Text(store.restoreOutcome == .failed
+                 ? "Couldn't reach the App Store. Check your connection and try again."
+                 : "No previous purchase was found for this Apple Account.")
+        }
+    }
+
     func importResultAlerts(result: Binding<ImportResult?>, error: Binding<String?>) -> some View {
         alert("Import Complete", isPresented: .init(presence: result)) {
             Button("OK") { result.wrappedValue = nil }

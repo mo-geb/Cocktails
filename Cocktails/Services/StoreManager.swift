@@ -15,6 +15,16 @@ final class StoreManager {
     }
     private(set) var restoreInFlight = false
 
+    enum RestoreOutcome: Equatable { case nothingToRestore, failed }
+
+    var restoreOutcome: RestoreOutcome?
+
+    #if DEBUG
+    init(isUnlimited: Bool) {
+        self.isUnlimited = isUnlimited
+    }
+    #endif
+
     init() {
         Task { [weak self] in
             for await result in Transaction.updates {
@@ -32,7 +42,10 @@ final class StoreManager {
     }
 
     func updateEntitlement(from result: VerificationResult<Transaction>?) async {
-        guard case .verified(let transaction) = result else { return }
+        guard case .verified(let transaction) = result else {
+            isUnlimited = false
+            return
+        }
         await process(transaction)
     }
 
@@ -52,14 +65,24 @@ final class StoreManager {
     func restore() async {
         guard !restoreInFlight else { return }
         restoreInFlight = true
+        restoreOutcome = nil
         defer { restoreInFlight = false }
 
-        try? await AppStore.sync()
+        do {
+            try await AppStore.sync()
+        } catch StoreKitError.userCancelled {
+            return
+        } catch {
+            restoreOutcome = .failed
+            return
+        }
+
         var latest: VerificationResult<Transaction>?
         for await result in Transaction.currentEntitlements(for: Self.unlimitedProductID) {
             latest = result
         }
         await updateEntitlement(from: latest)
+        if !isUnlimited { restoreOutcome = .nothingToRestore }
     }
 
     // MARK: - Gating

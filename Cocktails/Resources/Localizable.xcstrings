@@ -5023,6 +5023,9 @@
         }
       }
     },
+    "Couldn't reach the App Store. Check your connection and try again." : {
+
+    },
     "Crushed" : {
       "comment" : "Ice type",
       "localizations" : {
@@ -27912,6 +27915,9 @@
           }
         }
       }
+    },
+    "No previous purchase was found for this Apple Account." : {
+
     },
     "None" : {
       "comment" : "Grouping — no grouping applied",

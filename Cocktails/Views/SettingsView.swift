@@ -10,7 +10,6 @@ struct SettingsView: View {
 
     @State private var showClearConfirmation = false
     @State private var showPaywall = false
-    @State private var celebrate = false
     @State private var linkButtonWidth: CGFloat = 100
 
     var body: some View {
@@ -34,7 +33,7 @@ struct SettingsView: View {
             }
             .listStyle(.insetGrouped)
             .fullScreenCover(isPresented: $showPaywall) { PaywallView() }
-            .overlay { if celebrate { ConfettiView() } }
+            .restoreOutcomeAlert(store)
             .navigationTitle("Settings")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
@@ -65,15 +64,7 @@ struct SettingsView: View {
                 }
 
                 Button {
-                    Task {
-                        let wasUnlimited = store.isUnlimited
-                        await store.restore()
-                        if !wasUnlimited && store.isUnlimited {
-                            celebrate = true
-                            try? await Task.sleep(for: .seconds(3.5))
-                            celebrate = false
-                        }
-                    }
+                    Task { await store.restore() }
                 } label: {
                     HStack {
                         settingsLabel(icon: "arrow.clockwise", color: .gray,
@@ -251,7 +242,12 @@ struct SettingsView: View {
     }
 }
 
-#Preview(traits: .sampleData) {
+#Preview("Unlimited", traits: .sampleData) {
     SettingsView()
-        .environment(StoreManager())
+        .environment(StoreManager(isUnlimited: true))
+}
+
+#Preview("Free", traits: .sampleData) {
+    SettingsView()
+        .environment(StoreManager(isUnlimited: false))
 }
