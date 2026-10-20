@@ -71,6 +71,7 @@ struct IngredientTab: View {
                 }
                 .padding(.vertical)
             }
+            .background(Color(.systemGroupedBackground))
         }
     }
     

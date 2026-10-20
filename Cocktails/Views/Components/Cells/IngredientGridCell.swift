@@ -15,10 +15,13 @@ struct IngredientGridCell: View {
                 ingredient.displayImage.view(placeholder: ingredient.type.imageName)
                     .scaledToFit()
                     .padding(4)
+                    .grayscale(ingredient.isStocked ? 0 : 1)
+                    .opacity(ingredient.isStocked ? 1 : 0.35)
 
                 Text(ingredient.localizedName)
                     .font(.caption.bold())
                     .fontDesign(.rounded)
+                    .foregroundStyle(ingredient.isStocked ? .primary : .secondary)
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
                     .minimumScaleFactor(0.8)
@@ -29,14 +32,12 @@ struct IngredientGridCell: View {
             .padding(.all, 4)
             .frame(maxWidth: .infinity)
             .aspectRatio(0.85, contentMode: .fit)
-            .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-            .overlay {
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .strokeBorder(Color(.separator), lineWidth: 1)
-            }
+            .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
             .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-            .grayscale(ingredient.isStocked ? 0 : 1)
-            .opacity(ingredient.isStocked ? 1 : 0.4)
+            // Flattens icon and text into one layer so they move together when the
+            // stocked-first sort repositions the cell; the icon's grayscale filter
+            // otherwise renders it separately and it lags behind the text.
+            .compositingGroup()
             .accessibilityElement(children: .combine)
             .accessibilityValue(ingredient.isStocked ? Text("Stocked") : Text("Not stocked"))
             .accessibilityHint(Text("Toggles whether you have this ingredient."))
@@ -84,7 +85,7 @@ func addIngredientCell(name: String) -> some View {
     .padding(.all, 4)
     .frame(maxWidth: .infinity)
     .aspectRatio(0.85, contentMode: .fit)
-    .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+    .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
     .overlay {
         RoundedRectangle(cornerRadius: 18, style: .continuous)
             .strokeBorder(Color.accentColor.opacity(0.55), lineWidth: 1.5)
@@ -102,4 +103,5 @@ func addIngredientCell(name: String) -> some View {
         }
         .padding()
     }
+    .background(Color(.systemGroupedBackground))
 }

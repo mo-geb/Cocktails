@@ -65,6 +65,7 @@ struct MakeableCocktailsView: View {
                         }
                         .padding()
                     }
+                    .background(Color(.systemGroupedBackground))
                 }
             }
             .navigationTitle("What can I make?")

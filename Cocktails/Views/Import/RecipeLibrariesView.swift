@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 struct LibraryCounts {
     var cocktails: Int = 0
@@ -34,6 +35,7 @@ struct RecipeLibrariesView: View {
             }
             .padding()
         }
+        .background(Color(.systemGroupedBackground))
         .navigationTitle("Import")
         .task {
             for source in sources {

@@ -33,6 +33,7 @@ struct CocktailsWithIngredientView: View {
                         }
                         .padding()
                     }
+                    .background(Color(.systemGroupedBackground))
                 }
             }
             .navigationTitle(ingredient.localizedName)

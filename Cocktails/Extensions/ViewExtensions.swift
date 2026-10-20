@@ -60,15 +60,25 @@ extension View {
 }
 
 extension Color {
-    /// A consistent pill tint derived from a drink's dominant colour: keeps the
-    /// hue but normalizes saturation/brightness so no extracted colour reads
-    /// harsh or muddy. Near-greyscale colours stay neutral. Apply at low opacity
-    /// so it adapts to light/dark.
-    func normalizedTint() -> Color {
+    /// The drink-derived fill behind artwork: keeps the hue but normalizes
+    /// saturation/brightness so no extracted colour reads harsh or muddy, and
+    /// near-greyscale colours stay neutral. Dark mode uses a deeper, more
+    /// saturated shade, because a dimmed pastel over a
+    /// dark card loses its hue and reads as brown.
+    func adaptiveTint(lightOpacity: Double, darkOpacity: Double) -> Color {
         var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
         UIColor(self).getHue(&h, saturation: &s, brightness: &b, alpha: &a)
-        guard s >= 0.1 else { return Color(hue: 0, saturation: 0, brightness: 0.7) }
-        return Color(hue: h, saturation: 0.5, brightness: 0.85)
+        let isNeutral = s < 0.1
+        return Color(UIColor { traits in
+            if traits.userInterfaceStyle == .dark {
+                return isNeutral
+                    ? UIColor(white: 0.5, alpha: darkOpacity)
+                    : UIColor(hue: h, saturation: 0.7, brightness: 0.6, alpha: darkOpacity)
+            }
+            return isNeutral
+                ? UIColor(white: 0.7, alpha: lightOpacity)
+                : UIColor(hue: h, saturation: 0.5, brightness: 0.85, alpha: lightOpacity)
+        })
     }
 }
 

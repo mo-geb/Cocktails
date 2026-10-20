@@ -41,6 +41,7 @@ struct LibraryCocktailsView: View {
             .padding(.horizontal)
             .padding(.vertical, 12)
         }
+        .background(Color(.systemGroupedBackground))
         .navigationTitle(source.localizedName)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {

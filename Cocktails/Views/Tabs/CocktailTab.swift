@@ -97,6 +97,7 @@ struct CocktailTab: View {
                 }
                 .padding(.vertical)
             }
+            .background(Color(.systemGroupedBackground))
         }
     }
     

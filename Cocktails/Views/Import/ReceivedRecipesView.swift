@@ -74,6 +74,7 @@ struct ReceivedRecipesView: View {
             }
             .padding()
         }
+        .background(Color(.systemGroupedBackground))
     }
 
     private func loadPackage() {
