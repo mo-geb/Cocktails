@@ -15,6 +15,8 @@ struct CocktailEditView: View {
     @State private var saveHapticTrigger = false
 
     private let originalCocktail: Cocktail?
+    /// Snapshot of the draft at open time, used to detect whether the user changed anything.
+    private let initialDraft: CocktailDraft
     private let onFinish: (() -> Void)?
     private let onSave: ((Cocktail) -> Void)?
     /// When embedded in CocktailDetailView, the detail view owns the gradient
@@ -31,6 +33,7 @@ struct CocktailEditView: View {
         self.onSave = nil
         self.externalBackground = backgroundColor
         let draft = CocktailDraft(from: cocktail)
+        self.initialDraft = draft
         self._draft = State(initialValue: draft)
         self._backgroundColor = State(initialValue: draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled))
     }
@@ -40,6 +43,7 @@ struct CocktailEditView: View {
         self.onFinish = nil
         self.onSave = onSave
         self.externalBackground = nil
+        self.initialDraft = draft
         self._draft = State(initialValue: draft)
         self._backgroundColor = State(initialValue: draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled))
     }
@@ -250,17 +254,27 @@ struct CocktailEditView: View {
                     .foregroundStyle(.secondary)
                     .font(.subheadline)
             } else {
+                // Each card is its own reorder container, so rows only
+                // reorder within their own role.
                 VStack(spacing: 14) {
-                    ForEach(Array(roleIngredients.enumerated()), id: \.element.id) { position, item in
-                        if let index = draft.ingredients.firstIndex(where: { $0.id == item.id }) {
-                            ingredientRow(item: $draft.ingredients[index], index: index) {
-                                draft.ingredients.removeAll { $0.id == item.id }
-                            }
-                            if position != roleIngredients.count - 1 {
+                    ForEach(roleIngredients) { item in
+                        // Each reorderable item must be a single view, so the
+                        // divider lives inside the item rather than between items.
+                        VStack(spacing: 14) {
+                            if item.id != roleIngredients.first?.id {
                                 Divider().padding(.leading, 42)
+                            }
+                            if let index = draft.ingredients.firstIndex(where: { $0.id == item.id }) {
+                                ingredientRow(item: $draft.ingredients[index], index: index) {
+                                    draft.ingredients.removeAll { $0.id == item.id }
+                                }
                             }
                         }
                     }
+                    .reorderable()
+                }
+                .reorderContainer(for: RecipeIngredientDraft.self) { difference in
+                    moveIngredients(difference, role: role)
                 }
             }
         }
@@ -404,6 +418,27 @@ struct CocktailEditView: View {
         draft.ingredients.append(RecipeIngredientDraft(role: role, sortOrder: count))
     }
 
+    /// Applies a drag-to-reorder move within one card. `draft.ingredients`
+    /// mixes both roles, so positions are resolved against the full array.
+    private func moveIngredients(_ difference: ReorderDifference<RecipeIngredientDraft.ID, ReorderableSingleCollectionIdentifier>, role: IngredientRole) {
+        let movingIDs = Set(difference.sources)
+        guard !movingIDs.isEmpty else { return }
+
+        let moved = draft.ingredients.filter { movingIDs.contains($0.id) }
+        draft.ingredients.removeAll { movingIDs.contains($0.id) }
+
+        let insertionIndex: Int
+        switch difference.destination.position {
+        case .before(let id):
+            insertionIndex = draft.ingredients.firstIndex { $0.id == id } ?? draft.ingredients.endIndex
+        case .end:
+            // "End" means the end of this card, i.e. after its last row.
+            insertionIndex = draft.ingredients.lastIndex { $0.role == role }
+                .map { $0 + 1 } ?? draft.ingredients.endIndex
+        }
+        draft.ingredients.insert(contentsOf: moved, at: insertionIndex)
+    }
+
     private func save() {
         saveHapticTrigger.toggle()
         if let cocktail = originalCocktail {
@@ -440,7 +475,9 @@ struct CocktailEditView: View {
         cocktail.method = draft.method
         cocktail.ice = draft.ice
         cocktail.isFavourite = draft.isFavourite
-        cocktail.source = draft.source
+        // An edited imported recipe is no longer the original, so it becomes custom.
+        // This keeps it from being matched (and replaced) by name on re-import.
+        cocktail.source = draft != initialDraft ? .custom : draft.source
         cocktail.imageData = draft.imageData
         cocktail.imageName = draft.imageName
 
@@ -452,7 +489,9 @@ struct CocktailEditView: View {
     }
 
     private func insertIngredients(for drafts: [RecipeIngredientDraft], into cocktail: Cocktail) {
-        for (index, d) in drafts.enumerated() {
+        // The draft array order is the source of truth (it reflects any
+        // drag-to-reorder), so persist each row's position as its sort order.
+        for (position, d) in drafts.enumerated() {
             guard !d.ingredient.name.isEmpty else { continue }
             let ingredient = findOrCreate(d.ingredient)
             let item = RecipeIngredient(
@@ -460,7 +499,7 @@ struct CocktailEditView: View {
                 unit: d.unit,
                 note: d.note,
                 role: d.role,
-                sortOrder: index,
+                sortOrder: position,
                 ingredient: ingredient
             )
             item.cocktail = cocktail

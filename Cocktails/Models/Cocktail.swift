@@ -67,7 +67,9 @@ struct CocktailDraft: Hashable {
         isFavourite = cocktail.isFavourite
         imageData = cocktail.imageData
         imageName = cocktail.imageName
-        ingredients = cocktail.ingredients?.map { RecipeIngredientDraft(from: $0) } ?? []
+        ingredients = (cocktail.ingredients ?? [])
+            .sorted { $0.sortOrder < $1.sortOrder }
+            .map { RecipeIngredientDraft(from: $0) }
     }
 }
 
