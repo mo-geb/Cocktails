@@ -66,13 +66,10 @@ struct SearchView: View {
             // field in the tab bar. Kept here rather than on the TabView, where it
             // leaks a stray search field into the previous tab after cancelling.
             .searchable(text: $query, prompt: "Cocktails, Ingredients…")
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button { appState.openSettings() } label: {
-                        Label("Settings", systemImage: "gearshape")
-                    }
-                }
-            }
+            // With `.searchTabSelection` this page is only ever shown with search active,
+            // which hides the navigation bar. Hiding it up front stops the title from
+            // flashing before search activates. The title still labels the back button.
+            .toolbarVisibility(.hidden, for: .navigationBar)
         }
     }
 
