@@ -22,6 +22,7 @@ struct MainTabView: View {
                 SearchView()
             }
         }
+        .tabViewSearchActivation(.searchTabSelection)
         .sensoryFeedback(.warning, trigger: deleteHapticTrigger)
         .fullScreenCover(isPresented: $appState.showOnboarding) {
             OnboardingView()
@@ -67,7 +68,14 @@ struct MainTabView: View {
         case .settings:
             SettingsView()
         case .importLibrary:
-            NavigationStack { RecipeLibrariesView() }
+            NavigationStack {
+                RecipeLibrariesView()
+                    .toolbar {
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Done") { appState.activeSheet = nil }
+                        }
+                    }
+            }
         case .receivedRecipes(let url):
             ReceivedRecipesView(url: url, onDismiss: { appState.activeSheet = nil })
         case .ingredientSheet(let ingredientSheet):

@@ -9,6 +9,7 @@ struct SearchView: View {
     @Query(sort: \Ingredient.name) private var ingredients: [Ingredient]
 
     @State private var query = ""
+
     @State private var selectedTab: SearchTab = .cocktails
     @State private var viewedCocktail: Cocktail?
     @Namespace private var zoomNamespace
@@ -36,6 +37,8 @@ struct SearchView: View {
 
     var body: some View {
         NavigationStack {
+            // A hand-placed picker rather than `.searchScopes`: on iOS 27 the system
+            // scope bar disappears when search is re-entered from the search tab.
             VStack(spacing: 0) {
                 Picker("", selection: $selectedTab) {
                     ForEach(SearchTab.allCases, id: \.self) { tab in
@@ -54,11 +57,15 @@ struct SearchView: View {
                     }
                 }
             }
+            .background(Color(.systemGroupedBackground))
             .navigationTitle("Search")
             .cocktailZoomDestination($viewedCocktail, in: zoomNamespace)
             .onAppear { selectedTab = appState.preferredSearchTab }
             .onChange(of: appState.preferredSearchTab) { _, newTab in selectedTab = newTab }
-            .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: "Cocktails, Ingredients…")
+            // No explicit placement: inside a `.search` role tab the system puts the
+            // field in the tab bar. Kept here rather than on the TabView, where it
+            // leaks a stray search field into the previous tab after cancelling.
+            .searchable(text: $query, prompt: "Cocktails, Ingredients…")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button { appState.openSettings() } label: {
