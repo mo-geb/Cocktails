@@ -106,15 +106,16 @@ struct CocktailEditView: View {
                     if draft.displayImage.isCustom {
                         draft.displayImage.view(placeholder: draft.glass.imageNameFilled)
                             .scaledToFill()
-                            .frame(width: 140, height: 140)
+                            .frame(width: 190, height: 190)
                             .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
                             .padding(8)
                             .glassEffect(in: RoundedRectangle(cornerRadius: 40, style: .continuous))
                     } else {
+                        // Matches the detail view so the edit cross-fade doesn't jump.
                         draft.displayImage.view(placeholder: draft.glass.imageNameFilled)
                             .scaledToFit()
-                            .frame(width: 110, height: 110)
-                            .padding(12)
+                            .frame(width: 180, height: 180)
+                            .offset(y: -9)
                     }
 
                     Image(systemName: "camera.fill")

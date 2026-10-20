@@ -71,15 +71,16 @@ struct CocktailDetailView: View {
         if cocktail.displayImage.isCustom {
             cocktail.displayImage.view(placeholder: cocktail.glass.imageNameFilled)
                 .scaledToFill()
-                .frame(width: 140, height: 140)
+                .frame(width: 190, height: 190)
                 .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
                 .padding(8)
                 .glassEffect(in: RoundedRectangle(cornerRadius: 40, style: .continuous))
         } else {
+            // Same upward nudge as the cell artwork, which reads low when centered.
             cocktail.displayImage.view(placeholder: cocktail.glass.imageNameFilled)
                 .scaledToFit()
-                .frame(width: 110, height: 110)
-                .padding(12)
+                .frame(width: 180, height: 180)
+                .offset(y: -9)
         }
     }
 
