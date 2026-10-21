@@ -52,7 +52,7 @@ struct LibraryCell: View {
         }
         .frame(maxWidth: .infinity)
         .aspectRatio(0.8, contentMode: .fit)
-        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .cardBackground(cornerRadius: 22)
         .onAppear {
             if let uiImage = UIImage(named: source.imageName) {
                 accentColor = uiImage.dominantColor().map { Color($0) }

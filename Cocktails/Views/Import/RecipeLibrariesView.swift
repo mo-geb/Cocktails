@@ -112,34 +112,9 @@ struct RecipeLibrariesView: View {
         isLoading: Bool,
         action: @escaping () -> Void
     ) -> some View {
-        Button(action: action) {
-            HStack(spacing: 14) {
-                Image(systemName: icon)
-                    .font(.title3)
-                    .foregroundStyle(.white)
-                    .scaledFrame(40, relativeTo: .title3)
-                    .background(color.gradient)
-                    .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
-
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(title)
-                        .font(.subheadline.bold())
-                        .foregroundStyle(.primary)
-                    Text(subtitle)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-
-                Spacer()
-
-                if isLoading { ProgressView() }
-            }
-            .contentShape(Rectangle())
-            .padding(.horizontal, 16)
-            .padding(.vertical, 14)
-            .cardBackground(cornerRadius: 18)
+        ActionCard(systemImage: icon, color: color, title: Text(title), subtitle: Text(subtitle), action: action) {
+            if isLoading { ProgressView() }
         }
-        .buttonStyle(.plain)
         .disabled(isLoading)
     }
 

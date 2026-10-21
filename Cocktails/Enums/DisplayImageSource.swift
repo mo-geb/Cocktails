@@ -52,6 +52,15 @@ extension CocktailImageProviding {
 }
 
 extension Cocktail: CocktailImageProviding {}
+
+extension Cocktail {
+    /// The drink colour behind the artwork, from the photo or the glass illustration.
+    var artworkTint: Color? { displayImage.dominantColor(placeholderName: glass.imageNameFilled) }
+}
+
+extension CocktailDraft {
+    var artworkTint: Color? { displayImage.dominantColor(placeholderName: glass.imageNameFilled) }
+}
 extension CocktailDraft: CocktailImageProviding {}
 extension CocktailDTO: CocktailImageProviding {
     var imageData: Data? { nil }

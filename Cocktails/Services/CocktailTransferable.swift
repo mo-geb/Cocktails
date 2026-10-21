@@ -50,8 +50,8 @@ extension SharedCocktailPackage {
 
 extension CocktailDTO {
     init(from cocktail: Cocktail) {
-        let core = cocktail.coreIngredients.sorted { $0.sortOrder < $1.sortOrder }.map { RecipeIngredientDTO(from: $0) }
-        let garnishes = cocktail.garnishIngredients.sorted { $0.sortOrder < $1.sortOrder }.map { RecipeIngredientDTO(from: $0) }
+        let core = cocktail.coreIngredients.map { RecipeIngredientDTO(from: $0) }
+        let garnishes = cocktail.garnishIngredients.map { RecipeIngredientDTO(from: $0) }
         self.init(
             name: cocktail.name,
             imageName: cocktail.imageName,

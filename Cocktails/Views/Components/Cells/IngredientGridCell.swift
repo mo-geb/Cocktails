@@ -31,7 +31,7 @@ struct IngredientGridCell: View {
             .padding(.all, 4)
             .frame(maxWidth: .infinity)
             .aspectRatio(0.85, contentMode: .fit)
-            .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .cardBackground(cornerRadius: 18)
             .overlay(alignment: .topTrailing) {
                 if ingredient.isStocked {
                     Image(systemName: "checkmark.circle.fill")
@@ -95,7 +95,7 @@ func addIngredientCell(name: String) -> some View {
     .padding(.all, 4)
     .frame(maxWidth: .infinity)
     .aspectRatio(0.85, contentMode: .fit)
-    .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+    .cardBackground(cornerRadius: 18)
     .overlay {
         RoundedRectangle(cornerRadius: 18, style: .continuous)
             .strokeBorder(Color.accentColor.opacity(0.55), lineWidth: 1.5)

@@ -23,21 +23,7 @@ struct CocktailPreviewCell: View {
                     .multilineTextAlignment(.center)
                     .lineLimit(1, accessibility: 3)
 
-                HStack(spacing: 5) {
-                    Image(dto.ice.imageName)
-                        .resizable()
-                        .scaledToFit()
-                        .scaledFrame(11, relativeTo: .caption2)
-                        .accessibilityHidden(true)
-                    Text(dto.ice.localizedName)
-                    Text("·").foregroundStyle(.tertiary)
-                    Image(dto.method.customImageName)
-                        .resizable()
-                        .scaledToFit()
-                        .scaledFrame(11, relativeTo: .caption2)
-                        .accessibilityHidden(true)
-                    Text(dto.method.localizedName)
-                }
+                CocktailMetaLine(ice: dto.ice, method: dto.method)
                 .font(.caption2)
                 .foregroundStyle(.secondary)
                 .lineLimit(1, accessibility: 2)
@@ -48,7 +34,7 @@ struct CocktailPreviewCell: View {
             .contentShape(Rectangle())
             .frame(maxWidth: .infinity)
             .accessibilityElement(children: .combine)
-            .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+            .cardBackground(cornerRadius: cornerRadius)
             .task(id: dto.name) {
                 let image = dto.displayImage
                 let placeholder = dto.glass.imageNameFilled

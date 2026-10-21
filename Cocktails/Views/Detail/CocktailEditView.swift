@@ -38,7 +38,7 @@ struct CocktailEditView: View {
         let draft = CocktailDraft(from: cocktail)
         self.initialDraft = draft
         self._draft = State(initialValue: draft)
-        self._backgroundColor = State(initialValue: draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled))
+        self._backgroundColor = State(initialValue: draft.artworkTint)
     }
 
     init(draft: CocktailDraft = CocktailDraft(), onSave: ((Cocktail) -> Void)? = nil) {
@@ -48,7 +48,7 @@ struct CocktailEditView: View {
         self.externalBackground = nil
         self.initialDraft = draft
         self._draft = State(initialValue: draft)
-        self._backgroundColor = State(initialValue: draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled))
+        self._backgroundColor = State(initialValue: draft.artworkTint)
     }
 
     /// Returns to the detail view when editing in place; otherwise dismisses the sheet.
@@ -89,10 +89,7 @@ struct CocktailEditView: View {
         .onChange(of: draft.imageData) { updateBackground() }
         .onChange(of: photoItem) { loadPhoto() }
         .onAppear { updateBackground() }
-        .sheet(isPresented: Binding(
-            get: { ingredientPickerIndex != nil },
-            set: { if !$0 { ingredientPickerIndex = nil } }
-        ), onDismiss: removePendingIngredient) {
+        .sheet(isPresented: .init(presence: $ingredientPickerIndex), onDismiss: removePendingIngredient) {
             if let index = ingredientPickerIndex, index < draft.ingredients.count {
                 IngredientRowEditSheet(draft: $draft.ingredients[index]) {
                     pendingRemovalID = draft.ingredients[index].id
@@ -411,7 +408,7 @@ struct CocktailEditView: View {
     // MARK: - Actions
 
     private func updateBackground() {
-        background.wrappedValue = draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled)
+        background.wrappedValue = draft.artworkTint
     }
 
     private func loadPhoto() {

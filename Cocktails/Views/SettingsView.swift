@@ -139,7 +139,7 @@ struct SettingsView: View {
             .foregroundStyle(.tint)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 16)
-            .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .cardBackground(cornerRadius: 18)
         }
     }
 
@@ -165,12 +165,7 @@ struct SettingsView: View {
     // MARK: - Row helpers
 
     private func iconTile(_ icon: String, _ color: Color) -> some View {
-        Image(systemName: icon)
-            .font(.subheadline.weight(.semibold))
-            .foregroundStyle(.white)
-            .scaledFrame(30)
-            .background(color.gradient)
-            .clipShape(RoundedRectangle(cornerRadius: 7, style: .continuous))
+        IconTile(systemImage: icon, color: color, size: 30, textStyle: .subheadline, weight: .semibold)
     }
 
     private func settingsLabel(icon: String, color: Color, title: LocalizedStringKey, subtitle: LocalizedStringKey) -> some View {
@@ -205,7 +200,7 @@ struct SettingsView: View {
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .cardBackground(cornerRadius: 18)
         .accessibilityElement(children: .combine)
     }
 

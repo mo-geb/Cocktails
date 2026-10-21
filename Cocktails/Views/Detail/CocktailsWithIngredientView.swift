@@ -5,7 +5,6 @@ struct CocktailsWithIngredientView: View {
     let ingredient: Ingredient
 
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.modelContext) private var modelContext
     @State private var viewedCocktail: Cocktail?
     @State private var cocktailToDelete: Cocktail?
     @Namespace private var zoomNamespace
@@ -43,16 +42,7 @@ struct CocktailsWithIngredientView: View {
                     Button(role: .close) { dismiss() }
                 }
             }
-            .confirmationDialog(
-                "Delete \"\(cocktailToDelete?.name ?? "")\"?",
-                isPresented: .init(presence: $cocktailToDelete),
-                titleVisibility: .visible
-            ) {
-                Button("Delete", role: .destructive) {
-                    if let c = cocktailToDelete { modelContext.delete(c) }
-                    cocktailToDelete = nil
-                }
-            }
+            .cocktailDeletionDialog($cocktailToDelete)
             .cocktailZoomDestination($viewedCocktail, in: zoomNamespace)
         }
     }

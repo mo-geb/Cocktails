@@ -69,12 +69,7 @@ struct LibraryCocktailsView: View {
         let description = source.localizedDescription
         if !description.isEmpty || source.sourceURL != nil {
             HStack(alignment: .center, spacing: 14) {
-                Image(systemName: "info.circle.fill")
-                    .font(.title3)
-                    .foregroundStyle(.white)
-                    .scaledFrame(40, relativeTo: .title3)
-                    .background(Color.accentColor.gradient)
-                    .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
+                IconTile(systemImage: "info.circle.fill", color: .accentColor)
 
                 VStack(alignment: .leading, spacing: 4) {
                     if !description.isEmpty {

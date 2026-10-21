@@ -14,7 +14,7 @@ struct CocktailDetailView: View {
     init(cocktail: Cocktail, onDone: (() -> Void)? = nil) {
         self.cocktail = cocktail
         self.onDone = onDone
-        self._backgroundColor = State(initialValue: cocktail.displayImage.dominantColor(placeholderName: cocktail.glass.imageNameFilled))
+        self._backgroundColor = State(initialValue: cocktail.artworkTint)
     }
 
     var body: some View {
@@ -40,22 +40,19 @@ struct CocktailDetailView: View {
     }
 
     private func finishEditing() {
-        backgroundColor = cocktail.displayImage.dominantColor(placeholderName: cocktail.glass.imageNameFilled)
+        backgroundColor = cocktail.artworkTint
         isEditing = false
     }
 
     private var detailView: some View {
-        let coreIngredients = cocktail.coreIngredients.sorted { $0.sortOrder < $1.sortOrder }
-        let garnishIngredients = cocktail.garnishIngredients.sorted { $0.sortOrder < $1.sortOrder }
-
-        return ScrollView {
+        ScrollView {
             GlassEffectContainer(spacing: 18) {
                 VStack(spacing: 18) {
                     imageSection
                     titleSection
                     propertiesPill
-                    ingredientListCard(coreIngredients)
-                    ingredientListCard(garnishIngredients, title: "Garnish", hideWhenEmpty: true)
+                    ingredientListCard(cocktail.coreIngredients)
+                    ingredientListCard(cocktail.garnishIngredients, title: "Garnish", hideWhenEmpty: true)
                     if !cocktail.notes.isEmpty { notesCard }
                 }
                 .padding(.horizontal)

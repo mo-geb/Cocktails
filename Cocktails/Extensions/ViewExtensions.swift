@@ -1,5 +1,6 @@
 import UIKit
 import SwiftUI
+import SwiftData
 
 extension View {
     /// A solid content card for use on a grouped background. Glass is reserved
@@ -90,6 +91,38 @@ extension Binding where Value == Bool {
             get: { item.wrappedValue != nil },
             set: { if !$0 { item.wrappedValue = nil } }
         )
+    }
+}
+
+// MARK: - Deletion
+
+/// Confirms and performs deleting a cocktail, with a warning haptic.
+/// Sheets need their own copy, as a dialog can't present over a sheet.
+private struct CocktailDeletionDialog: ViewModifier {
+    @Environment(\.modelContext) private var modelContext
+    @Binding var cocktail: Cocktail?
+    @State private var hapticTrigger = false
+
+    func body(content: Content) -> some View {
+        content
+            .confirmationDialog(
+                "Delete \"\(cocktail?.name ?? "")\"?",
+                isPresented: .init(presence: $cocktail),
+                titleVisibility: .visible
+            ) {
+                Button("Delete", role: .destructive) {
+                    if let cocktail { modelContext.delete(cocktail) }
+                    cocktail = nil
+                    hapticTrigger.toggle()
+                }
+            }
+            .sensoryFeedback(.warning, trigger: hapticTrigger)
+    }
+}
+
+extension View {
+    func cocktailDeletionDialog(_ cocktail: Binding<Cocktail?>) -> some View {
+        modifier(CocktailDeletionDialog(cocktail: cocktail))
     }
 }
 

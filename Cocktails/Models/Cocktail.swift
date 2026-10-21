@@ -67,19 +67,22 @@ struct CocktailDraft: Hashable {
         isFavourite = cocktail.isFavourite
         imageData = cocktail.imageData
         imageName = cocktail.imageName
-        ingredients = (cocktail.ingredients ?? [])
-            .sorted { $0.sortOrder < $1.sortOrder }
-            .map { RecipeIngredientDraft(from: $0) }
+        ingredients = cocktail.orderedIngredients.map { RecipeIngredientDraft(from: $0) }
     }
 }
 
 extension Cocktail {
+    /// All recipe rows in the order the user arranged them.
+    var orderedIngredients: [RecipeIngredient] {
+        (ingredients ?? []).sorted { $0.sortOrder < $1.sortOrder }
+    }
+
     var coreIngredients: [RecipeIngredient] {
-        (ingredients ?? []).filter { $0.role == .core }
+        orderedIngredients.filter { $0.role == .core }
     }
 
     var garnishIngredients: [RecipeIngredient] {
-        (ingredients ?? []).filter { $0.role == .garnish }
+        orderedIngredients.filter { $0.role == .garnish }
     }
 
     var missingCoreIngredients: [RecipeIngredient] {

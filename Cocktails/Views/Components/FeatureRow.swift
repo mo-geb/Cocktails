@@ -8,12 +8,7 @@ struct FeatureRow: View {
 
     var body: some View {
         HStack(spacing: 16) {
-            Image(systemName: icon)
-                .font(.subheadline.weight(.semibold))
-                .foregroundStyle(.white)
-                .scaledFrame(34, relativeTo: .subheadline)
-                .background(color.gradient)
-                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+            IconTile(systemImage: icon, color: color, size: 34, textStyle: .subheadline, weight: .semibold)
 
             VStack(alignment: .leading, spacing: 3) {
                 Text(title).font(.subheadline.bold())

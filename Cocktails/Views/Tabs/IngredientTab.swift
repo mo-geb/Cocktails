@@ -106,37 +106,18 @@ struct IngredientTab: View {
     }
 
     private var makeableCocktailsCard: some View {
-        Button { showMakeableCocktails = true } label: {
-            HStack(spacing: 16) {
-                Image(systemName: "wineglass")
-                    .font(.title3)
-                    .foregroundStyle(.white)
-                    .scaledFrame(40, relativeTo: .title3)
-                    .background(Color.purple.gradient)
-                    .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
-
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(makeableCount == 0 ? "Nothing to make yet" : "\(makeableCount) cocktails ready to make")
-                        .font(.subheadline.bold())
-                        .foregroundStyle(.primary)
-                    Text("Based on your stocked ingredients")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-
-                Spacer()
-
-                Image(systemName: "chevron.right")
-                    .font(.caption.bold())
-                    .foregroundStyle(.tertiary)
-            }
-            .contentShape(Rectangle())
-            .padding(.horizontal, 16)
-            .padding(.vertical, 14)
-            .cardBackground(cornerRadius: 18)
-            .padding(.horizontal)
+        ActionCard(
+            systemImage: "wineglass",
+            color: .purple,
+            title: Text(makeableCount == 0 ? "Nothing to make yet" : "\(makeableCount) cocktails ready to make"),
+            subtitle: Text("Based on your stocked ingredients"),
+            action: { showMakeableCocktails = true }
+        ) {
+            Image(systemName: "chevron.right")
+                .font(.caption.bold())
+                .foregroundStyle(.tertiary)
         }
-        .buttonStyle(.plain)
+        .padding(.horizontal)
     }
 }
 

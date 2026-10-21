@@ -42,21 +42,7 @@ struct CocktailGridCell: View {
                         if let footerLabel {
                             Text(footerLabel)
                         } else {
-                            HStack(spacing: 5) {
-                                Image(cocktail.ice.imageName)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .scaledFrame(11, relativeTo: .caption2)
-                                    .accessibilityHidden(true)
-                                Text(cocktail.ice.localizedName)
-                                Text("·").foregroundStyle(.tertiary)
-                                Image(cocktail.method.customImageName)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .scaledFrame(11, relativeTo: .caption2)
-                                    .accessibilityHidden(true)
-                                Text(cocktail.method.localizedName)
-                            }
+                            CocktailMetaLine(ice: cocktail.ice, method: cocktail.method)
                         }
                     }
                     .font(.caption2)
@@ -68,7 +54,7 @@ struct CocktailGridCell: View {
                 .padding(.bottom, 6)
             }
             .frame(maxWidth: .infinity)
-            .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+            .cardBackground(cornerRadius: cornerRadius)
             .task(id: cocktail.id) {
                 let image = cocktail.displayImage
                 let placeholder = cocktail.glass.imageNameFilled
@@ -139,6 +125,30 @@ struct CocktailGridCell: View {
     }
 }
 
+/// "Cubed · Shake" with small icons, shown under a cocktail's name in grid cells.
+struct CocktailMetaLine: View {
+    let ice: IceType
+    let method: PreparationMethod
+
+    var body: some View {
+        HStack(spacing: 5) {
+            icon(ice.imageName)
+            Text(ice.localizedName)
+            Text("·").foregroundStyle(.tertiary)
+            icon(method.customImageName)
+            Text(method.localizedName)
+        }
+    }
+
+    private func icon(_ name: String) -> some View {
+        Image(name)
+            .resizable()
+            .scaledToFit()
+            .scaledFrame(11, relativeTo: .caption2)
+            .accessibilityHidden(true)
+    }
+}
+
 func addCocktailCell(name: String, action: @escaping () -> Void) -> some View {
     Button(action: action) {
         VStack(spacing: 3) {
@@ -166,7 +176,7 @@ func addCocktailCell(name: String, action: @escaping () -> Void) -> some View {
         .padding(.bottom, 6)
         .contentShape(Rectangle())
         .frame(maxWidth: .infinity)
-        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .cardBackground(cornerRadius: 22)
         .overlay {
             RoundedRectangle(cornerRadius: 22, style: .continuous)
                 .strokeBorder(Color.accentColor.opacity(0.55), lineWidth: 1.5)
