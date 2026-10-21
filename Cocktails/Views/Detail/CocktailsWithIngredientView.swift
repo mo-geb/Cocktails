@@ -17,7 +17,7 @@ struct CocktailsWithIngredientView: View {
             Group {
                 if cocktails.isEmpty {
                     ContentUnavailableView(
-                        "Not used yet",
+                        "Not Used Yet",
                         systemImage: "wineglass",
                         description: Text("No cocktails use \(ingredient.localizedName).")
                     )
@@ -40,7 +40,7 @@ struct CocktailsWithIngredientView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Close") { dismiss() }
+                    Button(role: .close) { dismiss() }
                 }
             }
             .confirmationDialog(

@@ -28,6 +28,14 @@ struct CocktailDetailView: View {
         }
         .animation(.easeInOut(duration: 0.2), value: isEditing)
         .background { CocktailGradientBackground(backgroundColor: backgroundColor) }
+        // On the container rather than `detailView`, which is recreated each time
+        // editing ends — that would count one visit as several views.
+        .task {
+            if ReviewManager.recordCocktailViewed() {
+                try? await Task.sleep(for: .seconds(1))
+                requestReview()
+            }
+        }
     }
 
     private func finishEditing() {
@@ -55,12 +63,6 @@ struct CocktailDetailView: View {
             }
         }
         .scrollContentBackground(.hidden)
-        .task {
-            if ReviewManager.recordCocktailViewed() {
-                try? await Task.sleep(for: .seconds(1))
-                requestReview()
-            }
-        }
         .toolbar { toolbarContent }
     }
 

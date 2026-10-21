@@ -9,23 +9,20 @@ struct PaywallView: View {
         NavigationStack {
             ZStack {
                 backgroundGradient
+                    .background(Color(.systemGroupedBackground))
                     .ignoresSafeArea()
                 
                 ScrollView {
-                    GlassEffectContainer(spacing: 24) {
-                        VStack(spacing: 24) {
-                            heroSection
-                            featuresSection
-                            actionSection
-                        }
-                        .padding(.horizontal, 24)
-                        .padding(.vertical, 32)
+                    VStack(spacing: 24) {
+                        heroSection
+                        featuresSection
+                        actionSection
                     }
+                    .padding(.horizontal, 24)
+                    .padding(.vertical, 32)
                     .containerRelativeFrame(.vertical, alignment: .center)
                 }
             }
-            .navigationTitle("Go Unlimited")
-            .navigationBarTitleDisplayMode(.inline)
             .onChange(of: store.isUnlimited) { _, unlimited in
                 guard unlimited else { return }
                 dismiss()
@@ -77,7 +74,7 @@ struct PaywallView: View {
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 24)
-        .glassCard()
+        .cardBackground()
     }
 
     private var featuresSection: some View {
@@ -88,7 +85,7 @@ struct PaywallView: View {
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 24)
-        .glassCard()
+        .cardBackground()
     }
 
     private var actionSection: some View {

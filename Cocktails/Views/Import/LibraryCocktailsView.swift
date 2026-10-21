@@ -99,7 +99,7 @@ struct LibraryCocktailsView: View {
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 14)
-            .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .cardBackground(cornerRadius: 18)
             .padding(.horizontal)
             .padding(.top, 12)
             .padding(.bottom, 4)

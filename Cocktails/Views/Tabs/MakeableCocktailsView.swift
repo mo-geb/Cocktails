@@ -30,7 +30,7 @@ struct MakeableCocktailsView: View {
             Group {
                 if makeableCocktails.isEmpty && almostMakeableCocktails.isEmpty {
                     ContentUnavailableView(
-                        "Nothing to make",
+                        "Nothing to Make",
                         systemImage: "wineglass",
                         description: Text("Stock ingredients in your inventory to see cocktails you can make.")
                     )
@@ -68,11 +68,11 @@ struct MakeableCocktailsView: View {
                     .background(Color(.systemGroupedBackground))
                 }
             }
-            .navigationTitle("What can I make?")
+            .navigationTitle("Ready to Make")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Close") { dismiss() }
+                    Button(role: .close) { dismiss() }
                 }
             }
             .confirmationDialog(

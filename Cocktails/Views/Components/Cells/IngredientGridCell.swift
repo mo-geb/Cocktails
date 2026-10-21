@@ -33,6 +33,18 @@ struct IngredientGridCell: View {
             .frame(maxWidth: .infinity)
             .aspectRatio(0.85, contentMode: .fit)
             .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .overlay(alignment: .topTrailing) {
+                if ingredient.isStocked {
+                    Image(systemName: "checkmark.circle.fill")
+                        .font(.subheadline)
+                        .symbolRenderingMode(.palette)
+                        .foregroundStyle(.white, Color.green)
+                        .padding(6)
+                        .transition(.scale.combined(with: .opacity))
+                        .accessibilityHidden(true)
+                }
+            }
+            .animation(.snappy, value: ingredient.isStocked)
             .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
             // Flattens icon and text into one layer so they move together when the
             // stocked-first sort repositions the cell; the icon's grayscale filter
@@ -94,7 +106,8 @@ func addIngredientCell(name: String) -> some View {
 
 #Preview(traits: .sampleData) {
     let ingredients = try! PreviewSampleData.container.mainContext.fetch(FetchDescriptor<Ingredient>())
-    ScrollView {
+    ingredients.prefix(3).forEach { $0.isStocked = true }
+    return ScrollView {
         LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
             ForEach(ingredients) { ingredient in
                 IngredientGridCell(ingredient: ingredient)

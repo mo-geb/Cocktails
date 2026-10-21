@@ -134,7 +134,7 @@ struct IngredientTab: View {
             .contentShape(Rectangle())
             .padding(.horizontal, 16)
             .padding(.vertical, 14)
-            .glassEffect(.regular.interactive(), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .cardBackground(cornerRadius: 18)
             .padding(.horizontal)
         }
         .buttonStyle(.plain)

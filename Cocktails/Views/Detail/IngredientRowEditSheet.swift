@@ -20,6 +20,7 @@ struct IngredientRowEditSheet: View {
                 .padding()
                 .padding(.top, 8)
             }
+            .background(Color(.systemGroupedBackground))
             .scrollDismissesKeyboard(.interactively)
             .dismissKeyboardOnTap()
             .navigationBarTitleDisplayMode(.inline)
@@ -72,7 +73,7 @@ struct IngredientRowEditSheet: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .glassEffect(in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .cardBackground(cornerRadius: 20)
     }
 
     // MARK: - Measurement
@@ -91,7 +92,7 @@ struct IngredientRowEditSheet: View {
                 .fixedSize()
                 .padding(.horizontal, 10)
                 .padding(.vertical, 3)
-                .glassEffect()
+                .background(Color(.tertiarySystemFill), in: Capsule())
             }
 
             Picker("", selection: $draft.unit) {
@@ -104,7 +105,7 @@ struct IngredientRowEditSheet: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 13)
-        .glassEffect(in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .cardBackground(cornerRadius: 16)
         .onChange(of: draft.unit) {
             if !draft.unit.takesAmount { draft.amount = nil }
         }
@@ -127,7 +128,7 @@ struct IngredientRowEditSheet: View {
                 .padding(.horizontal, 16)
                 .padding(.vertical, 13)
         }
-        .glassEffect(in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .cardBackground(cornerRadius: 16)
     }
 }
 

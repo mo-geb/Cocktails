@@ -2,8 +2,10 @@ import UIKit
 import SwiftUI
 
 extension View {
-    func glassCard() -> some View {
-        glassEffect(.regular.interactive(), in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+    /// A solid content card for use on a grouped background. Glass is reserved
+    /// for controls and navigation, which float above content.
+    func cardBackground(cornerRadius: CGFloat = 24) -> some View {
+        background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
     }
 
     func dismissKeyboardOnTap() -> some View {

@@ -12,6 +12,8 @@ struct CocktailSectionCard<Header: View, Content: View>: View {
         }
         .padding(20)
         .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        // Keeps swiped rows from sliding out past the card's edge.
+        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 }
 

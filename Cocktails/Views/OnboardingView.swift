@@ -6,18 +6,17 @@ struct OnboardingView: View {
     var body: some View {
         ZStack {
             backgroundGradient
+                .background(Color(.systemGroupedBackground))
                 .ignoresSafeArea()
 
             ScrollView {
-                GlassEffectContainer(spacing: 24) {
-                    VStack(spacing: 24) {
-                        heroSection
-                        featuresSection
-                        getStartedButton
-                    }
-                    .padding(.horizontal, 24)
-                    .padding(.vertical, 32)
+                VStack(spacing: 24) {
+                    heroSection
+                    featuresSection
+                    getStartedButton
                 }
+                .padding(.horizontal, 24)
+                .padding(.vertical, 32)
                 .containerRelativeFrame(.vertical, alignment: .center)
             }
         }
@@ -61,7 +60,7 @@ struct OnboardingView: View {
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 24)
-        .glassCard()
+        .cardBackground()
     }
 
     private var featuresSection: some View {
@@ -72,7 +71,7 @@ struct OnboardingView: View {
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 24)
-        .glassCard()
+        .cardBackground()
     }
 
     private var getStartedButton: some View {

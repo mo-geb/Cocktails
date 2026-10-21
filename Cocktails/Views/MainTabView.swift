@@ -71,8 +71,8 @@ struct MainTabView: View {
             NavigationStack {
                 RecipeLibrariesView()
                     .toolbar {
-                        ToolbarItem(placement: .confirmationAction) {
-                            Button("Done") { appState.activeSheet = nil }
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button(role: .close) { appState.activeSheet = nil }
                         }
                     }
             }
