@@ -31,7 +31,7 @@ struct IngredientPickerView: View {
 
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
+            AdaptiveGrid(.ingredients) {
                 if searchText.isEmpty {
                     ForEach(groupedIngredients, id: \.0) { type, items in
                         Section {
@@ -103,7 +103,6 @@ struct IngredientPickerView: View {
 
                 Text(ingredient.localizedName)
                     .font(.caption.bold())
-                    .fontDesign(.rounded)
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
                     .minimumScaleFactor(0.8)

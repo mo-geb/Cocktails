@@ -7,7 +7,9 @@ struct SampleDataModifier: PreviewModifier {
     }
 
     func body(content: Content, context: ModelContainer) -> some View {
-        content.modelContainer(context)
+        content
+            .modelContainer(context)
+            .fontDesign(.rounded) // matches the app root in CocktailsApp
     }
 }
 
@@ -19,7 +21,9 @@ extension PreviewTrait where T == Preview.ViewTraits {
 struct PreviewSampleData {
     static let container: ModelContainer = {
         let schema = Schema([Cocktail.self, RecipeIngredient.self, Ingredient.self])
-        let configuration = ModelConfiguration(isStoredInMemoryOnly: true)
+        // CloudKit off: the app's iCloud entitlement would otherwise make SwiftData
+        // mirror this in-memory store, which crashes previews ("No eligible connection").
+        let configuration = ModelConfiguration("Preview", schema: schema, isStoredInMemoryOnly: true, cloudKitDatabase: .none)
         let container = try! ModelContainer(for: schema, configurations: [configuration])
 
         let importer = CocktailImporter(context: container.mainContext)

@@ -11,111 +11,50 @@ struct CocktailGridCell: View {
 
     @State private var bgColor: Color? = nil
 
+    private let cornerRadius: CGFloat = 22
+    private let wellArtSize: CGFloat = 116
+    private let wellVerticalPadding: CGFloat = 11
+
     var body: some View {
         Button(action: onTap) {
             ZStack(alignment: .topTrailing) {
-                VStack(spacing: 0) {
-                    Spacer()
+                VStack(spacing: 3) {
+                    well
+                        .padding(.bottom, 8)
 
-                    if cocktail.displayImage.isCustom {
-                        cocktail.displayImage.view(placeholder: cocktail.glass.imageNameFilled)
-                            .scaledToFill()
-                            .frame(width: 80, height: 80)
-                            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                            .padding(6)
-                            .background(.quaternary, in: RoundedRectangle(cornerRadius: 26, style: .continuous))
-                            .padding(.top, 16)
-                            .padding(.bottom, 8)
-                    } else {
-                        cocktail.displayImage.view(placeholder: cocktail.glass.imageNameFilled)
+                    Text(cocktail.name)
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(1, accessibility: 3)
+
+                    HStack(spacing: 4) {
+                        Image(cocktail.source.imageName)
+                            .resizable()
                             .scaledToFit()
-                            .padding(.horizontal, 40)
+                            .scaledFrame(12, relativeTo: .caption2)
+                            .accessibilityHidden(true)
+                        Text(cocktail.source.localizedName)
+                            .font(.caption2)
                     }
+                    .foregroundStyle(.secondary)
 
-                    Spacer()
-
-                    VStack(spacing: 6) {
-                        Text(cocktail.name)
-                            .font(.subheadline.bold())
-                            .fontDesign(.rounded)
-                            .multilineTextAlignment(.center)
-                            .lineLimit(2)
-
-                        HStack(spacing: 4) {
-                            Image(cocktail.source.imageName)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 12, height: 12)
-                                .accessibilityHidden(true)
-                            Text(cocktail.source.localizedName)
-                                .font(.caption2)
+                    Group {
+                        if let footerLabel {
+                            Text(footerLabel)
+                        } else {
+                            CocktailMetaLine(ice: cocktail.ice, method: cocktail.method)
                         }
-                        .foregroundStyle(.secondary)
-
-                        Group {
-                            if let footerLabel {
-                                Text(footerLabel)
-                            } else {
-                                HStack(spacing: 5) {
-                                    Image(cocktail.ice.imageName)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 11, height: 11)
-                                        .accessibilityHidden(true)
-                                    Text(cocktail.ice.localizedName)
-                                    Text("·").foregroundStyle(.tertiary)
-                                    Image(cocktail.method.customImageName)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 11, height: 11)
-                                        .accessibilityHidden(true)
-                                    Text(cocktail.method.localizedName)
-                                }
-                            }
-                        }
-                        .font(.caption2)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.8)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 6)
-                        .background((bgColor ?? .gray).normalizedTint().opacity(0.35), in: Capsule())
                     }
-                    .padding(.horizontal, 10)
-                    .padding(.bottom, 14)
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1, accessibility: 2)
+                    .minimumScaleFactor(0.8)
                 }
-
-                if cocktail.isFavourite && !isSelecting {
-                    Image(systemName: "star.fill")
-                        .font(.caption.bold())
-                        .foregroundStyle(.yellow)
-                        .accessibilityLabel(Text("Favourite"))
-                        .transition(.symbolEffect)
-                        .padding(6)
-                        .glassEffect(in: Circle())
-                        .padding(10)
-                }
-
-                if isSelecting {
-                    Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
-                        .font(.title2)
-                        .foregroundStyle(isSelected ? Color.accentColor : Color.primary.opacity(0.3))
-                        .accessibilityLabel(isSelected ? Text("Selected") : Text("Not selected"))
-                        .contentTransition(.symbolEffect(.replace))
-                        .animation(.default, value: isSelected)
-                        .padding(10)
-                }
+                .padding(8)
+                .padding(.bottom, 6)
             }
             .frame(maxWidth: .infinity)
-            .aspectRatio(0.85, contentMode: .fit)
-            .background {
-                RoundedRectangle(cornerRadius: 24, style: .continuous)
-                    .fill(Color(.secondarySystemBackground))
-                if let bgColor {
-                    RoundedRectangle(cornerRadius: 24, style: .continuous)
-                        .fill(bgColor.normalizedTint().opacity(0.35))
-                }
-            }
+            .cardBackground(cornerRadius: cornerRadius)
             .task(id: cocktail.id) {
                 let image = cocktail.displayImage
                 let placeholder = cocktail.glass.imageNameFilled
@@ -124,12 +63,12 @@ struct CocktailGridCell: View {
                 }.value
             }
             .overlay {
-                let selected = isSelecting && isSelected
-                RoundedRectangle(cornerRadius: 24, style: .continuous)
-                    .strokeBorder(selected ? Color.accentColor : Color(.separator),
-                                  lineWidth: selected ? 2.5 : 1)
+                if isSelecting && isSelected {
+                    RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                        .strokeBorder(Color.accentColor, lineWidth: 2.5)
+                }
             }
-            .contentShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+            .contentShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
             .accessibilityElement(children: .combine)
         }
         .sensoryFeedback(.selection, trigger: isSelected)
@@ -155,36 +94,91 @@ struct CocktailGridCell: View {
             }
         }
     }
+
+    @ViewBuilder
+    private var well: some View {
+        CocktailArtWell(
+            image: cocktail.displayImage,
+            placeholder: cocktail.glass.imageNameFilled,
+            tint: bgColor,
+            artSize: wellArtSize,
+            verticalPadding: wellVerticalPadding
+        )
+        .overlay(alignment: .topTrailing) {
+            if isSelecting {
+                Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
+                    .font(.title2)
+                    .foregroundStyle(isSelected ? Color.accentColor : Color.primary.opacity(0.3))
+                    .accessibilityLabel(isSelected ? Text("Selected") : Text("Not selected"))
+                    .contentTransition(.symbolEffect(.replace))
+                    .animation(.default, value: isSelected)
+                    .padding(8)
+            } else if cocktail.isFavourite {
+                Image(systemName: "star.fill")
+                    .font(.subheadline)
+                    .foregroundStyle(.yellow)
+                    .accessibilityLabel(Text("Favourite"))
+                    .transition(.symbolEffect)
+                    .padding(8)
+            }
+        }
+    }
+}
+
+/// "Cubed · Shake" with small icons, shown under a cocktail's name in grid cells.
+struct CocktailMetaLine: View {
+    let ice: IceType
+    let method: PreparationMethod
+
+    var body: some View {
+        HStack(spacing: 5) {
+            icon(ice.imageName)
+            Text(ice.localizedName)
+            Text("·").foregroundStyle(.tertiary)
+            icon(method.customImageName)
+            Text(method.localizedName)
+        }
+    }
+
+    private func icon(_ name: String) -> some View {
+        Image(name)
+            .resizable()
+            .scaledToFit()
+            .scaledFrame(11, relativeTo: .caption2)
+            .accessibilityHidden(true)
+    }
 }
 
 func addCocktailCell(name: String, action: @escaping () -> Void) -> some View {
     Button(action: action) {
-        VStack(spacing: 0) {
-            Spacer()
+        VStack(spacing: 3) {
             Image(systemName: "plus.circle.fill")
-                .font(.system(size: 44))
+                .font(.largeTitle)
+                .imageScale(.large)
                 .foregroundStyle(.tint)
-                .frame(maxWidth: .infinity)
-            Spacer()
-            VStack(spacing: 4) {
-                Text(name)
-                    .font(.subheadline.bold())
-                    .fontDesign(.rounded)
-                    .multilineTextAlignment(.center)
-                    .lineLimit(2)
-                Text("Add Cocktail")
-                    .font(.caption2)
-                    .foregroundStyle(.tint)
-            }
-            .padding(.horizontal, 10)
-            .padding(.bottom, 14)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .frame(height: 116 + 11 * 2)
+                .padding(.bottom, 8)
+            Text(name)
+                .font(.headline)
+                .multilineTextAlignment(.center)
+                .lineLimit(1, accessibility: 3)
+            Text("Add Cocktail")
+                .font(.caption2)
+                .foregroundStyle(.tint)
+            // Reserves the height of the meta line below the source row in CocktailGridCell,
+            // so this tile's natural height matches its grid neighbors.
+            Text(verbatim: " ")
+                .font(.caption2)
+                .hidden()
         }
+        .padding(8)
+        .padding(.bottom, 6)
         .contentShape(Rectangle())
         .frame(maxWidth: .infinity)
-        .aspectRatio(0.85, contentMode: .fit)
-        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .cardBackground(cornerRadius: 22)
         .overlay {
-            RoundedRectangle(cornerRadius: 24, style: .continuous)
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
                 .strokeBorder(Color.accentColor.opacity(0.55), lineWidth: 1.5)
         }
         .accessibilityElement(children: .combine)
@@ -193,9 +187,11 @@ func addCocktailCell(name: String, action: @escaping () -> Void) -> some View {
 }
 
 #Preview(traits: .sampleData) {
-    ScrollView {
-        LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
-            ForEach(PreviewSampleData.mockCocktails) { cocktail in
+    let cocktails = PreviewSampleData.mockCocktails
+    cocktails.first?.isFavourite = true
+    return ScrollView {
+        AdaptiveGrid(.cocktails) {
+            ForEach(cocktails) { cocktail in
                 CocktailGridCell(cocktail: cocktail, onDelete: {}) {}
             }
             CocktailGridCell(
@@ -207,5 +203,6 @@ func addCocktailCell(name: String, action: @escaping () -> Void) -> some View {
         }
         .padding()
     }
+    .background(Color(.systemGroupedBackground))
 }
 

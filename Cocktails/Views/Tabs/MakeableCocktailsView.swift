@@ -3,7 +3,6 @@ import SwiftData
 
 struct MakeableCocktailsView: View {
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.modelContext) private var modelContext
     @Query private var cocktails: [Cocktail]
     @State private var viewedCocktail: Cocktail?
     @State private var cocktailToDelete: Cocktail?
@@ -30,7 +29,7 @@ struct MakeableCocktailsView: View {
             Group {
                 if makeableCocktails.isEmpty && almostMakeableCocktails.isEmpty {
                     ContentUnavailableView(
-                        "Nothing to make",
+                        "Nothing to Make",
                         systemImage: "wineglass",
                         description: Text("Stock ingredients in your inventory to see cocktails you can make.")
                     )
@@ -39,7 +38,7 @@ struct MakeableCocktailsView: View {
                         LazyVStack(alignment: .leading, spacing: 28) {
                             if !makeableCocktails.isEmpty {
                                 section(title: "Ready to make") {
-                                    LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
+                                    AdaptiveGrid(.cocktails) {
                                         ForEach(makeableCocktails) { cocktail in
                                             CocktailGridCell(cocktail: cocktail, onDelete: { cocktailToDelete = cocktail }) {
                                                 viewedCocktail = cocktail
@@ -52,7 +51,7 @@ struct MakeableCocktailsView: View {
 
                             if !almostMakeableCocktails.isEmpty {
                                 section(title: "Almost there") {
-                                    LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
+                                    AdaptiveGrid(.cocktails) {
                                         ForEach(almostMakeableCocktails, id: \.cocktail.id) { item in
                                             CocktailGridCell(cocktail: item.cocktail, footerLabel: String(localized: "Missing: \(item.missing)"), onDelete: { cocktailToDelete = item.cocktail }) {
                                                 viewedCocktail = item.cocktail
@@ -65,25 +64,17 @@ struct MakeableCocktailsView: View {
                         }
                         .padding()
                     }
+                    .background(Color(.systemGroupedBackground))
                 }
             }
-            .navigationTitle("What can I make?")
+            .navigationTitle("Ready to Make")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Close") { dismiss() }
+                    Button(role: .close) { dismiss() }
                 }
             }
-            .confirmationDialog(
-                "Delete \"\(cocktailToDelete?.name ?? "")\"?",
-                isPresented: .init(presence: $cocktailToDelete),
-                titleVisibility: .visible
-            ) {
-                Button("Delete", role: .destructive) {
-                    if let c = cocktailToDelete { modelContext.delete(c) }
-                    cocktailToDelete = nil
-                }
-            }
+            .cocktailDeletionDialog($cocktailToDelete)
             .cocktailZoomDestination($viewedCocktail, in: zoomNamespace)
         }
     }

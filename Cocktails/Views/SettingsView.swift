@@ -36,8 +36,8 @@ struct SettingsView: View {
             .restoreOutcomeAlert(store)
             .navigationTitle("Settings")
             .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") { dismiss() }
+                ToolbarItem(placement: .cancellationAction) {
+                    Button(role: .close) { dismiss() }
                 }
             }
         }
@@ -139,7 +139,7 @@ struct SettingsView: View {
             .foregroundStyle(.tint)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 16)
-            .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .cardBackground(cornerRadius: 18)
         }
     }
 
@@ -165,12 +165,7 @@ struct SettingsView: View {
     // MARK: - Row helpers
 
     private func iconTile(_ icon: String, _ color: Color) -> some View {
-        Image(systemName: icon)
-            .font(.system(size: 15, weight: .semibold))
-            .foregroundStyle(.white)
-            .frame(width: 30, height: 30)
-            .background(color.gradient)
-            .clipShape(RoundedRectangle(cornerRadius: 7, style: .continuous))
+        IconTile(systemImage: icon, color: color, size: 30, textStyle: .subheadline, weight: .semibold)
     }
 
     private func settingsLabel(icon: String, color: Color, title: LocalizedStringKey, subtitle: LocalizedStringKey) -> some View {
@@ -196,7 +191,7 @@ struct SettingsView: View {
 
             VStack(alignment: .leading, spacing: 0) {
                 Text("\(value)")
-                    .font(.system(.title, design: .rounded).bold())
+                    .font(.title.bold())
                     .monospacedDigit()
                 Text(title)
                     .font(.caption)
@@ -205,7 +200,7 @@ struct SettingsView: View {
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .cardBackground(cornerRadius: 18)
         .accessibilityElement(children: .combine)
     }
 

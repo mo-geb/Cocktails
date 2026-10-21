@@ -5,7 +5,6 @@ struct CocktailsWithIngredientView: View {
     let ingredient: Ingredient
 
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.modelContext) private var modelContext
     @State private var viewedCocktail: Cocktail?
     @State private var cocktailToDelete: Cocktail?
     @Namespace private var zoomNamespace
@@ -17,13 +16,13 @@ struct CocktailsWithIngredientView: View {
             Group {
                 if cocktails.isEmpty {
                     ContentUnavailableView(
-                        "Not used yet",
+                        "Not Used Yet",
                         systemImage: "wineglass",
                         description: Text("No cocktails use \(ingredient.localizedName).")
                     )
                 } else {
                     ScrollView {
-                        LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
+                        AdaptiveGrid(.cocktails) {
                             ForEach(cocktails) { cocktail in
                                 CocktailGridCell(cocktail: cocktail, onDelete: { cocktailToDelete = cocktail }) {
                                     viewedCocktail = cocktail
@@ -33,25 +32,17 @@ struct CocktailsWithIngredientView: View {
                         }
                         .padding()
                     }
+                    .background(Color(.systemGroupedBackground))
                 }
             }
             .navigationTitle(ingredient.localizedName)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Close") { dismiss() }
+                    Button(role: .close) { dismiss() }
                 }
             }
-            .confirmationDialog(
-                "Delete \"\(cocktailToDelete?.name ?? "")\"?",
-                isPresented: .init(presence: $cocktailToDelete),
-                titleVisibility: .visible
-            ) {
-                Button("Delete", role: .destructive) {
-                    if let c = cocktailToDelete { modelContext.delete(c) }
-                    cocktailToDelete = nil
-                }
-            }
+            .cocktailDeletionDialog($cocktailToDelete)
             .cocktailZoomDestination($viewedCocktail, in: zoomNamespace)
         }
     }

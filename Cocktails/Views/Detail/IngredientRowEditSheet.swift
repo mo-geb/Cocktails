@@ -2,6 +2,8 @@ import SwiftUI
 
 struct IngredientRowEditSheet: View {
     @Binding var draft: RecipeIngredientDraft
+    /// Removes this row from the recipe. The visible alternative to swiping the row.
+    var onRemove: (() -> Void)? = nil
 
     @State private var showPicker = false
     @State private var detent: PresentationDetent = .medium
@@ -16,10 +18,16 @@ struct IngredientRowEditSheet: View {
                     ingredientHero
                     measurementCard
                     noteCard
+                    if let onRemove {
+                        Button("Remove from Recipe", role: .destructive, action: onRemove)
+                            .frame(maxWidth: .infinity)
+                            .padding(.top, 8)
+                    }
                 }
                 .padding()
                 .padding(.top, 8)
             }
+            .background(Color(.systemGroupedBackground))
             .scrollDismissesKeyboard(.interactively)
             .dismissKeyboardOnTap()
             .navigationBarTitleDisplayMode(.inline)
@@ -48,12 +56,11 @@ struct IngredientRowEditSheet: View {
                 draft.ingredient.displayImage
                     .view(placeholder: draft.ingredient.type.imageName)
                     .scaledToFit()
-                    .frame(width: 64, height: 64)
+                    .scaledFrame(64, relativeTo: .title3)
 
                 VStack(alignment: .leading, spacing: 3) {
                     Text(isEmpty ? "Select ingredient" : draft.ingredient.localizedName)
                         .font(.title3.bold())
-                        .fontDesign(.rounded)
                         .foregroundStyle(isEmpty ? Color.accentColor : Color.primary)
 
                     Text("Tap to change")
@@ -72,7 +79,7 @@ struct IngredientRowEditSheet: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .glassEffect(in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .cardBackground(cornerRadius: 20)
     }
 
     // MARK: - Measurement
@@ -91,7 +98,7 @@ struct IngredientRowEditSheet: View {
                 .fixedSize()
                 .padding(.horizontal, 10)
                 .padding(.vertical, 3)
-                .glassEffect()
+                .background(Color(.tertiarySystemFill), in: Capsule())
             }
 
             Picker("", selection: $draft.unit) {
@@ -104,7 +111,7 @@ struct IngredientRowEditSheet: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 13)
-        .glassEffect(in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .cardBackground(cornerRadius: 16)
         .onChange(of: draft.unit) {
             if !draft.unit.takesAmount { draft.amount = nil }
         }
@@ -127,11 +134,11 @@ struct IngredientRowEditSheet: View {
                 .padding(.horizontal, 16)
                 .padding(.vertical, 13)
         }
-        .glassEffect(in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .cardBackground(cornerRadius: 16)
     }
 }
 
 #Preview(traits: .sampleData) {
     @Previewable @State var draft = RecipeIngredientDraft()
-    IngredientRowEditSheet(draft: $draft)
+    IngredientRowEditSheet(draft: $draft, onRemove: {})
 }

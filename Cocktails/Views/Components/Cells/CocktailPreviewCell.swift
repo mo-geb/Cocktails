@@ -6,78 +6,74 @@ struct CocktailPreviewCell: View {
     let isImported: Bool
     let onTap: () -> Void
 
+    @State private var bgColor: Color? = nil
+
+    private let cornerRadius: CGFloat = 22
+    private let wellArtSize: CGFloat = 116
+    private let wellVerticalPadding: CGFloat = 11
+
     var body: some View {
         Button(action: onTap) {
-            ZStack(alignment: .topTrailing) {
-                VStack(spacing: 0) {
-                    Spacer()
+            VStack(spacing: 3) {
+                well
+                    .padding(.bottom, 8)
 
-                    dto.displayImage.view(placeholder: dto.glass.imageNameFilled)
-                        .scaledToFit()
-                        .padding(.horizontal, 40)
+                Text(dto.name)
+                    .font(.headline)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(1, accessibility: 3)
 
-                    Spacer()
-
-                    VStack(spacing: 6) {
-                        Text(dto.name)
-                            .font(.subheadline.bold())
-                            .fontDesign(.rounded)
-                            .multilineTextAlignment(.center)
-                            .lineLimit(2)
-
-                        HStack(spacing: 5) {
-                            Image(dto.ice.imageName)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 11, height: 11)
-                                .accessibilityHidden(true)
-                            Text(dto.ice.localizedName)
-                            Text("·").foregroundStyle(.tertiary)
-                            Image(dto.method.customImageName)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 11, height: 11)
-                                .accessibilityHidden(true)
-                            Text(dto.method.localizedName)
-                        }
-                        .font(.caption2)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.8)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 6)
-                        .background(Color(.tertiarySystemFill), in: Capsule())
-                    }
-                    .padding(.horizontal, 10)
-                    .padding(.bottom, 14)
-                }
-
-                Image(systemName: isImported || isSelected ? "checkmark.circle.fill" : "circle")
-                    .font(.title2)
-                    .foregroundStyle(isImported ? .secondary : (isSelected ? Color.accentColor : Color.primary.opacity(0.3)))
-                    .accessibilityLabel(accessibilityStateLabel)
-                    .contentTransition(.symbolEffect(.replace))
-                    .animation(.default, value: isImported || isSelected)
-                    .padding(10)
+                CocktailMetaLine(ice: dto.ice, method: dto.method)
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+                .lineLimit(1, accessibility: 2)
+                .minimumScaleFactor(0.8)
             }
+            .padding(8)
+            .padding(.bottom, 6)
             .contentShape(Rectangle())
             .frame(maxWidth: .infinity)
-            .aspectRatio(0.85, contentMode: .fit)
             .accessibilityElement(children: .combine)
-            .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+            .cardBackground(cornerRadius: cornerRadius)
+            .task(id: dto.name) {
+                let image = dto.displayImage
+                let placeholder = dto.glass.imageNameFilled
+                bgColor = await Task.detached(priority: .background) {
+                    image.dominantColor(placeholderName: placeholder)
+                }.value
+            }
             .overlay {
                 if isImported {
-                    RoundedRectangle(cornerRadius: 24, style: .continuous)
+                    RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
                         .fill(.thinMaterial)
-                } else {
-                    RoundedRectangle(cornerRadius: 24, style: .continuous)
-                        .strokeBorder(isSelected ? Color.accentColor : Color(.separator),
-                                      lineWidth: isSelected ? 2.5 : 1)
+                } else if isSelected {
+                    RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                        .strokeBorder(Color.accentColor, lineWidth: 2.5)
                 }
             }
         }
         .buttonStyle(.plain)
         .disabled(isImported)
+    }
+
+    @ViewBuilder
+    private var well: some View {
+        CocktailArtWell(
+            image: dto.displayImage,
+            placeholder: dto.glass.imageNameFilled,
+            tint: bgColor,
+            artSize: wellArtSize,
+            verticalPadding: wellVerticalPadding
+        )
+        .overlay(alignment: .topTrailing) {
+            Image(systemName: isImported || isSelected ? "checkmark.circle.fill" : "circle")
+                .font(.title2)
+                .foregroundStyle(isImported ? .secondary : (isSelected ? Color.accentColor : Color.primary.opacity(0.3)))
+                .accessibilityLabel(accessibilityStateLabel)
+                .contentTransition(.symbolEffect(.replace))
+                .animation(.default, value: isImported || isSelected)
+                .padding(8)
+        }
     }
 
     private var accessibilityStateLabel: Text {
@@ -99,11 +95,12 @@ struct CocktailPreviewCell: View {
         notes: nil
     )
     ScrollView {
-        LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
+        AdaptiveGrid(.cocktails) {
             CocktailPreviewCell(dto: dto, isSelected: false, isImported: false) {}
             CocktailPreviewCell(dto: dto, isSelected: true, isImported: false) {}
             CocktailPreviewCell(dto: dto, isSelected: false, isImported: true) {}
         }
         .padding()
     }
+    .background(Color(.systemGroupedBackground))
 }

@@ -4,6 +4,7 @@ import StoreKit
 
 struct CocktailDetailView: View {
     @Environment(\.requestReview) private var requestReview
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     private let cocktail: Cocktail
     private let onDone: (() -> Void)?
@@ -13,7 +14,7 @@ struct CocktailDetailView: View {
     init(cocktail: Cocktail, onDone: (() -> Void)? = nil) {
         self.cocktail = cocktail
         self.onDone = onDone
-        self._backgroundColor = State(initialValue: cocktail.displayImage.dominantColor(placeholderName: cocktail.glass.imageNameFilled))
+        self._backgroundColor = State(initialValue: cocktail.artworkTint)
     }
 
     var body: some View {
@@ -28,25 +29,30 @@ struct CocktailDetailView: View {
         }
         .animation(.easeInOut(duration: 0.2), value: isEditing)
         .background { CocktailGradientBackground(backgroundColor: backgroundColor) }
+        // On the container rather than `detailView`, which is recreated each time
+        // editing ends — that would count one visit as several views.
+        .task {
+            if ReviewManager.recordCocktailViewed() {
+                try? await Task.sleep(for: .seconds(1))
+                requestReview()
+            }
+        }
     }
 
     private func finishEditing() {
-        backgroundColor = cocktail.displayImage.dominantColor(placeholderName: cocktail.glass.imageNameFilled)
+        backgroundColor = cocktail.artworkTint
         isEditing = false
     }
 
     private var detailView: some View {
-        let coreIngredients = cocktail.coreIngredients.sorted { $0.sortOrder < $1.sortOrder }
-        let garnishIngredients = cocktail.garnishIngredients.sorted { $0.sortOrder < $1.sortOrder }
-
-        return ScrollView {
+        ScrollView {
             GlassEffectContainer(spacing: 18) {
                 VStack(spacing: 18) {
                     imageSection
                     titleSection
                     propertiesPill
-                    ingredientListCard(coreIngredients)
-                    ingredientListCard(garnishIngredients, title: "Garnish", hideWhenEmpty: true)
+                    ingredientListCard(cocktail.coreIngredients)
+                    ingredientListCard(cocktail.garnishIngredients, title: "Garnish", hideWhenEmpty: true)
                     if !cocktail.notes.isEmpty { notesCard }
                 }
                 .padding(.horizontal)
@@ -55,12 +61,6 @@ struct CocktailDetailView: View {
             }
         }
         .scrollContentBackground(.hidden)
-        .task {
-            if ReviewManager.recordCocktailViewed() {
-                try? await Task.sleep(for: .seconds(1))
-                requestReview()
-            }
-        }
         .toolbar { toolbarContent }
     }
 
@@ -71,15 +71,16 @@ struct CocktailDetailView: View {
         if cocktail.displayImage.isCustom {
             cocktail.displayImage.view(placeholder: cocktail.glass.imageNameFilled)
                 .scaledToFill()
-                .frame(width: 140, height: 140)
+                .frame(width: 190, height: 190)
                 .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
                 .padding(8)
                 .glassEffect(in: RoundedRectangle(cornerRadius: 40, style: .continuous))
         } else {
+            // Same upward nudge as the cell artwork, which reads low when centered.
             cocktail.displayImage.view(placeholder: cocktail.glass.imageNameFilled)
                 .scaledToFit()
-                .frame(width: 110, height: 110)
-                .padding(12)
+                .frame(width: 180, height: 180)
+                .offset(y: -9)
         }
     }
 
@@ -87,7 +88,7 @@ struct CocktailDetailView: View {
     private var titleSection: some View {
         VStack(spacing: 8) {
             Text(cocktail.name.isEmpty ? "Unnamed Cocktail" : cocktail.name)
-                .font(.system(.largeTitle, design: .rounded).bold())
+                .font(.largeTitle.bold())
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
 
@@ -95,11 +96,10 @@ struct CocktailDetailView: View {
                 Image(cocktail.source.imageName)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 20, height: 20)
+                    .scaledFrame(20, relativeTo: .callout)
                     .accessibilityHidden(true)
                 Text(cocktail.source.localizedName)
                     .font(.callout)
-                    .fontDesign(.rounded)
             }
             .foregroundStyle(.secondary)
             .font(.subheadline)
@@ -111,17 +111,31 @@ struct CocktailDetailView: View {
 
     @ViewBuilder
     private var propertiesPill: some View {
-        HStack(spacing: 0) {
-            propertyPill(imageName: cocktail.glass.imageNameEmpty, label: cocktail.glass.localizedName)
-            Divider().frame(height: 16)
-            propertyPill(imageName: cocktail.ice.imageName, label: cocktail.ice.localizedName)
-            Divider().frame(height: 16)
-            propertyPill(imageName: cocktail.method.customImageName, label: cocktail.method.localizedName)
+        Group {
+            // Stacked at accessibility sizes rather than squeezing the labels
+            // into thirds of the width.
+            if dynamicTypeSize.isAccessibilitySize {
+                VStack(spacing: 12) {
+                    propertyPill(imageName: cocktail.glass.imageNameEmpty, label: cocktail.glass.localizedName)
+                    propertyPill(imageName: cocktail.ice.imageName, label: cocktail.ice.localizedName)
+                    propertyPill(imageName: cocktail.method.customImageName, label: cocktail.method.localizedName)
+                }
+                .padding(.vertical, 16)
+                .glassEffect(in: RoundedRectangle(cornerRadius: 28, style: .continuous))
+            } else {
+                HStack(spacing: 0) {
+                    propertyPill(imageName: cocktail.glass.imageNameEmpty, label: cocktail.glass.localizedName)
+                    Divider().frame(height: 16)
+                    propertyPill(imageName: cocktail.ice.imageName, label: cocktail.ice.localizedName)
+                    Divider().frame(height: 16)
+                    propertyPill(imageName: cocktail.method.customImageName, label: cocktail.method.localizedName)
+                }
+                .padding(.vertical, 16)
+                .glassEffect()
+            }
         }
         .font(.subheadline)
         .foregroundStyle(.primary)
-        .padding(.vertical, 16)
-        .glassEffect()
     }
 
     private func propertyPill(imageName: String, label: String) -> some View {
@@ -129,7 +143,7 @@ struct CocktailDetailView: View {
             Image(imageName)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 16, height: 16)
+                .scaledFrame(16, relativeTo: .subheadline)
                 .accessibilityHidden(true)
             Text(label)
         }
@@ -189,7 +203,7 @@ struct CocktailDetailView: View {
 
         if let onDone, !isEditing {
             ToolbarItem(placement: .cancellationAction) {
-                Button("Done") { onDone() }
+                Button(role: .close) { onDone() }
             }
         }
 
@@ -205,7 +219,7 @@ struct CocktailDetailView: View {
             if let ing = item.ingredient {
                 ing.displayImage.view(placeholder: ing.type.imageName)
                     .scaledToFit()
-                    .frame(width: 30, height: 30)
+                    .scaledFrame(30)
             }
 
             HStack(alignment: .center, spacing: 6) {
@@ -215,7 +229,6 @@ struct CocktailDetailView: View {
                 if !amountText.isEmpty {
                     Text(amountText)
                         .bold()
-                        .fontDesign(.rounded)
                 }
                 VStack(alignment: .leading, spacing: 2) {
                     Text(item.ingredient?.localizedName ?? "")

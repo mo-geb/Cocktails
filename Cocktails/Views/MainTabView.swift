@@ -22,6 +22,7 @@ struct MainTabView: View {
                 SearchView()
             }
         }
+        .tabViewSearchActivation(.searchTabSelection)
         .sensoryFeedback(.warning, trigger: deleteHapticTrigger)
         .fullScreenCover(isPresented: $appState.showOnboarding) {
             OnboardingView()
@@ -35,17 +36,7 @@ struct MainTabView: View {
         .onOpenURL { url in
             appState.openReceivedRecipes(url)
         }
-        .confirmationDialog(
-            "Delete \"\(appState.cocktailToDelete?.name ?? "")\"?",
-            isPresented: .init(presence: $appState.cocktailToDelete),
-            titleVisibility: .visible
-        ) {
-            Button("Delete", role: .destructive) {
-                if let c = appState.cocktailToDelete { modelContext.delete(c) }
-                appState.cocktailToDelete = nil
-                deleteHapticTrigger.toggle()
-            }
-        }
+        .cocktailDeletionDialog($appState.cocktailToDelete)
         .confirmationDialog(
             "Delete \"\(appState.ingredientToDelete?.name ?? "")\"?",
             isPresented: .init(presence: $appState.ingredientToDelete),
@@ -67,7 +58,14 @@ struct MainTabView: View {
         case .settings:
             SettingsView()
         case .importLibrary:
-            NavigationStack { RecipeLibrariesView() }
+            NavigationStack {
+                RecipeLibrariesView()
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button(role: .close) { appState.activeSheet = nil }
+                        }
+                    }
+            }
         case .receivedRecipes(let url):
             ReceivedRecipesView(url: url, onDismiss: { appState.activeSheet = nil })
         case .ingredientSheet(let ingredientSheet):

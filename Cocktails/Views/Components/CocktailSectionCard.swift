@@ -12,12 +12,14 @@ struct CocktailSectionCard<Header: View, Content: View>: View {
         }
         .padding(20)
         .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        // Keeps swiped rows from sliding out past the card's edge.
+        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 }
 
 extension CocktailSectionCard where Header == Text {
     init(title: LocalizedStringKey, @ViewBuilder content: @escaping () -> Content) {
-        self.header = { Text(title).font(.title3.bold()).fontDesign(.rounded) }
+        self.header = { Text(title).font(.title3.bold()) }
         self.content = content
     }
 }

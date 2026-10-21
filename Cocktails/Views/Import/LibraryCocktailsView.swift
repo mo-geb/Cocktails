@@ -27,7 +27,7 @@ struct LibraryCocktailsView: View {
         ScrollView {
             libraryHeader
 
-            LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
+            AdaptiveGrid(.cocktails) {
                 ForEach(cocktails, id: \.name) { cocktail in
                     CocktailPreviewCell(
                         dto: cocktail,
@@ -41,6 +41,7 @@ struct LibraryCocktailsView: View {
             .padding(.horizontal)
             .padding(.vertical, 12)
         }
+        .background(Color(.systemGroupedBackground))
         .navigationTitle(source.localizedName)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -68,12 +69,7 @@ struct LibraryCocktailsView: View {
         let description = source.localizedDescription
         if !description.isEmpty || source.sourceURL != nil {
             HStack(alignment: .center, spacing: 14) {
-                Image(systemName: "info.circle.fill")
-                    .font(.title3)
-                    .foregroundStyle(.white)
-                    .frame(width: 40, height: 40)
-                    .background(Color.accentColor.gradient)
-                    .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
+                IconTile(systemImage: "info.circle.fill", color: .accentColor)
 
                 VStack(alignment: .leading, spacing: 4) {
                     if !description.isEmpty {
@@ -89,7 +85,6 @@ struct LibraryCocktailsView: View {
                                 Text(url.host ?? String(localized: "Source"))
                             }
                             .font(.caption.bold())
-                            .fontDesign(.rounded)
                         }
                     }
                 }
@@ -98,7 +93,7 @@ struct LibraryCocktailsView: View {
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 14)
-            .glassEffect(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .cardBackground(cornerRadius: 18)
             .padding(.horizontal)
             .padding(.top, 12)
             .padding(.bottom, 4)
@@ -112,7 +107,7 @@ struct LibraryCocktailsView: View {
             performImport(names: Array(selected))
         } label: {
             Text(selected.isEmpty ? "Import Selected" : "Import Selected (\(selected.count))")
-                .lineLimit(1)
+                .lineLimit(1, accessibility: 2)
                 .minimumScaleFactor(0.8)
                 .frame(maxWidth: .infinity)
         }

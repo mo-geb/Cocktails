@@ -1,9 +1,12 @@
 import UIKit
 import SwiftUI
+import SwiftData
 
 extension View {
-    func glassCard() -> some View {
-        glassEffect(.regular.interactive(), in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+    /// A solid content card for use on a grouped background. Glass is reserved
+    /// for controls and navigation, which float above content.
+    func cardBackground(cornerRadius: CGFloat = 24) -> some View {
+        background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
     }
 
     func dismissKeyboardOnTap() -> some View {
@@ -17,7 +20,6 @@ extension View {
 
     func sectionTitleStyle() -> some View {
         font(.title3.bold())
-            .fontDesign(.rounded)
     }
 
     /// Pushes the cocktail detail screen with the shared zoom transition.
@@ -60,15 +62,25 @@ extension View {
 }
 
 extension Color {
-    /// A consistent pill tint derived from a drink's dominant colour: keeps the
-    /// hue but normalizes saturation/brightness so no extracted colour reads
-    /// harsh or muddy. Near-greyscale colours stay neutral. Apply at low opacity
-    /// so it adapts to light/dark.
-    func normalizedTint() -> Color {
+    /// The drink-derived fill behind artwork: keeps the hue but normalizes
+    /// saturation/brightness so no extracted colour reads harsh or muddy, and
+    /// near-greyscale colours stay neutral. Dark mode uses a deeper, more
+    /// saturated shade, because a dimmed pastel over a
+    /// dark card loses its hue and reads as brown.
+    func adaptiveTint(lightOpacity: Double, darkOpacity: Double) -> Color {
         var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
         UIColor(self).getHue(&h, saturation: &s, brightness: &b, alpha: &a)
-        guard s >= 0.1 else { return Color(hue: 0, saturation: 0, brightness: 0.7) }
-        return Color(hue: h, saturation: 0.5, brightness: 0.85)
+        let isNeutral = s < 0.1
+        return Color(UIColor { traits in
+            if traits.userInterfaceStyle == .dark {
+                return isNeutral
+                    ? UIColor(white: 0.5, alpha: darkOpacity)
+                    : UIColor(hue: h, saturation: 0.7, brightness: 0.6, alpha: darkOpacity)
+            }
+            return isNeutral
+                ? UIColor(white: 0.7, alpha: lightOpacity)
+                : UIColor(hue: h, saturation: 0.5, brightness: 0.85, alpha: lightOpacity)
+        })
     }
 }
 
@@ -79,5 +91,75 @@ extension Binding where Value == Bool {
             get: { item.wrappedValue != nil },
             set: { if !$0 { item.wrappedValue = nil } }
         )
+    }
+}
+
+// MARK: - Deletion
+
+/// Confirms and performs deleting a cocktail, with a warning haptic.
+/// Sheets need their own copy, as a dialog can't present over a sheet.
+private struct CocktailDeletionDialog: ViewModifier {
+    @Environment(\.modelContext) private var modelContext
+    @Binding var cocktail: Cocktail?
+    @State private var hapticTrigger = false
+
+    func body(content: Content) -> some View {
+        content
+            .confirmationDialog(
+                "Delete \"\(cocktail?.name ?? "")\"?",
+                isPresented: .init(presence: $cocktail),
+                titleVisibility: .visible
+            ) {
+                Button("Delete", role: .destructive) {
+                    if let cocktail { modelContext.delete(cocktail) }
+                    cocktail = nil
+                    hapticTrigger.toggle()
+                }
+            }
+            .sensoryFeedback(.warning, trigger: hapticTrigger)
+    }
+}
+
+extension View {
+    func cocktailDeletionDialog(_ cocktail: Binding<Cocktail?>) -> some View {
+        modifier(CocktailDeletionDialog(cocktail: cocktail))
+    }
+}
+
+// MARK: - Dynamic Type
+
+/// A square frame that grows with the user's text size, for icons that sit
+/// next to text of the given style.
+private struct ScaledFrame: ViewModifier {
+    @ScaledMetric private var side: CGFloat
+
+    init(_ side: CGFloat, relativeTo style: Font.TextStyle) {
+        _side = ScaledMetric(wrappedValue: side, relativeTo: style)
+    }
+
+    func body(content: Content) -> some View {
+        content.frame(width: side, height: side)
+    }
+}
+
+/// Keeps compact layouts to `limit` lines, but lets text wrap further at
+/// accessibility sizes instead of truncating.
+private struct AdaptiveLineLimit: ViewModifier {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    let limit: Int
+    let accessibilityLimit: Int
+
+    func body(content: Content) -> some View {
+        content.lineLimit(dynamicTypeSize.isAccessibilitySize ? accessibilityLimit : limit)
+    }
+}
+
+extension View {
+    func scaledFrame(_ side: CGFloat, relativeTo style: Font.TextStyle = .body) -> some View {
+        modifier(ScaledFrame(side, relativeTo: style))
+    }
+
+    func lineLimit(_ limit: Int, accessibility accessibilityLimit: Int) -> some View {
+        modifier(AdaptiveLineLimit(limit: limit, accessibilityLimit: accessibilityLimit))
     }
 }

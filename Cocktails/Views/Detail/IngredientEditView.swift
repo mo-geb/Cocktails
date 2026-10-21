@@ -57,7 +57,7 @@ struct IngredientEditView: View {
                                     Image(systemName: "pencil.circle.fill")
                                         .symbolRenderingMode(.palette)
                                         .foregroundStyle(.white, .tint)
-                                        .font(.system(size: 20))
+                                        .font(.title3)
                                 }
                         }
                     }

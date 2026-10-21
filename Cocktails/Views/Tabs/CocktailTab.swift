@@ -23,12 +23,9 @@ struct CocktailTab: View {
                 .navigationTitle(isSelecting ? selectionTitle : "Cocktails")
                 .toolbar { toolbarContent }
                 .cocktailZoomDestination($viewedCocktail, in: zoomNamespace)
-                .alert("Delete Cocktails", isPresented: $showDeleteConfirm) {
-                    Button("Delete", role: .destructive) { deleteSelected() }
-                    Button("Cancel", role: .cancel) {}
-                } message: {
-                    Text("Delete \(selection.count) cocktail\(selection.count == 1 ? "" : "s")? This cannot be undone.")
-                }
+                // As in Photos, selection actions take over the bottom of the screen.
+                .toolbarVisibility(isSelecting ? .hidden : .automatic, for: .tabBar)
+                .animation(.default, value: isSelecting)
         }
     }
 
@@ -67,14 +64,14 @@ struct CocktailTab: View {
                                     Image(imageName)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(width: 28, height: 28)
+                                        .scaledFrame(28, relativeTo: .title3)
                                 }
                                 Text(group.name)
                             }
                             .sectionTitleStyle()
                             .padding(.horizontal)
 
-                            LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
+                            AdaptiveGrid(.cocktails) {
                                 ForEach(group.items) { cocktail in
                                     CocktailGridCell(
                                         cocktail: cocktail,
@@ -97,6 +94,7 @@ struct CocktailTab: View {
                 }
                 .padding(.vertical)
             }
+            .background(Color(.systemGroupedBackground))
         }
     }
     
@@ -109,7 +107,7 @@ struct CocktailTab: View {
                 Button("Cancel") { stopSelecting() }
             }
             
-            ToolbarItem(placement: .automatic) {
+            ToolbarItem(placement: .bottomBar) {
                 if let shareItem = CocktailTransferable(cocktails: selectedCocktails) {
                     ShareLink(item: shareItem, preview: SharePreview(shareItem.fileName))
                 } else {
@@ -117,10 +115,10 @@ struct CocktailTab: View {
                         .disabled(true)
                 }
             }
-            
-            ToolbarSpacer()
 
-            ToolbarItem(placement: .automatic) {
+            ToolbarSpacer(.flexible, placement: .bottomBar)
+
+            ToolbarItem(placement: .bottomBar) {
                 Button(role: .destructive) {
                     showDeleteConfirm = true
                 } label: {
@@ -128,6 +126,9 @@ struct CocktailTab: View {
                 }
                 .tint(.red)
                 .disabled(selection.isEmpty)
+                .confirmationDialog("Delete Cocktails", isPresented: $showDeleteConfirm, titleVisibility: .hidden) {
+                    Button("Delete \(selection.count) Cocktails", role: .destructive) { deleteSelected() }
+                }
             }
         } else {
             ToolbarItem(placement: .topBarLeading) {

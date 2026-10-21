@@ -9,23 +9,20 @@ struct PaywallView: View {
         NavigationStack {
             ZStack {
                 backgroundGradient
+                    .background(Color(.systemGroupedBackground))
                     .ignoresSafeArea()
                 
                 ScrollView {
-                    GlassEffectContainer(spacing: 24) {
-                        VStack(spacing: 24) {
-                            heroSection
-                            featuresSection
-                            actionSection
-                        }
-                        .padding(.horizontal, 24)
-                        .padding(.vertical, 32)
+                    VStack(spacing: 24) {
+                        heroSection
+                        featuresSection
+                        actionSection
                     }
+                    .padding(.horizontal, 24)
+                    .padding(.vertical, 32)
                     .containerRelativeFrame(.vertical, alignment: .center)
                 }
             }
-            .navigationTitle("Go Unlimited")
-            .navigationBarTitleDisplayMode(.inline)
             .onChange(of: store.isUnlimited) { _, unlimited in
                 guard unlimited else { return }
                 dismiss()
@@ -65,7 +62,6 @@ struct PaywallView: View {
             VStack(spacing: 8) {
                 Text("Go Unlimited")
                     .font(.title2.bold())
-                    .fontDesign(.rounded)
                     .multilineTextAlignment(.center)
 
                 Text("Your bar, no limits. Save as many cocktails as you like with a single purchase.")
@@ -77,7 +73,7 @@ struct PaywallView: View {
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 24)
-        .glassCard()
+        .cardBackground()
     }
 
     private var featuresSection: some View {
@@ -88,7 +84,7 @@ struct PaywallView: View {
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 24)
-        .glassCard()
+        .cardBackground()
     }
 
     private var actionSection: some View {

@@ -9,6 +9,7 @@ struct SearchView: View {
     @Query(sort: \Ingredient.name) private var ingredients: [Ingredient]
 
     @State private var query = ""
+
     @State private var selectedTab: SearchTab = .cocktails
     @State private var viewedCocktail: Cocktail?
     @Namespace private var zoomNamespace
@@ -36,6 +37,8 @@ struct SearchView: View {
 
     var body: some View {
         NavigationStack {
+            // A hand-placed picker rather than `.searchScopes`: on iOS 27 the system
+            // scope bar disappears when search is re-entered from the search tab.
             VStack(spacing: 0) {
                 Picker("", selection: $selectedTab) {
                     ForEach(SearchTab.allCases, id: \.self) { tab in
@@ -54,18 +57,19 @@ struct SearchView: View {
                     }
                 }
             }
+            .background(Color(.systemGroupedBackground))
             .navigationTitle("Search")
             .cocktailZoomDestination($viewedCocktail, in: zoomNamespace)
             .onAppear { selectedTab = appState.preferredSearchTab }
             .onChange(of: appState.preferredSearchTab) { _, newTab in selectedTab = newTab }
-            .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: "Cocktails, Ingredients…")
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button { appState.openSettings() } label: {
-                        Label("Settings", systemImage: "gearshape")
-                    }
-                }
-            }
+            // No explicit placement: inside a `.search` role tab the system puts the
+            // field in the tab bar. Kept here rather than on the TabView, where it
+            // leaks a stray search field into the previous tab after cancelling.
+            .searchable(text: $query, prompt: "Cocktails, Ingredients…")
+            // With `.searchTabSelection` this page is only ever shown with search active,
+            // which hides the navigation bar. Hiding it up front stops the title from
+            // flashing before search activates. The title still labels the back button.
+            .toolbarVisibility(.hidden, for: .navigationBar)
         }
     }
 
@@ -82,7 +86,7 @@ struct SearchView: View {
             ContentUnavailableView.search(text: query)
                 .padding(.top, 60)
         } else {
-            LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
+            AdaptiveGrid(.cocktails) {
                 ForEach(filteredCocktails) { cocktail in
                     CocktailGridCell(cocktail: cocktail, onDelete: { appState.confirmDeleteCocktail(cocktail) }) {
                         viewedCocktail = cocktail
@@ -119,7 +123,7 @@ struct SearchView: View {
             ContentUnavailableView.search(text: query)
                 .padding(.top, 60)
         } else {
-            LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
+            AdaptiveGrid(.ingredients) {
                 ForEach(filteredIngredients) { ingredient in
                     IngredientGridCell(
                         ingredient: ingredient,

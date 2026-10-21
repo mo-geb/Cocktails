@@ -11,10 +11,15 @@ struct CocktailEditView: View {
     @State private var photoItem: PhotosPickerItem?
     @State private var showPhotoPicker = false
     @State private var ingredientPickerIndex: Int?
+    /// A row the user removed from its edit sheet; deleted once the sheet has
+    /// closed, since the sheet is still bound to the row while it dismisses.
+    @State private var pendingRemovalID: RecipeIngredientDraft.ID?
     @State private var showDeleteConfirmation = false
     @State private var saveHapticTrigger = false
 
     private let originalCocktail: Cocktail?
+    /// Snapshot of the draft at open time, used to detect whether the user changed anything.
+    private let initialDraft: CocktailDraft
     private let onFinish: (() -> Void)?
     private let onSave: ((Cocktail) -> Void)?
     /// When embedded in CocktailDetailView, the detail view owns the gradient
@@ -31,8 +36,9 @@ struct CocktailEditView: View {
         self.onSave = nil
         self.externalBackground = backgroundColor
         let draft = CocktailDraft(from: cocktail)
+        self.initialDraft = draft
         self._draft = State(initialValue: draft)
-        self._backgroundColor = State(initialValue: draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled))
+        self._backgroundColor = State(initialValue: draft.artworkTint)
     }
 
     init(draft: CocktailDraft = CocktailDraft(), onSave: ((Cocktail) -> Void)? = nil) {
@@ -40,8 +46,9 @@ struct CocktailEditView: View {
         self.onFinish = nil
         self.onSave = onSave
         self.externalBackground = nil
+        self.initialDraft = draft
         self._draft = State(initialValue: draft)
-        self._backgroundColor = State(initialValue: draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled))
+        self._backgroundColor = State(initialValue: draft.artworkTint)
     }
 
     /// Returns to the detail view when editing in place; otherwise dismisses the sheet.
@@ -67,6 +74,8 @@ struct CocktailEditView: View {
             .padding(.bottom, 20)
         }
         .scrollContentBackground(.hidden)
+        // Enables swipe-to-delete on the ingredient rows inside this scroll view.
+        .swipeActionsContainer()
         .scrollDismissesKeyboard(.interactively)
         .dismissKeyboardOnTap()
         .background {
@@ -80,12 +89,12 @@ struct CocktailEditView: View {
         .onChange(of: draft.imageData) { updateBackground() }
         .onChange(of: photoItem) { loadPhoto() }
         .onAppear { updateBackground() }
-        .sheet(isPresented: Binding(
-            get: { ingredientPickerIndex != nil },
-            set: { if !$0 { ingredientPickerIndex = nil } }
-        )) {
+        .sheet(isPresented: .init(presence: $ingredientPickerIndex), onDismiss: removePendingIngredient) {
             if let index = ingredientPickerIndex, index < draft.ingredients.count {
-                IngredientRowEditSheet(draft: $draft.ingredients[index])
+                IngredientRowEditSheet(draft: $draft.ingredients[index]) {
+                    pendingRemovalID = draft.ingredients[index].id
+                    ingredientPickerIndex = nil
+                }
             }
         }
     }
@@ -94,56 +103,58 @@ struct CocktailEditView: View {
 
     @ViewBuilder
     private var imageSection: some View {
-        ZStack(alignment: .topTrailing) {
-            Button {
-                showPhotoPicker = true
-            } label: {
-                ZStack(alignment: .bottomTrailing) {
-                    if draft.displayImage.isCustom {
-                        draft.displayImage.view(placeholder: draft.glass.imageNameFilled)
-                            .scaledToFill()
-                            .frame(width: 140, height: 140)
-                            .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
-                            .padding(8)
-                            .glassEffect(in: RoundedRectangle(cornerRadius: 40, style: .continuous))
-                    } else {
-                        draft.displayImage.view(placeholder: draft.glass.imageNameFilled)
-                            .scaledToFit()
-                            .frame(width: 110, height: 110)
-                            .padding(12)
-                    }
-
-                    Image(systemName: "camera.fill")
-                        .font(.caption.weight(.semibold))
-                        .foregroundStyle(.secondary)
-                        .padding(7)
-                        .background(.thinMaterial, in: Circle())
-                        .offset(x: 2, y: 2)
-                }
-            }
-            .buttonStyle(.plain)
-            .photosPicker(isPresented: $showPhotoPicker, selection: $photoItem, matching: .images)
-
+        Group {
+            // With a custom photo, tapping offers Choose/Remove (as in Contacts);
+            // otherwise it goes straight to the photo picker.
             if draft.displayImage.isCustom {
-                Button {
-                    photoItem = nil
-                    draft.imageData = nil
+                Menu {
+                    Button("Choose Photo", systemImage: "photo") { showPhotoPicker = true }
+                    Button("Remove Photo", systemImage: "trash", role: .destructive) {
+                        photoItem = nil
+                        draft.imageData = nil
+                    }
                 } label: {
-                    Image(systemName: "xmark")
-                        .font(.caption2.weight(.bold))
-                        .foregroundStyle(.white)
-                        .padding(6)
-                        .background(.black.opacity(0.6), in: Circle())
+                    imageLabel
                 }
-                .offset(x: -4, y: 4)
+            } else {
+                Button { showPhotoPicker = true } label: { imageLabel }
             }
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(Text(draft.displayImage.isCustom ? "Edit Photo" : "Add Photo"))
+        .photosPicker(isPresented: $showPhotoPicker, selection: $photoItem, matching: .images)
+    }
+
+    private var imageLabel: some View {
+        ZStack(alignment: .bottomTrailing) {
+            if draft.displayImage.isCustom {
+                draft.displayImage.view(placeholder: draft.glass.imageNameFilled)
+                    .scaledToFill()
+                    .frame(width: 190, height: 190)
+                    .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
+                    .padding(8)
+                    .glassEffect(in: RoundedRectangle(cornerRadius: 40, style: .continuous))
+            } else {
+                // Matches the detail view so the edit cross-fade doesn't jump.
+                draft.displayImage.view(placeholder: draft.glass.imageNameFilled)
+                    .scaledToFit()
+                    .frame(width: 180, height: 180)
+                    .offset(y: -9)
+            }
+
+            Image(systemName: "camera.fill")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(.secondary)
+                .padding(7)
+                .background(.thinMaterial, in: Circle())
+                .offset(x: 2, y: 2)
         }
     }
 
     @ViewBuilder
     private var nameField: some View {
         TextField("Cocktail Name", text: $draft.name)
-            .font(.system(.largeTitle, design: .rounded).bold())
+            .font(.largeTitle.bold())
             .multilineTextAlignment(.center)
             .padding(.horizontal)
             .submitLabel(.done)
@@ -184,7 +195,7 @@ struct CocktailEditView: View {
     }
 
     @ViewBuilder
-    private func propertyChipRow<Content: View>(title: String, @ViewBuilder content: () -> Content) -> some View {
+    private func propertyChipRow<Content: View>(title: LocalizedStringKey, @ViewBuilder content: () -> Content) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(title)
                 .font(.caption.weight(.semibold))
@@ -208,11 +219,10 @@ struct CocktailEditView: View {
                 Image(imageName)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 22, height: 22)
+                    .scaledFrame(22, relativeTo: .caption2)
                     .accessibilityHidden(true)
                 Text(label)
                     .font(.caption2.weight(.medium))
-                    .fontDesign(.rounded)
                     .lineLimit(1)
             }
             .foregroundStyle(isSelected ? Color.accentColor : Color.primary)
@@ -250,68 +260,78 @@ struct CocktailEditView: View {
                     .foregroundStyle(.secondary)
                     .font(.subheadline)
             } else {
+                // Each card is its own reorder container, so rows only
+                // reorder within their own role.
                 VStack(spacing: 14) {
-                    ForEach(Array(roleIngredients.enumerated()), id: \.element.id) { position, item in
-                        if let index = draft.ingredients.firstIndex(where: { $0.id == item.id }) {
-                            ingredientRow(item: $draft.ingredients[index], index: index) {
-                                draft.ingredients.removeAll { $0.id == item.id }
-                            }
-                            if position != roleIngredients.count - 1 {
+                    ForEach(roleIngredients) { item in
+                        // Each reorderable item must be a single view, so the
+                        // divider lives inside the item rather than between items.
+                        VStack(spacing: 14) {
+                            if item.id != roleIngredients.first?.id {
                                 Divider().padding(.leading, 42)
+                            }
+                            if let index = draft.ingredients.firstIndex(where: { $0.id == item.id }) {
+                                // Swipe is attached to the row, not the item, so the
+                                // divider above stays put while the row slides.
+                                ingredientRow(item: $draft.ingredients[index], index: index)
+                                    .swipeActions {
+                                        Button(role: .destructive) {
+                                            withAnimation {
+                                                draft.ingredients.removeAll { $0.id == item.id }
+                                            }
+                                        } label: {
+                                            Label("Delete", systemImage: "trash")
+                                        }
+                                    }
                             }
                         }
                     }
+                    .reorderable()
+                }
+                .reorderContainer(for: RecipeIngredientDraft.self) { difference in
+                    moveIngredients(difference, role: role)
                 }
             }
         }
     }
 
     @ViewBuilder
-    private func ingredientRow(item: Binding<RecipeIngredientDraft>, index: Int, onDelete: @escaping () -> Void) -> some View {
+    private func ingredientRow(item: Binding<RecipeIngredientDraft>, index: Int) -> some View {
         let ingredient = item.wrappedValue
         let isEmpty = ingredient.ingredient.name.isEmpty
 
-        HStack(spacing: 12) {
-            Button {
-                ingredientPickerIndex = index
-            } label: {
-                HStack(spacing: 12) {
-                    if isEmpty {
-                        Image(systemName: "questionmark.circle.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 38, height: 38)
-                            .foregroundStyle(.tint)
-                    } else {
-                        ingredient.ingredient.displayImage
-                            .view(placeholder: ingredient.ingredient.type.imageName)
-                            .scaledToFit()
-                            .frame(width: 42, height: 42)
-                    }
-
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text(isEmpty ? "Select ingredient…" : ingredient.ingredient.localizedName)
-                            .fontDesign(.rounded)
-                            .fontWeight(.medium)
-                            .foregroundStyle(isEmpty ? Color.accentColor : Color.primary)
-
-                        if !isEmpty {
-                            ingredientSummary(for: ingredient)
-                        }
-                    }
-
-                    Spacer()
+        Button {
+            ingredientPickerIndex = index
+        } label: {
+            HStack(spacing: 12) {
+                if isEmpty {
+                    Image(systemName: "questionmark.circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .scaledFrame(38)
+                        .foregroundStyle(.tint)
+                } else {
+                    ingredient.ingredient.displayImage
+                        .view(placeholder: ingredient.ingredient.type.imageName)
+                        .scaledToFit()
+                        .scaledFrame(42)
                 }
-                .contentShape(Rectangle())
-            }
-            .buttonStyle(.plain)
 
-            Button(role: .destructive, action: onDelete) {
-                Image(systemName: "xmark.circle.fill")
-                    .foregroundStyle(.secondary)
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(isEmpty ? "Select ingredient…" : ingredient.ingredient.localizedName)
+                        .fontWeight(.medium)
+                        .foregroundStyle(isEmpty ? Color.accentColor : Color.primary)
+
+                    if !isEmpty {
+                        ingredientSummary(for: ingredient)
+                    }
+                }
+
+                Spacer()
             }
-            .buttonStyle(.plain)
+            .contentShape(Rectangle())
         }
+        .buttonStyle(.plain)
     }
 
     @ViewBuilder
@@ -388,7 +408,7 @@ struct CocktailEditView: View {
     // MARK: - Actions
 
     private func updateBackground() {
-        background.wrappedValue = draft.displayImage.dominantColor(placeholderName: draft.glass.imageNameFilled)
+        background.wrappedValue = draft.artworkTint
     }
 
     private func loadPhoto() {
@@ -399,9 +419,38 @@ struct CocktailEditView: View {
         }
     }
 
+    private func removePendingIngredient() {
+        guard let id = pendingRemovalID else { return }
+        pendingRemovalID = nil
+        withAnimation {
+            draft.ingredients.removeAll { $0.id == id }
+        }
+    }
+
     private func addIngredient(role: IngredientRole) {
         let count = draft.ingredients.filter { $0.role == role }.count
         draft.ingredients.append(RecipeIngredientDraft(role: role, sortOrder: count))
+    }
+
+    /// Applies a drag-to-reorder move within one card. `draft.ingredients`
+    /// mixes both roles, so positions are resolved against the full array.
+    private func moveIngredients(_ difference: ReorderDifference<RecipeIngredientDraft.ID, ReorderableSingleCollectionIdentifier>, role: IngredientRole) {
+        let movingIDs = Set(difference.sources)
+        guard !movingIDs.isEmpty else { return }
+
+        let moved = draft.ingredients.filter { movingIDs.contains($0.id) }
+        draft.ingredients.removeAll { movingIDs.contains($0.id) }
+
+        let insertionIndex: Int
+        switch difference.destination.position {
+        case .before(let id):
+            insertionIndex = draft.ingredients.firstIndex { $0.id == id } ?? draft.ingredients.endIndex
+        case .end:
+            // "End" means the end of this card, i.e. after its last row.
+            insertionIndex = draft.ingredients.lastIndex { $0.role == role }
+                .map { $0 + 1 } ?? draft.ingredients.endIndex
+        }
+        draft.ingredients.insert(contentsOf: moved, at: insertionIndex)
     }
 
     private func save() {
@@ -440,7 +489,9 @@ struct CocktailEditView: View {
         cocktail.method = draft.method
         cocktail.ice = draft.ice
         cocktail.isFavourite = draft.isFavourite
-        cocktail.source = draft.source
+        // An edited imported recipe is no longer the original, so it becomes custom.
+        // This keeps it from being matched (and replaced) by name on re-import.
+        cocktail.source = draft != initialDraft ? .custom : draft.source
         cocktail.imageData = draft.imageData
         cocktail.imageName = draft.imageName
 
@@ -452,7 +503,9 @@ struct CocktailEditView: View {
     }
 
     private func insertIngredients(for drafts: [RecipeIngredientDraft], into cocktail: Cocktail) {
-        for (index, d) in drafts.enumerated() {
+        // The draft array order is the source of truth (it reflects any
+        // drag-to-reorder), so persist each row's position as its sort order.
+        for (position, d) in drafts.enumerated() {
             guard !d.ingredient.name.isEmpty else { continue }
             let ingredient = findOrCreate(d.ingredient)
             let item = RecipeIngredient(
@@ -460,7 +513,7 @@ struct CocktailEditView: View {
                 unit: d.unit,
                 note: d.note,
                 role: d.role,
-                sortOrder: index,
+                sortOrder: position,
                 ingredient: ingredient
             )
             item.cocktail = cocktail

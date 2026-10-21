@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 struct LibraryCounts {
     var cocktails: Int = 0
@@ -21,7 +22,7 @@ struct RecipeLibrariesView: View {
                     reimportEverythingCard
                 }
 
-                LazyVGrid(columns: GridColumns.libraries, spacing: 16) {
+                AdaptiveGrid(.libraries) {
                     ForEach(sources) { source in
                         NavigationLink {
                             LibraryCocktailsView(source: source)
@@ -34,6 +35,7 @@ struct RecipeLibrariesView: View {
             }
             .padding()
         }
+        .background(Color(.systemGroupedBackground))
         .navigationTitle("Import")
         .task {
             for source in sources {
@@ -110,35 +112,9 @@ struct RecipeLibrariesView: View {
         isLoading: Bool,
         action: @escaping () -> Void
     ) -> some View {
-        Button(action: action) {
-            HStack(spacing: 14) {
-                Image(systemName: icon)
-                    .font(.title3)
-                    .foregroundStyle(.white)
-                    .frame(width: 40, height: 40)
-                    .background(color.gradient)
-                    .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
-
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(title)
-                        .font(.subheadline.bold())
-                        .fontDesign(.rounded)
-                        .foregroundStyle(.primary)
-                    Text(subtitle)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-
-                Spacer()
-
-                if isLoading { ProgressView() }
-            }
-            .contentShape(Rectangle())
-            .padding(.horizontal, 16)
-            .padding(.vertical, 14)
-            .glassEffect(.regular.interactive(), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        ActionCard(systemImage: icon, color: color, title: Text(title), subtitle: Text(subtitle), action: action) {
+            if isLoading { ProgressView() }
         }
-        .buttonStyle(.plain)
         .disabled(isLoading)
     }
 

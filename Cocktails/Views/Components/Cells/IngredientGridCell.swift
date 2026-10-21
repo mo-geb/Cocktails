@@ -15,10 +15,12 @@ struct IngredientGridCell: View {
                 ingredient.displayImage.view(placeholder: ingredient.type.imageName)
                     .scaledToFit()
                     .padding(4)
+                    .grayscale(ingredient.isStocked ? 0 : 1)
+                    .opacity(ingredient.isStocked ? 1 : 0.35)
 
                 Text(ingredient.localizedName)
                     .font(.caption.bold())
-                    .fontDesign(.rounded)
+                    .foregroundStyle(ingredient.isStocked ? .primary : .secondary)
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
                     .minimumScaleFactor(0.8)
@@ -29,14 +31,24 @@ struct IngredientGridCell: View {
             .padding(.all, 4)
             .frame(maxWidth: .infinity)
             .aspectRatio(0.85, contentMode: .fit)
-            .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-            .overlay {
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .strokeBorder(Color(.separator), lineWidth: 1)
+            .cardBackground(cornerRadius: 18)
+            .overlay(alignment: .topTrailing) {
+                if ingredient.isStocked {
+                    Image(systemName: "checkmark.circle.fill")
+                        .font(.subheadline)
+                        .symbolRenderingMode(.palette)
+                        .foregroundStyle(.white, Color.green)
+                        .padding(6)
+                        .transition(.scale.combined(with: .opacity))
+                        .accessibilityHidden(true)
+                }
             }
+            .animation(.snappy, value: ingredient.isStocked)
             .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-            .grayscale(ingredient.isStocked ? 0 : 1)
-            .opacity(ingredient.isStocked ? 1 : 0.4)
+            // Flattens icon and text into one layer so they move together when the
+            // stocked-first sort repositions the cell; the icon's grayscale filter
+            // otherwise renders it separately and it lags behind the text.
+            .compositingGroup()
             .accessibilityElement(children: .combine)
             .accessibilityValue(ingredient.isStocked ? Text("Stocked") : Text("Not stocked"))
             .accessibilityHint(Text("Toggles whether you have this ingredient."))
@@ -73,7 +85,6 @@ func addIngredientCell(name: String) -> some View {
 
         Text(name)
             .font(.caption.bold())
-            .fontDesign(.rounded)
             .multilineTextAlignment(.center)
             .lineLimit(2)
             .minimumScaleFactor(0.8)
@@ -84,7 +95,7 @@ func addIngredientCell(name: String) -> some View {
     .padding(.all, 4)
     .frame(maxWidth: .infinity)
     .aspectRatio(0.85, contentMode: .fit)
-    .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+    .cardBackground(cornerRadius: 18)
     .overlay {
         RoundedRectangle(cornerRadius: 18, style: .continuous)
             .strokeBorder(Color.accentColor.opacity(0.55), lineWidth: 1.5)
@@ -93,8 +104,9 @@ func addIngredientCell(name: String) -> some View {
 
 #Preview(traits: .sampleData) {
     let ingredients = try! PreviewSampleData.container.mainContext.fetch(FetchDescriptor<Ingredient>())
-    ScrollView {
-        LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
+    ingredients.prefix(3).forEach { $0.isStocked = true }
+    return ScrollView {
+        AdaptiveGrid(.ingredients) {
             ForEach(ingredients) { ingredient in
                 IngredientGridCell(ingredient: ingredient)
             }
@@ -102,4 +114,5 @@ func addIngredientCell(name: String) -> some View {
         }
         .padding()
     }
+    .background(Color(.systemGroupedBackground))
 }
