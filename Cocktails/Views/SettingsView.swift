@@ -166,9 +166,9 @@ struct SettingsView: View {
 
     private func iconTile(_ icon: String, _ color: Color) -> some View {
         Image(systemName: icon)
-            .font(.system(size: 15, weight: .semibold))
+            .font(.subheadline.weight(.semibold))
             .foregroundStyle(.white)
-            .frame(width: 30, height: 30)
+            .scaledFrame(30)
             .background(color.gradient)
             .clipShape(RoundedRectangle(cornerRadius: 7, style: .continuous))
     }
@@ -196,7 +196,7 @@ struct SettingsView: View {
 
             VStack(alignment: .leading, spacing: 0) {
                 Text("\(value)")
-                    .font(.system(.title, design: .rounded).bold())
+                    .font(.title.bold())
                     .monospacedDigit()
                 Text(title)
                     .font(.caption)

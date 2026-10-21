@@ -22,7 +22,7 @@ struct RecipeLibrariesView: View {
                     reimportEverythingCard
                 }
 
-                LazyVGrid(columns: GridColumns.libraries, spacing: 16) {
+                AdaptiveGrid(.libraries) {
                     ForEach(sources) { source in
                         NavigationLink {
                             LibraryCocktailsView(source: source)
@@ -117,14 +117,13 @@ struct RecipeLibrariesView: View {
                 Image(systemName: icon)
                     .font(.title3)
                     .foregroundStyle(.white)
-                    .frame(width: 40, height: 40)
+                    .scaledFrame(40, relativeTo: .title3)
                     .background(color.gradient)
                     .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(title)
                         .font(.subheadline.bold())
-                        .fontDesign(.rounded)
                         .foregroundStyle(.primary)
                     Text(subtitle)
                         .font(.caption)

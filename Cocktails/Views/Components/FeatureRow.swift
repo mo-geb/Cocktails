@@ -9,9 +9,9 @@ struct FeatureRow: View {
     var body: some View {
         HStack(spacing: 16) {
             Image(systemName: icon)
-                .font(.system(size: 15, weight: .semibold))
+                .font(.subheadline.weight(.semibold))
                 .foregroundStyle(.white)
-                .frame(width: 34, height: 34)
+                .scaledFrame(34, relativeTo: .subheadline)
                 .background(color.gradient)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
 

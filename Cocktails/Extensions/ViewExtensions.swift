@@ -19,7 +19,6 @@ extension View {
 
     func sectionTitleStyle() -> some View {
         font(.title3.bold())
-            .fontDesign(.rounded)
     }
 
     /// Pushes the cocktail detail screen with the shared zoom transition.
@@ -91,5 +90,43 @@ extension Binding where Value == Bool {
             get: { item.wrappedValue != nil },
             set: { if !$0 { item.wrappedValue = nil } }
         )
+    }
+}
+
+// MARK: - Dynamic Type
+
+/// A square frame that grows with the user's text size, for icons that sit
+/// next to text of the given style.
+private struct ScaledFrame: ViewModifier {
+    @ScaledMetric private var side: CGFloat
+
+    init(_ side: CGFloat, relativeTo style: Font.TextStyle) {
+        _side = ScaledMetric(wrappedValue: side, relativeTo: style)
+    }
+
+    func body(content: Content) -> some View {
+        content.frame(width: side, height: side)
+    }
+}
+
+/// Keeps compact layouts to `limit` lines, but lets text wrap further at
+/// accessibility sizes instead of truncating.
+private struct AdaptiveLineLimit: ViewModifier {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    let limit: Int
+    let accessibilityLimit: Int
+
+    func body(content: Content) -> some View {
+        content.lineLimit(dynamicTypeSize.isAccessibilitySize ? accessibilityLimit : limit)
+    }
+}
+
+extension View {
+    func scaledFrame(_ side: CGFloat, relativeTo style: Font.TextStyle = .body) -> some View {
+        modifier(ScaledFrame(side, relativeTo: style))
+    }
+
+    func lineLimit(_ limit: Int, accessibility accessibilityLimit: Int) -> some View {
+        modifier(AdaptiveLineLimit(limit: limit, accessibilityLimit: accessibilityLimit))
     }
 }

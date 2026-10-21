@@ -20,7 +20,6 @@ struct IngredientGridCell: View {
 
                 Text(ingredient.localizedName)
                     .font(.caption.bold())
-                    .fontDesign(.rounded)
                     .foregroundStyle(ingredient.isStocked ? .primary : .secondary)
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
@@ -86,7 +85,6 @@ func addIngredientCell(name: String) -> some View {
 
         Text(name)
             .font(.caption.bold())
-            .fontDesign(.rounded)
             .multilineTextAlignment(.center)
             .lineLimit(2)
             .minimumScaleFactor(0.8)
@@ -108,7 +106,7 @@ func addIngredientCell(name: String) -> some View {
     let ingredients = try! PreviewSampleData.container.mainContext.fetch(FetchDescriptor<Ingredient>())
     ingredients.prefix(3).forEach { $0.isStocked = true }
     return ScrollView {
-        LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
+        AdaptiveGrid(.ingredients) {
             ForEach(ingredients) { ingredient in
                 IngredientGridCell(ingredient: ingredient)
             }

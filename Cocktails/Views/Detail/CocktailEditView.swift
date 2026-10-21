@@ -157,7 +157,7 @@ struct CocktailEditView: View {
     @ViewBuilder
     private var nameField: some View {
         TextField("Cocktail Name", text: $draft.name)
-            .font(.system(.largeTitle, design: .rounded).bold())
+            .font(.largeTitle.bold())
             .multilineTextAlignment(.center)
             .padding(.horizontal)
             .submitLabel(.done)
@@ -222,11 +222,10 @@ struct CocktailEditView: View {
                 Image(imageName)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 22, height: 22)
+                    .scaledFrame(22, relativeTo: .caption2)
                     .accessibilityHidden(true)
                 Text(label)
                     .font(.caption2.weight(.medium))
-                    .fontDesign(.rounded)
                     .lineLimit(1)
             }
             .foregroundStyle(isSelected ? Color.accentColor : Color.primary)
@@ -312,18 +311,17 @@ struct CocktailEditView: View {
                     Image(systemName: "questionmark.circle.fill")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 38, height: 38)
+                        .scaledFrame(38)
                         .foregroundStyle(.tint)
                 } else {
                     ingredient.ingredient.displayImage
                         .view(placeholder: ingredient.ingredient.type.imageName)
                         .scaledToFit()
-                        .frame(width: 42, height: 42)
+                        .scaledFrame(42)
                 }
 
                 VStack(alignment: .leading, spacing: 3) {
                     Text(isEmpty ? "Select ingredient…" : ingredient.ingredient.localizedName)
-                        .fontDesign(.rounded)
                         .fontWeight(.medium)
                         .foregroundStyle(isEmpty ? Color.accentColor : Color.primary)
 

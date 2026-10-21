@@ -24,15 +24,14 @@ struct CocktailGridCell: View {
 
                     Text(cocktail.name)
                         .font(.headline)
-                        .fontDesign(.rounded)
                         .multilineTextAlignment(.center)
-                        .lineLimit(1)
+                        .lineLimit(1, accessibility: 3)
 
                     HStack(spacing: 4) {
                         Image(cocktail.source.imageName)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 12, height: 12)
+                            .scaledFrame(12, relativeTo: .caption2)
                             .accessibilityHidden(true)
                         Text(cocktail.source.localizedName)
                             .font(.caption2)
@@ -47,14 +46,14 @@ struct CocktailGridCell: View {
                                 Image(cocktail.ice.imageName)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 11, height: 11)
+                                    .scaledFrame(11, relativeTo: .caption2)
                                     .accessibilityHidden(true)
                                 Text(cocktail.ice.localizedName)
                                 Text("·").foregroundStyle(.tertiary)
                                 Image(cocktail.method.customImageName)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 11, height: 11)
+                                    .scaledFrame(11, relativeTo: .caption2)
                                     .accessibilityHidden(true)
                                 Text(cocktail.method.localizedName)
                             }
@@ -62,7 +61,7 @@ struct CocktailGridCell: View {
                     }
                     .font(.caption2)
                     .foregroundStyle(.secondary)
-                    .lineLimit(1)
+                    .lineLimit(1, accessibility: 2)
                     .minimumScaleFactor(0.8)
                 }
                 .padding(8)
@@ -144,16 +143,16 @@ func addCocktailCell(name: String, action: @escaping () -> Void) -> some View {
     Button(action: action) {
         VStack(spacing: 3) {
             Image(systemName: "plus.circle.fill")
-                .font(.system(size: 44))
+                .font(.largeTitle)
+                .imageScale(.large)
                 .foregroundStyle(.tint)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .frame(height: 116 + 11 * 2)
                 .padding(.bottom, 8)
             Text(name)
                 .font(.headline)
-                .fontDesign(.rounded)
                 .multilineTextAlignment(.center)
-                .lineLimit(1)
+                .lineLimit(1, accessibility: 3)
             Text("Add Cocktail")
                 .font(.caption2)
                 .foregroundStyle(.tint)
@@ -181,7 +180,7 @@ func addCocktailCell(name: String, action: @escaping () -> Void) -> some View {
     let cocktails = PreviewSampleData.mockCocktails
     cocktails.first?.isFavourite = true
     return ScrollView {
-        LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
+        AdaptiveGrid(.cocktails) {
             ForEach(cocktails) { cocktail in
                 CocktailGridCell(cocktail: cocktail, onDelete: {}) {}
             }

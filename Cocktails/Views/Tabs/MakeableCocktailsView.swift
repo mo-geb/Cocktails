@@ -39,7 +39,7 @@ struct MakeableCocktailsView: View {
                         LazyVStack(alignment: .leading, spacing: 28) {
                             if !makeableCocktails.isEmpty {
                                 section(title: "Ready to make") {
-                                    LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
+                                    AdaptiveGrid(.cocktails) {
                                         ForEach(makeableCocktails) { cocktail in
                                             CocktailGridCell(cocktail: cocktail, onDelete: { cocktailToDelete = cocktail }) {
                                                 viewedCocktail = cocktail
@@ -52,7 +52,7 @@ struct MakeableCocktailsView: View {
 
                             if !almostMakeableCocktails.isEmpty {
                                 section(title: "Almost there") {
-                                    LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
+                                    AdaptiveGrid(.cocktails) {
                                         ForEach(almostMakeableCocktails, id: \.cocktail.id) { item in
                                             CocktailGridCell(cocktail: item.cocktail, footerLabel: String(localized: "Missing: \(item.missing)"), onDelete: { cocktailToDelete = item.cocktail }) {
                                                 viewedCocktail = item.cocktail

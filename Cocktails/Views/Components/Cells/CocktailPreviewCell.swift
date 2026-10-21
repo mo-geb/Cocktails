@@ -20,28 +20,27 @@ struct CocktailPreviewCell: View {
 
                 Text(dto.name)
                     .font(.headline)
-                    .fontDesign(.rounded)
                     .multilineTextAlignment(.center)
-                    .lineLimit(1)
+                    .lineLimit(1, accessibility: 3)
 
                 HStack(spacing: 5) {
                     Image(dto.ice.imageName)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 11, height: 11)
+                        .scaledFrame(11, relativeTo: .caption2)
                         .accessibilityHidden(true)
                     Text(dto.ice.localizedName)
                     Text("·").foregroundStyle(.tertiary)
                     Image(dto.method.customImageName)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 11, height: 11)
+                        .scaledFrame(11, relativeTo: .caption2)
                         .accessibilityHidden(true)
                     Text(dto.method.localizedName)
                 }
                 .font(.caption2)
                 .foregroundStyle(.secondary)
-                .lineLimit(1)
+                .lineLimit(1, accessibility: 2)
                 .minimumScaleFactor(0.8)
             }
             .padding(8)
@@ -110,7 +109,7 @@ struct CocktailPreviewCell: View {
         notes: nil
     )
     ScrollView {
-        LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
+        AdaptiveGrid(.cocktails) {
             CocktailPreviewCell(dto: dto, isSelected: false, isImported: false) {}
             CocktailPreviewCell(dto: dto, isSelected: true, isImported: false) {}
             CocktailPreviewCell(dto: dto, isSelected: false, isImported: true) {}

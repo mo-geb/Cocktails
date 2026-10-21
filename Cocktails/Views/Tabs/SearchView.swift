@@ -86,7 +86,7 @@ struct SearchView: View {
             ContentUnavailableView.search(text: query)
                 .padding(.top, 60)
         } else {
-            LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
+            AdaptiveGrid(.cocktails) {
                 ForEach(filteredCocktails) { cocktail in
                     CocktailGridCell(cocktail: cocktail, onDelete: { appState.confirmDeleteCocktail(cocktail) }) {
                         viewedCocktail = cocktail
@@ -123,7 +123,7 @@ struct SearchView: View {
             ContentUnavailableView.search(text: query)
                 .padding(.top, 60)
         } else {
-            LazyVGrid(columns: GridColumns.ingredients, spacing: 10) {
+            AdaptiveGrid(.ingredients) {
                 ForEach(filteredIngredients) { ingredient in
                     IngredientGridCell(
                         ingredient: ingredient,

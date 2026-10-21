@@ -30,14 +30,13 @@ struct LibraryCell: View {
                 VStack(spacing: 0) {
                     Text(source.localizedName)
                         .font(.headline)
-                        .fontDesign(.rounded)
                         .padding(.bottom, 8)
 
                     HStack(spacing: 5) {
                         Image("Glass/Filled/martini")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 12, height: 12)
+                            .scaledFrame(12, relativeTo: .caption2)
                         Text("\(counts.cocktails)")
                     }
                     .font(.caption2)
@@ -64,7 +63,7 @@ struct LibraryCell: View {
 
 #Preview {
     ScrollView {
-        LazyVGrid(columns: GridColumns.libraries, spacing: 16) {
+        AdaptiveGrid(.libraries) {
             LibraryCell(source: .ebsInter2023, counts: LibraryCounts(cocktails: 42))
             LibraryCell(source: .custom, counts: LibraryCounts(cocktails: 7))
         }

@@ -64,14 +64,14 @@ struct CocktailTab: View {
                                     Image(imageName)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(width: 28, height: 28)
+                                        .scaledFrame(28, relativeTo: .title3)
                                 }
                                 Text(group.name)
                             }
                             .sectionTitleStyle()
                             .padding(.horizontal)
 
-                            LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
+                            AdaptiveGrid(.cocktails) {
                                 ForEach(group.items) { cocktail in
                                     CocktailGridCell(
                                         cocktail: cocktail,

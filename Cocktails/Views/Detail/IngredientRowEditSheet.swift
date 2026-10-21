@@ -56,12 +56,11 @@ struct IngredientRowEditSheet: View {
                 draft.ingredient.displayImage
                     .view(placeholder: draft.ingredient.type.imageName)
                     .scaledToFit()
-                    .frame(width: 64, height: 64)
+                    .scaledFrame(64, relativeTo: .title3)
 
                 VStack(alignment: .leading, spacing: 3) {
                     Text(isEmpty ? "Select ingredient" : draft.ingredient.localizedName)
                         .font(.title3.bold())
-                        .fontDesign(.rounded)
                         .foregroundStyle(isEmpty ? Color.accentColor : Color.primary)
 
                     Text("Tap to change")

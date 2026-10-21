@@ -61,7 +61,7 @@ struct ReceivedRecipesView: View {
     @ViewBuilder
     private func cocktailGrid(_ package: SharedCocktailPackage) -> some View {
         ScrollView {
-            LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
+            AdaptiveGrid(.cocktails) {
                 ForEach(Array(package.cocktails.enumerated()), id: \.offset) { _, cocktail in
                     CocktailPreviewCell(
                         dto: cocktail,

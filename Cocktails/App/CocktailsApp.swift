@@ -38,6 +38,8 @@ struct CocktailsApp: App {
     var body: some Scene {
         WindowGroup {
             MainTabView()
+                // The app's typeface: SF Rounded for all SwiftUI text, sheets included.
+                .fontDesign(.rounded)
                 .environment(appState)
                 .environment(store)
                 .currentEntitlementTask(for: StoreManager.unlimitedProductID) { state in

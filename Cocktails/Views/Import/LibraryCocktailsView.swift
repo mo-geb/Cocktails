@@ -27,7 +27,7 @@ struct LibraryCocktailsView: View {
         ScrollView {
             libraryHeader
 
-            LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
+            AdaptiveGrid(.cocktails) {
                 ForEach(cocktails, id: \.name) { cocktail in
                     CocktailPreviewCell(
                         dto: cocktail,
@@ -72,7 +72,7 @@ struct LibraryCocktailsView: View {
                 Image(systemName: "info.circle.fill")
                     .font(.title3)
                     .foregroundStyle(.white)
-                    .frame(width: 40, height: 40)
+                    .scaledFrame(40, relativeTo: .title3)
                     .background(Color.accentColor.gradient)
                     .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
 
@@ -90,7 +90,6 @@ struct LibraryCocktailsView: View {
                                 Text(url.host ?? String(localized: "Source"))
                             }
                             .font(.caption.bold())
-                            .fontDesign(.rounded)
                         }
                     }
                 }
@@ -113,7 +112,7 @@ struct LibraryCocktailsView: View {
             performImport(names: Array(selected))
         } label: {
             Text(selected.isEmpty ? "Import Selected" : "Import Selected (\(selected.count))")
-                .lineLimit(1)
+                .lineLimit(1, accessibility: 2)
                 .minimumScaleFactor(0.8)
                 .frame(maxWidth: .infinity)
         }

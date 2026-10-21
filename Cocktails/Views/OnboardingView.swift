@@ -61,7 +61,7 @@ struct OnboardingView: View {
             Image(systemName: icon)
                 .font(.largeTitle)
                 .foregroundStyle(color)
-                .frame(width: 48)
+                .scaledFrame(48, relativeTo: .largeTitle)
                 .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 2) {

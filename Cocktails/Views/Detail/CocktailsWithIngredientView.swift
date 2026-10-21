@@ -23,7 +23,7 @@ struct CocktailsWithIngredientView: View {
                     )
                 } else {
                     ScrollView {
-                        LazyVGrid(columns: GridColumns.cocktails, spacing: 12) {
+                        AdaptiveGrid(.cocktails) {
                             ForEach(cocktails) { cocktail in
                                 CocktailGridCell(cocktail: cocktail, onDelete: { cocktailToDelete = cocktail }) {
                                     viewedCocktail = cocktail

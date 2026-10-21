@@ -7,7 +7,9 @@ struct SampleDataModifier: PreviewModifier {
     }
 
     func body(content: Content, context: ModelContainer) -> some View {
-        content.modelContainer(context)
+        content
+            .modelContainer(context)
+            .fontDesign(.rounded) // matches the app root in CocktailsApp
     }
 }
 
