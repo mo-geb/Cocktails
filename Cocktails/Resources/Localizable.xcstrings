@@ -4,6 +4,244 @@
     "" : {
       "shouldTranslate" : false
     },
+    "Import the preset ingredients, then tick off what's in your bar" : {
+      "comment" : "Onboarding feature subtitle",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استورد المكونات الجاهزة، ثم حدّد ما لديك في البار"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importer de forudindstillede ingredienser, og sæt flueben ved det, du har i baren"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importiere die voreingestellten Zutaten und hake ab, was in deiner Bar steht"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importa los ingredientes preestablecidos y marca lo que tienes en tu bar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importe les ingrédients prédéfinis, puis coche ce que tu as dans ton bar"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importáld az előre beállított hozzávalókat, majd jelöld be, mi van a bárodban"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importa gli ingredienti preimpostati, poi spunta quelli che hai nel tuo bar"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プリセットの材料をインポートして、バーにあるものにチェックを入れよう"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기본 재료를 가져온 다음, 바에 있는 재료를 체크해"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importeer de vooraf ingestelde ingrediënten en vink aan wat er in je bar staat"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zaimportuj wstępnie ustawione składniki, a potem zaznacz, co masz w barku"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importe os ingredientes predefinidos e marque o que você tem no seu bar"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importă ingredientele prestabilite, apoi bifează ce ai în bar"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importuj prednastavené ingrediencie a označ, čo máš v bare"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importera de förinställda ingredienserna och bocka av det du har i baren"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ön ayarlı malzemeleri içe aktar, sonra barında olanları işaretle"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Імпортуй заготовлені інгредієнти, а потім відміть, що є у твоєму барі"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "导入预设食材，然后勾选你吧台里已有的"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "匯入預設材料，然後勾選你吧台裡已有的"
+          }
+        }
+      }
+    },
+    "Remove from Recipe" : {
+      "comment" : "Button in the ingredient row sheet that removes the ingredient from the cocktail",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إزالة من الوصفة"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fjern fra opskrift"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aus Rezept entfernen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitar de la receta"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retirer de la recette"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eltávolítás a receptből"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rimuovi dalla ricetta"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レシピから削除"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "레시피에서 제거"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verwijder uit recept"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń z przepisu"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remover da receita"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elimină din rețetă"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odstrániť z receptu"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ta bort från recept"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tariften Kaldır"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Видалити з рецепта"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从配方中移除"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "從配方中移除"
+          }
+        }
+      }
+    },
     "–" : {
       "comment" : "Measurement unit — no unit",
       "shouldTranslate" : false
@@ -9458,124 +9696,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "杯型"
-          }
-        }
-      }
-    },
-    "Go to Settings → Import Library and import all preset ingredients to get started" : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "اذهب إلى الإعدادات → استيراد المكتبة واستورد جميع المكونات المسبقة للبدء"
-          }
-        },
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gå til Indstillinger → Importer Bibliotek og importer alle forudindstillede ingredienser for at komme i gang"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gehe zu Einstellungen → Sammlung importieren und importiere alle voreingestellten Zutaten, um loszulegen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ve a Configuración → Importar Biblioteca e importa todos los ingredientes preestablecidos para comenzar"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Va dans Réglages → Importer la bibliothèque et importe tous les ingrédients prédéfinis pour commencer"
-          }
-        },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Menj a Beállítások → Könyvtár importálása menüpontra, és importáld az összes előre beállított hozzávalót a kezdéshez."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vai su Impostazioni → Importa Libreria e importa tutti gli ingredienti preimpostati per iniziare"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "設定 → ライブラリをインポートして、すべてのプリセット材料をインポートして始めよう"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "설정 → 라이브러리 가져오기로 가서 모든 기본 재료를 가져와 시작해."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ga naar Instellingen → Bibliotheek importeren en importeer alle vooraf ingestelde ingrediënten om te beginnen"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Przejdź do Ustawienia → Importuj bibliotekę i zaimportuj wszystkie wstępnie ustawione składniki, aby zacząć"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vá para Configurações → Importar Biblioteca e importe todos os ingredientes predefinidos para começar"
-          }
-        },
-        "ro" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mergi la Setări → Importă Biblioteca și importă toate ingredientele prestabilite pentru a începe"
-          }
-        },
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Choď do Nastavenia → Importovať knižnicu a importuj všetky prednastavené ingrediencie, aby si začal"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gå till Inställningar → Importera Bibliotek och importera alla förinställda ingredienser för att komma igång"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Başlamak için Ayarlar → Kütüphaneyi İçe Aktar'a git ve tüm ön ayarlı malzemeleri içe aktar"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Перейди в Налаштування → Імпортувати бібліотеку і імпортуй всі заготовлені інгредієнти, щоб почати"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "前往设置 → 导入库并导入所有预设食材以开始"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "前往設定 → 匯入庫並匯入所有預設的材料以開始使用"
           }
         }
       }
@@ -37903,124 +38023,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "你的酒吧，無限制。一次購買即可儲存任意多的雞尾酒。"
-          }
-        }
-      }
-    },
-    "Your personal bar book, always in your pocket." : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "كتاب بارك الشخصي، دائمًا في جيبك."
-          }
-        },
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Din personlige barbog, altid i lommen."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dein persönliches Barbuch, immer in deiner Tasche."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tu libro de bar personal, siempre en tu bolsillo."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ton livre de bar personnel, toujours dans ta poche."
-          }
-        },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A te személyes bárkönyved, mindig a zsebedben."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Il tuo libro di cocktail personale, sempre in tasca."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "あなたのポケットに常にある個人のバー本。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "언제나 주머니 속에 있는 너만의 바 책."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jouw persoonlijke barboek, altijd in je zak."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Twoja osobista książka barowa, zawsze w kieszeni."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seu livro de coquetéis pessoal, sempre no seu bolso."
-          }
-        },
-        "ro" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cartea ta personală de bar, mereu la îndemână."
-          }
-        },
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tvoja osobná barová kniha, vždy vo vrecku."
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Din personliga barbok, alltid i fickan."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kişisel bar kitabın, her zaman cebinde."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Твоя особиста книга коктейлів, завжди в кишені."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "你的个人酒吧书，随时在口袋里。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "你的個人酒吧書，隨時隨地在口袋裡。"
           }
         }
       }

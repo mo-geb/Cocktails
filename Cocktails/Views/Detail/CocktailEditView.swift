@@ -11,6 +11,9 @@ struct CocktailEditView: View {
     @State private var photoItem: PhotosPickerItem?
     @State private var showPhotoPicker = false
     @State private var ingredientPickerIndex: Int?
+    /// A row the user removed from its edit sheet; deleted once the sheet has
+    /// closed, since the sheet is still bound to the row while it dismisses.
+    @State private var pendingRemovalID: RecipeIngredientDraft.ID?
     @State private var showDeleteConfirmation = false
     @State private var saveHapticTrigger = false
 
@@ -89,9 +92,12 @@ struct CocktailEditView: View {
         .sheet(isPresented: Binding(
             get: { ingredientPickerIndex != nil },
             set: { if !$0 { ingredientPickerIndex = nil } }
-        )) {
+        ), onDismiss: removePendingIngredient) {
             if let index = ingredientPickerIndex, index < draft.ingredients.count {
-                IngredientRowEditSheet(draft: $draft.ingredients[index])
+                IngredientRowEditSheet(draft: $draft.ingredients[index]) {
+                    pendingRemovalID = draft.ingredients[index].id
+                    ingredientPickerIndex = nil
+                }
             }
         }
     }
@@ -415,6 +421,14 @@ struct CocktailEditView: View {
             if let data = try? await photoItem?.loadTransferable(type: Data.self) {
                 draft.imageData = data
             }
+        }
+    }
+
+    private func removePendingIngredient() {
+        guard let id = pendingRemovalID else { return }
+        pendingRemovalID = nil
+        withAnimation {
+            draft.ingredients.removeAll { $0.id == id }
         }
     }
 

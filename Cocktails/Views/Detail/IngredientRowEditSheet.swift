@@ -2,6 +2,8 @@ import SwiftUI
 
 struct IngredientRowEditSheet: View {
     @Binding var draft: RecipeIngredientDraft
+    /// Removes this row from the recipe. The visible alternative to swiping the row.
+    var onRemove: (() -> Void)? = nil
 
     @State private var showPicker = false
     @State private var detent: PresentationDetent = .medium
@@ -16,6 +18,11 @@ struct IngredientRowEditSheet: View {
                     ingredientHero
                     measurementCard
                     noteCard
+                    if let onRemove {
+                        Button("Remove from Recipe", role: .destructive, action: onRemove)
+                            .frame(maxWidth: .infinity)
+                            .padding(.top, 8)
+                    }
                 }
                 .padding()
                 .padding(.top, 8)
@@ -134,5 +141,5 @@ struct IngredientRowEditSheet: View {
 
 #Preview(traits: .sampleData) {
     @Previewable @State var draft = RecipeIngredientDraft()
-    IngredientRowEditSheet(draft: $draft)
+    IngredientRowEditSheet(draft: $draft, onRemove: {})
 }
