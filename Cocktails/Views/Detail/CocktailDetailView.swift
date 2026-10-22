@@ -103,9 +103,6 @@ struct CocktailDetailView: View {
             }
             .foregroundStyle(.secondary)
             .font(.subheadline)
-            .padding(.horizontal, 12)
-            .padding(.vertical, 6)
-            .glassEffect()
         }
     }
 
@@ -223,10 +220,7 @@ struct CocktailDetailView: View {
             }
 
             HStack(alignment: .center, spacing: 6) {
-                let amountText = item.unit == .fill
-                    ? item.unit.displayText(for: 0)
-                    : (item.amount > 0 ? item.unit.displayText(for: item.amount) : "")
-                if !amountText.isEmpty {
+                if let amountText = item.unit.amountLabel(item.amount) {
                     Text(amountText)
                         .bold()
                 }

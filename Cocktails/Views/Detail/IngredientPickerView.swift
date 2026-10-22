@@ -59,6 +59,7 @@ struct IngredientPickerView: View {
             .padding(.horizontal)
             .padding(.vertical)
         }
+        .background(Color(.systemGroupedBackground))
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search ingredients")
         .navigationTitle("Select Ingredient")
         .navigationBarTitleDisplayMode(.inline)
@@ -96,28 +97,16 @@ struct IngredientPickerView: View {
             selection = IngredientDraft(from: ingredient)
             onPicked()
         } label: {
-            VStack(spacing: 0) {
+            IngredientCard(name: ingredient.localizedName) {
                 ingredient.displayImage.view(placeholder: ingredient.type.imageName)
                     .scaledToFit()
                     .padding(4)
-
-                Text(ingredient.localizedName)
-                    .font(.caption.bold())
-                    .multilineTextAlignment(.center)
-                    .lineLimit(2)
-                    .minimumScaleFactor(0.8)
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 6)
-                    .frame(maxWidth: .infinity)
             }
-            .padding(.all, 4)
-            .frame(maxWidth: .infinity)
-            .aspectRatio(0.85, contentMode: .fit)
-            .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
             .overlay {
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .strokeBorder(isSelected ? Color.accentColor : Color(.separator),
-                                  lineWidth: isSelected ? 2.5 : 1)
+                if isSelected {
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .strokeBorder(Color.accentColor, lineWidth: 2.5)
+                }
             }
         }
         .buttonStyle(.plain)
