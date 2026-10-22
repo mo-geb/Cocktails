@@ -39,6 +39,15 @@ enum MeasurementUnit: String, Codable, CaseIterable, Identifiable {
         }
     }
 
+    /// The amount as shown in ingredient lists, or nil when there's nothing to show.
+    /// "Fill" has no number, so it shows its label even without an amount.
+    func amountLabel(_ amount: Double?) -> String? {
+        if self == .fill { return localizedName }
+        guard let amount, amount > 0 else { return nil }
+        let text = displayText(for: amount)
+        return text.isEmpty ? nil : text
+    }
+
     private func formatAmount(_ value: Double) -> String {
         value.formatted(.number.precision(.fractionLength(0...2)))
     }

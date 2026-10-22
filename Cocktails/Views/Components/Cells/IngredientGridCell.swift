@@ -11,39 +11,11 @@ struct IngredientGridCell: View {
         Button {
             ingredient.isStocked.toggle()
         } label: {
-            VStack(spacing: 0) {
+            IngredientCard(name: ingredient.localizedName, isDimmed: !ingredient.isStocked) {
                 ingredient.displayImage.view(placeholder: ingredient.type.imageName)
                     .scaledToFit()
                     .padding(4)
-                    .grayscale(ingredient.isStocked ? 0 : 1)
-                    .opacity(ingredient.isStocked ? 1 : 0.35)
-
-                Text(ingredient.localizedName)
-                    .font(.caption.bold())
-                    .foregroundStyle(ingredient.isStocked ? .primary : .secondary)
-                    .multilineTextAlignment(.center)
-                    .lineLimit(2)
-                    .minimumScaleFactor(0.8)
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 6)
-                    .frame(maxWidth: .infinity)
             }
-            .padding(.all, 4)
-            .frame(maxWidth: .infinity)
-            .aspectRatio(0.85, contentMode: .fit)
-            .cardBackground(cornerRadius: 18)
-            .overlay(alignment: .topTrailing) {
-                if ingredient.isStocked {
-                    Image(systemName: "checkmark.circle.fill")
-                        .font(.subheadline)
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(.white, Color.green)
-                        .padding(6)
-                        .transition(.scale.combined(with: .opacity))
-                        .accessibilityHidden(true)
-                }
-            }
-            .animation(.snappy, value: ingredient.isStocked)
             .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
             // Flattens icon and text into one layer so they move together when the
             // stocked-first sort repositions the cell; the icon's grayscale filter
@@ -75,27 +47,45 @@ struct IngredientGridCell: View {
     }
 }
 
+/// The ingredient tile used across the app: artwork above a name on a white
+/// card. Unstocked ingredients are dimmed.
+struct IngredientCard<Art: View>: View {
+    let name: String
+    var isDimmed = false
+    @ViewBuilder var art: () -> Art
+
+    var body: some View {
+        VStack(spacing: 0) {
+            art()
+                .grayscale(isDimmed ? 1 : 0)
+                .opacity(isDimmed ? 0.35 : 1)
+
+            Text(name)
+                .font(.caption.bold())
+                .foregroundStyle(isDimmed ? .secondary : .primary)
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
+                .minimumScaleFactor(0.8)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 6)
+                .frame(maxWidth: .infinity)
+        }
+        .padding(.all, 4)
+        .frame(maxWidth: .infinity)
+        .aspectRatio(0.85, contentMode: .fit)
+        .cardBackground(cornerRadius: 18)
+    }
+}
+
+/// The tile offered when a search matches no ingredient, for creating one.
 func addIngredientCell(name: String) -> some View {
-    VStack(spacing: 0) {
+    IngredientCard(name: name) {
         Image(systemName: "plus.circle.fill")
             .resizable()
             .scaledToFit()
             .foregroundStyle(.tint)
             .padding(12)
-
-        Text(name)
-            .font(.caption.bold())
-            .multilineTextAlignment(.center)
-            .lineLimit(2)
-            .minimumScaleFactor(0.8)
-            .padding(.horizontal, 8)
-            .padding(.vertical, 6)
-            .frame(maxWidth: .infinity)
     }
-    .padding(.all, 4)
-    .frame(maxWidth: .infinity)
-    .aspectRatio(0.85, contentMode: .fit)
-    .cardBackground(cornerRadius: 18)
     .overlay {
         RoundedRectangle(cornerRadius: 18, style: .continuous)
             .strokeBorder(Color.accentColor.opacity(0.55), lineWidth: 1.5)

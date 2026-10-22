@@ -336,15 +336,15 @@ struct CocktailEditView: View {
 
     @ViewBuilder
     private func ingredientSummary(for ingredient: RecipeIngredientDraft) -> some View {
-        let hasAmount = ingredient.amount != nil
+        let amountText = ingredient.unit.amountLabel(ingredient.amount)
         let hasNote = !ingredient.note.isEmpty
 
-        if hasAmount || hasNote {
+        if amountText != nil || hasNote {
             HStack(spacing: 4) {
-                if let amount = ingredient.amount {
-                    Text(ingredient.unit.displayText(for: amount))
+                if let amountText {
+                    Text(amountText)
                 }
-                if hasAmount && hasNote {
+                if amountText != nil && hasNote {
                     Text("·").foregroundStyle(.tertiary)
                 }
                 if hasNote {
