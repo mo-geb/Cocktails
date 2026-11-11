@@ -23,8 +23,8 @@ struct CocktailPreviewCell: View {
                     .multilineTextAlignment(.center)
                     .lineLimit(1, accessibility: 3)
 
-                CocktailMetaLine(ice: dto.ice, method: dto.method)
-                .font(.caption2)
+                CocktailMetaLine(glass: dto.glass, ice: dto.ice, method: dto.method)
+                .font(.caption)
                 .foregroundStyle(.secondary)
                 .lineLimit(1, accessibility: 2)
                 .minimumScaleFactor(0.8)

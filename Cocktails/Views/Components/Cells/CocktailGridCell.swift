@@ -27,25 +27,14 @@ struct CocktailGridCell: View {
                         .multilineTextAlignment(.center)
                         .lineLimit(1, accessibility: 3)
 
-                    HStack(spacing: 4) {
-                        Image(cocktail.source.imageName)
-                            .resizable()
-                            .scaledToFit()
-                            .scaledFrame(12, relativeTo: .caption2)
-                            .accessibilityHidden(true)
-                        Text(cocktail.source.localizedName)
-                            .font(.caption2)
-                    }
-                    .foregroundStyle(.secondary)
-
                     Group {
                         if let footerLabel {
                             Text(footerLabel)
                         } else {
-                            CocktailMetaLine(ice: cocktail.ice, method: cocktail.method)
+                            CocktailMetaLine(glass: cocktail.glass, ice: cocktail.ice, method: cocktail.method)
                         }
                     }
-                    .font(.caption2)
+                    .font(.caption)
                     .foregroundStyle(.secondary)
                     .lineLimit(1, accessibility: 2)
                     .minimumScaleFactor(0.8)
@@ -125,27 +114,15 @@ struct CocktailGridCell: View {
     }
 }
 
-/// "Cubed · Shake" with small icons, shown under a cocktail's name in grid cells.
+/// "Martini · No Ice · Shake": the summary under a cocktail's name in grid cells,
+/// mirroring the glass / ice / method pill on the detail view.
 struct CocktailMetaLine: View {
+    let glass: GlassType
     let ice: IceType
     let method: PreparationMethod
 
     var body: some View {
-        HStack(spacing: 5) {
-            icon(ice.imageName)
-            Text(ice.localizedName)
-            Text("·").foregroundStyle(.tertiary)
-            icon(method.customImageName)
-            Text(method.localizedName)
-        }
-    }
-
-    private func icon(_ name: String) -> some View {
-        Image(name)
-            .resizable()
-            .scaledToFit()
-            .scaledFrame(11, relativeTo: .caption2)
-            .accessibilityHidden(true)
+        Text(verbatim: [glass.localizedName, ice.localizedName, method.localizedName].joined(separator: " · "))
     }
 }
 
@@ -164,13 +141,8 @@ func addCocktailCell(name: String, action: @escaping () -> Void) -> some View {
                 .multilineTextAlignment(.center)
                 .lineLimit(1, accessibility: 3)
             Text("Add Cocktail")
-                .font(.caption2)
+                .font(.caption)
                 .foregroundStyle(.tint)
-            // Reserves the height of the meta line below the source row in CocktailGridCell,
-            // so this tile's natural height matches its grid neighbors.
-            Text(verbatim: " ")
-                .font(.caption2)
-                .hidden()
         }
         .padding(8)
         .padding(.bottom, 6)
