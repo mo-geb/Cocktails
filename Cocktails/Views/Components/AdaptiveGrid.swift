@@ -8,6 +8,7 @@ struct AdaptiveGrid<Content: View>: View {
     }
 
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @ScaledMetric(relativeTo: .caption) private var ingredientMinimumWidth: CGFloat = 80
     private let kind: Kind
     private let content: Content
 
@@ -26,7 +27,7 @@ struct AdaptiveGrid<Content: View>: View {
         let large = dynamicTypeSize.isAccessibilitySize
         switch kind {
         case .cocktails, .libraries: return large ? 300 : 160
-        case .ingredients: return large ? 140 : 80
+        case .ingredients: return ingredientMinimumWidth
         }
     }
 

@@ -66,6 +66,7 @@ struct IngredientTab: View {
                                 }
                             }
                             .padding(.horizontal)
+                            .animation(.snappy(duration: 0.3), value: items.map(\.id))
                         }
                     }
                 }

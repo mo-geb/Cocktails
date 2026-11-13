@@ -7,7 +7,6 @@ struct CocktailsWithIngredientView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var viewedCocktail: Cocktail?
     @State private var cocktailToDelete: Cocktail?
-    @Namespace private var zoomNamespace
 
     private var cocktails: [Cocktail] { ingredient.cocktails }
 
@@ -27,7 +26,6 @@ struct CocktailsWithIngredientView: View {
                                 CocktailGridCell(cocktail: cocktail, onDelete: { cocktailToDelete = cocktail }) {
                                     viewedCocktail = cocktail
                                 }
-                                .matchedTransitionSource(id: cocktail.id, in: zoomNamespace)
                             }
                         }
                         .padding()
@@ -43,7 +41,9 @@ struct CocktailsWithIngredientView: View {
                 }
             }
             .cocktailDeletionDialog($cocktailToDelete)
-            .cocktailZoomDestination($viewedCocktail, in: zoomNamespace)
+            .navigationDestination(item: $viewedCocktail) { cocktail in
+                CocktailDetailView(cocktail: cocktail)
+            }
         }
     }
 }

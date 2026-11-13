@@ -6,7 +6,6 @@ struct MakeableCocktailsView: View {
     @Query private var cocktails: [Cocktail]
     @State private var viewedCocktail: Cocktail?
     @State private var cocktailToDelete: Cocktail?
-    @Namespace private var zoomNamespace
 
     private var makeableCocktails: [Cocktail] {
         cocktails
@@ -43,7 +42,6 @@ struct MakeableCocktailsView: View {
                                             CocktailGridCell(cocktail: cocktail, onDelete: { cocktailToDelete = cocktail }) {
                                                 viewedCocktail = cocktail
                                             }
-                                            .matchedTransitionSource(id: cocktail.id, in: zoomNamespace)
                                         }
                                     }
                                 }
@@ -56,7 +54,6 @@ struct MakeableCocktailsView: View {
                                             CocktailGridCell(cocktail: item.cocktail, footerLabel: String(localized: "Missing: \(item.missing)"), onDelete: { cocktailToDelete = item.cocktail }) {
                                                 viewedCocktail = item.cocktail
                                             }
-                                            .matchedTransitionSource(id: item.cocktail.id, in: zoomNamespace)
                                         }
                                     }
                                 }
@@ -75,7 +72,9 @@ struct MakeableCocktailsView: View {
                 }
             }
             .cocktailDeletionDialog($cocktailToDelete)
-            .cocktailZoomDestination($viewedCocktail, in: zoomNamespace)
+            .navigationDestination(item: $viewedCocktail) { cocktail in
+                CocktailDetailView(cocktail: cocktail)
+            }
         }
     }
 
